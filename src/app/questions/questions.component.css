@@ -1,0 +1,16 @@
+*{
+    color:aliceblue;
+}
+button{
+    color:blueviolet;
+    padding:15px;
+    margin:20px;
+    width: 8vw;
+    border-radius: 25px;
+    color:rgb(34, 22, 209);
+    border:3px solid red;
+    outline: 0px;
+}
+button:hover{
+    border:3px solid yellow;
+}

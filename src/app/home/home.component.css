@@ -1,0 +1,36 @@
+a{
+    border:2px solid yellow;
+    margin:10px;
+    padding:10px;
+    float:right;
+    font-size: 30px;
+    color: antiquewhite;
+    border-radius: 20px;
+    text-decoration: none;
+}
+.header{
+    border-bottom:2px solid #042343;
+    height: 10vh;
+    box-shadow: 2px 2px 20px 20px rgba(225, 231, 202, 0.1);
+    
+}
+.welcome{
+    float:left;
+    font-size: 30px;
+    color:antiquewhite;
+    margin: 15px;
+}
+.name{
+    text-align: center;
+    padding:20px;
+}
+input{
+    padding: 10px;
+    border-radius: 25px;
+    width: 20vw;
+    outline:2px chartreuse;
+    background-color: #042343;
+}
+input:focus{
+    border-color:yellow;
+}

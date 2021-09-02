@@ -1,0 +1,30 @@
+
+<button  (click)="questionDecrement()"> Previous </button>
+<button  style="float:right" (click)="questionIncrement()"> Next </button>
+<p class="text-center">{{ currentQuestion+1 }} of {{ questions.length }}</p>
+<div class="container p-5">
+  <div class="row">
+    <div class="col-sm-8">
+      <h3>{{ questions[currentQuestion].question }}</h3>
+      
+      <div *ngFor = "let ab of questions[currentQuestion].result" >
+        <div *ngIf = "questions[currentQuestion].multiple; else elseBlock" >
+          <input type = "checkbox" name = "option" >
+          {{ ab.option }}
+        </div>
+        <ng-template #elseBlock>
+          <div>
+            <input type = "radio" name = "option" >
+            {{ ab.option }}
+          </div>
+        </ng-template> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

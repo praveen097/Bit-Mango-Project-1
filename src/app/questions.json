@@ -1,0 +1,253 @@
+[
+    {
+       
+        "id":1,
+        "multiple": false,
+        "question": "Do you already have an existing product to start from ?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice":0, "minDays":0, "maxDays":0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays":0, "maxDays":0}
+        ]
+    },
+    { 
+        "id":2,
+        "multiple": false,
+        "question": "How would you describe the size of your desired digital solution ?",
+        "result" : [
+            {"option":"Small", "minPrice":0, "maxPrice": 0, "minDays":0, "maxDays":0},
+            {"option":"Medium", "minPrice":0, "maxPrice":0, "minDays":0, "maxDays":0},
+            {"option":"Large", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":3,
+        "multiple": false,
+        "question": "To what extent do you feel like you need some help in digital strategy?",
+        "result" : [
+            {"option":"1", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"2", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"3", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"4", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"5", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":4,
+        "multiple": false,
+        "question": "Do you want us to help you define the business objectives for your project ?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":5,
+        "multiple": false,
+        "question": "Do you want us to help you define KPI’s and targets for your objectives?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":6,
+        "multiple": false,
+        "question": "Do you want us to (further) investigate your target groups and their needs?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+
+        "id":7,
+        "multiple": false,
+        "question": "Do you want us to (further) investigate your competition?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },{
+        "id":8,
+        "multiple": false,
+        "question": "Do you want us to guide you through the trends in your industry?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":9,
+        "multiple": false,
+        "question": "Do you want us to create a clear picture of the strengths and weaknesses of your current offering?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":10,
+        "multiple": false,
+        "question": "Do you want us to analyse your current analytics in order to offer more personalised recommendations?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":11,
+        "multiple": false,
+        "question": "Do you want us to translate your business goals into a proposal for a concrete digital solution?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":12,
+        "multiple": false,
+        "question": "Do you want us to define a roadmap for your offering?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":13,
+        "multiple": false,
+        "question": "Do you need branding for your product?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":14,
+        "multiple": false,
+        "question": "Do you need a technical analysis of your product?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":15,
+        "multiple": true,
+        "question": "Select the aspects you need for UX",
+        "result" : [
+            {"option":"WIREFRAMES", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"VISUAL DESIGNS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"USER STORIES", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"MVP", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"USER TESTS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"ANALYTICS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"AB TESTING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"I DON’T NEED ANY UX", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":16,
+        "multiple": true,
+        "question": "Mark the aspects you need for UI",
+        "result" : [
+            {"option":"ANIMATIONS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"ILLUSTRATIONS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"DESIGN SYSTEM", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"I DON’T NEED ANY UI", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":17,
+        "multiple": true,
+        "question": "What devices does your application have to support?",
+        "result" : [
+            {"option":"PHONE", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"TABLET", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"BROWSER", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"DESKTOP", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"TV", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"CMS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"OTHER", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}    
+        ]
+    },
+    {
+        "id":18,
+        "multiple": false,
+        "question": "Do you have your own backend systems?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":19,
+        "multiple": false,
+        "question": "Are there external API's to take into account for integration?",
+        "result" : [
+            {"option":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":20,
+        "multiple": true,
+        "question": "Check off the features you want your product to have. Features that might seem minor to you, can have a big impact on your application and the building process. Be very precise about the options you pick, that way you’ll get the best indication of the required budget. If you don’t have a clue about the meaning of these features, just contact us and our team will be happy to help you out.",
+        "result" : [
+            {"option":"LOCATION / MAPS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"SOCIAL ENGAGEMENT", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"BILLING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"2 FACTOR AUTHENTICATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"PUSH NOTIFICATIONS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"CAMERA", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"BIOMETRICS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"VIDEO / AUDIO", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"SOCIAL MEDIA", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"IN APP PURCHASES", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"CALENDAR", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"CHAT", "minPrice":0, "maxPrice": 0},
+            {"option":"SCANNING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"3D", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"AUGMENTED REALITY", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"ITSME INTEGRATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"WIDGETS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"GRAPHS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"SETTINGS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"VOICE ACTIONS / ASSISTANT INTEGRATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"APP ACTIONS / SHORTCUTS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"APP PREVIEW' MODE: APP CLIPS / INSTANT APPS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"CAR PLATFORM INTEGRATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"ARTIFICIAL INTELLIGENCE/MACHINE LEARNING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"ADVANCED ACCESSIBILITY", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"AUTHENTICATION (OPEN ID, SSO, SAML, ...)", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"WEBSOCKETS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"WEB OFFLINE SUPPORT", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"STREAMING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}       
+        ]
+    },
+    {
+        "id":21,
+        "multiple": true,
+        "question": "Select your preference: After the release of my product I need...",
+        "result" : [
+            {"option":"THE ASSURANCE THAT EVERYTHING KEEPS WORKING SMOOTHLY ALL THE TIME AND A SERVICE DESK FOR ALL OF MY QUESTIONS AND REPORTS.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"THE ASSURANCE THAT MY PRODUCT WILL GET ALL OF THE REQUIRED UPDATES.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"A CUSTOM MADE PARTNERSHIP THAT ENSURES MY PRODUCT TO EXCEL.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"NO MORE GUIDANCE", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    },
+    {
+        "id":22,
+        "multiple": true,
+        "question": "For the go-to-market of my solution I need...",
+        "result" : [
+            {"option":"LITTLE SUPPORT FOR THE 'GO TO MARKET' OF MY PRODUCT.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"PROACTIVE SUPPORT AND FITTING MARKETING ACTIONS ON A PERSONALISED ROADMAP.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"A CUSTOM MADE PARTNERSHIP THAT ENSURES MY PRODUCT TO EXCEL IN THE MARKET.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"option":"NO MORE GUIDANCE", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+        ]
+    }
+    
+
+    
+    
+]

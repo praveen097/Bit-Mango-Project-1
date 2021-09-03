@@ -1,5 +1,5 @@
 export interface Result {
-    option: string;
+    questionText: string;
     minPrice: number;
     maxPrice: number;
     minDays: number;
@@ -10,7 +10,7 @@ export interface Questions {
     id: number;
     multiple: boolean;
     question: string;
-    result: Result[];
+    options: Result[];
 }
 
 

@@ -1,5 +1,9 @@
-*{
+/* *{
     color:aliceblue;
+} */
+label{
+    width:10vw;
+
 }
 button{
     color:blueviolet;

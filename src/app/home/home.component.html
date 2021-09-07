@@ -3,8 +3,12 @@
 <a routerLink="">Hire Us!</a>
 </div>
 <div class="name">
-    <input type="text" name="username" placeholder="Please enter your name" autocomplete="off">
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Please enter your name" autocomplete="off">
 </div>
+<button class="btn btn-success" (click)="Onsubmit()">
+    START
+</button>
+<h1>User name is {{username}}</h1>
 
 
 

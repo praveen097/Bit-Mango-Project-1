@@ -5,8 +5,8 @@
         "multiple": false,
         "question": "Do you already have an existing product to start from ?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice":0, "minDays":0, "maxDays":0},
-            {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays":0, "maxDays":0}
+            {"questionText":"Yes", "minPrice":2, "maxPrice":5, "minDays":2, "maxDays":3},
+            {"questionText":"No", "minPrice":4, "maxPrice": 10, "minDays":1, "maxDays":2}
         ]
     },
     { 
@@ -14,9 +14,9 @@
         "multiple": false,
         "question": "How would you describe the size of your desired digital solution ?",
         "options" : [
-            {"questionText":"Small", "minPrice":0, "maxPrice": 0, "minDays":0, "maxDays":0},
-            {"questionText":"Medium", "minPrice":0, "maxPrice":0, "minDays":0, "maxDays":0},
-            {"questionText":"Large", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+            {"questionText":"Small", "minPrice":3, "maxPrice": 6, "minDays":3, "maxDays":5},
+            {"questionText":"Medium", "minPrice":5, "maxPrice":9, "minDays":5, "maxDays":7},
+            {"questionText":"Large", "minPrice":10, "maxPrice": 15, "minDays": 7, "maxDays": 9}
         ]
     },
     {
@@ -24,11 +24,11 @@
         "multiple": false,
         "question": "To what extent do you feel like you need some help in digital strategy?",
         "options" : [
-            {"questionText":"1", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"2", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"3", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"4", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"5", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+            {"questionText":"1", "minPrice":1, "maxPrice": 2, "minDays": 1, "maxDays": 2},
+            {"questionText":"2", "minPrice":2, "maxPrice": 3, "minDays": 1, "maxDays": 2},
+            {"questionText":"3", "minPrice":3, "maxPrice": 4, "minDays": 1, "maxDays": 3},
+            {"questionText":"4", "minPrice":5, "maxPrice": 6, "minDays": 1, "maxDays": 3},
+            {"questionText":"5", "minPrice":7, "maxPrice": 8, "minDays": 1, "maxDays": 3}
         ]
     },
     {
@@ -36,7 +36,7 @@
         "multiple": false,
         "question": "Do you want us to help you define the business objectives for your project ?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":5, "maxPrice": 8, "minDays": 2, "maxDays": 3},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -45,7 +45,7 @@
         "multiple": false,
         "question": "Do you want us to help you define KPI’s and targets for your objectives?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":5, "maxPrice": 9, "minDays": 3, "maxDays": 5},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -54,7 +54,7 @@
         "multiple": false,
         "question": "Do you want us to (further) investigate your target groups and their needs?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":3, "maxPrice": 7, "minDays": 2, "maxDays": 6},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -64,7 +64,7 @@
         "multiple": false,
         "question": "Do you want us to (further) investigate your competition?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":6, "maxPrice": 10, "minDays": 6, "maxDays": 8},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },{
@@ -72,7 +72,7 @@
         "multiple": false,
         "question": "Do you want us to guide you through the trends in your industry?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":4, "maxPrice": 7, "minDays": 3, "maxDays": 4},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -81,7 +81,7 @@
         "multiple": false,
         "question": "Do you want us to create a clear picture of the strengths and weaknesses of your current offering?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":6, "maxPrice": 10, "minDays": 2, "maxDays": 6},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -90,7 +90,7 @@
         "multiple": false,
         "question": "Do you want us to analyse your current analytics in order to offer more personalised recommendations?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":2, "maxPrice": 4, "minDays": 1, "maxDays": 2},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -99,7 +99,7 @@
         "multiple": false,
         "question": "Do you want us to translate your business goals into a proposal for a concrete digital solution?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":3, "maxPrice": 6, "minDays": 3, "maxDays": 5},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -108,7 +108,7 @@
         "multiple": false,
         "question": "Do you want us to define a roadmap for your offering?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":3, "maxPrice": 7, "minDays": 2, "maxDays": 4},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -117,7 +117,7 @@
         "multiple": false,
         "question": "Do you need branding for your product?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":5, "maxPrice": 7, "minDays": 2, "maxDays": 4},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -126,7 +126,7 @@
         "multiple": false,
         "question": "Do you need a technical analysis of your product?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":5, "maxPrice": 8, "minDays": 2, "maxDays": 4},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -135,13 +135,13 @@
         "multiple": true,
         "question": "Select the aspects you need for UX",
         "options" : [
-            {"questionText":"WIREFRAMES", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"VISUAL DESIGNS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"USER STORIES", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"MVP", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"USER TESTS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"ANALYTICS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"AB TESTING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"WIREFRAMES", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"VISUAL DESIGNS", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"USER STORIES", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"MVP", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"USER TESTS", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"ANALYTICS", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"AB TESTING", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
             {"questionText":"I DON’T NEED ANY UX", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -150,9 +150,9 @@
         "multiple": true,
         "question": "Mark the aspects you need for UI",
         "options" : [
-            {"questionText":"ANIMATIONS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"ILLUSTRATIONS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"DESIGN SYSTEM", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"ANIMATIONS", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"ILLUSTRATIONS", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"DESIGN SYSTEM", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
             {"questionText":"I DON’T NEED ANY UI", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -161,13 +161,13 @@
         "multiple": true,
         "question": "What devices does your application have to support?",
         "options" : [
-            {"questionText":"PHONE", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"TABLET", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"BROWSER", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"DESKTOP", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"TV", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"CMS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"OTHER", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}    
+            {"questionText":"PHONE", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"TABLET", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"BROWSER", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"DESKTOP", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"TV", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"CMS", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3},
+            {"questionText":"OTHER", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 3}    
         ]
     },
     {
@@ -176,7 +176,7 @@
         "question": "Do you have your own backend systems?",
         "options" : [
             {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
+            {"questionText":"No", "minPrice":15, "maxPrice": 20, "minDays": 10, "maxDays": 15}
         ]
     },
     {
@@ -184,7 +184,7 @@
         "multiple": false,
         "question": "Are there external API's to take into account for integration?",
         "options" : [
-            {"questionText":"Yes", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"Yes", "minPrice":10, "maxPrice": 15, "minDays": 6, "maxDays": 9},
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -193,35 +193,35 @@
         "multiple": true,
         "question": "Check off the features you want your product to have. Features that might seem minor to you, can have a big impact on your application and the building process. Be very precise about the options you pick, that way you’ll get the best indication of the required budget. If you don’t have a clue about the meaning of these features, just contact us and our team will be happy to help you out.",
         "options" : [
-            {"questionText":"LOCATION / MAPS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"SOCIAL ENGAGEMENT", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"BILLING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"2 FACTOR AUTHENTICATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"PUSH NOTIFICATIONS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"CAMERA", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"BIOMETRICS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"VIDEO / AUDIO", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"SOCIAL MEDIA", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"IN APP PURCHASES", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"CALENDAR", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"CHAT", "minPrice":0, "maxPrice": 0},
-            {"questionText":"SCANNING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"3D", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"AUGMENTED REALITY", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"ITSME INTEGRATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"WIDGETS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"GRAPHS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"SETTINGS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"VOICE ACTIONS / ASSISTANT INTEGRATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"APP ACTIONS / SHORTCUTS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"APP PREVIEW' MODE: APP CLIPS / INSTANT APPS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"CAR PLATFORM INTEGRATION", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"ARTIFICIAL INTELLIGENCE/MACHINE LEARNING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"ADVANCED ACCESSIBILITY", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"AUTHENTICATION (OPEN ID, SSO, SAML, ...)", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"WEBSOCKETS", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"WEB OFFLINE SUPPORT", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"STREAMING", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}       
+            {"questionText":"LOCATION / MAPS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"SOCIAL ENGAGEMENT", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"BILLING", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"2 FACTOR AUTHENTICATION", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"PUSH NOTIFICATIONS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"CAMERA", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"BIOMETRICS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"VIDEO / AUDIO", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"SOCIAL MEDIA", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"IN APP PURCHASES", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"CALENDAR", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"CHAT", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"SCANNING", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"3D", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"AUGMENTED REALITY", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"ITSME INTEGRATION", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"WIDGETS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"GRAPHS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"SETTINGS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"VOICE ACTIONS / ASSISTANT INTEGRATION", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"APP ACTIONS / SHORTCUTS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"APP PREVIEW' MODE: APP CLIPS / INSTANT APPS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"CAR PLATFORM INTEGRATION", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"ARTIFICIAL INTELLIGENCE/MACHINE LEARNING", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"ADVANCED ACCESSIBILITY", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"AUTHENTICATION (OPEN ID, SSO, SAML, ...)", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"WEBSOCKETS", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"WEB OFFLINE SUPPORT", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2},
+            {"questionText":"STREAMING", "minPrice":3, "maxPrice": 5, "minDays": 1, "maxDays": 2}       
         ]
     },
     {
@@ -229,9 +229,9 @@
         "multiple": true,
         "question": "Select your preference: After the release of my product I need...",
         "options" : [
-            {"questionText":"THE ASSURANCE THAT EVERYTHING KEEPS WORKING SMOOTHLY ALL THE TIME AND A SERVICE DESK FOR ALL OF MY QUESTIONS AND REPORTS.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"THE ASSURANCE THAT MY PRODUCT WILL GET ALL OF THE REQUIRED UPDATES.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"A CUSTOM MADE PARTNERSHIP THAT ENSURES MY PRODUCT TO EXCEL.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"THE ASSURANCE THAT EVERYTHING KEEPS WORKING SMOOTHLY ALL THE TIME AND A SERVICE DESK FOR ALL OF MY QUESTIONS AND REPORTS.", "minPrice":3, "maxPrice": 5, "minDays": 2, "maxDays": 4},
+            {"questionText":"THE ASSURANCE THAT MY PRODUCT WILL GET ALL OF THE REQUIRED UPDATES.", "minPrice":10, "maxPrice": 20, "minDays": 3, "maxDays": 5},
+            {"questionText":"A CUSTOM MADE PARTNERSHIP THAT ENSURES MY PRODUCT TO EXCEL.", "minPrice":10, "maxPrice": 15, "minDays": 2, "maxDays": 5},
             {"questionText":"NO MORE GUIDANCE", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },
@@ -240,9 +240,9 @@
         "multiple": true,
         "question": "For the go-to-market of my solution I need...",
         "options" : [
-            {"questionText":"LITTLE SUPPORT FOR THE 'GO TO MARKET' OF MY PRODUCT.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"PROACTIVE SUPPORT AND FITTING MARKETING ACTIONS ON A PERSONALISED ROADMAP.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
-            {"questionText":"A CUSTOM MADE PARTNERSHIP THAT ENSURES MY PRODUCT TO EXCEL IN THE MARKET.", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0},
+            {"questionText":"LITTLE SUPPORT FOR THE 'GO TO MARKET' OF MY PRODUCT.", "minPrice":10, "maxPrice": 15, "minDays": 3, "maxDays": 5},
+            {"questionText":"PROACTIVE SUPPORT AND FITTING MARKETING ACTIONS ON A PERSONALISED ROADMAP.", "minPrice":10, "maxPrice": 15, "minDays": 3, "maxDays": 5},
+            {"questionText":"A CUSTOM MADE PARTNERSHIP THAT ENSURES MY PRODUCT TO EXCEL IN THE MARKET.", "minPrice":10, "maxPrice": 15, "minDays": 3, "maxDays": 5},
             {"questionText":"NO MORE GUIDANCE", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     }

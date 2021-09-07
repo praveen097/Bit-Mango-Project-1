@@ -1,38 +1,62 @@
-<h1>{{ sections[currentSection].sectionName }}</h1>
-<!-- <div *ngFor="let sectionModule of sections[currentSection].questionId"> -->
-  <h3>{{sections[currentSection].questionId}}</h3>
-<h3>{{sections[currentSection].questionId[qid]}}</h3>
+<app-navbar></app-navbar>
+<!-- <h1>{{"Current section: " + sections[currentSection].sectionName }}</h1>
+  <h3>{{"Questions in the section: " + sections[currentSection].questionId}}</h3>
+<h3>{{"Current question number " + sections[currentSection].questionId[qid]}}</h3> -->
 
-<!-- </div> -->
 
-<div *ngIf="sections[currentSection].questionId[qid] == questions[currentQuestion].id; else elseBlock2">
-  <button (click)="changeQuestion()">NEXT QUESTION</button>
+<!-- <mat-progress-bar mode="determinate" value="{{((qid+1)/sections[currentSection].questionId.length)*100}}"></mat-progress-bar> -->
+
+<div *ngIf="!sectionEnd; else elseBlock2">
+  <button (click)="changeQuestion()"> NEXT QUESTION </button>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 offset-2">
-      <h1>{{questions[currentQuestion].id + questions[currentQuestion].question}}</h1>
-      <div *ngIf="questions[currentQuestion].multiple; else elseBlock">
-        <div *ngFor="let questionsModule of questions[currentQuestion].options">
-          <input type="checkbox">
+      <h1>{{presentQuestion.question}}</h1>
+      <div *ngIf="presentQuestion.multiple; else elseBlock1">
+        <div *ngFor="let questionsModule of presentQuestion.options">
+          <input type="checkbox" class="form-check-input">
           {{ questionsModule.questionText }}
         </div>
       </div>
-      <ng-template #elseBlock>
-        <div *ngFor="let questionsModule of questions[currentQuestion].options">
+      <ng-template #elseBlock1>
+        <div *ngFor="let questionsModule of presentQuestion.options">
           <label>
           <div class="list-group-item">
-          <input type="radio" name="" id="" value="{{questionsModule.questionText}}"
+          <input type="radio"  name="option" value="{{questionsModule}}"
+           (change)="radioChangeHander($event,questionsModule.maxPrice)"
            > 
           {{ questionsModule.questionText }}
         </div>
-      </label>
+        </label>
       </div>
+      <!-- <h2>Min Price is $ {{selectedRadio}}</h2>
+      <h2>Max Price is $ {{selectedRadioMax}}</h2> -->
       </ng-template>
     </div>
   </div>
 </div>
 </div>
 <ng-template #elseBlock2>
-  <button (click)="changeSection()">NEXT SECTION</button>
-  <button> REVIEW </button>
+  <div *ngFor="let answer of answersArray" >
+    
+    <h1>{{answer.question}}</h1>
+    <ng-template *ngFor="let option of answer.options">
+      <h1>{{option.questionText}}</h1>
+    </ng-template>
+  </div>
+  <button (click)="sectionStart()">NEXT SECTION</button>
+  
 </ng-template>
+
+<!-- <div *ngFor="let i of priceList">
+<h2>{{i}}</h2>
+</div> -->
+
+<div *ngIf="!sectionEnd">
+<!-- question section name options -->
+<!-- next question button "changeQuestion" -->
+</div>
+<div *ngIf="sectionEnd">
+<!-- overview of section -->
+<!--  -->
+</div>

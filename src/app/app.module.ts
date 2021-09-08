@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar'
 import { MatRadioModule } from '@angular/material/radio/'
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MatRadioModule } from '@angular/material/radio/'
     FormsModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSelectModule
 
   ],
   providers: [CostEstimationService],

@@ -8,9 +8,8 @@ const routes: Routes = [
 
   { path: '', component:HomeComponent},
   { path: 'questions', component: QuestionsComponent },
-  {path:'overview', component:OverviewComponent},
+  {path:'overview/:index', component:OverviewComponent},
   { path: 'results', component:ResultsComponent },
-  { path: '**', component:HomeComponent}
   
 ];
 

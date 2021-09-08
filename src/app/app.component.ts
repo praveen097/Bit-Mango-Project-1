@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CostEstimationService } from './cost-estimation.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'costEstimator';
+
+  constructor(private _costEstimationService:CostEstimationService){}
+
+  ngOnInit(){
+    this._costEstimationService.setInitialValues();
+  }
 }

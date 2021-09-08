@@ -77,14 +77,14 @@ export class CostEstimationService {
 
   }
   isLastQuestionOfCurrentSection(id:number){
-    const currentSectionQuestions:number[] = this.getSectionByIndex(this.currentSectionIndex).questionId;
-    if(currentSectionQuestions.indexOf(id)==currentSectionQuestions.length-1){
+    const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questionId;
+
+    var indexOfCurrentQuestion = sectionQuestions.indexOf(this.currentQuestionId);
+    if(indexOfCurrentQuestion == sectionQuestions.length -1){
       return true;
-    }
-    else{
+    }else{
       return false;
     }
-    //return boolean
   }
 
   //set answer by id - In the answers array set the options array as the answer submitted by the user

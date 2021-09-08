@@ -26,7 +26,7 @@ export class QuestionsComponent implements OnInit {
 
   //Navigate to over view page
   toOverviewPage(){
-    this.route.navigate(['/overview'+(this._costEstimationService.currentSectionIndex-1)]);
+    this.route.navigate(['/overview/'+(this._costEstimationService.currentSectionIndex-1)]);
   }
   
   radioChangeHandler(option:Result){

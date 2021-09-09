@@ -7,7 +7,7 @@ export interface Result {
 }
 
 export interface Questions {
-    id: number;
+    qid: number;
     multiple: boolean;
     question: string;
     options: Result[];

@@ -1,7 +1,7 @@
 [
     {
        
-        "id":1,
+        "qid":1,
         "multiple": false,
         "question": "Do you already have an existing product to start from ?",
         "options" : [
@@ -10,7 +10,7 @@
         ]
     },
     { 
-        "id":2,
+        "qid":2,
         "multiple": false,
         "question": "How would you describe the size of your desired digital solution ?",
         "options" : [
@@ -20,7 +20,7 @@
         ]
     },
     {
-        "id":3,
+        "qid":3,
         "multiple": false,
         "question": "To what extent do you feel like you need some help in digital strategy?",
         "options" : [
@@ -32,7 +32,7 @@
         ]
     },
     {
-        "id":4,
+        "qid":4,
         "multiple": false,
         "question": "Do you want us to help you define the business objectives for your project ?",
         "options" : [
@@ -41,7 +41,7 @@
         ]
     },
     {
-        "id":5,
+        "qid":5,
         "multiple": false,
         "question": "Do you want us to help you define KPI’s and targets for your objectives?",
         "options" : [
@@ -50,7 +50,7 @@
         ]
     },
     {
-        "id":6,
+        "qid":6,
         "multiple": false,
         "question": "Do you want us to (further) investigate your target groups and their needs?",
         "options" : [
@@ -60,7 +60,7 @@
     },
     {
 
-        "id":7,
+        "qid":7,
         "multiple": false,
         "question": "Do you want us to (further) investigate your competition?",
         "options" : [
@@ -68,7 +68,7 @@
             {"questionText":"No", "minPrice":0, "maxPrice": 0, "minDays": 0, "maxDays": 0}
         ]
     },{
-        "id":8,
+        "qid":8,
         "multiple": false,
         "question": "Do you want us to guide you through the trends in your industry?",
         "options" : [
@@ -77,7 +77,7 @@
         ]
     },
     {
-        "id":9,
+        "qid":9,
         "multiple": false,
         "question": "Do you want us to create a clear picture of the strengths and weaknesses of your current offering?",
         "options" : [
@@ -86,7 +86,7 @@
         ]
     },
     {
-        "id":10,
+        "qid":10,
         "multiple": false,
         "question": "Do you want us to analyse your current analytics in order to offer more personalised recommendations?",
         "options" : [
@@ -95,7 +95,7 @@
         ]
     },
     {
-        "id":11,
+        "qid":11,
         "multiple": false,
         "question": "Do you want us to translate your business goals into a proposal for a concrete digital solution?",
         "options" : [
@@ -104,7 +104,7 @@
         ]
     },
     {
-        "id":12,
+        "qid":12,
         "multiple": false,
         "question": "Do you want us to define a roadmap for your offering?",
         "options" : [
@@ -113,7 +113,7 @@
         ]
     },
     {
-        "id":13,
+        "qid":13,
         "multiple": false,
         "question": "Do you need branding for your product?",
         "options" : [
@@ -122,7 +122,7 @@
         ]
     },
     {
-        "id":14,
+        "qid":14,
         "multiple": false,
         "question": "Do you need a technical analysis of your product?",
         "options" : [
@@ -131,7 +131,7 @@
         ]
     },
     {
-        "id":15,
+        "qid":15,
         "multiple": true,
         "question": "Select the aspects you need for UX",
         "options" : [
@@ -146,7 +146,7 @@
         ]
     },
     {
-        "id":16,
+        "qid":16,
         "multiple": true,
         "question": "Mark the aspects you need for UI",
         "options" : [
@@ -157,7 +157,7 @@
         ]
     },
     {
-        "id":17,
+        "qid":17,
         "multiple": true,
         "question": "What devices does your application have to support?",
         "options" : [
@@ -171,7 +171,7 @@
         ]
     },
     {
-        "id":18,
+        "qid":18,
         "multiple": false,
         "question": "Do you have your own backend systems?",
         "options" : [
@@ -180,7 +180,7 @@
         ]
     },
     {
-        "id":19,
+        "qid":19,
         "multiple": false,
         "question": "Are there external API's to take into account for integration?",
         "options" : [
@@ -189,7 +189,7 @@
         ]
     },
     {
-        "id":20,
+        "qid":20,
         "multiple": true,
         "question": "Check off the features you want your product to have. Features that might seem minor to you, can have a big impact on your application and the building process. Be very precise about the options you pick, that way you’ll get the best indication of the required budget. If you don’t have a clue about the meaning of these features, just contact us and our team will be happy to help you out.",
         "options" : [
@@ -225,7 +225,7 @@
         ]
     },
     {
-        "id":21,
+        "qid":21,
         "multiple": true,
         "question": "Select your preference: After the release of my product I need...",
         "options" : [
@@ -236,7 +236,7 @@
         ]
     },
     {
-        "id":22,
+        "qid":22,
         "multiple": true,
         "question": "For the go-to-market of my solution I need...",
         "options" : [

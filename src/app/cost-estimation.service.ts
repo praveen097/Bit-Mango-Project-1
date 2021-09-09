@@ -10,95 +10,96 @@ import sections from './sections.json';
 })
 
 export class CostEstimationService {
-  currentQuestionId:number = 0;
-  currentSectionIndex:number = 0;
-  answers:Questions[] = [];
-  questions:Questions[] = questions;
-  sections:Sections[] = sections;
+  currentQuestionId: number = 0;
+  currentSectionIndex: number = 0;
+  answers: Questions[] =[];
+  questions: Questions[] = questions;
+  sections: Sections[] = sections;
+
   constructor() { }
 
   setInitialValues(){
-    this.currentSectionIndex =0;
+    this.currentSectionIndex = 0;
     this.currentQuestionId = this.getSectionByIndex(
-    this.currentSectionIndex
+      this.currentSectionIndex
     ).questionId[0];
-    this.answers = questions.map((question: Questions)=>{
-      return {id:question.id, multiple:question.multiple, question:question.question, options:[]}
+    this.answers = questions.map((question:Questions)=>{
+      return {qid:question.qid, multiple:question.multiple, question:question.question, options:[]}
     });
+    console.log(this.questions);
+    console.log(this.answers);
   }
-  //get question by id
+
   getSectionByIndex(index:number){
     return this.sections[index];
   }
 
-  getCurrentQuestionId():number{
+  getCurrentQuestionId():number {
     return this.currentQuestionId;
   }
 
-  getCurrentQuestion(): Questions{
-    const currentQuestion = questions.find((question: Questions)=>{
-      return question.id == this.currentQuestionId;
-    });
+  getCurrentQuestion():Questions{
+    const currentQuestion = questions.find((question:Questions)=>{
+      return question.qid == this.currentQuestionId;
+    })
     return currentQuestion;
   }
-  getQuestionById(id:number){
-    const currentQuestion = questions.find((question: Questions)=>{
-      return question.id = id;
-    });
-    return currentQuestion;
-  }
-  getAnswersOfSectionByIndex(index:number){ 
-    let sectionAnswers:Questions[]=[];
-    const sectionQuestionList = this.getSectionByIndex(index).questionId;
-    for(var i=0; i<this.answers.length;i++){
-      if(sectionQuestionList.indexOf(this.answers[i].id)>=0){
-        sectionAnswers.push(this.answers[i]);
-      }
-    }
-    return sectionAnswers;
-  }
 
-  getNextQuestion(){
-    //check if last question of current section
-    if(this.isLastQuestionOfCurrentSection(this.currentQuestionId)) {
-      //yes ? increment current section index by 1
-      this.currentSectionIndex+=1;
-      //set current question to starting questions index of next section 
-      this.currentQuestionId = this.getSectionByIndex(
-      this.currentSectionIndex).questionId[0];
-    }else{
-      const selectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questionId;
-      this.currentQuestionId = selectionQuestions[selectionQuestions.indexOf(this.currentQuestionId)+1];
-    }
-    
-    
-    return this.getQuestionById(this.currentQuestionId);
-    //
-
-  }
-  isLastQuestionOfCurrentSection(id:number){
-    const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questionId;
-
-    var indexOfCurrentQuestion = sectionQuestions.indexOf(this.currentQuestionId);
-    if(indexOfCurrentQuestion == sectionQuestions.length -1){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  //set answer by id - In the answers array set the options array as the answer submitted by the user
   setAnswerById(id:number, options:any){
-    //loop through the answers array and when id matches, overwrite the options in the array element to the options from the parameter
-    
     this.answers = this.answers.map((answer)=>{
-      if(answer.id==id){
+      if(answer.qid == id){
         answer.options = options;
       }
       return answer;
     })
   }
 
-  
+  getQuestionById(id:number){
+    const currentQuestion = questions.find((question:Questions)=>{
+      return question.qid == id;
+    })
+    return currentQuestion;
+  }
+
+  getNextQuestion(){
+    if(this.isLastQuestionOfCurrentSection(this.currentQuestionId)){
+    this.currentSectionIndex+=1;
+    this.currentQuestionId = this.getSectionByIndex(
+      this.currentSectionIndex
+    ).questionId[0];
+    }else{
+      const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questionId;
+      this.currentQuestionId = sectionQuestions[sectionQuestions.indexOf(this.currentQuestionId)+1];
+    }
+
+    return this.getQuestionById(this.currentQuestionId);
+  }
+
+  isLastQuestionOfCurrentSection(id:number){
+    const sectionQuestions = this.getSectionByIndex(
+      this.currentSectionIndex
+    ).questionId;
+
+    var indexOfCurrentQuestion = sectionQuestions.indexOf(
+      this.currentQuestionId
+    );
+    if(indexOfCurrentQuestion == sectionQuestions.length-1){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
+
+  getAnswersOfCurrentSectionByIndex(index:number){
+    let sectionAnswers: Questions[] =[];
+    const sectionQuestionList = this.getSectionByIndex(index).questionId;
+    for(var i=0; i<this.answers.length;i++){
+      if(sectionQuestionList.indexOf(this.answers[i].qid)>=0){
+        sectionAnswers.push(this.answers[i]);
+      }
+    }
+    return sectionAnswers;
+  }
 
 }

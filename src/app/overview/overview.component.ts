@@ -10,8 +10,8 @@ import { Questions } from '../models/questions';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit {
-  sectionRoute:string  | null ="";
-  sectionId:number = 0;
+  sectionRoute: string | null ='';
+  sectionIndex:number = 0;
   answers:Questions[] = [];
 
   constructor(private _costEstimationService:CostEstimationService,
@@ -20,13 +20,16 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.activatedRoute.snapshot.paramMap.get('index')){
-    this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
-    this.sectionId = this.sectionRoute?parseInt(this.sectionRoute):0;
-    this.answers=this._costEstimationService.getAnswersOfSectionByIndex(this.sectionId);
-    console.log(this.answers);
+      this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
+      this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
+      this.answers = this._costEstimationService.getAnswersOfCurrentSectionByIndex(this.sectionIndex)
+    }else{
+      console.log("No index passed from URL!")
     }
   }
+
   toQuestions(){
     this.route.navigate(['/questions']);
   }
+  
 }

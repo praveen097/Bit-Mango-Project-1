@@ -10,33 +10,32 @@
     </div>
 
     <ng-template #elseBlock >
+        <button class="btn btn-primary" (click)="toggle()">Detailed Overview</button>
         <button class="btn btn-info" (click)="summary()">SUMMARY</button>
-        <button class="btn btn-danger" (click)="toresults()">FINISH</button>
+        <button class="btn btn-danger" (click)="toresults()">RESULTS</button>
     </ng-template>
 </div><br>
 
 <div *ngIf="basket" class="basket">
-    <h1>Price: ${{minPrice}} - ${{maxPrice}}, Days: {{minDays}} - {{maxDays}}</h1>
+    <h1>( Estimated ) Price: ${{minPrice}} - ${{maxPrice}}, Days: {{minDays}} - {{maxDays}}</h1>
 </div>
 
 
-    <div *ngFor="let item of answers; index as i ">
-        <h1 class="question"> {{i+1}}. {{item.question}}  </h1>
+<div *ngFor="let item of answers; index as i ">
+    <h1 class="question-name"> {{i+1}}. {{item.question}}  </h1>
 
-        
-            <div class="option-container">
-                <div *ngFor="let item2 of item.options">
-                    <h1 class="optionText"> 👉  {{ item2.questionText }}. 
-                        <span *ngIf="details"> Estimated cost :
-                        ${{item2.minPrice}} - $
-                        {{item2.maxPrice}}, duration: {{item2.minDays}} -  
-                        {{item2.maxDays}} days.
-                        </span>
-                    </h1>
-                </div>
-            </div>
-       
+    <div class="option-container">
+        <div *ngFor="let item2 of item.options">
+            <h1 class="optionText"> 👉  {{ item2.questionText }}. 
+                <span *ngIf="details"> Estimated cost :
+                ${{item2.minPrice}} - $
+                {{item2.maxPrice}}, duration: {{item2.minDays}} -  
+                {{item2.maxDays}} days.
+                </span>
+            </h1>
+        </div>
     </div>
+</div>
 
 
 

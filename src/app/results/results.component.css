@@ -33,7 +33,7 @@ div { box-sizing: border-box; }
   height: 100%;
   text-align: center;
 }
-.circle-text{
+.card-text{
     text-align: center;
     color: darkblue;
 }
@@ -48,11 +48,7 @@ marquee{
     font-size: large;
 }
 
-/* .contact-button{
-    float: right;
-} */
 .contact-us{
 text-align: center;
 margin: 50px;
-box-shadow: 2px 2px 10px blue;
 }

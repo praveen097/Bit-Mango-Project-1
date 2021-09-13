@@ -22,10 +22,10 @@ export class ResultsComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    this.maxPrice = this._costEstimationService.getMaxPrice();
-    this.minPrice = this._costEstimationService.getMinPrice();
-    this.maxDays = this._costEstimationService.getMaxDays();
-    this.minDays = this._costEstimationService.getMinDays();
+    this.maxPrice = this._costEstimationService.maxPrice;
+    this.minPrice = this._costEstimationService.minPrice;
+    this.maxDays = this._costEstimationService.maxDays;
+    this.minDays = this._costEstimationService.minDays;
   }
 
 }

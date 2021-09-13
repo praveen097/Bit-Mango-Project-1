@@ -27,9 +27,11 @@ export class OverviewComponent implements OnInit {
   allAnswer:Questions[] =[];
 
 
-  constructor(private _costEstimationService:CostEstimationService,
+  constructor(
+    private _costEstimationService:CostEstimationService,
     private route:Router,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
     if(this.activatedRoute.snapshot.paramMap.get('index')){
@@ -38,10 +40,10 @@ export class OverviewComponent implements OnInit {
     this.answers = this._costEstimationService.getAnswersOfCurrentSectionByIndex(this.sectionIndex);
     this.sections =  this._costEstimationService.getSections();
 
-    this.maxPrice = this._costEstimationService.getMaxPrice();
-    this.minPrice = this._costEstimationService.getMinPrice();
-    this.maxDays = this._costEstimationService.getMaxDays();
-    this.minDays = this._costEstimationService.getMinDays();
+    this.maxPrice = this._costEstimationService.maxPrice;
+    this.minPrice = this._costEstimationService.minPrice;
+    this.maxDays = this._costEstimationService.maxDays;
+    this.minDays = this._costEstimationService.minDays;
 
     this.allAnswer = this._costEstimationService.overAllAnswers;
     
@@ -53,11 +55,12 @@ export class OverviewComponent implements OnInit {
       console.log("No index passed from URL!")
     }
   }
-
+  //setting last section overview to summary
   summary(){
     this.answers=this.allAnswer;
   }
 
+  //for detailed answer
   toggle(){
     this.details = !this.details;
   }

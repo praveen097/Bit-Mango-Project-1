@@ -1,0 +1,23 @@
+
+.center-text{
+font-family: Georgia, serif;
+font-size: 2vw;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #0f105c;
+font-weight: normal;
+text-decoration: none solid rgb(68, 68, 68);
+font-style: italic;
+font-variant: small-caps;
+text-transform: none;
+}
+.welcome-text{
+    font-size: 2vw;
+    color: #0f105c;
+}
+
+@media only screen and (max-width: 600px) {
+    .center-text, .welcome-text {font-size: 3vw;}
+  }
+  
+

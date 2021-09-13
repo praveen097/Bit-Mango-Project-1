@@ -1,0 +1,58 @@
+
+div { box-sizing: border-box; }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: fit-content;
+
+}
+
+.card {
+    background-color: transparent;
+    width: 200p;
+    height: 200px;
+    
+    border-radius: 15px; 
+    margin: 0.5em;
+    padding: 5px;
+    box-shadow: 2px 2px 20px black;
+}
+
+.card:hover {
+  background-color: #62d5e4;
+}
+
+.aligner {
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  height: 100%;
+  text-align: center;
+}
+.circle-text{
+    text-align: center;
+    color: darkblue;
+}
+.value-text{
+    font-size: 90px;
+    text-align: center;
+    color: rgb(153, 13, 87);
+}
+marquee{
+    color: red;
+    padding: 5px;
+    font-size: large;
+}
+
+/* .contact-button{
+    float: right;
+} */
+.contact-us{
+text-align: center;
+margin: 50px;
+box-shadow: 2px 2px 10px blue;
+}

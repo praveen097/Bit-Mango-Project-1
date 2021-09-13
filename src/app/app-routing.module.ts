@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'questions', component: QuestionsComponent },
   {path:'overview/:index', component:OverviewComponent},
   { path: 'results', component:ResultsComponent },
+  { path: '**', component:HomeComponent },
   
 ];
 

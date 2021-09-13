@@ -15,6 +15,11 @@ export class CostEstimationService {
   answers: Questions[] =[];
   questions: Questions[] = questions;
   sections: Sections[] = sections;
+  maxPrice:number = 0;
+  minPrice:number = 0;
+  maxDays:number = 0;
+  minDays:number = 0;
+  overAllAnswers:Questions[] = [];
 
   constructor() { }
 
@@ -26,8 +31,9 @@ export class CostEstimationService {
     this.answers = questions.map((question:Questions)=>{
       return {qid:question.qid, multiple:question.multiple, question:question.question, options:[]}
     });
-    console.log(this.questions);
-    console.log(this.answers);
+  }
+  getSections(){
+    return sections;
   }
 
   getSectionByIndex(index:number){
@@ -49,6 +55,12 @@ export class CostEstimationService {
     this.answers = this.answers.map((answer)=>{
       if(answer.qid == id){
         answer.options = options;
+        for(var i=0;i<answer.options.length;i++){
+        this.maxPrice += answer.options[i].maxPrice;
+        this.minPrice += answer.options[i].minPrice
+        this.maxDays += answer.options[i].maxDays;
+        this.minDays += answer.options[i].minDays;
+        }
       }
       return answer;
     })
@@ -61,15 +73,17 @@ export class CostEstimationService {
     return currentQuestion;
   }
 
-  getNextQuestion(){
+  getNextQuestion():Questions{
     if(this.isLastQuestionOfCurrentSection(this.currentQuestionId)){
     this.currentSectionIndex+=1;
     this.currentQuestionId = this.getSectionByIndex(
       this.currentSectionIndex
     ).questionId[0];
+
     }else{
       const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questionId;
       this.currentQuestionId = sectionQuestions[sectionQuestions.indexOf(this.currentQuestionId)+1];
+      
     }
 
     return this.getQuestionById(this.currentQuestionId);
@@ -99,7 +113,25 @@ export class CostEstimationService {
         sectionAnswers.push(this.answers[i]);
       }
     }
+    this.overAllAnswers.push(...sectionAnswers);
     return sectionAnswers;
   }
+
+  getMaxPrice(){
+    return this.maxPrice;
+  }
+  getMinPrice(){
+    return this.minPrice;
+  }
+  getMaxDays(){
+    return this.maxDays;
+  }
+  getMinDays(){
+    return this.minDays;
+  }
+  incrementCurrentSection(){
+    this.currentSectionIndex+=1;
+  }
+
 
 }

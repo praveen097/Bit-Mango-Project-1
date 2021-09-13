@@ -1,15 +1,26 @@
-<div class="header">
-    <div class="welcome">Hi there!</div>
-<a routerLink="">Hire Us!</a>
-</div>
-<div class="name">
-    <input type="text" [(ngModel)]="username" name="username" placeholder="Please enter your name" autocomplete="off">
-</div>
-<button class="btn btn-success" (click)="Onsubmit()">
-    START
-</button>
-<h1>User name is {{username}}</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 
-
-
-
+</style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="container col-md-12 col-lg-12 col-sm-12">
+            <i><p class="main-text">Calculate the cost of your digital application</p></i><hr>
+            <p class="sub-text">Do you have a clear view of what you want for your digital product? 
+            Do you know which features you would like to implement? 
+            Or maybe you just got a vague idea for digitalization? 
+            You know what, it doesn't matter, because you can run our calculator as many times as you want!</p>
+            
+            <p class="sub-text">We will raise you to answer many queries associated with the digital answer you're trying to find. 
+                Covering the four main fields of your digital product. That's it, in mere a fast 4, 3, 2, 1 minutes, 
+                you will get associate estimated value vary for your application.</p>
+            <hr>
+            <button class="glow-on-hover" (click)="Onsubmit()">Let's start</button> 
+        </div>
+    </div>   
+</body>
+</html>

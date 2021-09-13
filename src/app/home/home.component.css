@@ -1,36 +1,102 @@
-a{
-    border:2px solid yellow;
-    margin:10px;
-    padding:10px;
-    float:right;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .main-text{
+    font-family:BioRhyme;
     font-size: 30px;
-    color: antiquewhite;
-    border-radius: 20px;
-    text-decoration: none;
-}
-.header{
-    border-bottom:2px solid #042343;
-    height: 10vh;
-    box-shadow: 2px 2px 20px 20px rgba(225, 231, 202, 0.1);
-    
-}
-.welcome{
-    float:left;
-    font-size: 30px;
-    color:antiquewhite;
-    margin: 15px;
-}
-.name{
+  
+  }
+
+  .sub-text{
+    font-family:'Times New Roman', Times, serif;
+    color: #420420;
+    font-size: 18px;
+    text-align:justify;
+  }
+  
+
+  .container {
+    padding: 16px;
+    background-color: transparent;
+    width: auto;
+  }
+
+  .main-container{
+    width: 50vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 3px 3px 20px #e30beb;
     text-align: center;
-    padding:20px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 5px;
+  }
+  .main-container:hover{
+    box-shadow: 3px 3px 20px blue;
+  }
+  
+  .glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
 }
-input{
-    padding: 10px;
-    border-radius: 25px;
-    width: 20vw;
-    outline:2px chartreuse;
-    background-color: #042343;
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
 }
-input:focus{
-    border-color:yellow;
+
+.glow-on-hover:active {
+    color: #000
 }
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+  
+  
+  

@@ -1,12 +1,42 @@
+<p class="section-heading">Overview of {{sections[sectionIndex].sectionName}}</p><hr>
 
 
-<div *ngFor="let item of answers; index as i ">
-    <h1 class="question">{{item.question}}</h1>
-    
-        <div class="options"*ngFor="let item2 of item.options">
-            <h1 class="optionText">{{ item2.questionText }}</h1>
-        </div>
-    
+<div class="buttons">
+    <div *ngIf="!isLastSection; else elseBlock">
+        <button class="btn btn-warning" (click)="toQuestions()">Next Section</button>
+        <button class="btn btn-info" (click)="showBasket()">Current Basket</button>
+        <button class="btn btn-primary" (click)="toggle()">Detailed Overview</button>
+        <button class="btn btn-danger" (click)="toresults()">FINISH</button>
+    </div>
+
+    <ng-template #elseBlock >
+        <button class="btn btn-info" (click)="summary()">SUMMARY</button>
+        <button class="btn btn-danger" (click)="toresults()">FINISH</button>
+    </ng-template>
+</div><br>
+
+<div *ngIf="basket" class="basket">
+    <h1>Price: ${{minPrice}} - ${{maxPrice}}, Days: {{minDays}} - {{maxDays}}</h1>
 </div>
 
-<button class="btn btn-success" (click)="toQuestions()">questions</button>
+
+    <div *ngFor="let item of answers; index as i ">
+        <h1 class="question"> {{i+1}}. {{item.question}}  </h1>
+
+        
+            <div class="option-container">
+                <div *ngFor="let item2 of item.options">
+                    <h1 class="optionText"> 👉  {{ item2.questionText }}. 
+                        <span *ngIf="details"> Estimated cost :
+                        ${{item2.minPrice}} - $
+                        {{item2.maxPrice}}, duration: {{item2.minDays}} -  
+                        {{item2.maxDays}} days.
+                        </span>
+                    </h1>
+                </div>
+            </div>
+       
+    </div>
+
+
+

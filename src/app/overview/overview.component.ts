@@ -52,7 +52,7 @@ export class OverviewComponent implements OnInit {
       this.isLastSection= true;
     }
 
-    if(this.sectionIndex < this._costEstimationService.sections.length-1){
+    if(this.sectionIndex <= this._costEstimationService.sections.length-1){
       console.log("overview exist!");
       this.answers = this._costEstimationService.getAnswersOfCurrentSectionByIndex(this.sectionIndex);
     }else{

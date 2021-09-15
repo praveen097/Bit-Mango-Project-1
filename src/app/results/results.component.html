@@ -1,3 +1,35 @@
+<div *ngIf="!showResults">
+    <div *ngIf="resultExist; else elseBlock">
+        <div class="result-button">
+        <button class="btn btn-outline-danger" (click)='toResults()'>CONTINUE TO RESULTS</button>
+        </div><br><br>
+
+
+        <div *ngFor="let item of allAnswer; index as i ">
+            <h1 class="question-name"> {{i+1}}. {{item.question}}  </h1>
+
+            <div class="option-container">
+                <div *ngFor="let item2 of item.options">
+                    <h1 class="optionText"> 👉  {{ item2.questionText }}. 
+                        <span > Estimated cost :
+                        ${{item2.minPrice}} - $
+                        {{item2.maxPrice}}, duration: {{item2.minDays}} -  
+                        {{item2.maxDays}} days.
+                        </span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+    <h1 class="question-name skip">You Skipped all sections</h1>
+    </ng-template>
+</div>
+
+
+<div *ngIf="showResults">
+
+
 <marquee direction="left" scrollamount="12">Disclaimer: Prices ( provided by way of a Quotation or a Price List) are subject to change to the prices in effect at the time of delivery. 
     Developers reserves the right to make any corrections to prices quoted due to clerical errors or errors of omission. 
     In the event of any specific requirements representing a price increase, Client will be notified and afforded an opportunity to confirm.
@@ -33,4 +65,5 @@
 <div class="contact-us">
     <h1>Still in doubt with the quotation? 
     <button class="btn btn-info">Contact Us</button></h1>
+</div>
 </div>

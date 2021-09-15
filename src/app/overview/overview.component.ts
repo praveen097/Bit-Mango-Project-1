@@ -24,7 +24,8 @@ export class OverviewComponent implements OnInit {
   minDays:number = 0;
   maxDays:number = 0;
 
-  allAnswer:Questions[] =[];
+  sectionExist:boolean = true;
+
 
 
   constructor(
@@ -37,27 +38,27 @@ export class OverviewComponent implements OnInit {
     if(this.activatedRoute.snapshot.paramMap.get('index')){
     this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
     this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
-    this.answers = this._costEstimationService.getAnswersOfCurrentSectionByIndex(this.sectionIndex);
+    
     this.sections =  this._costEstimationService.getSections();
 
     this.maxPrice = this._costEstimationService.maxPrice;
     this.minPrice = this._costEstimationService.minPrice;
     this.maxDays = this._costEstimationService.maxDays;
     this.minDays = this._costEstimationService.minDays;
+    console.log(this.sectionIndex);
 
-    this.allAnswer = this._costEstimationService.overAllAnswers;
     
     if(this.sectionIndex == this._costEstimationService.sections.length-1){
       this.isLastSection= true;
     }
-      
+
+    if(this.sectionIndex < this._costEstimationService.sections.length-1){
+      console.log("overview exist!");
+      this.answers = this._costEstimationService.getAnswersOfCurrentSectionByIndex(this.sectionIndex);
     }else{
-      console.log("No index passed from URL!")
+      this.sectionExist = false;
     }
   }
-  //setting last section overview to summary
-  summary(){
-    this.answers=this.allAnswer;
   }
 
   //for detailed answer

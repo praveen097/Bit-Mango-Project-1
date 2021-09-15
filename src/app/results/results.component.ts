@@ -14,6 +14,9 @@ export class ResultsComponent implements OnInit {
   minDays:number = 0;
   maxDays:number = 0;
   answers1:Questions[]=[];
+  allAnswer:Questions[] =[];
+  showResults:boolean = false;
+  resultExist:boolean = true;
 
 
   constructor( 
@@ -26,6 +29,16 @@ export class ResultsComponent implements OnInit {
     this.minPrice = this._costEstimationService.minPrice;
     this.maxDays = this._costEstimationService.maxDays;
     this.minDays = this._costEstimationService.minDays;
+
+    this.allAnswer = this._costEstimationService.overAllAnswers;
+    if(this.allAnswer.length == 0){
+     this.resultExist = false;
+    }
   }
+
+  toResults(){
+    this.showResults = true
+  }
+
 
 }

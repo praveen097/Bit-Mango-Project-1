@@ -19,6 +19,8 @@ export class QuestionsComponent implements OnInit {
   currentQuestion:number = 1;
   sectionNumber:number = 1;
   public sections:Sections[] = [];
+
+  cont:boolean = false;
   
 
   constructor(
@@ -28,13 +30,27 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.sections =  this._costEstimationService.getSections();
-    this.presentQuestion = this._costEstimationService.getCurrentQuestion();
     this.sectionNumber=this._costEstimationService.currentSectionIndex;
+    console.log("current section Index is ",this._costEstimationService.currentSectionIndex);
   } 
   
   //store the option selected into answer
   radioChangeHandler(option:Result){
     this.answer = [option];
+  }
+
+  continue(){
+    this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+    this.cont = true;
+  }
+  skipSection(){
+    if(this.sectionNumber<this._costEstimationService.sections.length-1){
+    this.sectionNumber++;
+    this._costEstimationService.skipSection();
+    }
+    else{
+      this.route.navigate(['/results']);
+    }
   }
 
   toOverview(){
@@ -60,7 +76,7 @@ export class QuestionsComponent implements OnInit {
         this.toOverview();
         }
         //get next question and move to overpage
-        else{
+        else{// 1 2 3
           this._costEstimationService.getNextQuestion();
           this.toOverview();
         }

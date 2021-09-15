@@ -106,7 +106,7 @@ export class CostEstimationService {
 
     var indexOfCurrentQuestion = sectionQuestions.indexOf(
       this.currentQuestionId
-    );
+    );//
     if(indexOfCurrentQuestion == sectionQuestions.length-1){
       return true;
     }else{
@@ -130,6 +130,16 @@ export class CostEstimationService {
 
   incrementCurrentSection(){
     this.currentSectionIndex+=1;
+  }
+
+  skipSection(){
+    this.currentSectionIndex+=1;
+    this.currentQuestionId = this.getSectionByIndex(
+      this.currentSectionIndex
+    ).questionId[0];
+    console.log("skip section called!")
+    console.log("Current section index is ",this.currentSectionIndex);
+    console.log("Current question id is ",this.currentQuestionId);
   }
 
 

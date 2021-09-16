@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit(){
+  onSubmit(): void {
     this.route.navigate(['/questions']);
   }
 

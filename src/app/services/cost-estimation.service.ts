@@ -1,9 +1,9 @@
 import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Questions } from './models/questions';
-import { Sections } from './models/sections';
-import questions from './questions.json';
-import sections from './sections.json';
+import { Questions } from '../models/questions';
+import { Sections } from '../models/sections';
+import questions from '../data/questions.json';
+import sections from '../data/sections.json';
 
 @Injectable({
   providedIn: 'root'

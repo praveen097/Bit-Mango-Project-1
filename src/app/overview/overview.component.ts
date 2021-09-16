@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CostEstimationService } from '../cost-estimation.service';
+import { CostEstimationService } from '../services/cost-estimation.service';
 import { ActivatedRoute } from '@angular/router';
 import { Questions } from '../models/questions';
 import { Sections } from '../models/sections';
@@ -62,18 +62,18 @@ export class OverviewComponent implements OnInit {
   }
 
   //for detailed answer
-  toggle(){
+  toggle(): void {
     this.details = !this.details;
   }
 
-  showBasket(){
+  showBasket(): void {
     this.basket = !this.basket;
   }
 
-  toQuestions(){
+  toQuestions(): void {
     this.route.navigate(['/questions']);
   }
-  toresults(){
+  toresults(): void {
     this.route.navigate(['/results']);
   }
 

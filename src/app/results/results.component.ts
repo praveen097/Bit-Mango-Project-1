@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CostEstimationService } from '../cost-estimation.service';
+import { CostEstimationService } from '../services/cost-estimation.service';
 import { Questions } from '../models/questions';
 
 @Component({
@@ -39,7 +39,7 @@ export class ResultsComponent implements OnInit {
     this.resultValue = [this.minPrice,this.maxPrice,this.minDays,this.maxDays];
   }
 
-  toResults(){
+  toResults(): void {
     this.showResults = true
   }
 

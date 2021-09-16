@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sections } from '../models/sections';
 import { Questions,Result} from '../models/questions';
-import { CostEstimationService } from '../cost-estimation.service';
+import { CostEstimationService } from '../services/cost-estimation.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -35,15 +35,15 @@ export class QuestionsComponent implements OnInit {
   } 
   
   //store the option selected into answer
-  radioChangeHandler(option:Result){
+  radioChangeHandler(option:Result): void {
     this.answer = [option];
   }
 
-  continue(){
+  continue(): void {
     this.presentQuestion = this._costEstimationService.getCurrentQuestion();
     this.cont = true;
   }
-  skipSection(){
+  skipSection(): void {
     if(this.sectionNumber<this._costEstimationService.sections.length-1){
     this.sectionNumber++;
     this._costEstimationService.skipSection();
@@ -53,12 +53,12 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  toOverview(){
+  toOverview(): void {
     this.route.navigate(['/overview/'+(this._costEstimationService.currentSectionIndex-1)]);
     this.sectionNumber++;
   }
 
-  next(){
+  next(): void {
     //check whether option is selected
     if( this.answer.length==0 ){
       Swal.fire('Oops...', 'Please select an option!', 'error')
@@ -90,7 +90,7 @@ export class QuestionsComponent implements OnInit {
     
   }
 
-  toResults(){
+  toResults(): void {
     this.route.navigate(['/results']);
   }
 

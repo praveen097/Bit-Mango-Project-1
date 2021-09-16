@@ -6,7 +6,7 @@ import { Questions } from '../models/questions';
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css'],
+  styleUrls: ['./results.component.scss'],
 })
 export class ResultsComponent implements OnInit {
   minPrice: number = 0;

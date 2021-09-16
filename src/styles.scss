@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary: #210a72;
+$secondary: #fbd4d5;
+
+html,
+body {
+  height: 100%;
+  background-color: #afeeee;
+  background-image: linear-gradient(90deg, #c3d2f3, #6de9d6);
+}
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
+body {
+  margin: 0;
+  font-family: "Lato";
+}

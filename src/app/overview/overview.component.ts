@@ -8,57 +8,63 @@ import { Sections } from '../models/sections';
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.css']
+  styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent implements OnInit {
-  sectionRoute: string | null ='';
-  sectionIndex:number = 0;
-  answers:Questions[] = [];
-  public sections:Sections[] = [];
-  details:boolean=false;
-  basket:boolean = false;
-  isLastSection:boolean = false;
+  sectionRoute: string | null = '';
+  sectionIndex: number = 0;
+  answers: Questions[] = [];
+  public sections: Sections[] = [];
+  details: boolean = false;
+  basket: boolean = false;
+  isLastSection: boolean = false;
 
-  minPrice:number = 0;
-  maxPrice:number = 0;
-  minDays:number = 0;
-  maxDays:number = 0;
+  minPrice: number = 0;
+  maxPrice: number = 0;
+  minDays: number = 0;
+  maxDays: number = 0;
 
-  sectionExist:boolean = true;
-
-
+  sectionExist: boolean = true;
 
   constructor(
-    private _costEstimationService:CostEstimationService,
-    private route:Router,
-    private activatedRoute:ActivatedRoute
-    ) { }
+    private _costEstimationService: CostEstimationService,
+    private route: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    if(this.activatedRoute.snapshot.paramMap.get('index')){
-    this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
-    this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
-    
-    this.sections =  this._costEstimationService.getSections();
+    if (this.activatedRoute.snapshot.paramMap.get('index')) {
+      this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
+      this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
 
-    this.maxPrice = this._costEstimationService.maxPrice;
-    this.minPrice = this._costEstimationService.minPrice;
-    this.maxDays = this._costEstimationService.maxDays;
-    this.minDays = this._costEstimationService.minDays;
-    console.log(this.sectionIndex);
+      this.sections = this._costEstimationService.getSections();
 
-    
-    if(this.sectionIndex == this._costEstimationService.sections.length-1){
-      this.isLastSection= true;
+      this.maxPrice = this._costEstimationService.maxPrice;
+      this.minPrice = this._costEstimationService.minPrice;
+      this.maxDays = this._costEstimationService.maxDays;
+      this.minDays = this._costEstimationService.minDays;
+      console.log(this.sectionIndex);
+
+      if (
+        this.sectionIndex ==
+        this._costEstimationService.sections.length - 1
+      ) {
+        this.isLastSection = true;
+      }
+
+      if (
+        this.sectionIndex <=
+        this._costEstimationService.sections.length - 1
+      ) {
+        console.log('overview exist!');
+        this.answers =
+          this._costEstimationService.getAnswersOfCurrentSectionByIndex(
+            this.sectionIndex
+          );
+      } else {
+        this.sectionExist = false;
+      }
     }
-
-    if(this.sectionIndex <= this._costEstimationService.sections.length-1){
-      console.log("overview exist!");
-      this.answers = this._costEstimationService.getAnswersOfCurrentSectionByIndex(this.sectionIndex);
-    }else{
-      this.sectionExist = false;
-    }
-  }
   }
 
   //for detailed answer
@@ -76,7 +82,4 @@ export class OverviewComponent implements OnInit {
   toresults(): void {
     this.route.navigate(['/results']);
   }
-
-  
-  
 }

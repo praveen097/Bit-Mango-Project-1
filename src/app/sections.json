@@ -1,26 +1,26 @@
 [
     {
-        "sectionID":1,
+        "sectionId":1,
         "sectionName":"General Questions",
         "questionId":[1,108]
     },
     {
-        "sectionID":2,
+        "sectionId":2,
         "sectionName":"Strategy",
         "questionId":[3,4,5,6,7,8,9,10,11,12,13,14]
     },
     {
-        "sectionID":3,
+        "sectionId":3,
         "sectionName":"UI/UX",
         "questionId":[15,16]
     },
     {
-        "sectionID":4,
+        "sectionId":4,
         "sectionName":"Development",
         "questionId":[17,18,19,20]
     },
     {
-        "sectionID":5,
+        "sectionId":5,
         "sectionName":"Product Growth",
         "questionId":[21,22]
     }

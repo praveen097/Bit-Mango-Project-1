@@ -1,5 +1,5 @@
 export interface Sections {
-    sectionID: number;
+    sectionId: number;
     sectionName: string;
     questionId: number[];
 }

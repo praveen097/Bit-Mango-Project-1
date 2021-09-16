@@ -13,10 +13,12 @@ export class ResultsComponent implements OnInit {
   maxPrice:number = 0;
   minDays:number = 0;
   maxDays:number = 0;
-  answers1:Questions[]=[];
   allAnswer:Questions[] =[];
   showResults:boolean = false;
   resultExist:boolean = true;
+
+  resultText:string[]=['Minimum Price $','Maximum Price $','Minimum Days','Maximum Days'];
+  resultValue:number[] = [];
 
 
   constructor( 
@@ -34,6 +36,7 @@ export class ResultsComponent implements OnInit {
     if(this.allAnswer.length == 0){
      this.resultExist = false;
     }
+    this.resultValue = [this.minPrice,this.maxPrice,this.minDays,this.maxDays];
   }
 
   toResults(){

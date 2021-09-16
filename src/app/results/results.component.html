@@ -36,31 +36,16 @@
 </marquee>
 
 <div class="container">
-    <div class="card">
-        <h1 class="card-text">Minimum Price</h1>
-        <div class="aligner">
-            <h1 class="value-text">${{minPrice}}</h1>
+
+    <div *ngFor="let items of resultText; index as i">
+        <div class="card">
+            <h1 class="card-text">{{items}}</h1>
+            <div class="aligner">
+                <h1 class="value-text">{{resultValue[i]}}</h1>
+            </div>
         </div>
     </div>
     
-    <div class="card">
-        <h1 class="card-text">Maximum Price</h1>
-        <div class="aligner">
-            <h1 class="value-text">${{maxPrice}}</h1>
-        </div>
-    </div>
-    <div class="card">
-        <h1 class="card-text">Minimum Days</h1>
-        <div class="aligner">
-            <h1 class="value-text">{{minDays}}</h1>
-        </div>
-    </div>
-    <div class="card">
-        <h1 class="card-text">Maximum Days</h1>
-        <div class="aligner">
-            <h1 class="value-text">{{maxDays}}</h1>
-        </div>
-    </div>
 </div> 
 <div class="contact-us">
     <h1>Still in doubt with the quotation? 

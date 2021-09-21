@@ -13,13 +13,17 @@ import Swal from 'sweetalert2';
 export class QuestionsComponent implements OnInit {
   presentQuestion!: Questions;
   answer: Result[] = [];
-
   //for showing section names and progress bar
   currentQuestion: number = 1;
   sectionNumber: number = 1;
   public sections: Sections[] = [];
 
-  cont: boolean = false;
+  sectionStarted: boolean = false;
+
+  skipParticularSection:number = 0; 
+  skipSectionValues:Sections[]= [];
+
+  showSkip:boolean = true;
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -29,10 +33,24 @@ export class QuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.sections = this._costEstimationService.getSections();
     this.sectionNumber = this._costEstimationService.currentSectionIndex;
-    console.log(
-      'current section Index is ',
-      this._costEstimationService.currentSectionIndex
-    );
+    // console.log(
+    //   'current section Index is ',
+    //   this._costEstimationService.currentSectionIndex
+    // );
+    this.skipSectionValues = this.sections;
+    console.log("hello",this._costEstimationService.overAllAnswers);
+    
+  }
+
+  skipSecionHandler(id:number){
+    // this.showSkip =  false;
+    this._costEstimationService.goToSection(id+1);
+    this.sectionNumber = id;
+    
+    //on clicking any button we fetch question
+    this.sectionStarted = true;
+    this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+    console.log("Current question Id is :",this.presentQuestion.qid);
   }
 
   //store the option selected into answer
@@ -42,7 +60,9 @@ export class QuestionsComponent implements OnInit {
 
   continue(): void {
     this.presentQuestion = this._costEstimationService.getCurrentQuestion();
-    this.cont = true;
+    this.sectionStarted = true;
+    console.log("Current question Id is :",this.presentQuestion.qid);
+
   }
   skipSection(): void {
     if (this.sectionNumber < this._costEstimationService.sections.length - 1) {
@@ -99,9 +119,12 @@ export class QuestionsComponent implements OnInit {
         this.presentQuestion = this._costEstimationService.getNextQuestion();
       }
     }
+    console.log("Current question Id is :",this.presentQuestion.qid);
   }
 
   toResults(): void {
     this.route.navigate(['/results']);
   }
 }
+
+

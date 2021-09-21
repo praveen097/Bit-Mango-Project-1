@@ -7,6 +7,22 @@
   width: 100%;
 }
 
+.skip-section{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+}
+
+.skip-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+
 label {
   cursor: pointer;
 }

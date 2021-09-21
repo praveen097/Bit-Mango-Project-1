@@ -1,60 +1,30 @@
-.question-name{
-    color: rgb(7, 7, 90);
-    padding:5px;
-    margin:20px 20px 0px 20px;
-    box-shadow: 2px 2px 20px rgb(1, 1, 24);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    text-align: justify;
+mat-card-title {
+  font-size: medium !important;
 }
 
-.optionText{
-    color: #431c5d;
-    padding-top: 10px;
-    text-align: justify;
-}
-.option-container{
-    margin:0px 20px 20px 20px;
-    padding-left: 5px;
-    background-color: #b3e4ec;
-}
-
-.section-heading{
-text-align: center;
-font-size: 3vh;
-padding: 2vh;
-color: #e05915;
-}
-
-.basket{
-    box-shadow: 2px 2px 20px black;
-    margin: 3vh;
+h1{
+    font-size: 2.5em;
     text-align: center;
-    width: fit-content;
-    padding: 4px 10px 0px 4px;
-    background-color: beige;
+    margin: 30px;
+}
+mat-card {
+  margin-bottom: 20px !important;
 }
 
-.buttons{
-    text-align: right;
+mat-chip-list {
+  margin-top:15px !important;
+  display: flex !important;
+  flex-flow: row !important;
+  flex-wrap: wrap !important;
 }
 
-button{
-    margin: 0px 5px 4px 5px; 
+mat-chip {
+  margin:10px !important;
+  background-color: lightgreen !important;
+  padding: 15px !important;
 }
 
-.overview-message{
-    text-align: center;
-    color: crimson;
-
-}
-
-@media all and (max-width: 320px),(max-width: 414px),(max-width: 540px){
-    .question-name, .optionText{
-        font-size: 16px;
-        text-align: justify;
-    }
-    button{
-        font-size: 10px;
-    }
+section {
+  width: 90%;
+  margin: auto;
 }

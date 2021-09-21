@@ -1,4 +1,4 @@
-<div *ngIf="!cont">
+<div *ngIf="!sectionStarted" >
   <p class="section-name">
     Upcoming section is :
     <span class="section-name-text">{{
@@ -10,9 +10,24 @@
     <button class="btn btn-danger" (click)="skipSection()">SKIP</button>
     <button class="btn btn-info" (click)="continue()">CONTINUE</button>
   </div>
+  
+  <!-- for particular section -->
+  
+    <div class=" skip-section" *ngIf="showSkip">
+      <div class="skip-container">
+      <div *ngFor="let option of skipSectionValues; index as i">
+        <button *ngIf="!(sectionNumber == i)" class="btn btn- info" (click)="skipSecionHandler(i)">
+        {{option.sectionId}} {{ option.sectionName }} 
+       </button>   
+      </div>
+    </div>
+    </div>
+  
+
 </div>
 
-<div *ngIf="cont">
+
+<div *ngIf="sectionStarted">
   <p class="section-name">
     Current section is :
     <span class="section-name-text">{{
@@ -61,6 +76,12 @@
             </div>
           </label>
         </div>
+        <!-- <mat-radio-group [(ngModel)]="answer">
+          <mat-radio-button class="cards" *ngFor="let season of presentQuestion.options" [value]="season">
+            {{season.questionText}}
+          </mat-radio-button>
+        </mat-radio-group> -->
+
       </div>
     </ng-template>
     <hr />

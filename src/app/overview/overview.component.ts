@@ -43,7 +43,7 @@ export class OverviewComponent implements OnInit {
       this.minPrice = this._costEstimationService.minPrice;
       this.maxDays = this._costEstimationService.maxDays;
       this.minDays = this._costEstimationService.minDays;
-      console.log(this.sectionIndex);
+      console.log("Answers are :",this.answers);
 
       if (
         this.sectionIndex ==
@@ -56,7 +56,6 @@ export class OverviewComponent implements OnInit {
         this.sectionIndex <=
         this._costEstimationService.sections.length - 1
       ) {
-        console.log('overview exist!');
         this.answers =
           this._costEstimationService.getAnswersOfCurrentSectionByIndex(
             this.sectionIndex

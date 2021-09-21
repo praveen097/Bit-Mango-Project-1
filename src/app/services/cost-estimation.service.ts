@@ -115,7 +115,7 @@ export class CostEstimationService {
 
   }
 
-  getAnswersOfCurrentSectionByIndex(index:number){
+  getAnswersOfCurrentSectionByIndex(index:number): Questions[]{
     let sectionAnswers: Questions[] =[];
     //check against the all question ids present in the current section
     const sectionQuestionList = this.getSectionByIndex(index).questionId; //0 [1, 2]
@@ -137,10 +137,20 @@ export class CostEstimationService {
     this.currentQuestionId = this.getSectionByIndex(
       this.currentSectionIndex
     ).questionId[0];
-    console.log("skip section called!")
-    console.log("Current section index is ",this.currentSectionIndex);
-    console.log("Current question id is ",this.currentQuestionId);
   }
+
+  goToSection(id:number){
+    this.currentSectionIndex= (id-1);
+    this.currentQuestionId = this.getSectionByIndex(
+      this.currentSectionIndex
+    ).questionId[0];
+    
+  }
+
+  getAnswerByQuestionId(id:number){
+    
+  }
+
 
 
 }

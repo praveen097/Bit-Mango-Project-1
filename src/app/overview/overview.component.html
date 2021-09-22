@@ -1,10 +1,10 @@
 <section *ngIf="sectionExist; else elseBlock">
-  <h1>Overview of {{ sections[sectionIndex].sectionName }}</h1>
-  <mat-card *ngFor="let answer of answers">
-    <mat-card-title>{{ answer.question }}</mat-card-title>
+  <h1 class="heading">Overview of {{ sections[sectionIndex].sectionName }}</h1>
+  <mat-card *ngFor="let answer of answers" class="q-template">
+    <mat-card-title class="q-text">{{ answer.question }}</mat-card-title>
     <mat-card-content *ngIf="answer.multiple; else singleAnswerBlock">
-      <mat-chip-list>
-        <mat-chip *ngFor="let opt of answer.options">{{
+      <mat-chip-list class="option-list">
+        <mat-chip *ngFor="let opt of answer.options" class="option-chip">{{
           opt.questionText
         }}</mat-chip>
       </mat-chip-list>

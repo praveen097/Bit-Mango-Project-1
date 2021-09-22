@@ -1,10 +1,12 @@
+@import '../../styles.scss';
 .main-text{
   font-size: 30px;
 
 }
 
 .sub-text{
-  font-family:'Times New Roman', Times, serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   color: #420420;
   font-size: 18px;
   text-align:justify;
@@ -22,14 +24,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  box-shadow: 3px 3px 20px #e30beb;
+  border: 1px solid $tertiary;
+  box-shadow: 3px 3px 20px $tertiary;
   text-align: center;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 5px;
 }
 .main-container:hover{
-  box-shadow: 3px 3px 20px blue;
+  box-shadow: 3px 3px 20px $secondary;
+  border: 1px solid $secondary;
+
 }
 
 .glow-on-hover {

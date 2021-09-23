@@ -62,9 +62,6 @@ export class ResultsComponent implements OnInit {
       this.resultantAnswers.push(question_array);
     })
 
-    this.resultantAnswers = this.resultantAnswers.slice(0,3);
-    this.resultantAnswers.push([],[]);
-
     if (this.allAnswer.length == 0) {
       this.resultExist = false;
     }

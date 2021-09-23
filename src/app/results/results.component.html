@@ -7,11 +7,16 @@
       <mat-panel-description class="question-list" *ngIf="answers.length>0;else answersNotFound">
         <mat-card *ngFor="let ans of answers" class="question-template">
           <mat-card-title class="q-text">{{ans.question}}</mat-card-title>
-          <mat-card-content>
+          <mat-card-content *ngIf="ans.multiple;else singleAnswerBlock">
             <mat-chip-list class="option-list">
               <mat-chip *ngFor="let opt of ans.options" class="option-chip">{{opt.questionText}}</mat-chip>
             </mat-chip-list>
           </mat-card-content>
+          <ng-template #singleAnswerBlock>
+            <mat-card-content>
+              {{ans.options[0].questionText}}
+            </mat-card-content>
+          </ng-template>
         </mat-card>
       </mat-panel-description>
       <ng-template #answersNotFound>

@@ -9,9 +9,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar'
 import { MatRadioModule } from '@angular/material/radio/'
-import { MatSelectModule } from '@angular/material/select';
-import {MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips'
+import { MatSelectModule } from '@angular/material/select'
+import {MatTabsModule} from '@angular/material/tabs'; 
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -29,8 +32,12 @@ import { MatChipsModule } from '@angular/material/chips'
     MatProgressBarModule,
     MatRadioModule,
     MatSelectModule,
-    MatCardModule,
-    MatChipsModule
+    MatTabsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule
+
 
 
   ],

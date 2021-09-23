@@ -6,6 +6,24 @@
   align-items: center;
   width: 100%;
 }
+.skip-card{
+  width: 50%;
+  text-align: justify;
+}
+.skip-button{
+  background-color: $yellow;
+  opacity: 0.8;
+  outline: 0px;
+}
+.continue-button{
+  background-color: $green;
+  color: $white;
+}
+
+.skip-button:hover{
+  background-color: $yellow;
+  opacity: 1;
+}
 
 .skip-section{
   display: flex;
@@ -20,30 +38,22 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin: 5px;
+  margin: 15px;
+  
 }
 
 label {
   cursor: pointer;
 }
-.button_slide {
-  /* float: right; */
-  text-align: center;
-  color: $primary;
-  border: 2px solid rgb(216, 2, 134);
-  padding: 18px 36px;
-  font-family: "Lucida Console", Monaco, monospace;
-  font-size: 14px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: inset 0 0 0 0 #d80286;
-  transition: ease-out 0.9s;
-  border-radius: 50px;
-  outline: 0px;
+
+.nav-buttons-next{
+  background-color: $white;
+  color: $green;
 }
 
-.slide_right:hover {
-  box-shadow: inset 100px 0 0 0 #fff;
+.nav-buttons-previous{
+  background-color: $white;
+  color: $yellow;
 }
 
 .next-button {
@@ -51,7 +61,7 @@ label {
 }
 
 .question-text {
-  color: #431c5d;
+  color: $light-grey;
   font-weight: bold;
   width: 70%;
   padding: 15px;
@@ -61,7 +71,7 @@ label {
   background-color: transparent;
   text-align: center;
   margin: 50px;
-  box-shadow: 2px 2px 30px #431c5d;
+  
 }
 .cards-container {
   display: flex;
@@ -80,16 +90,32 @@ label {
   padding: 10px 28px 10px 28px;
   margin: 5px;
   text-align: center;
-  border: 2px solid $primary;
+  border: 2px solid $light-grey;
   background-color: rgb(205, 245, 231);
 }
 ::ng-deep .mat-progress-bar-fill::after {
-  background-color: blue;
+  background-color: $light-grey;
+}
+::ng-deep .mat-progress-bar-buffer {
+  background: transparent;
+}
+.mat-progress-bar{
+  margin-top: 5px;
 }
 
+::ng-deep .mat-tab-label .mat-tab-label-content {
+  font-size:large;
+  color: $light-grey;
+}
+::ng-deep .mat-ink-bar {
+  background-color: $green !important;
+  height: 3px !important;
+  }
+
+ 
+ 
 .qno {
   float: left;
-
   margin-left: 10px;
   padding: auto;
   border-radius: 50px;
@@ -102,7 +128,13 @@ label {
 }
 
 .section-name-text {
-  color: #e05915;
+  color: $green;
+  font-size:xx-large;
+}
+
+.section-description-text{
+  font-size:large;
+  color: $light-grey;
 }
 
 .main-buttons {

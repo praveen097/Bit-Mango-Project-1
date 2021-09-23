@@ -1,48 +1,21 @@
-<div *ngIf="sectionExist;else elseBlock">
-
-    <p class="section-heading">Overview of {{sections[sectionIndex].sectionName}}</p><hr>
-
-
-    <div class="buttons">
-        <div *ngIf="!isLastSection; else elseBlock">
-            <button class="btn btn-warning" (click)="toQuestions()">Next Section</button>
-            <button class="btn btn-info" (click)="showBasket()">Current Basket</button>
-            <button class="btn btn-primary" (click)="toggle()">Detailed Overview</button>
-            <button class="btn btn-danger" (click)="toresults()">FINISH</button>
-        </div>
-
-        <ng-template #elseBlock >
-            <button class="btn btn-primary" (click)="toggle()">Detailed Overview</button>
-            <button class="btn btn-danger" (click)="toresults()">SUMMARY</button>
-        </ng-template>
-    </div><br>
-
-    <div *ngIf="basket" class="basket">
-        <h1>( Estimated ) Price: ${{minPrice}} - ${{maxPrice}}, Days: {{minDays}} - {{maxDays}}</h1>
-    </div>
-
-
-    <div *ngFor="let item of answers; index as i ">
-        <h1 class="question-name"> {{i+1}}. {{item.question}}  </h1>
-
-        <div class="option-container">
-            <div *ngFor="let item2 of item.options">
-                <h1 class="optionText"> 👉  {{ item2.optionText }}. 
-                    <span *ngIf="details"> Estimated cost :
-                    ${{item2.minPrice}} - $
-                    {{item2.maxPrice}}, duration: {{item2.minDays}} -  
-                    {{item2.maxDays}} days.
-                    </span>
-                </h1>
-            </div>
-        </div>
-    </div>
-
-</div>
-
+<section *ngIf="sectionExist; else elseBlock">
+  <h1 class="heading">Overview of {{ sections[sectionIndex].sectionName }}</h1>
+  <mat-card *ngFor="let answer of answers" class="q-template">
+    <mat-card-title class="q-text">{{ answer.question }}</mat-card-title>
+    <mat-card-content *ngIf="answer.multiple; else singleAnswerBlock">
+      <mat-chip-list class="option-list">
+        <mat-chip *ngFor="let opt of answer.options" class="option-chip">{{
+          opt.questionText
+        }}</mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+    <ng-template #singleAnswerBlock>
+      <mat-card-content>
+        {{ answer.options[0].questionText }}
+      </mat-card-content>
+    </ng-template>
+  </mat-card>
+</section>
 <ng-template #elseBlock>
-    <h1 class="overview-message">No overview exists!!!</h1>
+  <h1 class="overview-message">No overview exists!!!</h1>
 </ng-template>
-
-
-

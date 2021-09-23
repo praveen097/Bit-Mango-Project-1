@@ -16,12 +16,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     NavbarComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,9 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     MatCardModule
+
+
+
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent]

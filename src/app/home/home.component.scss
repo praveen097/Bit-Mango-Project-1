@@ -1,13 +1,16 @@
 @import '../../styles.scss';
-.main-text{
+.mainText{
   font-size: 30px;
+  color: $green;
+  font-family: 'Roboto', sans-serif;
 
 }
 
-.sub-text{
+.subText{
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: #420420;
+  font-weight: 100;
+  color: $light-grey;
+
   font-size: 18px;
   text-align:justify;
 }
@@ -18,26 +21,26 @@
   width: auto;
 }
 
-.main-container{
+.mainContainer{
   width: 50vw;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  border: 1px solid $tertiary;
-  box-shadow: 3px 3px 20px $tertiary;
+  border: 1px solid $yellow;
+  box-shadow: 3px 3px 20px $yellow;
   text-align: center;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 5px;
 }
-.main-container:hover{
-  box-shadow: 3px 3px 20px $secondary;
-  border: 1px solid $secondary;
+.mainContainer:hover{
+  box-shadow: 3px 3px 20px $green;
+  border: 1px solid $green;
 
 }
 
-.glow-on-hover {
+.glowOnHover {
   width: fit-content;
   height: 50px;
   border: none;
@@ -50,7 +53,7 @@
   border-radius: 10px;
 }
 
-.glow-on-hover:before {
+.glowOnHover:before {
   content: '';
   background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
   position: absolute;
@@ -67,19 +70,19 @@
   border-radius: 10px;
 }
 
-.glow-on-hover:active {
+.glowOnHover:active {
   color: #000
 }
 
-.glow-on-hover:active:after {
+.glowOnHover:active:after {
   background: transparent;
 }
 
-.glow-on-hover:hover:before {
+.glowOnHover:hover:before {
   opacity: 1;
 }
 
-.glow-on-hover:after {
+.glowOnHover:after {
   z-index: -1;
   content: '';
   position: absolute;
@@ -100,15 +103,15 @@
 
 @media all and (max-width: 320px),(max-width: 414px),(max-width: 540px){
 
-  .main-text{
+  .mainText{
     font-size: 12px;
   }
 
-  .sub-text{
+  .subText{
     font-size:xx-small
   }
 
-  .main-container{
+  .mainContainer{
     width: 90vw;
   }
 

@@ -1,12 +1,12 @@
 <div *ngIf="!showResults">
     <section *ngIf="resultExist; else elseBlock">
         <h1 class="heading">Estimate of your project</h1>
-  <mat-card class="price-estimate">$200-$1000</mat-card>
+  <mat-card class="price-estimate">{{minPrice | currency}} - {{maxPrice | currency}}</mat-card>
     <mat-expansion-panel class="section-card" *ngFor="let currentSectionAnswers of sectionWithAnswers">
       <mat-expansion-panel-header class="section-name">{{currentSectionAnswers.sectionName}}</mat-expansion-panel-header>
       <mat-panel-description class="question-list" *ngIf="currentSectionAnswers.answers.length>0;else answersNotFound">
         <mat-card *ngFor="let ans of currentSectionAnswers.answers" class="question-template">
-          <mat-card-title class="q-text">{{ans.question}}</mat-card-title>
+          <div class="q-text">{{ans.question}}</div>
           <mat-card-content *ngIf="ans.multiple;else singleAnswerBlock">
             <mat-chip-list class="option-list">
               <mat-chip *ngFor="let opt of ans.options" class="option-chip">{{opt.questionText}}</mat-chip>

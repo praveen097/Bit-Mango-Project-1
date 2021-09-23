@@ -6,26 +6,27 @@
   align-items: center;
   width: 100%;
 }
-.skip-card{
+.skipCard{
   width: 50%;
   text-align: justify;
 }
-.skip-button{
+.skipButton{
   background-color: $yellow;
   opacity: 0.8;
   outline: 0px;
 }
-.continue-button{
-  background-color: $green;
-  color: $white;
-}
-
-.skip-button:hover{
+.skipButton:hover{
   background-color: $yellow;
   opacity: 1;
 }
 
-.skip-section{
+.continueButton{
+  background-color: $green;
+  color: $white;
+}
+
+
+.skipSection{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -33,7 +34,7 @@
   padding: 10px;
 }
 
-.skip-container{
+.skipContainer{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -46,21 +47,21 @@ label {
   cursor: pointer;
 }
 
-.nav-buttons-next{
+.navButtonNext{
   background-color: $white;
   color: $green;
 }
 
-.nav-buttons-previous{
+.navButtonPrevious{
   background-color: $white;
   color: $yellow;
 }
 
-.next-button {
+.navButtonsContainer {
   text-align: center;
 }
 
-.question-text {
+.QuestionText {
   color: $light-grey;
   font-weight: bold;
   width: 70%;
@@ -73,7 +74,7 @@ label {
   margin: 50px;
   
 }
-.cards-container {
+.cardsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -112,41 +113,30 @@ label {
   height: 3px !important;
   }
 
- 
- 
-.qno {
-  float: left;
-  margin-left: 10px;
-  padding: auto;
-  border-radius: 50px;
-}
 
-.section-name {
+.sectionName {
   text-align: center;
   font-size: 2vw;
   padding: 1vh;
 }
 
-.section-name-text {
+.sectionNameText {
   color: $green;
   font-size:xx-large;
 }
 
-.section-description-text{
+.sectionDescriptionText{
   font-size:large;
   color: $light-grey;
 }
 
-.main-buttons {
-  text-align: center;
-}
 
 button {
   margin: 10px;
 }
 
 @media all and (max-width: 320px), (max-width: 414px), (max-width: 540px) {
-  .section-name {
+  .sectionName {
     font-size: 20px;
   }
 }

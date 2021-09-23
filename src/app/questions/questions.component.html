@@ -5,20 +5,20 @@
 
 <div *ngIf="!sectionStarted" >
   
-  <div class="skip-container">
+  <div class="skipContainer">
 
-    <mat-card class="skip-card">
-      <mat-card-title class="section-name-text">
+    <mat-card class="skipCard">
+      <mat-card-title class="sectionNameText">
       {{ sections[sectionNumber].sectionName }}
       </mat-card-title>
       <br>
-      <mat-card-content class="section-description-text">
+      <mat-card-content class="sectionDescriptionText">
         {{sections[sectionNumber].sectionDescription}}
       </mat-card-content>
 
       <mat-card-actions>
-      <button mat-raised-button  class="skip-button" (click)="skipSection()">Skip {{sections[sectionNumber].sectionName}}</button>
-      <button mat-stroked-button  class="continue-button" (click)="continue()">CONTINUE</button>
+      <button mat-raised-button  class="skipButton" (click)="skipSection()">Skip {{sections[sectionNumber].sectionName}}</button>
+      <button mat-stroked-button  class="continueButton" (click)="continue()">CONTINUE</button>
       </mat-card-actions>
 
     </mat-card>
@@ -28,9 +28,9 @@
 
 
 <div *ngIf="sectionStarted">
-  <!-- <p class="section-name">
+  <!-- <p class="sectionName">
     Current section is :
-    <span class="section-name-text">{{
+    <span class="sectionNameText">{{
       sections[sectionNumber].sectionName
     }}</span>
   </p> -->
@@ -43,12 +43,12 @@
   ></mat-progress-bar>
 
   <div class="customContainer">
-    <h1 class="question-text">
+    <h1 class="QuestionText">
       {{ currentQuestion }} . {{ presentQuestion.question }}
     </h1>
 
     <div *ngIf="presentQuestion.multiple; else elseBlock">
-      <!-- <mat-form-field class="cards-container" appearance="fill">
+      <!-- <mat-form-field class="cardsContainer" appearance="fill">
         <mat-label>Select Options here!</mat-label>
         <mat-select [(ngModel)]="answer" multiple>
           <mat-option
@@ -70,7 +70,7 @@
     </div>
 
     <ng-template #elseBlock>
-      <div class="cards-container">
+      <div class="cardsContainer">
         <div *ngFor="let option of presentQuestion.options">
           <label>
             <div class="cards">
@@ -94,9 +94,9 @@
     </ng-template>
     <hr />
 
-    <div class="next-button">
-      <button mat-fab class="nav-buttons-previous"><mat-icon class="nav-icons">navigate_before</mat-icon></button>
-      <button mat-fab class="nav-buttons-next" (click)="next()"><mat-icon class="nav-icons">navigate_next</mat-icon></button>
+    <div class="navButtonsContainer">
+      <button mat-fab class="navButtonPrevious"><mat-icon class="nav-icons">navigate_before</mat-icon></button>
+      <button mat-fab class="navButtonNext" (click)="next()"><mat-icon class="nav-icons">navigate_next</mat-icon></button>
     </div>
   </div>
 </div>

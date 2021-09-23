@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { Questions } from '../models/questions';
-
+import sections from '../data/sections.json';
+import { Sections } from '../models/sections';
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -17,7 +18,11 @@ export class ResultsComponent implements OnInit {
   allAnswer: Questions[] = [];
   showResults: boolean = false;
   resultExist: boolean = true;
-
+  sections:Array<Sections> = sections;
+  sectionNames:Array<string>=[];
+  question_ids:Array<Array<number>>=[];
+  answerIndex=0;
+  resultantAnswers:Array<Array<Questions>>=[];
   resultText: string[] = [
     'Minimum Price $',
     'Maximum Price $',
@@ -37,7 +42,29 @@ export class ResultsComponent implements OnInit {
     this.maxDays = this._costEstimationService.maxDays;
     this.minDays = this._costEstimationService.minDays;
 
-    this.allAnswer = this._costEstimationService.overAllAnswers;
+
+    this.sections.forEach(element => {
+      this.question_ids.push(element.questionId)
+      this.sectionNames.push(element.sectionName)
+    });
+    console.log(this.sectionNames);
+    this.allAnswer = this._costEstimationService.questions;
+    console.log(this.allAnswer);
+    this.question_ids.forEach(question_ids=>{
+      const question_array:Array<Questions>=[];
+      question_ids.forEach(question_id=>{
+        this.allAnswer.find((question)=>{
+          if(question.qid==question_id){
+            question_array.push(question)
+          }
+        });
+      })
+      this.resultantAnswers.push(question_array);
+    })
+
+    this.resultantAnswers = this.resultantAnswers.slice(0,3);
+    this.resultantAnswers.push([],[]);
+
     if (this.allAnswer.length == 0) {
       this.resultExist = false;
     }

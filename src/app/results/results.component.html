@@ -1,54 +1,36 @@
 <div *ngIf="!showResults">
-    <div *ngIf="resultExist; else elseBlock">
-        <div class="result-button">
-        <button class="btn btn-outline-danger" (click)='toResults()'>CONTINUE TO RESULTS</button>
-        </div><br><br>
+    <section *ngIf="resultExist; else elseBlock">
+        <h1 class="heading">Estimate of your project</h1>
+  <mat-card class="price-estimate">$200-$1000</mat-card>
+    <mat-expansion-panel class="section-card" *ngFor="let answers of resultantAnswers;index as i">
+      <mat-expansion-panel-header class="section-name">{{sectionNames[i]}}</mat-expansion-panel-header>
+      <mat-panel-description class="question-list" *ngIf="answers.length>0;else answersNotFound">
+        <mat-card *ngFor="let ans of answers" class="question-template">
+          <mat-card-title class="q-text">{{ans.question}}</mat-card-title>
+          <mat-card-content>
+            <mat-chip-list class="option-list">
+              <mat-chip *ngFor="let opt of ans.options" class="option-chip">{{opt.questionText}}</mat-chip>
+            </mat-chip-list>
+          </mat-card-content>
+        </mat-card>
+      </mat-panel-description>
+      <ng-template #answersNotFound>
+        <mat-panel-description>
+          <mat-card class="error-message">
+            <mat-card-content>You haven't attempted questions from  section {{sectionNames[i]}}</mat-card-content>
+          </mat-card>
+        </mat-panel-description>
+      </ng-template>
+    </mat-expansion-panel>
 
 
-        <div *ngFor="let item of allAnswer; index as i ">
-            <h1 class="question-name"> {{i+1}}. {{item.question}}  </h1>
 
-            <div class="option-container">
-                <div *ngFor="let item2 of item.options">
-                    <h1 class="optionText"> 👉  {{ item2.questionText }}. 
-                        <span > Estimated cost :
-                        ${{item2.minPrice}} - $
-                        {{item2.maxPrice}}, duration: {{item2.minDays}} -  
-                        {{item2.maxDays}} days.
-                        </span>
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
     <ng-template #elseBlock>
-    <h1 class="question-name skip">You Skipped all sections</h1>
+      <mat-card>
+    <h1 class="heading">You Skipped all sections</h1>
+    </mat-card>
     </ng-template>
 </div>
 
 
-<div *ngIf="showResults">
-
-
-<marquee direction="left" scrollamount="12">Disclaimer: Prices ( provided by way of a Quotation or a Price List) are subject to change to the prices in effect at the time of delivery. 
-    Developers reserves the right to make any corrections to prices quoted due to clerical errors or errors of omission. 
-    In the event of any specific requirements representing a price increase, Client will be notified and afforded an opportunity to confirm.
-</marquee>
-
-<div class="container">
-
-    <div *ngFor="let items of resultText; index as i">
-        <div class="card">
-            <h1 class="card-text">{{items}}</h1>
-            <div class="aligner">
-                <h1 class="value-text">{{resultValue[i]}}</h1>
-            </div>
-        </div>
-    </div>
-    
-</div> 
-<div class="contact-us">
-    <h1>Still in doubt with the quotation? 
-    <button class="btn btn-info">Contact Us</button></h1>
-</div>
-</div>

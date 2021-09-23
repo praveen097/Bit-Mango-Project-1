@@ -1,101 +1,124 @@
-
-div { box-sizing: border-box; }
-
-.container {
+.heading {
+  font-size: xx-large;
+  text-align: center;
+  margin-top: 20px;
+}
+section {
+  width:90%;
+  margin:auto;
+}
+.section-card {
+  margin:20px auto;
+}
+.section-name {
+  font-size: medium;
+}
+.question-list {
   display: flex;
-  justify-content: center;
-  align-content: flex-start;
-  -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  height: fit-content;
-
+  justify-content: space-between;
+}
+.q-text {
+  font-size: medium;
 }
 
-.card {
-    background-color: transparent;
-    width: 200p;
-    height: 200px;
-    
-    border-radius: 15px; 
-    margin: 0.5em;
-    padding: 5px;
-    box-shadow: 2px 2px 20px black;
+.option-chip {
+  margin:15px 5px;
+  background-color: lightgreen!important;
+  width:auto;
+  height: auto;
+  font-size: small;
 }
 
-.card:hover {
-  background-color: #62d5e4;
+.question-template {
+  width: 45%;
 }
-
-.aligner {
-  display: flex;
-  align-items:center;
-  justify-content:center;
-  height: 100%;
+.price-estimate {
+  width: 20%;
+  height: auto;
+  box-shadow: none;
+  font-size: x-large;
+  border-radius: 20px;
+  background-color: yellow;
+  margin: 40px auto 40px auto;
   text-align: center;
 }
-.card-text{
-    text-align: center;
-    color: darkblue;
-}
-.value-text{
-    font-size: 90px;
-    text-align: center;
-    color: rgb(153, 13, 87);
-}
-marquee{
-    color: red;
-    padding: 5px;
+
+@media screen and (min-width:568px) and (max-width:768px){
+  .question-template {
+    width: 100%;
+    margin-top:10px ;
+    margin-bottom: 10px;
+  }
+  .question-list {
+    flex-flow: column;
+  }
+  .price-estimate {
+    width: 40%;
     font-size: large;
-}
 
-.contact-us{
-text-align: center;
-margin: 50px;
-}
-
-.question-name{
-  color: rgb(7, 7, 90);
-  padding:5px;
-  margin:20px 20px 0px 20px;
-  box-shadow: 2px 2px 20px rgb(1, 1, 24);
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  text-align: justify;
-}
-
-.optionText{
-  color: #431c5d;
-  padding-top: 10px;
-  text-align: justify;
-}
-.option-container{
-  margin:0px 20px 20px 20px;
-  padding-left: 5px;
-  background-color: #b3e4ec;
-}
-.result-button{
-  float:right;
-  margin: 10px;
-}
-
-.skip{
-  text-align: center;
-}
-
-.skip-container{
-  text-align: center;
-  margin: 20px;
-}
-
-@media all and (max-width: 320px),(max-width: 414px),(max-width: 540px){
-  .question-name, .optionText{
-      font-size: 16px;
-      text-align: justify;
   }
-  button{
-      font-size: 10px;
+  .q-text {
+    font-size: small;
   }
-  .skip{
-    text-align: center;
+  .heading {
+    font-size: x-large;
+  }
+}
+
+.error-message {
+  width: 100%;
+  text-align: center;
+  background-color: grey;
+}
+@media screen and (min-width:769px) and (max-width:978px){
+  .price-estimate {
+    width: 30%;
+  }
+
+  .q-text{
+    font-size: small;
+  }
+
+}
+
+@media screen and (min-width:368px) and (max-width:567px){
+  .price-estimate {
+    width: 40%;
+    font-size: medium;
+  }
+  .question-list {
+    flex-flow: column;
+  }
+  .question-template {
+    width: 100%;
+    margin-top:10px ;
+    margin-bottom: 10px;
+  }
+  .q-text{
+    font-size: small;
+  }
+  .heading {
+    font-size: large;
+  }
+}
+@media screen and (min-width:168px) and (max-width:367px){
+  .price-estimate {
+    width: 70%;
+    font-size: medium;
+  }
+  .question-list {
+    flex-flow: column;
+  }
+  .question-template {
+    width: 100%;
+    margin-top:10px ;
+    margin-bottom: 10px;
+  }
+  .q-text{
+    font-size: small;
+  }
+  .heading{
+    font-size: large;
   }
 }

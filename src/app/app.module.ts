@@ -11,7 +11,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
 import { MatRadioModule } from '@angular/material/radio/'
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips'
+import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion'
 
 
 @NgModule({
@@ -30,8 +31,8 @@ import { MatChipsModule } from '@angular/material/chips'
     MatRadioModule,
     MatSelectModule,
     MatCardModule,
-    MatChipsModule
-
+    MatChipsModule,
+    MatExpansionModule
 
   ],
   providers: [CostEstimationService],

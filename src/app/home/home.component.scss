@@ -1,12 +1,12 @@
 @import '../../styles.scss';
-.main-text{
+.mainText{
   font-size: 30px;
   color: $green;
   font-family: 'Roboto', sans-serif;
 
 }
 
-.sub-text{
+.subText{
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   color: $light-grey;
@@ -21,7 +21,7 @@
   width: auto;
 }
 
-.main-container{
+.mainContainer{
   width: 50vw;
   position: absolute;
   top: 50%;
@@ -34,13 +34,13 @@
   border-bottom-right-radius: 25px;
   padding: 5px;
 }
-.main-container:hover{
+.mainContainer:hover{
   box-shadow: 3px 3px 20px $green;
   border: 1px solid $green;
 
 }
 
-.glow-on-hover {
+.glowOnHover {
   width: fit-content;
   height: 50px;
   border: none;
@@ -53,7 +53,7 @@
   border-radius: 10px;
 }
 
-.glow-on-hover:before {
+.glowOnHover:before {
   content: '';
   background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
   position: absolute;
@@ -70,19 +70,19 @@
   border-radius: 10px;
 }
 
-.glow-on-hover:active {
+.glowOnHover:active {
   color: #000
 }
 
-.glow-on-hover:active:after {
+.glowOnHover:active:after {
   background: transparent;
 }
 
-.glow-on-hover:hover:before {
+.glowOnHover:hover:before {
   opacity: 1;
 }
 
-.glow-on-hover:after {
+.glowOnHover:after {
   z-index: -1;
   content: '';
   position: absolute;
@@ -103,15 +103,15 @@
 
 @media all and (max-width: 320px),(max-width: 414px),(max-width: 540px){
 
-  .main-text{
+  .mainText{
     font-size: 12px;
   }
 
-  .sub-text{
+  .subText{
     font-size:xx-small
   }
 
-  .main-container{
+  .mainContainer{
     width: 90vw;
   }
 

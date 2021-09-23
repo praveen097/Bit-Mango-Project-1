@@ -21,8 +21,8 @@ export class ResultsComponent implements OnInit {
   sections:Array<Sections> = sections;
   sectionNames:Array<string>=[];
   question_ids:Array<Array<number>>=[];
-  answerIndex=0;
   resultantAnswers:Array<Array<Questions>>=[];
+  sectionWithAnswers:any;
   resultText: string[] = [
     'Minimum Price $',
     'Maximum Price $',
@@ -42,25 +42,20 @@ export class ResultsComponent implements OnInit {
     this.maxDays = this._costEstimationService.maxDays;
     this.minDays = this._costEstimationService.minDays;
 
+    this.allAnswer = this._costEstimationService.overAllAnswers;
 
-    this.sections.forEach(element => {
-      this.question_ids.push(element.questionId)
-      this.sectionNames.push(element.sectionName)
+    this.sectionWithAnswers = sections;
+    this.sectionWithAnswers.forEach((element:any) => {
+      const ans_list:Array<Questions>=[];
+      element.questionId.forEach((q_id:number) => {
+        const new_ans = this.allAnswer.filter((ans)=>ans.qid === q_id);
+        if(new_ans.length!=0){
+          ans_list.push(new_ans[0])
+        }
+      });
+      element.answers = ans_list;
     });
-    console.log(this.sectionNames);
-    this.allAnswer = this._costEstimationService.questions;
-    console.log(this.allAnswer);
-    this.question_ids.forEach(question_ids=>{
-      const question_array:Array<Questions>=[];
-      question_ids.forEach(question_id=>{
-        this.allAnswer.find((question)=>{
-          if(question.qid==question_id){
-            question_array.push(question)
-          }
-        });
-      })
-      this.resultantAnswers.push(question_array);
-    })
+    console.log(this.sectionWithAnswers)
 
     if (this.allAnswer.length == 0) {
       this.resultExist = false;

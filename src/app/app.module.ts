@@ -12,7 +12,8 @@ import { MatRadioModule } from '@angular/material/radio/'
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatExpansionModule } from '@angular/material/expansion'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button'
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatExpansionModule } from '@angular/material/expansion'
     MatSelectModule,
     MatCardModule,
     MatChipsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonModule
 
   ],
   providers: [CostEstimationService],

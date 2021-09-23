@@ -2,10 +2,10 @@
     <section *ngIf="resultExist; else elseBlock">
         <h1 class="heading">Estimate of your project</h1>
   <mat-card class="price-estimate">$200-$1000</mat-card>
-    <mat-expansion-panel class="section-card" *ngFor="let answers of resultantAnswers;index as i">
-      <mat-expansion-panel-header class="section-name">{{sectionNames[i]}}</mat-expansion-panel-header>
-      <mat-panel-description class="question-list" *ngIf="answers.length>0;else answersNotFound">
-        <mat-card *ngFor="let ans of answers" class="question-template">
+    <mat-expansion-panel class="section-card" *ngFor="let currentSectionAnswers of sectionWithAnswers">
+      <mat-expansion-panel-header class="section-name">{{currentSectionAnswers.sectionName}}</mat-expansion-panel-header>
+      <mat-panel-description class="question-list" *ngIf="currentSectionAnswers.answers.length>0;else answersNotFound">
+        <mat-card *ngFor="let ans of currentSectionAnswers.answers" class="question-template">
           <mat-card-title class="q-text">{{ans.question}}</mat-card-title>
           <mat-card-content *ngIf="ans.multiple;else singleAnswerBlock">
             <mat-chip-list class="option-list">
@@ -22,7 +22,7 @@
       <ng-template #answersNotFound>
         <mat-panel-description>
           <mat-card class="error-message">
-            <mat-card-content>You haven't attempted questions from  section {{sectionNames[i]}}</mat-card-content>
+            <mat-card-content>You haven't attempted questions from  section {{currentSectionAnswers.sectionName}}</mat-card-content>
           </mat-card>
         </mat-panel-description>
       </ng-template>

@@ -11,7 +11,7 @@ section {
   margin:20px auto;
 }
 .section-name {
-  font-size: medium;
+  font-weight: 500;
 }
 .question-list {
   display: flex;
@@ -19,16 +19,16 @@ section {
   justify-content: space-between;
 }
 .q-text {
-  font-size: medium;
   margin-bottom: 20px;
+  font-size: medium;
 }
 
 .option-chip {
   margin:10px 10px 10px 0px !important;
-  background-color: lightgreen;
+  background-color: #15A811;
   width:auto;
   height: auto;
-  font-size: small;
+  color:white
 }
 
 .question-template {
@@ -38,11 +38,12 @@ section {
   width: 20%;
   height: auto;
   box-shadow: none;
-  font-size: x-large;
+  font-size: large;
   border-radius: 20px;
-  background-color: yellow;
+  background-color: grey;
   margin: 40px auto 40px auto;
   text-align: center;
+  color: white;
 }
 
 @media screen and (min-width:568px) and (max-width:768px){

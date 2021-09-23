@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-$primary: #6c7069;
-$secondary: #4da30d;
-$tertiary:#dce31e ;
+$light-grey: #6c7069;
+$green: #11b302;
+$yellow:#dce31e ;
+$white:#ffffff;
 
 html,
 body {
@@ -10,4 +11,6 @@ body {
 }
 body {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
 }

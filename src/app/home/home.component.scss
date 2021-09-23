@@ -1,12 +1,15 @@
 @import '../../styles.scss';
 .main-text{
   font-size: 30px;
+  color: $green;
+  font-family: 'Roboto', sans-serif;
 
 }
 
 .sub-text{
-  font-family:'Times New Roman', Times, serif;
-  color: #420420;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  color: $light-grey;
   font-size: 18px;
   text-align:justify;
 }
@@ -23,16 +26,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  border: 1px solid $tertiary;
-  box-shadow: 3px 3px 20px $tertiary;
+  border: 1px solid $yellow;
+  box-shadow: 3px 3px 20px $yellow;
   text-align: center;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 5px;
 }
 .main-container:hover{
-  box-shadow: 3px 3px 20px $secondary;
-  border: 1px solid $secondary;
+  box-shadow: 3px 3px 20px $green;
+  border: 1px solid $green;
 
 }
 

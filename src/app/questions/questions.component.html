@@ -1,39 +1,39 @@
-<div *ngIf="!sectionStarted" >
-  <p class="section-name">
-    Upcoming section is :
-    <span class="section-name-text">{{
-      sections[sectionNumber].sectionName
-    }}</span>
-  </p>
+<mat-tab-group class="section-names" mat-align-tabs="center" animationDuration="0ms" #tabRef 
+  (selectedTabChange)="skipSecionHandler(tabRef.selectedIndex)" [selectedIndex]="sectionNumber">
+    <mat-tab *ngFor="let allSections of sections" label="{{allSections.sectionName}}"></mat-tab>
+</mat-tab-group>
 
-  <div class="main-buttons">
-    <button class="btn btn-danger" (click)="skipSection()">SKIP</button>
-    <button class="btn btn-info" (click)="continue()">CONTINUE</button>
+<div *ngIf="!sectionStarted" >
+  
+  <div class="skip-container">
+
+    <mat-card class="skip-card">
+      <mat-card-title class="section-name-text">
+      {{ sections[sectionNumber].sectionName }}
+      </mat-card-title>
+      <br>
+      <mat-card-content class="section-description-text">
+        {{sections[sectionNumber].sectionDescription}}
+      </mat-card-content>
+
+      <mat-card-actions>
+      <button mat-raised-button  class="skip-button" (click)="skipSection()">Skip {{sections[sectionNumber].sectionName}}</button>
+      <button mat-stroked-button  class="continue-button" (click)="continue()">CONTINUE</button>
+      </mat-card-actions>
+
+    </mat-card>
   </div>
-  
-  <!-- for particular section -->
-  
-    <div class=" skip-section" *ngIf="showSkip">
-      <div class="skip-container">
-      <div *ngFor="let option of skipSectionValues; index as i">
-        <button *ngIf="!(sectionNumber == i)" class="btn btn- info" (click)="skipSecionHandler(i)">
-        {{option.sectionId}} {{ option.sectionName }} 
-       </button>   
-      </div>
-    </div>
-    </div>
-  
 
 </div>
 
 
 <div *ngIf="sectionStarted">
-  <p class="section-name">
+  <!-- <p class="section-name">
     Current section is :
     <span class="section-name-text">{{
       sections[sectionNumber].sectionName
     }}</span>
-  </p>
+  </p> -->
 
   <mat-progress-bar
     mode="determinate"
@@ -48,17 +48,25 @@
     </h1>
 
     <div *ngIf="presentQuestion.multiple; else elseBlock">
-      <mat-form-field class="cards-container" appearance="fill">
+      <!-- <mat-form-field class="cards-container" appearance="fill">
         <mat-label>Select Options here!</mat-label>
         <mat-select [(ngModel)]="answer" multiple>
           <mat-option
             *ngFor="let option of presentQuestion.options"
             [value]="option"
           >
-            {{ option.questionText }}
+            {{ option.optionText }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
+      <mat-chip-list selectable multiple  [(ngModel)]="answer">
+        <mat-chip #c="matChip" *ngFor="let option of presentQuestion.options" [value]="option"
+        (click)="toggleSelection(c)" >
+        <!-- <mat-icon *ngIf="c.selected">check</mat-icon> -->
+          {{option.optionText}}
+
+        </mat-chip>
+      </mat-chip-list>
     </div>
 
     <ng-template #elseBlock>
@@ -72,13 +80,13 @@
                 value="{{ option }}"
                 (change)="radioChangeHandler(option)"
               />
-              {{ option.questionText }}
+              {{ option.optionText }}
             </div>
           </label>
         </div>
         <!-- <mat-radio-group [(ngModel)]="answer">
           <mat-radio-button class="cards" *ngFor="let season of presentQuestion.options" [value]="season">
-            {{season.questionText}}
+            {{season.optionText}}
           </mat-radio-button>
         </mat-radio-group> -->
 
@@ -87,7 +95,8 @@
     <hr />
 
     <div class="next-button">
-      <button class="button_slide slide_right" (click)="next()">NEXT</button>
+      <button mat-fab class="nav-buttons-previous"><mat-icon class="nav-icons">navigate_before</mat-icon></button>
+      <button mat-fab class="nav-buttons-next" (click)="next()"><mat-icon class="nav-icons">navigate_next</mat-icon></button>
     </div>
   </div>
 </div>

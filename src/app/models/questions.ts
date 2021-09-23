@@ -1,5 +1,5 @@
 export interface Result {
-    questionText: string;
+    optionText: string;
     minPrice: number;
     maxPrice: number;
     minDays: number;

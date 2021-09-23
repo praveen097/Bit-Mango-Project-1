@@ -4,6 +4,7 @@ import { Questions, Result } from '../models/questions';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { MatChip } from '@angular/material/chips';
 
 @Component({
   selector: 'app-questions',
@@ -41,15 +42,18 @@ export class QuestionsComponent implements OnInit {
     console.log("hello",this._costEstimationService.overAllAnswers);
     
   }
+  toggleSelection(chip: MatChip) {
+    chip.toggleSelected();
+ }
 
-  skipSecionHandler(id:number){
+  skipSecionHandler(id:any){
     // this.showSkip =  false;
     this._costEstimationService.goToSection(id+1);
     this.sectionNumber = id;
     
     //on clicking any button we fetch question
-    this.sectionStarted = true;
-    this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+    // this.sectionStarted = true;
+    // this.presentQuestion = this._costEstimationService.getCurrentQuestion();
     console.log("Current question Id is :",this.presentQuestion.qid);
   }
 

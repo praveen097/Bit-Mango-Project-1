@@ -10,7 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar'
 import { MatRadioModule } from '@angular/material/radio/'
 import { MatSelectModule } from '@angular/material/select'
-
+import {MatTabsModule} from '@angular/material/tabs'; 
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -27,8 +31,11 @@ import { MatSelectModule } from '@angular/material/select'
     MatProgressBarModule,
     MatRadioModule,
     MatSelectModule,
-
-
+    MatTabsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent]

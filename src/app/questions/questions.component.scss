@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 90%;
+  margin:auto;
 }
 .skipCard{
   width: 50%;
@@ -57,41 +58,49 @@ label {
   background-color: $white;
   color: $green;
   outline: none;
+  float:right;
+  width:70px;
+  height:70px;
 }
 
 .navButtonPrevious{
   background-color: $white;
   color: $yellow;
   outline: none;
+  float:left;
+  width:70px;
+  height:70px;
 }
 
 .navButtonsContainer {
-  text-align: center;
+  width:100%;
+  box-shadow:none;
+  margin-bottom:20px;
 }
 
 .QuestionText {
   color: $light-grey;
   font-weight: bold;
-  width: 70%;
+  width: 80%;
+  margin:auto;
   padding: 15px;
-  border-bottom-left-radius: 35px;
-  border-top-right-radius: 35px;
+  border-radius:30px;
   height: auto;
   background-color: transparent;
   text-align: center;
   margin: 50px;
-  font-size: xx-large;
+  box-shadow:none;
+  font-size:20px;
   
 }
-.cardsContainer {
+.singleOptionContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  width: 80vw;
-  flex-direction: row;
-  border-bottom-left-radius: 35px;
-  border-top-right-radius: 35px;
+  align-items:center;
+  text-align:center;
+  width: 80%;
+  flex-direction: column;
 }
 .cards {
   background-color: white;
@@ -140,12 +149,79 @@ label {
 }
 
 
-button {
-  margin: 10px;
+::ng-deep .material-icons {
+  font-size:40px;
+}
+::ng-deep .mat-icon {
+  width:max-content !important;
+  height:max-content !important;
+}
+.singleOptionList mat-chip{
+  width:80%;
+  height:max-content;
+  padding:15px;
+  margin:10px auto;
+  background-color:#D3D3D3;
+  box-shadow:2px 2px 2px 2px #D3D3D3;
+  display:inline-block;
+}
+
+.singleOptionList {
+  width:100%;
+}
+
+.multipleOptionContainer {
+  width:90%;
+  margin:auto;
+  align-items:center;
+}
+
+.multipleOptions {
+  width:90%;
+  padding:40px;
+  margin:auto;
+  display:flex;
+  flex-flow:row wrap;
+  justify-content:center;
+}
+.multipleOptions mat-chip {
+  height:max-content;
+  margin-right:5px;
 }
 
 @media all and (max-width: 320px), (max-width: 414px), (max-width: 540px) {
   .sectionName {
     font-size: 20px;
+  }
+}
+
+::ng-deep .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color:$green;
+  color:white;
+}
+
+@media screen and (min-width:168px) and (max-width:768px) {
+
+  ::ng-deep .material-icons {
+    font-size:30px;
+  }
+
+  ::ng-deep .mat-fab .mat-button-wrapper{
+    padding:0px !important;
+  }
+
+  .navButtonNext {
+    width:55px;
+    height:55px;
+  }
+  .navButtonPrevious {
+    width:55px;
+    height:55px;
+  }
+  .singleOptionContainer {
+    width:90%;
+  }
+  .singleOptionList mat-chip {
+    width:100%;
   }
 }

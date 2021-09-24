@@ -12,12 +12,18 @@
 }
 .skipButton{
   background-color: $yellow;
-  opacity: 0.8;
   outline: 0px;
+  color: $white;
+  text-transform: uppercase;
 }
 .skipButton:hover{
-  background-color: $yellow;
-  opacity: 1;
+  background-color: $yellow ;
+  opacity: 0.8;
+}
+
+.buttonSelected{
+  background-color: $green;
+  color: $white;
 }
 
 .continueButton{
@@ -50,11 +56,13 @@ label {
 .navButtonNext{
   background-color: $white;
   color: $green;
+  outline: none;
 }
 
 .navButtonPrevious{
   background-color: $white;
   color: $yellow;
+  outline: none;
 }
 
 .navButtonsContainer {
@@ -72,6 +80,7 @@ label {
   background-color: transparent;
   text-align: center;
   margin: 50px;
+  font-size: xx-large;
   
 }
 .cardsContainer {

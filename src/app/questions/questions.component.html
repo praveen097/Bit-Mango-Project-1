@@ -52,8 +52,8 @@
     <div *ngIf="presentQuestion.multiple; else elseBlock">
 
       <mat-chip-list selectable multiple >
-        <mat-chip #c="matChip" *ngFor="let option of presentQuestion.options" value="{{ option }}"
-        (click)="toggleSelection(c,option)" [selected]="option.selected">
+        <mat-chip  *ngFor="let option of presentQuestion.options" value="{{ option }}"
+        (click)="toggleSelection(option)" [selected]="option.selected">
           {{option.optionText}}
         </mat-chip>
       </mat-chip-list>
@@ -77,8 +77,8 @@
         </div> -->
 
         <mat-chip-list >
-          <mat-chip #c="matChip" *ngFor="let option of presentQuestion.options" value="{{ option }}"
-          (click)="toggleSelection(c,option)" [selected]="option.selected">
+          <mat-chip  *ngFor="let option of presentQuestion.options" value="{{ option }}"
+          (click)="toggleSelection(option)" [selected]="option.selected">
             {{option.optionText}}
           </mat-chip>
         </mat-chip-list>

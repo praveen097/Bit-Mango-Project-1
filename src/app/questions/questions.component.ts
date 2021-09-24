@@ -43,10 +43,11 @@ export class QuestionsComponent implements OnInit {
     
     
   }
-  toggleSelection(chip: MatChip,option:Result) {
-    chip.toggleSelected();
+  toggleSelection(option:Result) {
+    // chip.toggleSelected();
     const isExists = this.answer.findIndex(x=>x.optionText == option.optionText)
     if(isExists > -1){
+      this.answer[isExists].selected = false;
       this.answer != this.answer.splice(isExists,1);
     }else{
       option.selected = true;

@@ -1,20 +1,23 @@
+@import '../../styles.scss';
+
 .heading{
     font-size:45px;
     text-align: center;
     margin: 30px;
+    color: $light-grey;
 }
-.q-template {
+.questionTemplate {
   margin: 2% 2% 2% 2%;
 }
 
-.option-chip {
+.optionChip {
   background-color: #15A811;
-  color:white;
+  color:$white;
   height: max-content;
 }
 .nextSectionButton {
   background-color: #15A811;
-  color:white;
+  color:$white;
   margin:1%;
   float: right;
 }
@@ -23,13 +26,13 @@ section {
   margin: auto;
 }
 
-.q-text {
+.questionText {
   margin-bottom: 20px;
   font-size: 15px;
 }
 
 @media screen and (max-width:578px){
-  .q-text {
+  .questionText {
     font-size: small;
   }
   .heading {

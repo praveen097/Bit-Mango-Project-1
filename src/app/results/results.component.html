@@ -9,12 +9,12 @@
           <div class="q-text">{{ans.question}}</div>
           <mat-card-content *ngIf="ans.multiple;else singleAnswerBlock">
             <mat-chip-list class="option-list">
-              <mat-chip *ngFor="let opt of ans.options" class="option-chip">{{opt.questionText}}</mat-chip>
+              <mat-chip *ngFor="let opt of ans.options" class="option-chip">{{opt.optionText}}</mat-chip>
             </mat-chip-list>
           </mat-card-content>
           <ng-template #singleAnswerBlock>
             <mat-card-content>
-              {{ans.options[0].questionText}}
+              {{ans.options[0].optionText}}
             </mat-card-content>
           </ng-template>
         </mat-card>

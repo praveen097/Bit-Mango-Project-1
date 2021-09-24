@@ -100,7 +100,8 @@ export class CostEstimationService {
 
   getPreviousQuestion():Questions{
     const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questionId;
-    this.currentQuestionId = sectionQuestions[sectionQuestions.indexOf(this.currentQuestionId)+1];
+    this.currentQuestionId = sectionQuestions[sectionQuestions.indexOf(this.currentQuestionId)-1];
+    console.log("from service",this.currentQuestionId);
     return this.getQuestionById(this.currentQuestionId);
   }
 
@@ -146,7 +147,7 @@ export class CostEstimationService {
   }
 
   goToSection(id:number){
-    this.currentSectionIndex= (id-1);
+    this.currentSectionIndex= (id);
     this.currentQuestionId = this.getSectionByIndex(
       this.currentSectionIndex
     ).questionId[0];

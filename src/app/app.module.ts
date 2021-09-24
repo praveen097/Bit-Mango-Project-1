@@ -39,8 +39,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatChipsModule,
     MatExpansionModule,
     MatButtonModule,
-     MatTabsModule,
-     MatIconModule
+    MatTabsModule,
+    MatIconModule
 
   ],
   providers: [CostEstimationService],

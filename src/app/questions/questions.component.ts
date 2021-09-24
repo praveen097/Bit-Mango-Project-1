@@ -162,7 +162,7 @@ export class QuestionsComponent implements OnInit {
   previous(){
     // console.log("Previous Clicked, question Id is",this.presentQuestion.qid)
     this.currentQuestion--;
-    this._costEstimationService.getPreviousQuestion();
+    // this._costEstimationService.getPreviousQuestion();
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
     this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
     console.log("answer from prev",this.answer)

@@ -39,13 +39,13 @@
   ></mat-progress-bar>
 
   <div class="customContainer">
-    <h1 class="QuestionText">
+    <mat-card class="QuestionText">
       {{ currentQuestion }} . {{ presentQuestion.question }}
-    </h1>
+    </mat-card>
 
-    <div *ngIf="presentQuestion.multiple; else elseBlock">
+    <div *ngIf="presentQuestion.multiple; else elseBlock" class="multipleOptionContainer">
 
-      <mat-chip-list selectable multiple >
+      <mat-chip-list selectable multiple  class="multipleOptions">
         <mat-chip  *ngFor="let option of presentQuestion.options" value="{{ option }}"
         (click)="multipleToggleSelection(option)" [selected]="option.selected">
           {{option.optionText}}
@@ -54,27 +54,22 @@
     </div>
 
     <ng-template #elseBlock>
+
       <div class="cardsContainer">
 
         <mat-chip-list >
           <mat-chip  #c="matChip" *ngFor="let option of presentQuestion.options" value="{{ option }}"
           (click)="toggleSelection(c,option)" [selected]="option.selected">
+
             {{option.optionText}}
           </mat-chip>
         </mat-chip-list>
       </div>
     </ng-template>
+    <mat-card class="navButtonsContainer">
+      <button *ngIf="currentQuestion>1" mat-fab class="navButtonPrevious" (click)="previous()"><mat-icon class="nav-icons">navigate_before</mat-icon></button>
+      <button mat-fab class="navButtonNext" (click)="next()"><mat-icon class="nav-icons">navigate_next</mat-icon></button>
+    </mat-card>
 
-    <div class="navButtonsContainer">
-
-      <button *ngIf="currentQuestion>1" mat-fab class="navButtonPrevious" (click)="previous()">
-        <mat-icon class="nav-icons">navigate_before</mat-icon>
-      </button>
-
-      <button mat-fab class="navButtonNext" (click)="next()">
-        <mat-icon class="nav-icons">navigate_next</mat-icon>
-      </button>
-
-    </div>
   </div>
 </div>

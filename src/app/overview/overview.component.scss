@@ -1,25 +1,31 @@
 .heading{
-    font-size: xx-large;
+    font-size:45px;
     text-align: center;
     margin: 30px;
 }
 .q-template {
-  margin-bottom: 40px;
+  margin: 2% 2% 2% 2%;
 }
 
 .option-chip {
-  background-color: lightgreen;
-  font-size: small;
+  background-color: #15A811;
+  color:white;
+  height: max-content;
 }
-
+.nextSectionButton {
+  background-color: #15A811;
+  color:white;
+  margin:1%;
+  float: right;
+}
 section {
   width: 90%;
   margin: auto;
 }
 
 .q-text {
-  font-size: medium;
   margin-bottom: 20px;
+  font-size: 15px;
 }
 
 @media screen and (max-width:578px){

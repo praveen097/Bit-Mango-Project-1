@@ -76,7 +76,11 @@ export class OverviewComponent implements OnInit {
   }
 
   toQuestions(): void {
-    this.route.navigate(['/questions']);
+    if(!this.isLastSection)
+      this.route.navigate(['/questions']);
+    else
+      this.route.navigate(['/results']);
+
   }
   toresults(): void {
     this.route.navigate(['/results']);

@@ -1,67 +1,72 @@
+@import '../../styles.scss';
+
 .heading {
   font-size: 45px;
   text-align: center;
   margin-top: 20px;
+  color: $light-grey;
 }
 section {
   width:90%;
   margin:auto;
 }
-.section-card {
+.sectionCard {
   margin:20px auto;
 }
-.section-name {
+.sectionName {
   font-weight: 500;
   font-size: 18px;
 }
-.question-list {
+.questionList {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
-.q-text {
+.questionText {
   margin-bottom: 20px;
   font-size:15px;
 }
 
-.option-chip {
-  background-color: #15A811;
-  color:white;
+.optionChip {
+  background-color: $green;
+  color:$white;
   height:max-content;
 }
 
-.question-template {
+.questionTemplate {
   width: 45%;
+  margin-bottom: 5px;
 }
-.price-estimate {
+.priceEstimate {
   width: 20%;
   height: auto;
-  -moz-box-shadow:inset 0 0 25px #fff;
-  -webkit-box-shadow:inset 0 0 25px #fff;
-  box-shadow:inset 0 0 25px #fff;
-  font-size: large;
+  -moz-box-shadow:inset 0 0 10px $light-grey;
+  -webkit-box-shadow:inset 0 0 10px $light-grey;
+  box-shadow:inset 0 0 10px $light-grey;
+  font-size:x-large;
   border-radius: 20px;
-  background-color: #D8CE17;
+  background-color: $yellow;
   margin: 40px auto 40px auto;
   text-align: center;
-  color:white;
+  color:black;
+  font-weight: 500;
 }
 
 @media screen and (min-width:568px) and (max-width:768px){
-  .question-template {
+  .questionTemplate {
     width: 100%;
     margin-top:10px ;
     margin-bottom: 10px;
   }
-  .question-list {
+  .questionList {
     flex-flow: column;
   }
-  .price-estimate {
+  .priceEstimate {
     width: 40%;
     font-size: large;
 
   }
-  .q-text {
+  .questionText {
     font-size: small;
   }
   .heading {
@@ -69,37 +74,37 @@ section {
   }
 }
 
-.error-message {
+.errorMessage {
   width: 100%;
   text-align: center;
-  background-color: grey;
-  color:white;
+  background-color: $light-grey;
+  color:$white;
 }
 @media screen and (min-width:769px) and (max-width:978px){
-  .price-estimate {
+  .priceEstimate {
     width: 30%;
   }
 
-  .q-text{
+  .questionText{
     font-size: small;
   }
 
 }
 
 @media screen and (min-width:368px) and (max-width:567px){
-  .price-estimate {
+  .priceEstimate {
     width: 40%;
     font-size: medium;
   }
-  .question-list {
+  .questionList {
     flex-flow: column;
   }
-  .question-template {
+  .questionTemplate {
     width: 100%;
     margin-top:10px ;
     margin-bottom: 10px;
   }
-  .q-text{
+  .questionText{
     font-size: small;
   }
   .heading {
@@ -107,19 +112,19 @@ section {
   }
 }
 @media screen and (min-width:168px) and (max-width:367px){
-  .price-estimate {
+  .priceEstimate {
     width: 70%;
     font-size: medium;
   }
-  .question-list {
+  .questionList {
     flex-flow: column;
   }
-  .question-template {
+  .questionTemplate {
     width: 100%;
     margin-top:10px ;
     margin-bottom: 10px;
   }
-  .q-text{
+  .questionText{
     font-size: small;
   }
   .heading{

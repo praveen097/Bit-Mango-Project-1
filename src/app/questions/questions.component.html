@@ -55,9 +55,9 @@
 
     <ng-template #elseBlock>
 
-      <div class="cardsContainer">
+      <div class="singleOptionContainer">
 
-        <mat-chip-list >
+        <mat-chip-list class="singleOptionList mat-chip-list-stacked">
           <mat-chip  #c="matChip" *ngFor="let option of presentQuestion.options" value="{{ option }}"
           (click)="toggleSelection(c,option)" [selected]="option.selected">
 

@@ -146,7 +146,7 @@ export class CostEstimationService {
   }
 
   goToSection(id:number){
-    this.currentSectionIndex= (id-1);
+    this.currentSectionIndex= (id);
     this.currentQuestionId = this.getSectionByIndex(
       this.currentSectionIndex
     ).questionId[0];

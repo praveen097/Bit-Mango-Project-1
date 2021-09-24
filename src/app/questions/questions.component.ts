@@ -43,17 +43,27 @@ export class QuestionsComponent implements OnInit {
     
     
   }
-  toggleSelection(option:Result) {
-    // chip.toggleSelected();
-    const isExists = this.answer.findIndex(x=>x.optionText == option.optionText)
-    if(isExists > -1){
-      this.answer[isExists].selected = false;
-      this.answer != this.answer.splice(isExists,1);
-    }else{
-      option.selected = true;
-      this.answer.push(option);
+  toggleSelection(chip:MatChip, option:Result) {
+    chip.toggleSelected();
+    if(this.answer.length>0){
+      this.answer[0].selected = false;
     }
+    option.selected = true;
+    this.answer[0] = option;
+    
  }
+
+ multipleToggleSelection(option:Result){
+  const isExists = this.answer.findIndex(x=>x.optionText == option.optionText)
+  if(isExists > -1){
+    this.answer[isExists].selected = false;
+    this.answer != this.answer.splice(isExists,1);
+  }else{
+    option.selected = true;
+    this.answer.push(option);
+  }
+ }
+
  showanswer(){
   console.log("answer is ",this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid));
  }
@@ -66,13 +76,15 @@ export class QuestionsComponent implements OnInit {
 
   skipSecionHandler(id:any){
     // this.showSkip =  false;
-    this._costEstimationService.goToSection(id+1);
+    this._costEstimationService.goToSection(id);
     this.sectionNumber = id;
+    this.currentQuestion =1;
     
     //on clicking any button we fetch question
     // this.sectionStarted = true;
-    // this.presentQuestion = this._costEstimationService.getCurrentQuestion();
-    // console.log("Current question Id is :",this.presentQuestion.qid);
+    this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+    this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
+    console.log("Current question Id is :",this.presentQuestion.qid);
   }
 
   //store the option selected into answer
@@ -105,7 +117,7 @@ export class QuestionsComponent implements OnInit {
   next(): void {
     //check whether option is selected
     
-    if (this.answer.length == 0) {
+    if (this.answer.length == 0 ) {
       Swal.fire('Oops...', 'Please select an option!', 'error');
     } else {
       this.currentQuestion++; // used to show question number
@@ -133,6 +145,7 @@ export class QuestionsComponent implements OnInit {
         else {
           // 1 2 3
           this._costEstimationService.getNextQuestion();
+          this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
           this.toOverview();
         }
       }
@@ -140,6 +153,7 @@ export class QuestionsComponent implements OnInit {
       else {
         this.answer = [];
         this.presentQuestion = this._costEstimationService.getNextQuestion();
+        this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
       }
     }
     console.log("Current question Id is :",this.presentQuestion.qid);
@@ -150,7 +164,7 @@ export class QuestionsComponent implements OnInit {
     this.currentQuestion--;
     this._costEstimationService.getPreviousQuestion();
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
-    // this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
+    this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
     console.log("answer from prev",this.answer)
   }
 

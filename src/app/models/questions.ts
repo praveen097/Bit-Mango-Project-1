@@ -4,6 +4,7 @@ export interface Result {
     maxPrice: number;
     minDays: number;
     maxDays: number;
+    selected:boolean;
 }
 
 export interface Questions {

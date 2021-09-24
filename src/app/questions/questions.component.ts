@@ -39,12 +39,30 @@ export class QuestionsComponent implements OnInit {
     //   this._costEstimationService.currentSectionIndex
     // );
     this.skipSectionValues = this.sections;
-    console.log("hello",this._costEstimationService.overAllAnswers);
+    // this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
+    
     
   }
-  toggleSelection(chip: MatChip) {
-    chip.toggleSelected();
+  toggleSelection(option:Result) {
+    // chip.toggleSelected();
+    const isExists = this.answer.findIndex(x=>x.optionText == option.optionText)
+    if(isExists > -1){
+      this.answer[isExists].selected = false;
+      this.answer != this.answer.splice(isExists,1);
+    }else{
+      option.selected = true;
+      this.answer.push(option);
+    }
  }
+ showanswer(){
+  console.log("answer is ",this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid));
+ }
+
+ click(){
+  console.log(this.answer);
+ }
+
+
 
   skipSecionHandler(id:any){
     // this.showSkip =  false;
@@ -54,7 +72,7 @@ export class QuestionsComponent implements OnInit {
     //on clicking any button we fetch question
     // this.sectionStarted = true;
     // this.presentQuestion = this._costEstimationService.getCurrentQuestion();
-    console.log("Current question Id is :",this.presentQuestion.qid);
+    // console.log("Current question Id is :",this.presentQuestion.qid);
   }
 
   //store the option selected into answer
@@ -86,6 +104,7 @@ export class QuestionsComponent implements OnInit {
 
   next(): void {
     //check whether option is selected
+    
     if (this.answer.length == 0) {
       Swal.fire('Oops...', 'Please select an option!', 'error');
     } else {
@@ -124,6 +143,15 @@ export class QuestionsComponent implements OnInit {
       }
     }
     console.log("Current question Id is :",this.presentQuestion.qid);
+  }
+
+  previous(){
+    // console.log("Previous Clicked, question Id is",this.presentQuestion.qid)
+    this.currentQuestion--;
+    this._costEstimationService.getPreviousQuestion();
+    this.presentQuestion = this._costEstimationService.getPreviousQuestion();
+    // this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
+    console.log("answer from prev",this.answer)
   }
 
   toResults(): void {

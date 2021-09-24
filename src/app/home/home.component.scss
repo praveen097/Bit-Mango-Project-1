@@ -1,14 +1,14 @@
 @import '../../styles.scss';
 .mainText{
   font-size: 30px;
+  font-weight: 500;
   color: $green;
   font-family: 'Roboto', sans-serif;
 
 }
 
 .subText{
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   color: $light-grey;
 
   font-size: 18px;

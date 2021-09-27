@@ -32,6 +32,7 @@ export class ResultsComponent implements OnInit {
   resultValue: number[] = [];
   step:number = 0;
 
+
   constructor(
     private _costEstimationService: CostEstimationService,
     private route: Router

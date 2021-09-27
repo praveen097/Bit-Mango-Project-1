@@ -30,7 +30,7 @@ section {
 .optionChip {
   background-color: $green;
   color:$white;
-  font-size: 15px;
+  font-size: 14px;
   height:max-content;
 }
 
@@ -96,9 +96,11 @@ section {
 
 #prevButton {
   background-color: $yellow;
+  color:white;
 }
 #nextButton {
   background-color: $green;
+  color:white;
 }
 @media screen and (min-width:769px) and (max-width:978px){
   .priceEstimate {

@@ -30,6 +30,7 @@ export class ResultsComponent implements OnInit {
     'Maximum Days',
   ];
   resultValue: number[] = [];
+  step = 0;
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -70,5 +71,17 @@ export class ResultsComponent implements OnInit {
 
   toResults(): void {
     this.showResults = true;
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 }

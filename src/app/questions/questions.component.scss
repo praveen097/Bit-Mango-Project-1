@@ -1,7 +1,16 @@
 @import "../../styles.scss";
 
+.mainContainer {
+  position: absolute;
+  left:50%;
+  top: 50%;
+  width:100%;
+  transform: translate(-50%,-50%);
+}
+
 .customContainer {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   width: 90%;
@@ -47,7 +56,7 @@
   flex-direction: row;
   justify-content: center;
   margin: 15px;
-  
+
 }
 
 label {
@@ -88,10 +97,10 @@ label {
   height: auto;
   background-color: transparent;
   text-align: center;
-  margin: 50px;
+  margin: 20px;
   box-shadow:none;
   font-size:20px;
-  
+
 }
 .singleOptionContainer {
   display: flex;
@@ -113,7 +122,7 @@ label {
   background-color: rgb(205, 245, 231);
 }
 ::ng-deep .mat-progress-bar-fill::after {
-  background-color: $light-grey;
+  background-color: $green;
 }
 ::ng-deep .mat-progress-bar-buffer {
   background: transparent;
@@ -124,7 +133,7 @@ label {
 
 ::ng-deep .mat-tab-label .mat-tab-label-content {
   font-size:large;
-  color: $light-grey;
+  color: black;
 }
 ::ng-deep .mat-ink-bar {
   background-color: $green !important;
@@ -175,7 +184,9 @@ label {
   margin:auto;
   align-items:center;
 }
-
+.mat-standard-chip:focus::after {
+  opacity: 0;
+}
 .multipleOptions {
   width:90%;
   padding:40px;

@@ -2,7 +2,7 @@
     <section *ngIf="resultExist; else elseBlock">
         <h1 class="heading">Estimate of your project</h1>
   <mat-card class="priceEstimate">{{minPrice | currency}} - {{maxPrice | currency}}</mat-card>
-    <mat-expansion-panel class="sectionCard" *ngFor="let currentSectionAnswers of sectionWithAnswers">
+    <mat-expansion-panel class="sectionCard" *ngFor="let currentSectionAnswers of sectionWithAnswers;index as i" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
       <mat-expansion-panel-header class="sectionName">{{currentSectionAnswers.sectionName}}</mat-expansion-panel-header>
       <mat-panel-description class="questionList" *ngIf="currentSectionAnswers.answers.length>0;else answersNotFound">
         <mat-card *ngFor="let ans of currentSectionAnswers.answers" class="questionTemplate">
@@ -26,6 +26,10 @@
           </mat-card>
         </mat-panel-description>
       </ng-template>
+      <mat-action-row>
+        <button mat-raised-button *ngIf="step!=0" color="warn" (click)="prevStep()" id="prevButton">Previous Section</button>
+        <button mat-raised-button *ngIf="step!=sectionWithAnswers.length-1" color="primary" (click)="nextStep()" id="nextButton">Next Section</button>
+      </mat-action-row>
     </mat-expansion-panel>
     </section>
     <ng-template #elseBlock>

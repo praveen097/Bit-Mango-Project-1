@@ -1,48 +1,56 @@
 @import "../../styles.scss";
 
 .mainContainer {
-  position: absolute;
-  left:50%;
-  top: 50%;
-  width:100%;
-  transform: translate(-50%,-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 1px solid red;
+  height: 90vh;
 }
-
+.mainSkipContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+.buttonSelect {
+  text-align: center;
+}
 .customContainer {
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: center;
   width: 90%;
-  margin:auto;
+  margin: auto;
 }
-.skipCard{
+.skipCard {
   width: 50%;
   text-align: justify;
 }
-.skipButton{
+.skipButton {
   background-color: $yellow;
   outline: 0px;
   color: $white;
   text-transform: uppercase;
 }
-.skipButton:hover{
-  background-color: $yellow ;
+.skipButton:hover {
+  background-color: $yellow;
   opacity: 0.8;
 }
 
-.buttonSelected{
+.buttonSelected {
   background-color: $green;
   color: $white;
 }
 
-.continueButton{
+.continueButton {
   background-color: $green;
   color: $white;
 }
 
-
-.skipSection{
+.skipSection {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -50,64 +58,63 @@
   padding: 10px;
 }
 
-.skipContainer{
+.skipContainer {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   margin: 15px;
-
 }
 
 label {
   cursor: pointer;
 }
 
-.navButtonNext{
+.navButtonNext {
   background-color: $white;
   color: $green;
   outline: none;
-  float:right;
-  width:70px;
-  height:70px;
+  float: right;
+  width: 70px;
+  height: 70px;
 }
 
-.navButtonPrevious{
+.navButtonPrevious {
   background-color: $white;
   color: $yellow;
   outline: none;
-  float:left;
-  width:70px;
-  height:70px;
+  float: left;
+  width: 70px;
+  height: 70px;
 }
 
 .navButtonsContainer {
-  width:100%;
-  box-shadow:none;
-  margin-bottom:20px;
+  width: 100%;
+  box-shadow: none;
+  margin-bottom: 20px;
 }
 
 .QuestionText {
   color: $light-grey;
-  font-weight: bold;
+  font-weight: 500;
   width: 80%;
-  margin:auto;
+  margin: auto;
   padding: 15px;
-  border-radius:30px;
+  border-radius: 30px;
   height: auto;
   background-color: transparent;
   text-align: center;
   margin: 20px;
-  box-shadow:none;
-  font-size:20px;
-
+  box-shadow: none;
+  font-size: 30px;
+  line-height: 5vh;
 }
 .singleOptionContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items:center;
-  text-align:center;
+  align-items: center;
+  text-align: center;
   width: 80%;
   flex-direction: column;
 }
@@ -127,19 +134,18 @@ label {
 ::ng-deep .mat-progress-bar-buffer {
   background: transparent;
 }
-.mat-progress-bar{
+.mat-progress-bar {
   margin-top: 5px;
 }
 
 ::ng-deep .mat-tab-label .mat-tab-label-content {
-  font-size:large;
+  font-size: large;
   color: black;
 }
 ::ng-deep .mat-ink-bar {
-  background-color: $green !important;
+  background-color: $yellow !important;
   height: 3px !important;
-  }
-
+}
 
 .sectionName {
   text-align: center;
@@ -149,55 +155,57 @@ label {
 
 .sectionNameText {
   color: $green;
-  font-size:xx-large;
+  font-size: xx-large;
+  text-align: center;
 }
 
-.sectionDescriptionText{
-  font-size:large;
+.sectionDescriptionText {
+  font-size: large;
   color: $light-grey;
 }
 
-
 ::ng-deep .material-icons {
-  font-size:40px;
+  font-size: 40px;
 }
 ::ng-deep .mat-icon {
-  width:max-content !important;
-  height:max-content !important;
+  width: max-content !important;
+  height: max-content !important;
 }
-.singleOptionList mat-chip{
-  width:80%;
-  height:max-content;
-  padding:15px;
-  margin:10px auto;
-  background-color:#D3D3D3;
-  box-shadow:2px 2px 2px 2px #D3D3D3;
-  display:inline-block;
+.singleOptionList mat-chip {
+  width: 60%;
+  height: max-content;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 15px;
+  margin: 10px auto;
+  background-color: #d3d3d3;
+  box-shadow: 2px 2px 2px 2px #d3d3d3;
+  display: inline-block;
 }
 
 .singleOptionList {
-  width:100%;
+  width: 100%;
 }
 
 .multipleOptionContainer {
-  width:90%;
-  margin:auto;
-  align-items:center;
+  width: 90%;
+  margin: auto;
+  align-items: center;
 }
 .mat-standard-chip:focus::after {
   opacity: 0;
 }
 .multipleOptions {
-  width:90%;
-  padding:40px;
-  margin:auto;
-  display:flex;
-  flex-flow:row wrap;
-  justify-content:center;
+  width: 90%;
+  padding: 40px;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 .multipleOptions mat-chip {
-  height:max-content;
-  margin-right:5px;
+  height: max-content;
+  margin-right: 5px;
 }
 
 @media all and (max-width: 320px), (max-width: 414px), (max-width: 540px) {
@@ -207,32 +215,31 @@ label {
 }
 
 ::ng-deep .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
-  background-color:$green;
-  color:white;
+  background-color: $green;
+  color: white;
 }
 
-@media screen and (min-width:168px) and (max-width:768px) {
-
+@media screen and (min-width: 168px) and (max-width: 768px) {
   ::ng-deep .material-icons {
-    font-size:30px;
+    font-size: 30px;
   }
 
-  ::ng-deep .mat-fab .mat-button-wrapper{
-    padding:0px !important;
+  ::ng-deep .mat-fab .mat-button-wrapper {
+    padding: 0px !important;
   }
 
   .navButtonNext {
-    width:55px;
-    height:55px;
+    width: 55px;
+    height: 55px;
   }
   .navButtonPrevious {
-    width:55px;
-    height:55px;
+    width: 55px;
+    height: 55px;
   }
   .singleOptionContainer {
-    width:90%;
+    width: 90%;
   }
   .singleOptionList mat-chip {
-    width:100%;
+    width: 70%;
   }
 }

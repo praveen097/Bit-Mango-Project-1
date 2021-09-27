@@ -38,8 +38,8 @@ section {
   width: 47%;
   margin-bottom: 10px;
   border-bottom-style: solid;
-  border-bottom-color:$light-grey;
-  border-bottom-width: 2px;
+  border-bottom-color:$yellow;
+  border-bottom-width: 1px;
 }
 .priceEstimate {
   width: 20%;
@@ -96,9 +96,11 @@ section {
 
 #prevButton {
   background-color: $yellow;
+  color: $white;
 }
 #nextButton {
   background-color: $green;
+  color:$white;
 }
 @media screen and (min-width:769px) and (max-width:978px){
   .priceEstimate {

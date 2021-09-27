@@ -30,7 +30,8 @@ export class ResultsComponent implements OnInit {
     'Maximum Days',
   ];
   resultValue: number[] = [];
-  step = 0;
+  step:number = 0;
+
 
   constructor(
     private _costEstimationService: CostEstimationService,

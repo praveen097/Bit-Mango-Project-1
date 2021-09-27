@@ -23,7 +23,7 @@ export class OverviewComponent implements OnInit {
   maxPrice: number = 0;
   minDays: number = 0;
   maxDays: number = 0;
-
+  buttonText:string = 'Next Section';
   sectionExist: boolean = true;
 
   constructor(
@@ -50,6 +50,7 @@ export class OverviewComponent implements OnInit {
         this._costEstimationService.sections.length - 1
       ) {
         this.isLastSection = true;
+        this.buttonText = 'Finish';
       }
 
       if (

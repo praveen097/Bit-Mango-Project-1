@@ -159,4 +159,17 @@ export class CostEstimationService {
     return currentAnswers[0].options;
   }
 
+  isSectionAnswered(sectionQuestions: number[]){
+    let count: number=0;
+    sectionQuestions.forEach((x)=>{
+      for(let i = 0;i < this.answers.length;i++){
+        if(x == this.answers[i].qid)
+          if(this.answers[i].options.length == 0){
+            count++;
+          }
+      }
+    })
+    return count;
+  }
+
 }

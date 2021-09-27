@@ -27,8 +27,8 @@
         </mat-panel-description>
       </ng-template>
       <mat-action-row>
-        <button mat-raised-button *ngIf="step!=0" color="warn" (click)="prevStep()" id="prevButton">Previous Section</button>
-        <button mat-raised-button *ngIf="step!=sectionWithAnswers.length-1" color="primary" (click)="nextStep()" id="nextButton">Next Section</button>
+        <button mat-raised-button *ngIf="step!=0" (click)="prevStep()" id="prevButton">Previous Section</button>
+        <button mat-raised-button *ngIf="step!=sectionWithAnswers.length-1" (click)="nextStep()" id="nextButton">Next Section</button>
       </mat-action-row>
     </mat-expansion-panel>
     </section>

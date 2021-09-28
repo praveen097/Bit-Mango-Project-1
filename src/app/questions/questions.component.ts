@@ -26,8 +26,8 @@ export class QuestionsComponent implements OnInit {
 
   showSkip: boolean = true;
   sectionAttempted:boolean =  false;
-  questionsLeft:number = 0;
-  continueButtonText:string = 'ATTEMPT';
+  sectionTouched:boolean = false;
+  continueButtonText:string = 'CONTINUE';
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -38,6 +38,14 @@ export class QuestionsComponent implements OnInit {
     this.sections = this._costEstimationService.getSections();
     this.sectionNumber = this._costEstimationService.currentSectionIndex;
     this.skipSectionValues = this.sections;
+    this.sectionTouched =this._costEstimationService.isSectionAnswered(this.sections[this.sectionNumber].questionId);
+    if(this.sectionTouched){
+      this.continueButtonText = "EDIT";
+      this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+      this.answer = this._costEstimationService.getAnswerByQuestionId(
+      this.presentQuestion.qid
+    );
+    }
   }
   toggleSelection(chip: MatChip, option: Result) {
     chip.toggleSelected();
@@ -61,31 +69,16 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  showanswer() {
-    console.log(
-      'answer is ',
-      this._costEstimationService.getAnswerByQuestionId(
-        this.presentQuestion.qid
-      )
-    );
-  }
-
-  click() {
-    console.log(this.answer);
-  }
-
   skipSecionHandler(id: any) {
     this.sectionStarted = false;
     this._costEstimationService.goToSection(id);
     this.sectionNumber = id;
     this.currentQuestion = 1;
-    this.questionsLeft = this._costEstimationService.isSectionAnswered(this.sections[this.sectionNumber].questionId);
-    if(this.questionsLeft == 0){
-      this.sectionAttempted = true;
-      this.continueButtonText = "EDIT"
+    this.sectionTouched = this._costEstimationService.isSectionAnswered(this.sections[this.sectionNumber].questionId);
+    if(this.sectionTouched){
+      this.continueButtonText = "EDIT";
     }else{
-      this.sectionAttempted = false;
-      this.continueButtonText = "ATTEMPT";
+      this.continueButtonText = "CONTINUE";
     }
 
     this.presentQuestion = this._costEstimationService.getCurrentQuestion();
@@ -148,7 +141,6 @@ export class QuestionsComponent implements OnInit {
         }
         //get next question and move to overpage
         else {
-          // 1 2 3
           this._costEstimationService.getNextQuestion();
           this.answer = this._costEstimationService.getAnswerByQuestionId(
             this.presentQuestion.qid
@@ -168,14 +160,11 @@ export class QuestionsComponent implements OnInit {
   }
 
   previous() {
-    // console.log("Previous Clicked, question Id is",this.presentQuestion.qid)
     this.currentQuestion--;
-    // this._costEstimationService.getPreviousQuestion();
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.qid
     );
-    console.log('answer from prev', this.answer);
   }
 
   toResults(): void {

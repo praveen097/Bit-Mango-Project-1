@@ -19,10 +19,10 @@
 
 
       <mat-card-actions class="buttonSelect">
-        <button *ngIf="!sectionAttempted" mat-stroked-button  class="skipButton" (click)="skipSection()">
+        <button *ngIf="!sectionTouched" mat-stroked-button  class="skipButton" (click)="skipSection()">
           Skip {{sections[sectionNumber].sectionName}}</button>
+          <button *ngIf="sectionTouched" mat-stroked-button  class="skipButton" (click)="skipSection()">NEXT SECTION</button>
         <button mat-raised-button  class="continueButton" (click)="continue()">{{continueButtonText}}</button>
-        <button *ngIf="sectionAttempted" mat-stroked-button  class="skipButton" (click)="skipSection()">NEXT SECTION</button>
       </mat-card-actions>
 
     </mat-card>

@@ -1,4 +1,4 @@
-<div *ngIf="!showResults">
+<div *ngIf="!showResults" class="mainContainer">
     <section *ngIf="resultExist; else elseBlock">
         <h1 class="heading">Estimate of your project</h1>
   <mat-card class="priceEstimate">{{minPrice | currency}} - {{maxPrice | currency}}</mat-card>

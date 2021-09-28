@@ -27,6 +27,7 @@ export class QuestionsComponent implements OnInit {
   showSkip: boolean = true;
   sectionAttempted:boolean =  false;
   questionsLeft:number = 0;
+  continueButtonText:string = 'ATTEMPT';
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -74,14 +75,17 @@ export class QuestionsComponent implements OnInit {
   }
 
   skipSecionHandler(id: any) {
+    this.sectionStarted = false;
     this._costEstimationService.goToSection(id);
     this.sectionNumber = id;
     this.currentQuestion = 1;
     this.questionsLeft = this._costEstimationService.isSectionAnswered(this.sections[this.sectionNumber].questionId);
     if(this.questionsLeft == 0){
       this.sectionAttempted = true;
+      this.continueButtonText = "EDIT"
     }else{
-      this.sectionAttempted = false
+      this.sectionAttempted = false;
+      this.continueButtonText = "ATTEMPT";
     }
 
     this.presentQuestion = this._costEstimationService.getCurrentQuestion();

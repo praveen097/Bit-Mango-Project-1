@@ -14,7 +14,7 @@
   transform: translate(-50%, -50%);
 }
 .buttonSelect {
-  text-align: center;
+  text-align: left;
 }
 .customContainer {
   display: flex;
@@ -25,8 +25,15 @@
   margin: auto;
 }
 .skipCard {
-  width: 50%;
+  width: 70%;
   text-align: justify;
+  padding:30px;
+}
+
+.skipCard mat-card-content {
+  margin:30px 0px;
+  font-size: 21px;
+  line-height: 4vh;
 }
 .skipButton {
   background-color: $yellow;
@@ -90,20 +97,19 @@ label {
 .navButtonsContainer {
   width: 100%;
   box-shadow: none;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 .QuestionText {
   color: $light-grey;
   font-weight: 500;
   width: 80%;
-  margin: auto;
+  margin: 10px;
   padding: 15px;
   border-radius: 30px;
   height: auto;
   background-color: transparent;
   text-align: center;
-  margin: 20px;
   box-shadow: none;
   font-size: 30px;
   line-height: 5vh;
@@ -116,6 +122,7 @@ label {
   text-align: center;
   width: 80%;
   flex-direction: column;
+  margin-top: 30px;
 }
 .cards {
   background-color: $white;
@@ -162,8 +169,8 @@ label {
 .sectionNameText {
   color: $green;
   font-size: xx-large;
-  text-align: center;
-
+  text-align: left;
+  line-height: 4vh;
 }
 
 .sectionDescriptionText {
@@ -218,6 +225,23 @@ label {
   .sectionName {
     font-size: 20px;
   }
+  .skipCard {
+    width: 100%;
+  }
+  .skipCard mat-card-content {
+    font-size: 18px;
+  }
+  .QuestionText {
+    font-size: 20px;
+    width: 100%;
+  }
+  .singleOptionList mat-chip {
+    font-size: 15px;
+  }
+  .customContainer {
+    width: 100%;
+    padding: 30px;
+  }
 }
 
 ::ng-deep .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
@@ -247,5 +271,9 @@ label {
   }
   .singleOptionList mat-chip {
     width: 70%;
+    padding:10px;
+  }
+  .multipleOptionContainer {
+    width: 100%;
   }
 }

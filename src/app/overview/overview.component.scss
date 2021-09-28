@@ -9,7 +9,7 @@
 .heading{
     font-size:45px;
     text-align: center;
-    margin: 30px;
+    margin: 50px 20px;
     color: $light-grey;
 }
 .questionTemplate {
@@ -24,7 +24,7 @@
 .nextSectionButton {
   background-color: #15A811;
   color:$white;
-  margin:1%;
+  margin:20px 0px;
   float: right;
   width: fit-content;
   text-transform: uppercase;
@@ -35,15 +35,23 @@ section {
 }
 
 .questionText {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 18px;
 }
 
 @media screen and (max-width:578px){
   .questionText {
-    font-size: small;
+    font-size: 15px;
   }
   .heading {
-    font-size: x-large;
+    font-size: 28px;
+  }
+}
+@media screen and (min-width:578px) and (max-width:768px){
+  .questionText {
+    font-size: 16px;
+  }
+  .heading {
+    font-size: 35px;
   }
 }

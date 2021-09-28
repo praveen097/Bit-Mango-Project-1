@@ -1,7 +1,24 @@
 @import "../../styles.scss";
 
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+.mainSkipContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+.buttonSelect {
+  text-align: center;
+}
 .customContainer {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   width: 90%;
@@ -78,7 +95,7 @@ label {
 
 .QuestionText {
   color: $light-grey;
-  font-weight: bold;
+  font-weight: 500;
   width: 80%;
   margin: auto;
   padding: 15px;
@@ -86,9 +103,10 @@ label {
   height: auto;
   background-color: transparent;
   text-align: center;
-  margin: 50px;
+  margin: 20px;
   box-shadow: none;
-  font-size: 20px;
+  font-size: 30px;
+  line-height: 5vh;
 }
 .singleOptionContainer {
   display: flex;
@@ -100,17 +118,16 @@ label {
   flex-direction: column;
 }
 .cards {
-  background-color: white;
+  background-color: $white;
   width: 200px;
   border-radius: 12px;
   padding: 10px 28px 10px 28px;
   margin: 5px;
   text-align: center;
   border: 2px solid $light-grey;
-  background-color: rgb(205, 245, 231);
 }
 ::ng-deep .mat-progress-bar-fill::after {
-  background-color: $light-grey;
+  background-color: $green;
 }
 ::ng-deep .mat-progress-bar-buffer {
   background: transparent;
@@ -119,19 +136,22 @@ label {
   margin-top: 5px;
 }
 
+
 ::ng-deep .mat-tab-label {
   font-size:x-large;
   font-weight: 900;
   color: $light-grey;
   height: 10vh !important;
+
 }
 ::ng-deep .mat-ink-bar {
-  background-color: $green !important;
+  background-color: $yellow !important;
   height: 3px !important;
 }
 ::ng-deep .mat-tab-label-active {
   color: black ;
 }
+
 
 .sectionName {
   text-align: center;
@@ -142,6 +162,8 @@ label {
 .sectionNameText {
   color: $green;
   font-size: xx-large;
+  text-align: center;
+
 }
 
 .sectionDescriptionText {
@@ -157,8 +179,10 @@ label {
   height: max-content !important;
 }
 .singleOptionList mat-chip {
-  width: 80%;
+  width: 60%;
   height: max-content;
+  font-size: 17px;
+  font-weight: 400;
   padding: 15px;
   margin: 10px auto;
   background-color: #d3d3d3;
@@ -174,7 +198,9 @@ label {
   margin: auto;
   align-items: center;
 }
-
+.mat-standard-chip:focus::after {
+  opacity: 0;
+}
 .multipleOptions {
   width: 90%;
   padding: 40px;
@@ -220,6 +246,6 @@ label {
     width: 90%;
   }
   .singleOptionList mat-chip {
-    width: 100%;
+    width: 70%;
   }
 }

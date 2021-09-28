@@ -1,11 +1,11 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms" #tabRef 
   (selectedTabChange)="skipSecionHandler(tabRef.selectedIndex)" [selectedIndex]="sectionNumber">
   <mat-tab *ngFor="let allSections of sections" label="{{allSections.sectionName}}"></mat-tab>
-    
+
 </mat-tab-group>
 
-<div *ngIf="!sectionStarted" >
-  
+<div *ngIf="!sectionStarted" class="mainSkipContainer" >
+
   <div class="skipContainer">
 
     <mat-card class="skipCard">
@@ -17,7 +17,8 @@
         {{sections[sectionNumber].sectionDescription}}
       </mat-card-content>
 
-      <mat-card-actions>
+
+      <mat-card-actions class="buttonSelect">
         <button *ngIf="!sectionAttempted" mat-stroked-button  class="skipButton" (click)="skipSection()">
           Skip {{sections[sectionNumber].sectionName}}</button>
         <button mat-raised-button  class="continueButton" (click)="continue()">CONTINUE</button>
@@ -30,14 +31,13 @@
 
 
 <div *ngIf="sectionStarted">
-
   <mat-progress-bar
-    mode="determinate"
-    value="{{
-      (currentQuestion / sections[sectionNumber].questionId.length) * 100
-    }}"
-  ></mat-progress-bar>
-
+  mode="determinate"
+  value="{{
+    (currentQuestion / sections[sectionNumber].questionId.length) * 100
+  }}"
+></mat-progress-bar>
+<div class="mainContainer">
   <div class="customContainer">
     <mat-card class="QuestionText">
       {{ currentQuestion }} . {{ presentQuestion.question }}
@@ -72,4 +72,5 @@
     </mat-card>
 
   </div>
+</div>
 </div>

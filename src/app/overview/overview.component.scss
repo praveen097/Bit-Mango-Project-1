@@ -20,6 +20,7 @@
   color:$white;
   margin:1%;
   float: right;
+  text-transform: uppercase;
 }
 section {
   width: 90%;
@@ -28,7 +29,7 @@ section {
 
 .questionText {
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 @media screen and (max-width:578px){

@@ -20,22 +20,28 @@ section {
 .questionList {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .questionText {
   margin-bottom: 20px;
-  font-size:15px;
+  font-size:17px;
 }
 
 .optionChip {
   background-color: $green;
   color:$white;
+  font-size: 15px;
+
   height:max-content;
 }
 
 .questionTemplate {
-  width: 45%;
-  margin-bottom: 5px;
+  width: 47%;
+  margin-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-color:$yellow;
+  border-bottom-width: 1px;
+
 }
 .priceEstimate {
   width: 20%;
@@ -50,6 +56,9 @@ section {
   text-align: center;
   color:$white;
   font-weight: 500;
+}
+::ng-deep .errorMessage > .mat-card-content {
+  font-size: 20px;
 }
 
 @media screen and (min-width:568px) and (max-width:768px){
@@ -67,10 +76,14 @@ section {
 
   }
   .questionText {
-    font-size: small;
+    font-size: 17px;
   }
   .heading {
     font-size: x-large;
+  }
+  .errorMessage {
+    font-size: 20px;
+    padding: 20px;
   }
 }
 
@@ -79,14 +92,21 @@ section {
   text-align: center;
   background-color: $light-grey;
   color:$white;
+  padding:40px;
+  font-size: 30px;
+}
+
+#prevButton {
+  background-color: $yellow;
+  color: $white;
+}
+#nextButton {
+  background-color: $green;
+  color:$white;
 }
 @media screen and (min-width:769px) and (max-width:978px){
   .priceEstimate {
     width: 30%;
-  }
-
-  .questionText{
-    font-size: small;
   }
 
 }
@@ -105,10 +125,16 @@ section {
     margin-bottom: 10px;
   }
   .questionText{
-    font-size: small;
+    font-size: 15px;
   }
   .heading {
     font-size: large;
+  }
+  ::ng-deep .mat-card-content {
+    font-size:14px;
+  }
+  ::ng-deep .errorMessage > .mat-card-content {
+    font-size: 15px;
   }
 }
 @media screen and (min-width:168px) and (max-width:367px){
@@ -125,7 +151,7 @@ section {
     margin-bottom: 10px;
   }
   .questionText{
-    font-size: small;
+    font-size: 10px;
   }
   .heading{
     font-size: large;

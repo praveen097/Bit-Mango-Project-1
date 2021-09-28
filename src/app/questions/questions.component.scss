@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  outline: 1px solid red;
   height: 90vh;
 }
 .mainSkipContainer {
@@ -119,14 +118,13 @@ label {
   flex-direction: column;
 }
 .cards {
-  background-color: white;
+  background-color: $white;
   width: 200px;
   border-radius: 12px;
   padding: 10px 28px 10px 28px;
   margin: 5px;
   text-align: center;
   border: 2px solid $light-grey;
-  background-color: rgb(205, 245, 231);
 }
 ::ng-deep .mat-progress-bar-fill::after {
   background-color: $green;

@@ -29,20 +29,10 @@
     </section>
     <ng-template #elseBlock>
       <mat-card>
-    <h1 class="heading">You Skipped all sections</h1>
+    <h1 class="heading">You skipped all sections</h1>
     </mat-card>
     </ng-template>
-    <mat-action-row>
-      <button mat-raised-button *ngIf="step!=0" (click)="prevStep()" id="prevButton">Previous Section</button>
-      <button mat-raised-button *ngIf="step!=sectionWithAnswers.length-1" (click)="nextStep()" id="nextButton">Next Section</button>
-    </mat-action-row>
-  </mat-expansion-panel>
-  </section>
-  <ng-template #elseBlock>
-    <mat-card>
-  <h1 class="heading">You Skipped all sections</h1>
-  </mat-card>
-  </ng-template>
+    
 </div>
 
 

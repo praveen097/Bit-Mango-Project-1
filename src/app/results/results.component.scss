@@ -6,6 +6,12 @@
   margin-top: 20px;
   color: $light-grey;
 }
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
 section {
   width:90%;
   margin:auto;
@@ -79,7 +85,7 @@ section {
     font-size: 17px;
   }
   .heading {
-    font-size: x-large;
+    font-size: 30px;
   }
   .errorMessage {
     font-size: 20px;
@@ -128,7 +134,7 @@ section {
     font-size: 15px;
   }
   .heading {
-    font-size: large;
+    font-size: 25px;
   }
   ::ng-deep .mat-card-content {
     font-size:14px;

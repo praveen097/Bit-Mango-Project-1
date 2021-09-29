@@ -21,10 +21,13 @@ export class QuestionsComponent implements OnInit {
 
   sectionStarted: boolean = false;
 
-  skipParticularSection:number = 0; 
-  skipSectionValues:Sections[]= [];
+  skipParticularSection: number = 0;
+  skipSectionValues: Sections[] = [];
 
-  showSkip:boolean = true;
+  showSkip: boolean = true;
+  sectionAttempted:boolean =  false;
+  sectionTouched:boolean = false;
+  continueButtonText:string = 'CONTINUE';
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -34,69 +37,60 @@ export class QuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.sections = this._costEstimationService.getSections();
     this.sectionNumber = this._costEstimationService.currentSectionIndex;
-    // console.log(
-    //   'current section Index is ',
-    //   this._costEstimationService.currentSectionIndex
-    // );
     this.skipSectionValues = this.sections;
-    // this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
-    
-    
+    this.sectionTouched =this._costEstimationService.isSectionAnswered(this.sections[this.sectionNumber].questionId);
+    if(this.sectionTouched){
+      this.continueButtonText = "EDIT";
+      this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+      this.answer = this._costEstimationService.getAnswerByQuestionId(
+      this.presentQuestion.qid
+    );
+    }
   }
-  toggleSelection(chip:MatChip, option:Result) {
+  toggleSelection(chip: MatChip, option: Result) {
     chip.toggleSelected();
-    if(this.answer.length>0){
+    if (this.answer.length > 0) {
       this.answer[0].selected = false;
     }
     option.selected = true;
     this.answer[0] = option;
-    
- }
-
- multipleToggleSelection(option:Result){
-  const isExists = this.answer.findIndex(x=>x.optionText == option.optionText)
-  if(isExists > -1){
-    this.answer[isExists].selected = false;
-    this.answer != this.answer.splice(isExists,1);
-  }else{
-    option.selected = true;
-    this.answer.push(option);
   }
- }
 
- showanswer(){
-  console.log("answer is ",this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid));
- }
+  multipleToggleSelection(option: Result) {
+    const isExists = this.answer.findIndex(
+      (x) => x.optionText == option.optionText
+    );
+    if (isExists > -1) {
+      this.answer[isExists].selected = false;
+      this.answer != this.answer.splice(isExists, 1);
+    } else {
+      option.selected = true;
+      this.answer.push(option);
+    }
+  }
 
- click(){
-  console.log(this.answer);
- }
-
-
-
-  skipSecionHandler(id:any){
-    // this.showSkip =  false;
+  skipSecionHandler(id: any) {
+    this.sectionStarted = false;
     this._costEstimationService.goToSection(id);
     this.sectionNumber = id;
-    this.currentQuestion =1;
-    
-    //on clicking any button we fetch question
-    // this.sectionStarted = true;
+    this.currentQuestion = 1;
+    this.sectionTouched = this._costEstimationService.isSectionAnswered(this.sections[this.sectionNumber].questionId);
+    if(this.sectionTouched){
+      this.continueButtonText = "EDIT";
+    }else{
+      this.continueButtonText = "CONTINUE";
+    }
+
     this.presentQuestion = this._costEstimationService.getCurrentQuestion();
-    this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
-    console.log("Current question Id is :",this.presentQuestion.qid);
+    this.answer = this._costEstimationService.getAnswerByQuestionId(
+      this.presentQuestion.qid
+    );
   }
 
-  //store the option selected into answer
-  radioChangeHandler(option: Result): void {
-    this.answer = [option];
-  }
 
   continue(): void {
     this.presentQuestion = this._costEstimationService.getCurrentQuestion();
     this.sectionStarted = true;
-    console.log("Current question Id is :",this.presentQuestion.qid);
-
   }
   skipSection(): void {
     if (this.sectionNumber < this._costEstimationService.sections.length - 1) {
@@ -116,9 +110,13 @@ export class QuestionsComponent implements OnInit {
 
   next(): void {
     //check whether option is selected
-    
-    if (this.answer.length == 0 ) {
-      Swal.fire('Oops...', 'Please select an option!', 'error');
+
+    if (this.answer.length == 0) {
+      Swal.fire({
+        title:'Please select an option',
+        confirmButtonColor: '#D8CE17',
+        icon: 'error'
+      })
     } else {
       this.currentQuestion++; // used to show question number
       //set current question answer before calling next question
@@ -143,9 +141,10 @@ export class QuestionsComponent implements OnInit {
         }
         //get next question and move to overpage
         else {
-          // 1 2 3
           this._costEstimationService.getNextQuestion();
-          this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
+          this.answer = this._costEstimationService.getAnswerByQuestionId(
+            this.presentQuestion.qid
+          );
           this.toOverview();
         }
       }
@@ -153,24 +152,22 @@ export class QuestionsComponent implements OnInit {
       else {
         this.answer = [];
         this.presentQuestion = this._costEstimationService.getNextQuestion();
-        this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
+        this.answer = this._costEstimationService.getAnswerByQuestionId(
+          this.presentQuestion.qid
+        );
       }
     }
-    console.log("Current question Id is :",this.presentQuestion.qid);
   }
 
-  previous(){
-    // console.log("Previous Clicked, question Id is",this.presentQuestion.qid)
+  previous() {
     this.currentQuestion--;
-    // this._costEstimationService.getPreviousQuestion();
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
-    this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.qid);
-    console.log("answer from prev",this.answer)
+    this.answer = this._costEstimationService.getAnswerByQuestionId(
+      this.presentQuestion.qid
+    );
   }
 
   toResults(): void {
     this.route.navigate(['/results']);
   }
 }
-
-

@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 80vh;
 }
 .mainSkipContainer {
   position: absolute;
@@ -143,14 +143,22 @@ label {
   margin-top: 5px;
 }
 
-::ng-deep .mat-tab-label .mat-tab-label-content {
-  font-size: large;
-  color: black;
+
+::ng-deep .mat-tab-label {
+  font-size:x-large;
+  font-weight: 900;
+  color: $light-grey;
+  height: 10vh !important;
+
 }
 ::ng-deep .mat-ink-bar {
   background-color: $yellow !important;
   height: 3px !important;
 }
+::ng-deep .mat-tab-label-active {
+  color: black ;
+}
+
 
 .sectionName {
   text-align: center;
@@ -185,7 +193,6 @@ label {
   padding: 15px;
   margin: 10px auto;
   background-color: #d3d3d3;
-  box-shadow: 2px 2px 2px 2px #d3d3d3;
   display: inline-block;
 }
 

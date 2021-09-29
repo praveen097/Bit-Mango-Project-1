@@ -43,7 +43,6 @@ export class OverviewComponent implements OnInit {
       this.minPrice = this._costEstimationService.minPrice;
       this.maxDays = this._costEstimationService.maxDays;
       this.minDays = this._costEstimationService.minDays;
-      console.log("Answers are :",this.answers);
 
       if (
         this.sectionIndex ==

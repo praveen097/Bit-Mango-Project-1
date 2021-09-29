@@ -1,5 +1,11 @@
 @import '../../styles.scss';
 
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
 .heading {
   font-size: 45px;
   text-align: center;

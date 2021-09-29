@@ -45,7 +45,6 @@ export class ResultsComponent implements OnInit {
     this.minDays = this._costEstimationService.minDays;
 
     this.allAnswer = this._costEstimationService.overAllAnswers;
-    console.log(this.allAnswer);
     this.sectionWithAnswers = sections;
     this.sectionWithAnswers.forEach((element:any) => {
       const ans_list:Array<Questions>=[];

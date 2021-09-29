@@ -18,12 +18,12 @@ export class OverviewComponent implements OnInit {
   details: boolean = false;
   basket: boolean = false;
   isLastSection: boolean = false;
-
+  sectionName: string = '';
   minPrice: number = 0;
   maxPrice: number = 0;
   minDays: number = 0;
   maxDays: number = 0;
-  buttonText:string = 'Next Section';
+  buttonText: string = 'Next Section';
   sectionExist: boolean = true;
 
   constructor(
@@ -37,7 +37,9 @@ export class OverviewComponent implements OnInit {
       this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
       this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
 
-      this.sections = this._costEstimationService.getSections();
+      this.sectionName = this._costEstimationService.getSectionNameByIndex(
+        this.sectionIndex
+      );
 
       this.maxPrice = this._costEstimationService.maxPrice;
       this.minPrice = this._costEstimationService.minPrice;
@@ -76,11 +78,8 @@ export class OverviewComponent implements OnInit {
   }
 
   toQuestions(): void {
-    if(!this.isLastSection)
-      this.route.navigate(['/questions']);
-    else
-      this.route.navigate(['/results']);
-
+    if (!this.isLastSection) this.route.navigate(['/questions']);
+    else this.route.navigate(['/results']);
   }
   toresults(): void {
     this.route.navigate(['/results']);

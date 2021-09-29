@@ -50,7 +50,9 @@ export class CostEstimationService {
     return currentQuestion;
   }
   setAnswerById(id: number, options: any) {
-    let answerIndex = this.overAllAnswers.findIndex((answer) => answer.qid == id);
+    let answerIndex = this.overAllAnswers.findIndex(
+      (answer) => answer.qid == id
+    );
     if (answerIndex == -1) {
       let questionTemplate = this.getQuestionById(id);
       const question = JSON.parse(JSON.stringify(questionTemplate));
@@ -156,5 +158,8 @@ export class CostEstimationService {
       }
     }
     return false;
+  }
+  getSectionNameByIndex(index: number) {
+    return this.sections[index].sectionName;
   }
 }

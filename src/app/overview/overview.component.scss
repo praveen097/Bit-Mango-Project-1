@@ -1,5 +1,11 @@
 @import '../../styles.scss';
 
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
 .heading{
     font-size:45px;
     text-align: center;
@@ -20,6 +26,7 @@
   color:$white;
   margin:20px 0px;
   float: right;
+  width: fit-content;
   text-transform: uppercase;
 }
 section {

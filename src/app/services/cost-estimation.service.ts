@@ -123,13 +123,16 @@ export class CostEstimationService {
   }
 
   getAnswersOfCurrentSectionByIndex(index:number): Questions[]{
+    
     let sectionAnswers: Questions[] =[];
     //check against the all question ids present in the current section
     const sectionQuestionList = this.getSectionByIndex(index).questionId; //0 [1, 2]
     for(var i=0; i<this.answers.length;i++){ 
+      if(this.answers[i].options.length){
       if(sectionQuestionList.indexOf(this.answers[i].qid)>=0){
         sectionAnswers.push(this.answers[i]);
       }
+    }
     }
     this.overAllAnswers.push(...sectionAnswers);// for summary
     return sectionAnswers;
@@ -157,6 +160,15 @@ export class CostEstimationService {
   getAnswerByQuestionId(id:number){
     const currentAnswers:Questions[] = this.answers.filter((x)=>x.qid==id)
     return currentAnswers[0].options;
+  }
+
+  isSectionAnswered(sectionQuestions: number[]){
+    for(let i=0;i<sectionQuestions.length;i++){
+        if(this.getAnswerByQuestionId(sectionQuestions[i]).length!=0){
+          return true;
+        }
+    }
+    return false; 
   }
 
 }

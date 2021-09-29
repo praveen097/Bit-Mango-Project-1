@@ -23,7 +23,7 @@ export class OverviewComponent implements OnInit {
   maxPrice: number = 0;
   minDays: number = 0;
   maxDays: number = 0;
-
+  buttonText:string = 'Next Section';
   sectionExist: boolean = true;
 
   constructor(
@@ -43,13 +43,13 @@ export class OverviewComponent implements OnInit {
       this.minPrice = this._costEstimationService.minPrice;
       this.maxDays = this._costEstimationService.maxDays;
       this.minDays = this._costEstimationService.minDays;
-      console.log("Answers are :",this.answers);
 
       if (
         this.sectionIndex ==
         this._costEstimationService.sections.length - 1
       ) {
         this.isLastSection = true;
+        this.buttonText = 'Finish';
       }
 
       if (
@@ -76,7 +76,11 @@ export class OverviewComponent implements OnInit {
   }
 
   toQuestions(): void {
-    this.route.navigate(['/questions']);
+    if(!this.isLastSection)
+      this.route.navigate(['/questions']);
+    else
+      this.route.navigate(['/results']);
+
   }
   toresults(): void {
     this.route.navigate(['/results']);

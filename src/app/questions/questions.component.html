@@ -1,93 +1,77 @@
-<div *ngIf="!sectionStarted" >
-  <p class="section-name">
-    Upcoming section is :
-    <span class="section-name-text">{{
-      sections[sectionNumber].sectionName
-    }}</span>
-  </p>
+<mat-tab-group mat-align-tabs="center" animationDuration="0ms" #tabRef 
+  (selectedTabChange)="skipSecionHandler(tabRef.selectedIndex)" [selectedIndex]="sectionNumber">
+  <mat-tab *ngFor="let allSections of sections" label="{{allSections.sectionName}}"></mat-tab>
 
-  <div class="main-buttons">
-    <button class="btn btn-danger" (click)="skipSection()">SKIP</button>
-    <button class="btn btn-info" (click)="continue()">CONTINUE</button>
+</mat-tab-group>
+
+<div *ngIf="!sectionStarted" class="mainSkipContainer" >
+
+  <div class="skipContainer">
+
+    <mat-card class="skipCard">
+      <mat-card-title class="sectionNameText">
+        {{ sections[sectionNumber].sectionName }}
+      </mat-card-title>
+      <br>
+      <mat-card-content class="sectionDescriptionText">
+        {{sections[sectionNumber].sectionDescription}}
+      </mat-card-content>
+
+
+      <mat-card-actions class="buttonSelect">
+        <button *ngIf="!sectionTouched" mat-stroked-button  class="skipButton" (click)="skipSection()">
+          Skip {{sections[sectionNumber].sectionName}}</button>
+          <button *ngIf="sectionTouched" mat-stroked-button  class="skipButton" (click)="skipSection()">NEXT SECTION</button>
+        <button mat-raised-button  class="continueButton" (click)="continue()">{{continueButtonText}}</button>
+      </mat-card-actions>
+
+    </mat-card>
   </div>
-  
-  <!-- for particular section -->
-  
-    <div class=" skip-section" *ngIf="showSkip">
-      <div class="skip-container">
-      <div *ngFor="let option of skipSectionValues; index as i">
-        <button *ngIf="!(sectionNumber == i)" class="btn btn- info" (click)="skipSecionHandler(i)">
-        {{option.sectionId}} {{ option.sectionName }} 
-       </button>   
-      </div>
-    </div>
-    </div>
-  
 
 </div>
 
 
 <div *ngIf="sectionStarted">
-  <p class="section-name">
-    Current section is :
-    <span class="section-name-text">{{
-      sections[sectionNumber].sectionName
-    }}</span>
-  </p>
-
   <mat-progress-bar
-    mode="determinate"
-    value="{{
-      (currentQuestion / sections[sectionNumber].questionId.length) * 100
-    }}"
-  ></mat-progress-bar>
-
+  mode="determinate"
+  value="{{
+    (currentQuestion / sections[sectionNumber].questionId.length) * 100
+  }}"
+></mat-progress-bar>
+<div class="mainContainer">
   <div class="customContainer">
-    <h1 class="question-text">
+    <mat-card class="QuestionText">
       {{ currentQuestion }} . {{ presentQuestion.question }}
-    </h1>
+    </mat-card>
 
-    <div *ngIf="presentQuestion.multiple; else elseBlock">
-      <mat-form-field class="cards-container" appearance="fill">
-        <mat-label>Select Options here!</mat-label>
-        <mat-select [(ngModel)]="answer" multiple>
-          <mat-option
-            *ngFor="let option of presentQuestion.options"
-            [value]="option"
-          >
-            {{ option.questionText }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div *ngIf="presentQuestion.multiple; else elseBlock" class="multipleOptionContainer">
+
+      <mat-chip-list selectable multiple  class="multipleOptions">
+        <mat-chip  *ngFor="let option of presentQuestion.options" value="{{ option }}"
+        (click)="multipleToggleSelection(option)" [selected]="option.selected">
+          {{option.optionText}}
+        </mat-chip>
+      </mat-chip-list>
     </div>
 
     <ng-template #elseBlock>
-      <div class="cards-container">
-        <div *ngFor="let option of presentQuestion.options">
-          <label>
-            <div class="cards">
-              <input
-                type="radio"
-                name="option"
-                value="{{ option }}"
-                (change)="radioChangeHandler(option)"
-              />
-              {{ option.questionText }}
-            </div>
-          </label>
-        </div>
-        <!-- <mat-radio-group [(ngModel)]="answer">
-          <mat-radio-button class="cards" *ngFor="let season of presentQuestion.options" [value]="season">
-            {{season.questionText}}
-          </mat-radio-button>
-        </mat-radio-group> -->
 
+      <div class="singleOptionContainer">
+
+        <mat-chip-list class="singleOptionList mat-chip-list-stacked">
+          <mat-chip  #c="matChip" *ngFor="let option of presentQuestion.options" value="{{ option }}"
+          (click)="toggleSelection(c,option)" [selected]="option.selected">
+
+            {{option.optionText}}
+          </mat-chip>
+        </mat-chip-list>
       </div>
     </ng-template>
-    <hr />
+    <mat-card class="navButtonsContainer">
+      <button *ngIf="currentQuestion>1" mat-fab class="navButtonPrevious" (click)="previous()"><mat-icon class="nav-icons">navigate_before</mat-icon></button>
+      <button mat-fab class="navButtonNext" (click)="next()"><mat-icon class="nav-icons">navigate_next</mat-icon></button>
+    </mat-card>
 
-    <div class="next-button">
-      <button class="button_slide slide_right" (click)="next()">NEXT</button>
-    </div>
   </div>
+</div>
 </div>

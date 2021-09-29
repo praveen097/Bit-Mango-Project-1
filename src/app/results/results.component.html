@@ -1,54 +1,71 @@
-<div *ngIf="!showResults">
-    <div *ngIf="resultExist; else elseBlock">
-        <div class="result-button">
-        <button class="btn btn-outline-danger" (click)='toResults()'>CONTINUE TO RESULTS</button>
-        </div><br><br>
+<div *ngIf="!showResults" class="mainContainer">
 
-
-        <div *ngFor="let item of allAnswer; index as i ">
-            <h1 class="question-name"> {{i+1}}. {{item.question}}  </h1>
-
-            <div class="option-container">
-                <div *ngFor="let item2 of item.options">
-                    <h1 class="optionText"> 👉  {{ item2.questionText }}. 
-                        <span > Estimated cost :
-                        ${{item2.minPrice}} - $
-                        {{item2.maxPrice}}, duration: {{item2.minDays}} -  
-                        {{item2.maxDays}} days.
-                        </span>
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    <ng-template #elseBlock>
-    <h1 class="question-name skip">You Skipped all sections</h1>
-    </ng-template>
-</div>
-
-
-<div *ngIf="showResults">
-
-
-<marquee direction="left" scrollamount="12">Disclaimer: Prices ( provided by way of a Quotation or a Price List) are subject to change to the prices in effect at the time of delivery. 
-    Developers reserves the right to make any corrections to prices quoted due to clerical errors or errors of omission. 
-    In the event of any specific requirements representing a price increase, Client will be notified and afforded an opportunity to confirm.
-</marquee>
-
-<div class="container">
-
-    <div *ngFor="let items of resultText; index as i">
-        <div class="card">
-            <h1 class="card-text">{{items}}</h1>
-            <div class="aligner">
-                <h1 class="value-text">{{resultValue[i]}}</h1>
-            </div>
-        </div>
-    </div>
-    
-</div> 
-<div class="contact-us">
-    <h1>Still in doubt with the quotation? 
-    <button class="btn btn-info">Contact Us</button></h1>
-</div>
+  <section *ngIf="resultExist; else elseBlock">
+    <h1 class="heading">Estimate of your project</h1>
+    <mat-card class="priceEstimate"
+      >{{ minPrice | currency }} - {{ maxPrice | currency }}</mat-card
+    >
+    <mat-expansion-panel
+      class="sectionCard"
+      *ngFor="let currentSectionAnswers of sectionWithAnswers; index as i"
+      [expanded]="step === i"
+      (opened)="setStep(i)"
+      hideToggle
+    >
+      <mat-expansion-panel-header class="sectionName">{{
+        currentSectionAnswers.sectionName
+      }}</mat-expansion-panel-header>
+      <mat-panel-description
+        class="questionList"
+        *ngIf="currentSectionAnswers.answers.length > 0; else answersNotFound"
+      >
+        <mat-card
+          *ngFor="let ans of currentSectionAnswers.answers"
+          class="questionTemplate"
+        >
+          <div class="questionText">{{ ans.question }}</div>
+          <mat-card-content>
+            <mat-chip-list class="optionList">
+              <mat-chip *ngFor="let opt of ans.options" class="optionChip">{{
+                opt.optionText
+              }}</mat-chip>
+            </mat-chip-list>
+          </mat-card-content>
+        </mat-card>
+      </mat-panel-description>
+      <ng-template #answersNotFound>
+        <mat-panel-description>
+          <mat-card class="errorMessage">
+            <mat-card-content
+              >You haven't attempted questions from
+              {{ currentSectionAnswers.sectionName }}</mat-card-content
+            >
+          </mat-card>
+        </mat-panel-description>
+      </ng-template>
+      <mat-action-row>
+        <button
+          mat-raised-button
+          *ngIf="step != 0"
+          (click)="prevStep()"
+          id="prevButton"
+        >
+          Previous Section
+        </button>
+        <button
+          mat-raised-button
+          *ngIf="step != sectionWithAnswers.length - 1"
+          (click)="nextStep()"
+          id="nextButton"
+        >
+          Next Section
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </section>
+  <ng-template #elseBlock>
+    <mat-card>
+      <h1 class="heading">You skipped all sections</h1>
+    </mat-card>
+  </ng-template>
 </div>

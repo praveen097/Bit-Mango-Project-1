@@ -1,16 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
-$primary: #210a72;
-$secondary: #fbd4d5;
+$light-grey: #6c7069;
+$green: #15A811;
+$yellow:#D8CE17 ;
+$white:#ffffff;
 
 html,
 body {
   height: 100%;
-  background-color: #afeeee;
-  background-image: linear-gradient(90deg, #c3d2f3, #6de9d6);
 }
-@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
 body {
   margin: 0;
-  font-family: "Lato";
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+.mat-raised-button {
+  outline:none;
 }

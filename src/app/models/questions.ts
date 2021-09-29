@@ -1,9 +1,10 @@
 export interface Result {
-    questionText: string;
+    optionText: string;
     minPrice: number;
     maxPrice: number;
     minDays: number;
     maxDays: number;
+    selected:boolean;
 }
 
 export interface Questions {

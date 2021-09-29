@@ -1,60 +1,57 @@
-.question-name{
-    color: rgb(7, 7, 90);
-    padding:5px;
-    margin:20px 20px 0px 20px;
-    box-shadow: 2px 2px 20px rgb(1, 1, 24);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    text-align: justify;
-}
+@import '../../styles.scss';
 
-.optionText{
-    color: #431c5d;
-    padding-top: 10px;
-    text-align: justify;
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100vh;
 }
-.option-container{
-    margin:0px 20px 20px 20px;
-    padding-left: 5px;
-    background-color: #b3e4ec;
-}
-
-.section-heading{
-text-align: center;
-font-size: 3vh;
-padding: 2vh;
-color: #e05915;
-}
-
-.basket{
-    box-shadow: 2px 2px 20px black;
-    margin: 3vh;
+.heading{
+    font-size:45px;
     text-align: center;
-    width: fit-content;
-    padding: 4px 10px 0px 4px;
-    background-color: beige;
+    margin: 50px 20px;
+    color: $light-grey;
+}
+.questionTemplate {
+  margin: 2% 2% 2% 2%;
 }
 
-.buttons{
-    text-align: right;
+.optionChip {
+  background-color: #15A811;
+  color:$white;
+  height: max-content;
+}
+.nextSectionButton {
+  background-color: #15A811;
+  color:$white;
+  margin:20px 0px;
+  float: right;
+  width: fit-content;
+  text-transform: uppercase;
+}
+section {
+  width: 90%;
+  margin: auto;
 }
 
-button{
-    margin: 0px 5px 4px 5px; 
+.questionText {
+  margin-bottom: 30px;
+  font-size: 18px;
 }
 
-.overview-message{
-    text-align: center;
-    color: crimson;
-
+@media screen and (max-width:578px){
+  .questionText {
+    font-size: 15px;
+  }
+  .heading {
+    font-size: 28px;
+  }
 }
-
-@media all and (max-width: 320px),(max-width: 414px),(max-width: 540px){
-    .question-name, .optionText{
-        font-size: 16px;
-        text-align: justify;
-    }
-    button{
-        font-size: 10px;
-    }
+@media screen and (min-width:578px) and (max-width:768px){
+  .questionText {
+    font-size: 16px;
+  }
+  .heading {
+    font-size: 35px;
+  }
 }

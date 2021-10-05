@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "submissions",
+  "info": {
+    "name": "submissions",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "lowerEstimate": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "upperEstimate": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "answeredQuestions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "questions.questions"
+    },
+    "companyName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

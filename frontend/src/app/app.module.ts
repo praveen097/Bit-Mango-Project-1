@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CostEstimationService } from './services/cost-estimation.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatRadioModule } from '@angular/material/radio/'
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
@@ -40,8 +41,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatExpansionModule,
     MatButtonModule,
     MatTabsModule,
-    MatIconModule
-
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent]

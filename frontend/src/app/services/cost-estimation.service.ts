@@ -1,9 +1,12 @@
 import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Questions, Result } from '../models/questions';
 import { Sections } from '../models/sections';
 import questions from '../data/questions.json';
 import sections from '../data/sections.json';
+import { ISections } from '../models/newSections';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +21,9 @@ export class CostEstimationService {
   maxDays: number = 0;
   minDays: number = 0;
   overAllAnswers: Questions[] = [];
-  constructor() {}
+
+  hostUrl:string = "http://localhost:1337";
+  constructor(private http:HttpClient) {}
   setInitialValues() {
     this.currentSectionIndex = 0;
     this.currentQuestionId = this.getSectionByIndex(
@@ -33,7 +38,26 @@ export class CostEstimationService {
       };
     });
   }
+  showSections(){
+    return new Promise((resolve,reject)=>{
+      this.http.get(this.hostUrl + "/sections").subscribe(
+        (data)=>{
+          resolve(data);
+        },
+        (err)=>{
+          reject(err);
+        }
+      );
+      
+    });
+  }
+
+  // showSections():Observable<ISections[]>{
+  //   return this.http.get<ISections[]>(this.hostUrl + "/sections")
+  // }
+
   getSections() {
+    this.showSections();
     return sections;
   }
   getSectionByIndex(index: number) {

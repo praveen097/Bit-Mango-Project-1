@@ -5,6 +5,7 @@ import { CostEstimationService } from '../services/cost-estimation.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatChip } from '@angular/material/chips';
+import { ISections } from '../models/newSections';
 
 @Component({
   selector: 'app-questions',
@@ -29,12 +30,14 @@ export class QuestionsComponent implements OnInit {
   sectionTouched:boolean = false;
   continueButtonText:string = 'CONTINUE';
 
+  newSections:ISections[]=[];
+
   constructor(
     private _costEstimationService: CostEstimationService,
     private route: Router
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.sections = this._costEstimationService.getSections();
     this.sectionNumber = this._costEstimationService.currentSectionIndex;
     this.skipSectionValues = this.sections;
@@ -46,6 +49,16 @@ export class QuestionsComponent implements OnInit {
       this.presentQuestion.qid
     );
     }
+    this.newSections = <ISections[]>(await this._costEstimationService.showSections());
+    console.log(this.newSections);
+    // const section = this._costEstimationService.showSections();
+    // section.subscribe(
+    //   (data)=>{
+    //     this.newSections=data;
+    //     console.log("hello from questions",this.newSections);
+    //   }
+    // )
+    
   }
   toggleSelection(chip: MatChip, option: Result) {
     chip.toggleSelected();

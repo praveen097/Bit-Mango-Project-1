@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_questions_questions",
+  "info": {
+    "name": "questions",
+    "icon": "angle-double-up",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "multiple": {
+      "type": "boolean",
+      "required": true
+    },
+    "questionText": {
+      "type": "string",
+      "required": true
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "options.options"
+    }
+  }
+}

@@ -15,12 +15,10 @@
 .subContainer {
   width:80%;
   text-align: center;
-  margin-top: 80px;
-  margin-left: auto;
-  margin-right: auto;
   border: $yellow solid;
   border-radius: 20px;
-  border-width: thick;
+  border-width: 2px;
+  padding: 10px 20px;
 }
 .heading {
   font-size: 40px;
@@ -43,20 +41,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100vh ;
 }
 .subContainer mat-card {
   box-shadow: none;
-  width:90%;
-  margin: 30px auto;
+  width:100%;
+  margin:10px auto;
 }
 
 .navButton {
   background-color: $yellow;
-  color:white;
-  padding:5px 30px;
-  font-size: 20px;
-  border-radius: 20px;
+  color:$white;
+  padding:7px 20px;
+  font-size: 18px;
+  margin:20px;
   outline: none;
 }
 .navButton:hover {
@@ -67,40 +65,49 @@
   text-align: center;
   margin: 30px auto;
 }
-
-
-
-@media all and (max-width: 320px),(max-width: 414px),(max-width: 540px){
-
-  .mainText{
-    font-size: 12px;
-  }
-
-  .subText{
-    font-size:xx-small
-  }
-  .heading{
-    font-size: large;
-    margin:0;
-  }
-  .headingContainer{
-    border-radius: 25px;
-  }
-
-  .subContainer{
-    width: 100%;
-    height: 60vh;
-    margin:1px;
-  }
+@media screen and  (max-width:968px) {
   .content {
-    font-size: small;
-    line-height: normal;
+    font-size: 18px;
+    line-height: 5vh;
   }
-  .subContainer mat-card {
-    width: 90%;
-    margin: 0;
+
+  .heading {
+    font-size: 35px;
+    line-height: 6vh;
   }
-  
+}
+@media screen and  (max-width:768px) {
+  .content {
+    font-size: 17px;
+    line-height: 5vh;
+  }
+
+  .heading {
+    font-size: 28px;
+    line-height: 6vh;
+    margin-bottom: 25px;
+  }
+}
+
+@media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
+
+  .content {
+    font-size: 15px;
+    line-height: 5vh;
+  }
+
+  .heading {
+    font-size: 25px;
+    line-height: 5vh;
+    margin-bottom: 25px;
+  }
+  .mainContainer {
+    height: max-content;
+  }
+  .subContainer {
+    margin:20px 0px;
+  }
+
 
 }
 

@@ -21,9 +21,10 @@ export class CostEstimationService {
   maxDays: number = 0;
   minDays: number = 0;
   overAllAnswers: Questions[] = [];
+  newSections: ISections[] = [];
 
-  hostUrl:string = "http://localhost:1337";
-  constructor(private http:HttpClient) {}
+  hostUrl: string = 'http://localhost:1337';
+  constructor(private http: HttpClient) {}
   setInitialValues() {
     this.currentSectionIndex = 0;
     this.currentQuestionId = this.getSectionByIndex(
@@ -33,22 +34,22 @@ export class CostEstimationService {
       return {
         qid: question.qid,
         multiple: question.multiple,
-        question: question.question,
+        questionText: question.questionText,
         options: [],
       };
     });
   }
-  showSections(){
-    return new Promise((resolve,reject)=>{
-      this.http.get(this.hostUrl + "/sections").subscribe(
-        (data)=>{
+  showSections() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.hostUrl + '/sections').subscribe(
+        (data) => {
+          this.newSections = <ISections[]>data;
           resolve(data);
         },
-        (err)=>{
+        (err) => {
           reject(err);
         }
       );
-      
     });
   }
 
@@ -185,5 +186,25 @@ export class CostEstimationService {
   }
   getSectionNameByIndex(index: number) {
     return this.sections[index].sectionName;
+  }
+
+  postAnswers(email: string, companyName: string): any {
+    console.log(this.overAllAnswers);
+    let answers: any = [];
+    this.overAllAnswers.forEach((answer) => {
+      answers.push({
+        questionText: answer.questionText,
+        multiple: answer.multiple,
+        options: answer.options,
+      });
+    });
+    console.log(answers);
+    const data = {
+      email: email,
+      answeredQuestions: answers,
+      companyName: companyName,
+    };
+    console.log(data);
+    return this.http.post('http://localhost:1337/submissions', data);
   }
 }

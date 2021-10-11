@@ -7,11 +7,10 @@
   height: 80vh;
 }
 .mainSkipContainer {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:85%;
 }
 .buttonSelect {
   text-align: left;
@@ -27,7 +26,6 @@
 .skipCard {
   width: 70%;
   text-align: justify;
-  padding:30px;
 }
 
 .skipCard mat-card-content {
@@ -102,7 +100,7 @@ label {
 
 .QuestionText {
   color: $light-grey;
-  font-weight: 500;
+  font-weight: 400;
   width: 80%;
   margin: 10px;
   padding: 15px;
@@ -146,7 +144,7 @@ label {
 
 ::ng-deep .mat-tab-label {
   font-size:x-large;
-  font-weight: 900;
+  font-weight: 700;
   color: $light-grey;
   height: 10vh !important;
 
@@ -275,5 +273,8 @@ label {
   }
   .multipleOptionContainer {
     width: 100%;
+  }
+  .mainSkipContainer{
+    height: 100%;
   }
 }

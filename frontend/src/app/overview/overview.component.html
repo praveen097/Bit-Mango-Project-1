@@ -1,7 +1,7 @@
 <section *ngIf="sectionExist; else elseBlock" class="mainContainer">
   <h1 class="heading">Overview of {{ sectionName }}</h1>
   <mat-card *ngFor="let answer of answers" class="questionTemplate">
-    <div class="questionText">{{ answer.question }}</div>
+    <div class="questionText">{{ answer.questionText }}</div>
     <mat-card-content>
       <mat-chip-list class="option-list">
         <mat-chip *ngFor="let opt of answer.options" class="optionChip">{{

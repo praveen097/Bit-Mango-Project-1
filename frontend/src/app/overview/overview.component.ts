@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { ActivatedRoute } from '@angular/router';
+import { question } from '../models/newSections';
 // import { Questions } from '../models/questions';
 // import { Sections } from '../models/sections';
 
@@ -15,6 +16,7 @@ export class OverviewComponent implements OnInit {
   sectionIndex: number = 0;
   // answers: Questions[] = [];
   // public sections: Sections[] = [];
+  answers: question[] = [];
   details: boolean = false;
   basket: boolean = false;
   isLastSection: boolean = false;
@@ -41,10 +43,6 @@ export class OverviewComponent implements OnInit {
         this.sectionIndex
       );
 
-    //   this.maxPrice = this._costEstimationService.maxPrice;
-    //   this.minPrice = this._costEstimationService.minPrice;
-    
-
       if (
         this.sectionIndex ==
         this._costEstimationService.sectionsData.length - 1
@@ -57,7 +55,7 @@ export class OverviewComponent implements OnInit {
         this.sectionIndex <=
         this._costEstimationService.sectionsData.length - 1
       ) {
-        // this.answers =
+        this.answers =
           this._costEstimationService.getAnswersOfCurrentSectionByIndex(
             this.sectionIndex
           );
@@ -74,5 +72,4 @@ export class OverviewComponent implements OnInit {
   toresults(): void {
     this.route.navigate(['/results']);
   }
-  
 }

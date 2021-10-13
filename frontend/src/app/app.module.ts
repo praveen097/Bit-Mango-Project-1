@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CostEstimationService } from './services/cost-estimation.service';
@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatTabsModule } from '@angular/material/tabs'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -43,7 +43,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTabsModule,
     MatIconModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent]

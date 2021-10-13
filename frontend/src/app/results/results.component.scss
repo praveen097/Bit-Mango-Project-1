@@ -17,6 +17,7 @@
 section {
   width:90%;
   margin:auto;
+  padding:10px;
 }
 .sectionCard {
   margin:20px auto;
@@ -53,6 +54,9 @@ section {
 .showUserForm {
   width:80%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   border: $yellow solid;
@@ -133,11 +137,19 @@ section {
 .submitUserDetails:hover {
   background-color: $green;
 }
+mat-card-footer {
+  width: 100%;
+}
 
 .showUserForm > mat-card {
   box-shadow: none;
+  margin-top:60px;
+  margin-bottom:0px ;
   width:90%;
-  margin: 60px auto 0px auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 .formInput {
   display: flex;
@@ -221,6 +233,9 @@ mat-icon {
   .inputVal {
     margin:20px auto;
   }
+  .showUserForm > mat-card {
+    margin: auto;
+  }
 }
 @media screen and (min-width:568px) and (max-width:768px){
  #greetingMessage {
@@ -243,7 +258,9 @@ mat-icon {
   padding:7px 12px;
   font-size: 15px;
 }
-
+.showUserForm > mat-card {
+  margin: auto;
+}
 
 }
 
@@ -277,6 +294,13 @@ mat-icon {
   }
   .formInput {
     flex-flow: column;
+  }
+  .showUserForm {
+    width:100%;
+  }
+
+  .showUserForm > mat-card {
+    margin: auto;
   }
 
   .inputVal {
@@ -326,5 +350,11 @@ mat-icon {
   .mat-form-field {
     font-size: 15px;
     width: 100%;
+  }
+  .showUserForm {
+    width:100%;
+  }
+  .showUserForm > mat-card {
+    margin: auto;
   }
 }

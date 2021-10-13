@@ -4,6 +4,7 @@ import { CostEstimationService } from '../services/cost-estimation.service';
 import { Questions } from '../models/questions';
 import { ISections } from '../models/newSections';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -22,6 +23,7 @@ export class ResultsComponent implements OnInit {
   email: string = '';
   companyName: string = '';
   form!: FormGroup;
+  showProgressBar: boolean = false;
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -39,9 +41,10 @@ export class ResultsComponent implements OnInit {
       this.resultExist = false;
     }
     this.sectionWithAnswers = this._costEstimationService.newSections;
+    console.log(this.sectionWithAnswers);
     this.sectionWithAnswers.forEach((section: any) => {
-      const ans_list: any = [];
       section.questions.forEach((question: any) => {
+        const ans_list: any = [];
         const ans = this.allAnswer.filter(
           (ans) => ans.questionText === question.questionText
         );
@@ -51,6 +54,7 @@ export class ResultsComponent implements OnInit {
         question.options = ans_list[0];
       });
     });
+    console.log(this.sectionWithAnswers);
   }
 
   toResults(): void {
@@ -70,12 +74,13 @@ export class ResultsComponent implements OnInit {
   }
 
   displayAnswers() {
+    this.showProgressBar = true;
     this._costEstimationService
       .postAnswers(this.email, this.companyName)
       .subscribe((data: any) => {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;
+        this.showUserForm = false;
       });
-    this.showUserForm = false;
   }
 }

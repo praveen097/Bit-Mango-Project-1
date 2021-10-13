@@ -1,189 +1,239 @@
 import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Questions, Result } from '../models/questions';
-import { Sections } from '../models/sections';
-import questions from '../data/questions.json';
-import sections from '../data/sections.json';
-import { ISections } from '../models/newSections';
+
+import {
+  question,
+  sections,
+  submitOptions,
+  submitQuestions,
+} from '../models/newSections';
 @Injectable({
   providedIn: 'root',
 })
 export class CostEstimationService {
-  currentQuestionId: number = 0;
-  currentSectionIndex: number = 0;
-  answers: Questions[] = [];
-  questions: Questions[] = questions;
-  sections: Sections[] = sections;
   maxPrice: number = 0;
   minPrice: number = 0;
-  maxDays: number = 0;
-  minDays: number = 0;
-  overAllAnswers: Questions[] = [];
+  overAllAnswers: question[] = [];
+  //----------------------------------------------------
+  hostUrl: string = 'http://localhost:1337';
+  currentSectionIndex: number = 0;
+  currentQuestion: string = '';
+  currentQuestionIndex: number = 0;
+  sectionsData: sections[] = [];
+  // resultData: sections[] = [];
+  answers: question[] = [];
+  allSections: sections[] = [];
+  allQuestions: question[] = [];
+  //-----------------------------------------------
+  constructor(private http: HttpClient) {}
 
-  hostUrl:string = "http://localhost:1337";
-  constructor(private http:HttpClient) {}
-  setInitialValues() {
-    this.currentSectionIndex = 0;
-    this.currentQuestionId = this.getSectionByIndex(
+  async setSectionValues() {
+    this.sectionsData = <sections[]>await this.getSections();
+    this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
-    ).questionId[0];
-    this.answers = questions.map((question: Questions) => {
+    ).questions[this.currentQuestionIndex].id;
+
+    for (var i = 0; i < this.sectionsData.length; i++) {
+      for (var j = 0; j < this.sectionsData[i].questions.length; j++)
+        this.allQuestions.push(this.sectionsData[i].questions[j]);
+    }
+    this.answers = this.allQuestions.map((question: question) => {
       return {
-        qid: question.qid,
+        _id: question._id,
         multiple: question.multiple,
-        question: question.question,
+        questionText: question.questionText,
         options: [],
+        id: question.id,
+        __v: question.__v,
       };
     });
   }
-  showSections(){
-    return new Promise((resolve,reject)=>{
-      this.http.get(this.hostUrl + "/sections").subscribe(
-        (data)=>{
+
+  getSections() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.hostUrl + '/sections').subscribe(
+        (data) => {
           resolve(data);
+          // this.resultData = <sections[]>data;
         },
-        (err)=>{
+        (err) => {
           reject(err);
         }
       );
-      
     });
   }
 
-  // showSections():Observable<ISections[]>{
-  //   return this.http.get<ISections[]>(this.hostUrl + "/sections")
-  // }
+  incrementCurrentSection() {
+    this.currentSectionIndex += 1;
+  }
 
-  getSections() {
-    this.showSections();
-    return sections;
+  getSectionNameByIndex(index: number) {
+    return this.sectionsData[index].sectionName;
   }
   getSectionByIndex(index: number) {
-    return this.sections[index];
+    return this.sectionsData[index];
   }
-  getCurrentQuestionId(): number {
-    return this.currentQuestionId;
+  skipSection() {
+    this.currentSectionIndex += 1;
   }
-  getCurrentQuestion(): Questions {
-    //if qid matches with current question id, then return that question
-    const currentQuestion = questions.find((question: Questions) => {
-      return question.qid == this.currentQuestionId;
-    });
-    return currentQuestion;
+  goToSectionByIndex(id: number) {
+    this.currentSectionIndex = id;
+    this.currentQuestionIndex = 0;
   }
-  setAnswerById(id: number, options: any) {
+  getCurrentQuestion() {
+    return this.sectionsData[this.currentSectionIndex].questions[0];
+  }
+
+  setAnswerById(id: string, options: any) {
+    for (var i = 0; i < this.answers.length; i++) {
+      if (this.answers[i].id == id) {
+        this.answers[i].options = options;
+        console.log(this.answers[i].options.length);
+        for (var j = 0; j < this.answers[i].options.length; j++) {
+          this.maxPrice += this.answers[i].options[j].maxPrice;
+          this.minPrice += this.answers[i].options[j].minPrice;
+        }
+      }
+    }
+    console.log('Max Price is ', this.maxPrice);
+    console.log('Min Price is ', this.minPrice);
+
     let answerIndex = this.overAllAnswers.findIndex(
-      (answer) => answer.qid == id
+      (answer) => answer.id == id
     );
     if (answerIndex == -1) {
       let questionTemplate = this.getQuestionById(id);
       const question = JSON.parse(JSON.stringify(questionTemplate));
       question.options = options;
       this.overAllAnswers.push(JSON.parse(JSON.stringify(question)));
+      console.log(this.overAllAnswers);
     } else {
       this.overAllAnswers[answerIndex].options = options;
     }
-    //map through the answers array
-    this.answers = this.answers.map((answer) => {
-      //check if qid matches with the id passesed as parameter
-      if (answer.qid == id) {
-        //set options in the answer array to option passed in the parameter
-        answer.options = options;
-        for (var i = 0; i < answer.options.length; i++) {
-          this.maxPrice += answer.options[i].maxPrice;
-          this.minPrice += answer.options[i].minPrice;
-          this.maxDays += answer.options[i].maxDays;
-          this.minDays += answer.options[i].minDays;
-        }
-      }
-      return answer;
-    });
-  }
-  getQuestionById(id: number) {
-    const currentQuestion = questions.find((question: Questions) => {
-      return question.qid == id;
-    });
-    return currentQuestion;
-  }
-  getNextQuestion(): Questions {
-    //check if this is the last question of current section
-    if (this.isLastQuestionOfCurrentSection(this.currentQuestionId)) {
-      //increment current section as we need next section
-      this.currentSectionIndex += 1;
-      //set current question id to first index of next section
-      this.currentQuestionId = this.getSectionByIndex(
-        this.currentSectionIndex
-      ).questionId[0];
-    } else {
-      //check the next question id in the current section and set it to question id
-      const sectionQuestions = this.getSectionByIndex(
-        this.currentSectionIndex
-      ).questionId;
-      this.currentQuestionId =
-        sectionQuestions[sectionQuestions.indexOf(this.currentQuestionId) + 1];
-    }
-    return this.getQuestionById(this.currentQuestionId);
-  }
-  getPreviousQuestion(): Questions {
-    const sectionQuestions = this.getSectionByIndex(
-      this.currentSectionIndex
-    ).questionId;
-    this.currentQuestionId =
-      sectionQuestions[sectionQuestions.indexOf(this.currentQuestionId) - 1];
-    return this.getQuestionById(this.currentQuestionId);
+    //   if (answerIndex == -1) {
+    //     let questionTemplate = this.getQuestionById(id);
+    //     const question = JSON.parse(JSON.stringify(questionTemplate));
+    //     question.options = options;
+    //     this.overAllAnswers.push(JSON.parse(JSON.stringify(question)));
+    //   } else {
+    //     this.overAllAnswers[answerIndex].options = options;
+    //   }
+    //   //map through the answers array
+    //   this.answers = this.answers.map((answer) => {
+    //     //check if qid matches with the id passesed as parameter
+    //     if (answer.qid == id) {
+    //       //set options in the answer array to option passed in the parameter
+    //       answer.options = options;
+    //       for (var i = 0; i < answer.options.length; i++) {
+    //         this.maxPrice += answer.options[i].maxPrice;
+    //         this.minPrice += answer.options[i].minPrice;
+    //         this.maxDays += answer.options[i].maxDays;
+    //         this.minDays += answer.options[i].minDays;
+    //       }
+    //     }
+    //     return answer;
+    //   });
+    // }
   }
   isLastQuestionOfCurrentSection(id: number) {
     // compare index of current question and current sections questions array length
     const sectionQuestions = this.getSectionByIndex(
       this.currentSectionIndex
-    ).questionId;
-    var indexOfCurrentQuestion = sectionQuestions.indexOf(
-      this.currentQuestionId
-    ); //
-    if (indexOfCurrentQuestion == sectionQuestions.length - 1) {
+    ).questions;
+    if (this.currentQuestionIndex == sectionQuestions.length - 1) {
       return true;
     } else {
       return false;
     }
   }
-  getAnswersOfCurrentSectionByIndex(index: number): Questions[] {
-    const qids = this.getSectionByIndex(index).questionId;
-    const answers = this.overAllAnswers.filter(
-      (answer) => qids.indexOf(answer.qid) != -1
+
+  getNextQuestion(): question {
+    //   //check if this is the last question of current section
+    if (this.isLastQuestionOfCurrentSection(this.currentQuestionIndex)) {
+      //increment current section as we need next section
+      this.currentSectionIndex += 1;
+      this.currentQuestionIndex = 0;
+      //set current question id to first index of next section
+      this.currentQuestion = this.getSectionByIndex(
+        this.currentSectionIndex
+      ).questions[this.currentQuestionIndex].id;
+    } else {
+      //     //check the next question id in the current section and set it to question id
+      this.currentQuestionIndex++;
+      const sectionQuestions = this.getSectionByIndex(
+        this.currentSectionIndex
+      ).questions;
+      this.currentQuestion = sectionQuestions[this.currentQuestionIndex].id;
+    }
+    return this.getQuestionById(this.currentQuestion);
+  }
+
+  getQuestionById(id: string): question {
+    let currentQuestion = <question>this.allQuestions.find(
+      (question: question) => {
+        return question.id == id;
+      }
     );
-    return answers;
+    return currentQuestion;
   }
-  incrementCurrentSection() {
-    this.currentSectionIndex += 1;
-  }
-  skipSection() {
-    this.currentSectionIndex += 1;
-    this.currentQuestionId = this.getSectionByIndex(
+
+  getPreviousQuestion(): question {
+    const sectionQuestions = this.getSectionByIndex(
       this.currentSectionIndex
-    ).questionId[0];
+    ).questions;
+    this.currentQuestion = sectionQuestions[this.currentQuestionIndex - 1].id;
+    this.currentQuestionIndex--;
+    return this.getQuestionById(this.currentQuestion);
   }
-  goToSection(id: number) {
-    this.currentSectionIndex = id;
-    this.currentQuestionId = this.getSectionByIndex(
-      this.currentSectionIndex
-    ).questionId[0];
-  }
-  getAnswerByQuestionId(id: number) {
-    const currentAnswers: Questions[] = this.answers.filter((x) => x.qid == id);
+
+  getAnswerByQuestionId(id: string) {
+    const currentAnswers: question[] = this.answers.filter((x) => x.id == id);
     return currentAnswers[0].options;
   }
 
-  isSectionAnswered(sectionQuestions: number[]) {
-    for (let i = 0; i < sectionQuestions.length; i++) {
-      if (this.getAnswerByQuestionId(sectionQuestions[i]).length != 0) {
+  isSectionAnswered(sectionIndex: number) {
+    for (let i = 0; i < this.sectionsData[sectionIndex].questions.length; i++) {
+      if (
+        this.getAnswerByQuestionId(
+          this.sectionsData[sectionIndex].questions[i].id
+        ).length != 0
+      ) {
         return true;
       }
     }
     return false;
   }
-  getSectionNameByIndex(index: number) {
-    return this.sections[index].sectionName;
+
+  getAnswersOfCurrentSectionByIndex(index: number) {
+    //   const qids = this.getSectionByIndex(index).questionId;
+    //   const answers = this.overAllAnswers.filter(
+    //     (answer) => qids.indexOf(answer.qid) != -1
+    //   );
+    //   return answers;
+  }
+  submitAnswers(email: string, companyName: string) {
+    let finalAnswers: submitQuestions[] = [];
+    finalAnswers = this.overAllAnswers.map((answer) => ({
+      multiple: answer.multiple,
+      questionText: answer.questionText,
+      options: answer.options.map((option) => ({
+        optionText: option.optionText,
+        minPrice: option.minPrice,
+        maxPrice: option.maxPrice,
+      })),
+    }));
+
+    const data = {
+      email: email,
+      answeredQuestions: finalAnswers,
+      companyName: companyName,
+    };
+    this.http
+      .post(this.hostUrl + '/submissions', data)
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+      });
   }
 }

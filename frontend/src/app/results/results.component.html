@@ -5,6 +5,7 @@
     <mat-card class="priceEstimate"
       >{{ minPrice | currency }} - {{ maxPrice | currency }}</mat-card
     >
+    <button (click)="submitAnswers()">Submit answers</button>
     <mat-expansion-panel
       class="sectionCard"
       *ngFor="let currentSectionAnswers of sectionWithAnswers; index as i"
@@ -17,13 +18,13 @@
       }}</mat-expansion-panel-header>
       <mat-panel-description
         class="questionList"
-        *ngIf="currentSectionAnswers.answers.length > 0; else answersNotFound"
+        *ngIf="currentSectionAnswers.questions[0].options.length != 0; else answersNotFound"
       >
-        <mat-card
-          *ngFor="let ans of currentSectionAnswers.answers"
+      <div *ngFor="let ans of currentSectionAnswers.questions">
+      <mat-card *ngIf="ans.options.length!=0"
           class="questionTemplate"
         >
-          <div class="questionText">{{ ans.question }}</div>
+          <div class="questionText">{{ ans.questionText }}</div>
           <mat-card-content>
             <mat-chip-list class="optionList">
               <mat-chip *ngFor="let opt of ans.options" class="optionChip">{{
@@ -32,6 +33,7 @@
             </mat-chip-list>
           </mat-card-content>
         </mat-card>
+      </div>
       </mat-panel-description>
       <ng-template #answersNotFound>
         <mat-panel-description>

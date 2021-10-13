@@ -17,7 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button'
 import { MatTabsModule } from '@angular/material/tabs'; 
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -42,7 +42,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatTabsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent]

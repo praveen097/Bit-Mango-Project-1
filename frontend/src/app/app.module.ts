@@ -8,26 +8,21 @@ import { AppComponent } from './app.component';
 import { CostEstimationService } from './services/cost-estimation.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressBarModule } from '@angular/material/progress-bar'
-import { MatRadioModule } from '@angular/material/radio/'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio/';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButtonModule } from '@angular/material/button'
-import { MatTabsModule } from '@angular/material/tabs'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    routingComponents,
-    NavbarComponent,
-
-  ],
+  declarations: [AppComponent, routingComponents, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,6 +43,6 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule
   ],
   providers: [CostEstimationService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

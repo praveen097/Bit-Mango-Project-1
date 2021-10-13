@@ -32,7 +32,6 @@ export class ResultsComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       companyName: [null, [Validators.required]],
     });
-
     this.allAnswer = this._costEstimationService.overAllAnswers;
     if (this.allAnswer.length == 0) {
       this.resultExist = false;

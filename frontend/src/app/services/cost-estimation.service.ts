@@ -206,4 +206,24 @@ export class CostEstimationService {
     };
     return this.http.post(this.hostUrl + '/submissions', data).toPromise();
   }
+
+  postAnswers(email: string, companyName: string): any {
+    console.log(this.overAllAnswers);
+    let answers: any = [];
+    this.overAllAnswers.forEach((answer) => {
+      answers.push({
+        questionText: answer.questionText,
+        multiple: answer.multiple,
+        options: answer.options,
+      });
+    });
+    console.log(answers);
+    const data = {
+      email: email,
+      answeredQuestions: answers,
+      companyName: companyName,
+    };
+    console.log(data);
+    return this.http.post('http://localhost:1337/submissions', data);
+  }
 }

@@ -26,4 +26,5 @@ module.exports = {
         await strapi.services.submissions.create(dataSubmitted);
         return ({lowerEstimate:minPrice,upperEstimate:maxPrice});
     }
+
 };

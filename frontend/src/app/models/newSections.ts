@@ -30,15 +30,15 @@ export interface sections {
   id: string;
 }
 
-export interface submitOptions {
+export interface SubmitOptions {
   optionText: string;
   minPrice: number;
   maxPrice: number;
 }
 
-export interface submitQuestions {
+export interface SubmitQuestions {
   questionText: string;
   multiple: boolean;
-  options: submitOptions[];
+  options: SubmitOptions[];
 }
 

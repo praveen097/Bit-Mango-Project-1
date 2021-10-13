@@ -54,13 +54,15 @@ export class QuestionsComponent implements OnInit {
     ]);
   }
 
-  skipSectionHandler(id: any) {
+  skipSectionHandler(id: number | null) {
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionStarted = false;
-    this.sectionIndex = id;
-    this._costEstimationService.goToSectionByIndex(id);//to be modifed
+    this.sectionIndex = <number>id;
+    this._costEstimationService.goToSectionByIndex(<number>id); //to be modifed
     this.currentQuestion = 1;
-    this.sectionTouched = this._costEstimationService.isSectionAnswered(id);
+    this.sectionTouched = this._costEstimationService.isSectionAnswered(
+      <number>id
+    );
     if (this.sectionTouched) {
       this.continueButtonText = 'EDIT';
     } else {
@@ -73,7 +75,10 @@ export class QuestionsComponent implements OnInit {
     );
   }
   skipSection() {
-    if (this.sectionIndex < this._costEstimationService.sectionsData.length - 1) {
+    if (
+      this.sectionIndex <
+      this._costEstimationService.sectionsData.length - 1
+    ) {
       this._costEstimationService.skipSection();
     } else {
       this.route.navigate(['/results']);

@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { ActivatedRoute } from '@angular/router';
 import { question } from '../models/newSections';
-// import { Questions } from '../models/questions';
-// import { Sections } from '../models/sections';
 
 @Component({
   selector: 'app-overview',
@@ -14,8 +12,6 @@ import { question } from '../models/newSections';
 export class OverviewComponent implements OnInit {
   sectionRoute: string | null = '';
   sectionIndex: number = 0;
-  // answers: Questions[] = [];
-  // public sections: Sections[] = [];
   answers: question[] = [];
   details: boolean = false;
   basket: boolean = false;

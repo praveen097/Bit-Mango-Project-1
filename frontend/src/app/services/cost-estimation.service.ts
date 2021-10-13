@@ -4,10 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import {
+  option,
   question,
   sections,
-  submitOptions,
-  submitQuestions,
+  SubmitQuestions,
 } from '../models/newSections';
 @Injectable({
   providedIn: 'root',
@@ -84,7 +84,7 @@ export class CostEstimationService {
     return this.sectionsData[this.currentSectionIndex].questions[0];
   }
 
-  setAnswerById(id: string, options: any) {
+  setAnswerById(id: string, options: option[]) {
     for (var i = 0; i < this.answers.length; i++) {
       if (this.answers[i].id == id) {
         this.answers[i].options = options;
@@ -188,7 +188,7 @@ export class CostEstimationService {
     return answers;
   }
   submitAnswers(email: string, companyName: string) {
-    let finalAnswers: submitQuestions[] = [];
+    let finalAnswers: SubmitQuestions[] = [];
     finalAnswers = this.overAllAnswers.map((answer) => ({
       multiple: answer.multiple,
       questionText: answer.questionText,
@@ -205,8 +205,5 @@ export class CostEstimationService {
       companyName: companyName,
     };
     return this.http.post(this.hostUrl + '/submissions', data).toPromise();
-    // .then((data) => {
-    //   console.log(data);
-    // });
   }
 }

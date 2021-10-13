@@ -1,17 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CostEstimationService } from '../services/cost-estimation.service';
-// import { Questions } from '../models/questions';
-// import sections from '../data/sections.json';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {
-  option,
-  question,
-  sections,
-  submitOptions,
-  submitQuestions,
-} from '../models/newSections';
-// import { Sections } from '../models/sections';
+import {question,sections} from '../models/newSections';
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -31,15 +22,16 @@ export class ResultsComponent implements OnInit {
   form!: FormGroup;
   showProgressBar: boolean = false;
 
-  constructor(private _costEstimationService: CostEstimationService, private formBuilder: FormBuilder) {}
+  constructor(
+    private _costEstimationService: CostEstimationService,
+    private formBuilder: FormBuilder
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.form = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       companyName: [null, [Validators.required]],
     });
-    // this.maxPrice = this._costEstimationService.maxPrice;
-    // this.minPrice = this._costEstimationService.minPrice;
 
     this.allAnswer = this._costEstimationService.overAllAnswers;
     if (this.allAnswer.length == 0) {
@@ -61,9 +53,6 @@ export class ResultsComponent implements OnInit {
       section.questions = ansQuestions;
     });
   }
-  submitAnswers() {
-    this._costEstimationService.submitAnswers('test@gmail.com', 'BitMango');
-  }
 
   toResults(): void {
     this.showResults = true;
@@ -82,18 +71,13 @@ export class ResultsComponent implements OnInit {
   }
   displayAnswers() {
     this.showProgressBar = true;
-    console.log("email ",this.email, " company",this.companyName);
+    console.log('email ', this.email, ' company', this.companyName);
     this._costEstimationService
-      .submitAnswers(this.email, this.companyName).then((data:any)=>{
+      .submitAnswers(this.email, this.companyName)
+      .then((data: any) => {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;
         this.showUserForm = false;
       });
-      // .subscribe((data: any) => {
-      //   this.minPrice = data.lowerEstimate;
-      //   this.maxPrice = data.upperEstimate;
-      //   this.showUserForm = false;
-      // });
-      
   }
 }

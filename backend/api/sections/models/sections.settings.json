@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "name": "sections",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sectionName": {
+      "type": "string",
+      "required": true
+    },
+    "sectionDescription": {
+      "type": "richtext",
+      "required": true
+    },
+    "questions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "questions.questions"
+    }
+  }
+}

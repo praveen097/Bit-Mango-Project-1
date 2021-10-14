@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { ActivatedRoute } from '@angular/router';
-import { Questions } from '../models/questions';
-import { Sections } from '../models/sections';
+import { question } from '../models/newSections';
 
 @Component({
   selector: 'app-overview',
@@ -13,8 +12,7 @@ import { Sections } from '../models/sections';
 export class OverviewComponent implements OnInit {
   sectionRoute: string | null = '';
   sectionIndex: number = 0;
-  answers: Questions[] = [];
-  public sections: Sections[] = [];
+  answers: question[] = [];
   details: boolean = false;
   basket: boolean = false;
   isLastSection: boolean = false;
@@ -41,14 +39,9 @@ export class OverviewComponent implements OnInit {
         this.sectionIndex
       );
 
-      this.maxPrice = this._costEstimationService.maxPrice;
-      this.minPrice = this._costEstimationService.minPrice;
-      this.maxDays = this._costEstimationService.maxDays;
-      this.minDays = this._costEstimationService.minDays;
-
       if (
         this.sectionIndex ==
-        this._costEstimationService.sections.length - 1
+        this._costEstimationService.sectionsData.length - 1
       ) {
         this.isLastSection = true;
         this.buttonText = 'Finish';
@@ -56,7 +49,7 @@ export class OverviewComponent implements OnInit {
 
       if (
         this.sectionIndex <=
-        this._costEstimationService.sections.length - 1
+        this._costEstimationService.sectionsData.length - 1
       ) {
         this.answers =
           this._costEstimationService.getAnswersOfCurrentSectionByIndex(
@@ -66,15 +59,6 @@ export class OverviewComponent implements OnInit {
         this.sectionExist = false;
       }
     }
-  }
-
-  //for detailed answer
-  toggle(): void {
-    this.details = !this.details;
-  }
-
-  showBasket(): void {
-    this.basket = !this.basket;
   }
 
   toQuestions(): void {

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CostEstimationService } from '../services/cost-estimation.service';
-import { Questions } from '../models/questions';
-import sections from '../data/sections.json';
-import { Sections } from '../models/sections';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {question,sections} from '../models/newSections';
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -12,61 +11,46 @@ import { Sections } from '../models/sections';
 export class ResultsComponent implements OnInit {
   minPrice: number = 0;
   maxPrice: number = 0;
-  minDays: number = 0;
-  maxDays: number = 0;
-  //hello changes
-  allAnswer: Questions[] = [];
   showResults: boolean = false;
   resultExist: boolean = true;
-  sections:Array<Sections> = sections;
-  sectionNames:Array<string>=[];
-  question_ids:Array<Array<number>>=[];
-  resultantAnswers:Array<Array<Questions>>=[];
-  sectionWithAnswers:any;
-  resultText: string[] = [
-    'Minimum Price $',
-    'Maximum Price $',
-    'Minimum Days',
-    'Maximum Days',
-  ];
-  resultValue: number[] = [];
-  step:number = 0;
-
+  sectionWithAnswers: sections[] = [];
+  step: number = 0;
+  allAnswer: question[] = [];
+  showUserForm: boolean = true;
+  email: string = '';
+  companyName: string = '';
+  form!: FormGroup;
+  showProgressBar: boolean = false;
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private route: Router
+    private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {
-    this.maxPrice = this._costEstimationService.maxPrice;
-    this.minPrice = this._costEstimationService.minPrice;
-    this.maxDays = this._costEstimationService.maxDays;
-    this.minDays = this._costEstimationService.minDays;
-
-    this.allAnswer = this._costEstimationService.overAllAnswers;
-    this.sectionWithAnswers = sections;
-    this.sectionWithAnswers.forEach((element:any) => {
-      const ans_list:Array<Questions>=[];
-      element.questionId.forEach((q_id:number) => {
-        const new_ans = this.allAnswer.filter((ans)=>ans.qid === q_id);
-        if(new_ans.length!=0){
-          ans_list.push(new_ans[0])
-        }
-      });
-      element.answers = ans_list;
+  async ngOnInit(): Promise<void> {
+    this.form = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      companyName: [null, [Validators.required]],
     });
-    console.log(this.sectionWithAnswers)
-
+    this.allAnswer = this._costEstimationService.overAllAnswers;
     if (this.allAnswer.length == 0) {
       this.resultExist = false;
     }
-    this.resultValue = [
-      this.minPrice,
-      this.maxPrice,
-      this.minDays,
-      this.maxDays,
-    ];
+    this.sectionWithAnswers = <sections[]>(
+      await this._costEstimationService.getSections()
+    );
+    this.sectionWithAnswers.forEach((section: sections) => {
+      const ansQuestions: question[] = [];
+      section.questions.forEach((question: question) => {
+        const ans: question[] = this.allAnswer.filter(
+          (ans) => ans.id === question.id
+        );
+        if (ans.length != 0) {
+          ansQuestions.push(ans[0]);
+        }
+      });
+      section.questions = ansQuestions;
+    });
   }
 
   toResults(): void {
@@ -83,5 +67,16 @@ export class ResultsComponent implements OnInit {
 
   prevStep() {
     this.step--;
+  }
+  displayAnswers() {
+    this.showProgressBar = true;
+    console.log('email ', this.email, ' company', this.companyName);
+    this._costEstimationService
+      .submitAnswers(this.email, this.companyName)
+      .then((data: any) => {
+        this.minPrice = data.lowerEstimate;
+        this.maxPrice = data.upperEstimate;
+        this.showUserForm = false;
+      });
   }
 }

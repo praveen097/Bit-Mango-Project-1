@@ -7,11 +7,10 @@
   height: 80vh;
 }
 .mainSkipContainer {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:85vh;
 }
 .buttonSelect {
   text-align: left;
@@ -27,11 +26,9 @@
 .skipCard {
   width: 70%;
   text-align: justify;
-  padding:30px;
 }
-
 .skipCard mat-card-content {
-  margin:30px 0px;
+  margin: 30px 0px;
   font-size: 21px;
   line-height: 4vh;
 }
@@ -102,7 +99,7 @@ label {
 
 .QuestionText {
   color: $light-grey;
-  font-weight: 500;
+  font-weight: 400;
   width: 80%;
   margin: 10px;
   padding: 15px;
@@ -143,22 +140,19 @@ label {
   margin-top: 5px;
 }
 
-
 ::ng-deep .mat-tab-label {
   font-size:x-large;
-  font-weight: 900;
+  font-weight: 400;
   color: $light-grey;
   height: 10vh !important;
-
 }
 ::ng-deep .mat-ink-bar {
   background-color: $yellow !important;
   height: 3px !important;
 }
 ::ng-deep .mat-tab-label-active {
-  color: black ;
+  color: black;
 }
-
 
 .sectionName {
   text-align: center;
@@ -171,6 +165,7 @@ label {
   font-size: xx-large;
   text-align: left;
   line-height: 4vh;
+  font-weight: 400;
 }
 
 .sectionDescriptionText {
@@ -271,9 +266,12 @@ label {
   }
   .singleOptionList mat-chip {
     width: 70%;
-    padding:10px;
+    padding: 10px;
   }
   .multipleOptionContainer {
     width: 100%;
+  }
+  .mainSkipContainer{
+    height: 100%;
   }
 }

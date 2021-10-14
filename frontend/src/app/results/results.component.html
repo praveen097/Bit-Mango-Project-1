@@ -1,29 +1,88 @@
 <div *ngIf="!showResults" class="mainContainer">
-
   <section *ngIf="resultExist; else elseBlock">
-    <h1 class="heading">Estimate of your project</h1>
-    <mat-card class="priceEstimate"
-      >{{ minPrice | currency }} - {{ maxPrice | currency }}</mat-card
-    >
-    <mat-expansion-panel
-      class="sectionCard"
-      *ngFor="let currentSectionAnswers of sectionWithAnswers; index as i"
-      [expanded]="step === i"
-      (opened)="setStep(i)"
-      hideToggle
-    >
-      <mat-expansion-panel-header class="sectionName">{{
-        currentSectionAnswers.sectionName
-      }}</mat-expansion-panel-header>
-      <mat-panel-description
+    <div *ngIf="showUserForm; else showAnswers" class="showUserForm">
+      <mat-card>
+        <mat-card-title id="greetingMessage"
+          >Congratulations, You have made it
+        </mat-card-title>
+        <mat-card-content class="content"
+          >Please fill the below details to send the estimate to your
+          email</mat-card-content
+        >
+        <form (submit)="displayAnswers()" [formGroup]="form">
+          <div class="formInput">
+            <p class="inputVal">
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  placeholder="Ex:kai@doe.com.."
+                  required
+                  formControlName="email"
+                  [(ngModel)]="email"
+                />
+                <mat-icon matSuffix>alternate_email</mat-icon>
+                <!-- <mat-hint>Please enter your email</mat-hint> -->
+              </mat-form-field>
+            </p>
+            <p class="inputVal">
+              <mat-form-field>
+                <mat-label>Company Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Company Name"
+                  required
+                  formControlName="companyName"
+                  [(ngModel)]="companyName"
+                />
+                <mat-icon matSuffix>business</mat-icon>
+                <!-- <mat-hint>Please enter your company name</mat-hint> -->
+              </mat-form-field>
+            </p>
+          </div>
+          <mat-card-actions>
+            <button
+              mat-raised-button
+              type="submit"
+              [disabled]="!form.valid"
+              class="submitUserDetails"
+            >
+              SUBMIT
+            </button>
+          </mat-card-actions>
+        </form>
+        <mat-card-footer *ngIf="showProgressBar">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <ng-template #showAnswers>
+      <h1 class="heading">Estimate of your project</h1>
+      <mat-card class="priceEstimate"
+        >{{ minPrice | currency }} - {{ maxPrice | currency }}</mat-card
+      >
+      <mat-expansion-panel
+        class="sectionCard"
+        *ngFor="let currentSectionAnswers of sectionWithAnswers; index as i"
+        [expanded]="step === i"
+        (opened)="setStep(i)"
+        hideToggle
+      >
+        <mat-expansion-panel-header class="sectionName">{{
+          currentSectionAnswers.sectionName
+        }}</mat-expansion-panel-header>
+        <mat-panel-description
         class="questionList"
-        *ngIf="currentSectionAnswers.answers.length > 0; else answersNotFound"
+        *ngIf="
+          currentSectionAnswers.questions.length != 0;
+          else answersNotFound
+        "
       >
         <mat-card
-          *ngFor="let ans of currentSectionAnswers.answers"
+          *ngFor="let ans of currentSectionAnswers.questions"
           class="questionTemplate"
         >
-          <div class="questionText">{{ ans.question }}</div>
+          <div class="questionText">{{ ans.questionText }}</div>
           <mat-card-content>
             <mat-chip-list class="optionList">
               <mat-chip *ngFor="let opt of ans.options" class="optionChip">{{
@@ -33,35 +92,36 @@
           </mat-card-content>
         </mat-card>
       </mat-panel-description>
-      <ng-template #answersNotFound>
-        <mat-panel-description>
-          <mat-card class="errorMessage">
-            <mat-card-content
-              >You haven't attempted questions from
-              {{ currentSectionAnswers.sectionName }}</mat-card-content
-            >
-          </mat-card>
-        </mat-panel-description>
-      </ng-template>
-      <mat-action-row>
-        <button
-          mat-raised-button
-          *ngIf="step != 0"
-          (click)="prevStep()"
-          id="prevButton"
-        >
-          Previous Section
-        </button>
-        <button
-          mat-raised-button
-          *ngIf="step != sectionWithAnswers.length - 1"
-          (click)="nextStep()"
-          id="nextButton"
-        >
-          Next Section
-        </button>
-      </mat-action-row>
-    </mat-expansion-panel>
+        <ng-template #answersNotFound>
+          <mat-panel-description>
+            <mat-card class="errorMessage">
+              <mat-card-content
+                >You haven't attempted questions from
+                {{ currentSectionAnswers.sectionName }}</mat-card-content
+              >
+            </mat-card>
+          </mat-panel-description>
+        </ng-template>
+        <mat-action-row>
+          <button
+            mat-raised-button
+            *ngIf="step != 0"
+            (click)="prevStep()"
+            id="prevButton"
+          >
+            Previous Section
+          </button>
+          <button
+            mat-raised-button
+            *ngIf="step != sectionWithAnswers.length - 1"
+            (click)="nextStep()"
+            id="nextButton"
+          >
+            Next Section
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </ng-template>
   </section>
   <ng-template #elseBlock>
     <mat-card>

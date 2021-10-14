@@ -12,6 +12,6 @@ export class AppComponent {
   constructor(private _costEstimationService: CostEstimationService) {}
 
   ngOnInit() {
-    this._costEstimationService.setInitialValues();
+    this._costEstimationService.setSectionValues();
   }
 }

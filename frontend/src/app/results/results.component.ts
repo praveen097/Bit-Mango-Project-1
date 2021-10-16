@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {question,sections} from '../models/newSections';
+import { Question, Sections } from '../models/sections';
 
 @Component({
   selector: 'app-results',
@@ -13,9 +13,9 @@ export class ResultsComponent implements OnInit {
   maxPrice: number = 0;
   showResults: boolean = false;
   resultExist: boolean = true;
-  sectionWithAnswers: sections[] = [];
+  sectionWithAnswers: Sections[] = [];
   step: number = 0;
-  allAnswer: question[] = [];
+  allAnswer: Question[] = [];
   showUserForm: boolean = true;
   email: string = '';
   companyName: string = '';
@@ -36,13 +36,13 @@ export class ResultsComponent implements OnInit {
     if (this.allAnswer.length == 0) {
       this.resultExist = false;
     }
-    this.sectionWithAnswers = <sections[]>(
+    this.sectionWithAnswers = <Sections[]>(
       await this._costEstimationService.getSections()
     );
-    this.sectionWithAnswers.forEach((section: sections) => {
-      const ansQuestions: question[] = [];
-      section.questions.forEach((question: question) => {
-        const ans: question[] = this.allAnswer.filter(
+    this.sectionWithAnswers.forEach((section: Sections) => {
+      const ansQuestions: Question[] = [];
+      section.questions.forEach((question: Question) => {
+        const ans: Question[] = this.allAnswer.filter(
           (ans) => ans.id === question.id
         );
         if (ans.length != 0) {

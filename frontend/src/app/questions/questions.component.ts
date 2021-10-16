@@ -1,10 +1,10 @@
-import { option, question } from './../models/newSections';
+import { Option, Question } from '../models/sections';
 import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatChip } from '@angular/material/chips';
-import { sections } from '../models/newSections';
+import { Sections } from '../models/sections';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -13,15 +13,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  presentQuestion!: question;
-  answer: option[] = [];
+  presentQuestion!: Question;
+  answer: Option[] = [];
   currentQuestion: number = 1;
   currentQuestionIndex: number = 0;
   sectionIndex: number = -1;
   sectionStarted: boolean = false;
   sectionTouched: boolean = false;
   continueButtonText: string = 'CONTINUE';
-  newSections: sections[] = [];
+  newSections: Sections[] = [];
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -30,7 +30,7 @@ export class QuestionsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.newSections = <sections[]>(
+    this.newSections = <Sections[]>(
       await this._costEstimationService.getSections().catch(async (err) => {
         this.snackBar.open(err, '', { duration: 3000 });
       })
@@ -92,7 +92,7 @@ export class QuestionsComponent implements OnInit {
       this.presentQuestion.id
     );
   }
-  multipleToggleSelection(option: option) {
+  multipleToggleSelection(option: Option) {
     const isExists = this.answer.findIndex(
       (x) => x.optionText == option.optionText
     );
@@ -105,7 +105,7 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  toggleSelection(chip: MatChip, option: option) {
+  toggleSelection(chip: MatChip, option: Option) {
     chip.toggleSelected();
     if (this.answer.length > 0) {
       this.answer[0].selected = false;

@@ -13,9 +13,9 @@ export class ResultsComponent implements OnInit {
   maxPrice: number = 0;
   showResults: boolean = false;
   resultExist: boolean = true;
-  sectionWithAnswers: Sections[] = [];
+  sectionsWithAnswersSaved: Sections[] = [];
   step: number = 0;
-  allAnswer: Question[] = [];
+  overAllAnswers: Question[] = [];
   showUserForm: boolean = true;
   email: string = '';
   companyName: string = '';
@@ -32,24 +32,24 @@ export class ResultsComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       companyName: [null, [Validators.required]],
     });
-    this.allAnswer = this._costEstimationService.overAllAnswers;
-    if (this.allAnswer.length == 0) {
+    this.overAllAnswers = this._costEstimationService.overAllAnswers;
+    if (this.overAllAnswers.length == 0) {
       this.resultExist = false;
     }
-    this.sectionWithAnswers = <Sections[]>(
+    this.sectionsWithAnswersSaved = <Sections[]>(
       await this._costEstimationService.getSections()
     );
-    this.sectionWithAnswers.forEach((section: Sections) => {
-      const ansQuestions: Question[] = [];
+    this.sectionsWithAnswersSaved.forEach((section: Sections) => {
+      const answeredQuestions: Question[] = [];
       section.questions.forEach((question: Question) => {
-        const ans: Question[] = this.allAnswer.filter(
-          (ans) => ans.id === question.id
+        const currentQuestionsWithAnswer: Question[] = this.overAllAnswers.filter(
+          (currentQuestionsWithAnswer) => currentQuestionsWithAnswer.id === question.id
         );
-        if (ans.length != 0) {
-          ansQuestions.push(ans[0]);
+        if (currentQuestionsWithAnswer.length != 0) {
+          answeredQuestions.push(currentQuestionsWithAnswer[0]);
         }
       });
-      section.questions = ansQuestions;
+      section.questions = answeredQuestions;
     });
   }
 

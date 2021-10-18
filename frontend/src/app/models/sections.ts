@@ -1,4 +1,4 @@
-export interface option {
+export interface Option {
   _id: string;
   optionText: string;
   minPrice: number;
@@ -8,22 +8,22 @@ export interface option {
   id: string;
 }
 
-export interface question {
+export interface Question {
   _id: string;
   questionText: string;
   multiple: boolean;
-  options: option[];
+  options: Option[];
   __v: number;
   id: string;
 }
 
 
-export interface sections {
+export interface Sections {
   _id: string;
   sectionName: string;
   sectionDescription: string;
   published_at: Date;
-  questions: question[];
+  questions: Question[];
   createdAt: Date;
   updatedAt: Date;
   __v: number;

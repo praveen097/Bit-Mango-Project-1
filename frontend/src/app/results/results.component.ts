@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {question,sections} from '../models/newSections';
+import { Question, Sections } from '../models/sections';
 
 @Component({
   selector: 'app-results',
@@ -13,9 +13,9 @@ export class ResultsComponent implements OnInit {
   maxPrice: number = 0;
   showResults: boolean = false;
   resultExist: boolean = true;
-  sectionWithAnswers: sections[] = [];
+  sectionsWithAnswersSaved: Sections[] = [];
   step: number = 0;
-  allAnswer: question[] = [];
+  overAllAnswers: Question[] = [];
   showUserForm: boolean = true;
   email: string = '';
   companyName: string = '';
@@ -32,24 +32,24 @@ export class ResultsComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       companyName: [null, [Validators.required]],
     });
-    this.allAnswer = this._costEstimationService.overAllAnswers;
-    if (this.allAnswer.length == 0) {
+    this.overAllAnswers = this._costEstimationService.overAllAnswers;
+    if (this.overAllAnswers.length == 0) {
       this.resultExist = false;
     }
-    this.sectionWithAnswers = <sections[]>(
+    this.sectionsWithAnswersSaved = <Sections[]>(
       await this._costEstimationService.getSections()
     );
-    this.sectionWithAnswers.forEach((section: sections) => {
-      const ansQuestions: question[] = [];
-      section.questions.forEach((question: question) => {
-        const ans: question[] = this.allAnswer.filter(
-          (ans) => ans.id === question.id
+    this.sectionsWithAnswersSaved.forEach((section: Sections) => {
+      const answeredQuestions: Question[] = [];
+      section.questions.forEach((question: Question) => {
+        const currentQuestionsWithAnswer: Question[] = this.overAllAnswers.filter(
+          (currentQuestionsWithAnswer) => currentQuestionsWithAnswer.id === question.id
         );
-        if (ans.length != 0) {
-          ansQuestions.push(ans[0]);
+        if (currentQuestionsWithAnswer.length != 0) {
+          answeredQuestions.push(currentQuestionsWithAnswer[0]);
         }
       });
-      section.questions = ansQuestions;
+      section.questions = answeredQuestions;
     });
   }
 

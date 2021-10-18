@@ -68,12 +68,11 @@
   text-align: center;
   margin: 30px auto;
 }
-@media screen and  (max-width:968px) {
+@media screen and  (max-width:1024px) {
   .content {
     font-size: 18px;
     line-height: 5vh;
   }
-
   .heading {
     font-size: 35px;
     line-height: 6vh;
@@ -84,14 +83,21 @@
   }
 }
 @media screen and  (max-width:768px) {
-  .content {
-    font-size: 17px;
-    line-height: 5vh;
+  .headingContainer{
+    height:100%;
+    padding: 0px;
   }
-
+  .subContainer{
+    width: 90%;
+  }
+  .content {
+    margin:20px 0px 20px 0px;
+    font-size: 20px;
+    line-height: 3vh;
+  }
   .heading {
     font-size: 28px;
-    line-height: 6vh;
+    line-height: 4vh;
     margin-bottom: 25px;
   }
   .navButton {
@@ -101,7 +107,9 @@
 }
 
 @media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
-
+  *{
+    outline: 1px solid red;
+  }
   .content {
     font-size: 15px;
     line-height: 5vh;

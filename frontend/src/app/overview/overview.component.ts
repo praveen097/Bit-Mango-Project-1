@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { ActivatedRoute } from '@angular/router';
-import { question } from '../models/newSections';
+import { Question } from '../models/sections';
 
 @Component({
   selector: 'app-overview',
@@ -12,7 +12,7 @@ import { question } from '../models/newSections';
 export class OverviewComponent implements OnInit {
   sectionRoute: string | null = '';
   sectionIndex: number = 0;
-  answers: question[] = [];
+  answers: Question[] = [];
   details: boolean = false;
   basket: boolean = false;
   isLastSection: boolean = false;

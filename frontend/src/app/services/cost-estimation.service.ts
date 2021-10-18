@@ -4,32 +4,32 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import {
-  option,
-  question,
-  sections,
+  Option,
+  Question,
+  Sections,
   SubmitQuestions,
-} from '../models/newSections';
+} from '../models/sections';
 @Injectable({
   providedIn: 'root',
 })
 export class CostEstimationService {
   maxPrice: number = 0;
   minPrice: number = 0;
-  overAllAnswers: question[] = [];
+  overAllAnswers: Question[] = [];
   currentSectionIndex: number = 0;
   currentQuestion: string = '';
   currentQuestionIndex: number = 0;
-  sectionsData: sections[] = [];
-  answers: question[] = [];
-  allSections: sections[] = [];
-  allQuestions: question[] = [];
+  sectionsData: Sections[] = [];
+  answers: Question[] = [];
+  allSections: Sections[] = [];
+  allQuestions: Question[] = [];
 
   hostUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 
   async setSectionValues() {
-    this.sectionsData = <sections[]>await this.getSections();
+    this.sectionsData = <Sections[]>await this.getSections();
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
     ).questions[this.currentQuestionIndex].id;
@@ -38,7 +38,7 @@ export class CostEstimationService {
       for (var j = 0; j < this.sectionsData[i].questions.length; j++)
         this.allQuestions.push(this.sectionsData[i].questions[j]);
     }
-    this.answers = this.allQuestions.map((question: question) => {
+    this.answers = this.allQuestions.map((question: Question) => {
       return {
         _id: question._id,
         multiple: question.multiple,
@@ -84,7 +84,7 @@ export class CostEstimationService {
     return this.sectionsData[this.currentSectionIndex].questions[0];
   }
 
-  setAnswerById(id: string, options: option[]) {
+  setAnswerById(id: string, options: Option[]) {
     for (var i = 0; i < this.answers.length; i++) {
       if (this.answers[i].id == id) {
         this.answers[i].options = options;
@@ -103,7 +103,6 @@ export class CostEstimationService {
       const question = JSON.parse(JSON.stringify(questionTemplate));
       question.options = options;
       this.overAllAnswers.push(JSON.parse(JSON.stringify(question)));
-
     } else {
       this.overAllAnswers[answerIndex].options = options;
     }
@@ -120,7 +119,7 @@ export class CostEstimationService {
     }
   }
 
-  getNextQuestion(): question {
+  getNextQuestion(): Question {
     //   //check if this is the last question of current section
     if (this.isLastQuestionOfCurrentSection(this.currentQuestionIndex)) {
       //increment current section as we need next section
@@ -141,16 +140,16 @@ export class CostEstimationService {
     return this.getQuestionById(this.currentQuestion);
   }
 
-  getQuestionById(id: string): question {
-    let currentQuestion = <question>this.allQuestions.find(
-      (question: question) => {
+  getQuestionById(id: string): Question {
+    let currentQuestion = <Question>this.allQuestions.find(
+      (question: Question) => {
         return question.id == id;
       }
     );
     return currentQuestion;
   }
 
-  getPreviousQuestion(): question {
+  getPreviousQuestion(): Question {
     const sectionQuestions = this.getSectionByIndex(
       this.currentSectionIndex
     ).questions;
@@ -160,7 +159,7 @@ export class CostEstimationService {
   }
 
   getAnswerByQuestionId(id: string) {
-    const currentAnswers: question[] = this.answers.filter((x) => x.id == id);
+    const currentAnswers: Question[] = this.answers.filter((x) => x.id == id);
     return currentAnswers[0].options;
   }
 

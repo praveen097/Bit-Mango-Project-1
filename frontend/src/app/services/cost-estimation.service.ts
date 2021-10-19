@@ -2,6 +2,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
   Option,
@@ -21,15 +22,17 @@ export class CostEstimationService {
   currentQuestionIndex: number = 0;
   sectionsData: Sections[] = [];
   answers: Question[] = [];
-  allSections: Sections[] = [];
+  // allSections: Sections[] = [];
   allQuestions: Question[] = [];
 
   hostUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   async setSectionValues() {
-    this.sectionsData = <Sections[]>await this.getSections();
+    this.sectionsData = <Sections[]>await this.getSections().catch(async (err) => {
+          this.snackBar.open(err, '', { duration: 3000 });
+        });
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
     ).questions[this.currentQuestionIndex].id;
@@ -88,10 +91,6 @@ export class CostEstimationService {
     for (var i = 0; i < this.answers.length; i++) {
       if (this.answers[i].id == id) {
         this.answers[i].options = options;
-        for (var j = 0; j < this.answers[i].options.length; j++) {
-          this.maxPrice += this.answers[i].options[j].maxPrice;
-          this.minPrice += this.answers[i].options[j].minPrice;
-        }
       }
     }
 

@@ -29,12 +29,8 @@ export class QuestionsComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  async ngOnInit(): Promise<void> {
-    this.newSections = <Sections[]>(
-      await this._costEstimationService.getSections().catch(async (err) => {
-        this.snackBar.open(err, '', { duration: 3000 });
-      })
-    );
+   ngOnInit() {
+    this.newSections = this._costEstimationService.sectionsData
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex
@@ -156,9 +152,9 @@ export class QuestionsComponent implements OnInit {
         //get next question and move to overpage
         else {
           this._costEstimationService.getNextQuestion();
-          this.answer = this._costEstimationService.getAnswerByQuestionId(
-            this.presentQuestion.id
-          );
+          // this.answer = this._costEstimationService.getAnswerByQuestionId(
+          //   this.presentQuestion.id
+          // );
           this.toOverview();
         }
       }

@@ -70,7 +70,6 @@ export class ResultsComponent implements OnInit {
   }
   displayAnswers() {
     this.showProgressBar = true;
-    console.log('email ', this.email, ' company', this.companyName);
     this._costEstimationService
       .submitAnswers(this.email, this.companyName)
       .then((data: any) => {

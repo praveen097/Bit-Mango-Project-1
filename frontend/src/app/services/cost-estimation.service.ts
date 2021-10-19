@@ -22,7 +22,6 @@ export class CostEstimationService {
   currentQuestionIndex: number = 0;
   sectionsData: Sections[] = [];
   answers: Question[] = [];
-  // allSections: Sections[] = [];
   allQuestions: Question[] = [];
 
   hostUrl: string = environment.baseUrl;
@@ -82,8 +81,11 @@ export class CostEstimationService {
   goToSectionByIndex(id: number) {
     this.currentSectionIndex = id;
     this.currentQuestionIndex = 0;
+    this.currentQuestion = this.getSectionByIndex(
+      this.currentSectionIndex
+    ).questions[this.currentQuestionIndex].id;
   }
-  getCurrentQuestion() {
+  getFirstQuestionofCurrentSection() {
     return this.sectionsData[this.currentSectionIndex].questions[0];
   }
 

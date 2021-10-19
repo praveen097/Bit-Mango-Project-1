@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class QuestionsComponent implements OnInit {
   presentQuestion!: Question;
   answer: Option[] = [];
-  currentQuestion: number = 1;
+  currentQuestionNumberForDisplay: number = 1;
   currentQuestionIndex: number = 0;
   sectionIndex: number = -1;
   sectionStarted: boolean = false;
@@ -29,19 +29,15 @@ export class QuestionsComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  async ngOnInit(): Promise<void> {
-    this.newSections = <Sections[]>(
-      await this._costEstimationService.getSections().catch(async (err) => {
-        this.snackBar.open(err, '', { duration: 3000 });
-      })
-    );
+   ngOnInit() {
+    this.newSections = this._costEstimationService.sectionsData
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex
     );
     if (this.sectionTouched) {
       this.continueButtonText = 'EDIT';
-      this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+      this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
       this.answer = this._costEstimationService.getAnswerByQuestionId(
         this.presentQuestion.id
       );
@@ -59,7 +55,7 @@ export class QuestionsComponent implements OnInit {
     this.sectionStarted = false;
     this.sectionIndex = <number>id;
     this._costEstimationService.goToSectionByIndex(<number>id); //to be modifed
-    this.currentQuestion = 1;
+    this.currentQuestionNumberForDisplay = 1;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       <number>id
     );
@@ -69,7 +65,7 @@ export class QuestionsComponent implements OnInit {
       this.continueButtonText = 'CONTINUE';
     }
 
-    this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+    this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
     );
@@ -87,7 +83,7 @@ export class QuestionsComponent implements OnInit {
   }
   continue() {
     this.sectionStarted = true;
-    this.presentQuestion = this._costEstimationService.getCurrentQuestion();
+    this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
     );
@@ -115,7 +111,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   previousQuestion() {
-    this.currentQuestion--;
+    this.currentQuestionNumberForDisplay--;
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
@@ -132,7 +128,7 @@ export class QuestionsComponent implements OnInit {
         icon: 'error',
       });
     } else {
-      this.currentQuestion++; // used to show question number
+      this.currentQuestionNumberForDisplay++; // used to show question number
       //     //set current question's answer before moving to next question
       this._costEstimationService.setAnswerById(
         this.presentQuestion._id,
@@ -156,9 +152,6 @@ export class QuestionsComponent implements OnInit {
         //get next question and move to overpage
         else {
           this._costEstimationService.getNextQuestion();
-          this.answer = this._costEstimationService.getAnswerByQuestionId(
-            this.presentQuestion.id
-          );
           this.toOverview();
         }
       }

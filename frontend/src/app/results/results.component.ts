@@ -15,7 +15,7 @@ export class ResultsComponent implements OnInit {
   resultExist: boolean = true;
   sectionsWithAnswersSaved: Sections[] = [];
   step: number = 0;
-  overAllAnswers: Question[] = [];
+  answers: Question[] = [];
   showUserForm: boolean = true;
   email: string = '';
   companyName: string = '';
@@ -32,23 +32,25 @@ export class ResultsComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       companyName: [null, [Validators.required]],
     });
-    this.overAllAnswers = this._costEstimationService.overAllAnswers;
-    if (this.overAllAnswers.length == 0) {
+    this.answers = this._costEstimationService.answers;
+    if (this.answers.length == 0) {
       this.resultExist = false;
     }
+    console.log(this.answers);
     this.sectionsWithAnswersSaved = <Sections[]>(
       await this._costEstimationService.getSections()
     );
     this.sectionsWithAnswersSaved.forEach((section: Sections) => {
       const answeredQuestions: Question[] = [];
       section.questions.forEach((question: Question) => {
-        const currentQuestionsWithAnswer: Question[] = this.overAllAnswers.filter(
+        const currentQuestionsWithAnswer: Question[] = this.answers.filter(
           (currentQuestionsWithAnswer) => currentQuestionsWithAnswer.id === question.id
         );
-        if (currentQuestionsWithAnswer.length != 0) {
+          if(currentQuestionsWithAnswer[0].options.length){
           answeredQuestions.push(currentQuestionsWithAnswer[0]);
         }
       });
+
       section.questions = answeredQuestions;
     });
   }

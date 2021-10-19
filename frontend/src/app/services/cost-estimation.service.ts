@@ -21,7 +21,6 @@ export class CostEstimationService {
   currentQuestion: string = '';
   currentQuestionIndex: number = 0;
   sectionsData: Sections[] = [];
-  // answers: Question[] = [];
   allQuestions: Question[] = [];
 
   hostUrl: string = environment.baseUrl;

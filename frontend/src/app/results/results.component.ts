@@ -36,6 +36,7 @@ export class ResultsComponent implements OnInit {
     if (this.answers.length == 0) {
       this.resultExist = false;
     }
+    console.log(this.answers);
     this.sectionsWithAnswersSaved = <Sections[]>(
       await this._costEstimationService.getSections()
     );
@@ -45,10 +46,11 @@ export class ResultsComponent implements OnInit {
         const currentQuestionsWithAnswer: Question[] = this.answers.filter(
           (currentQuestionsWithAnswer) => currentQuestionsWithAnswer.id === question.id
         );
-        if (currentQuestionsWithAnswer.length != 0) {
+          if(currentQuestionsWithAnswer[0].options.length){
           answeredQuestions.push(currentQuestionsWithAnswer[0]);
         }
       });
+
       section.questions = answeredQuestions;
     });
   }
@@ -70,7 +72,6 @@ export class ResultsComponent implements OnInit {
   }
   displayAnswers() {
     this.showProgressBar = true;
-    console.log('email ', this.email, ' company', this.companyName);
     this._costEstimationService
       .submitAnswers(this.email, this.companyName)
       .then((data: any) => {

@@ -13,16 +13,16 @@
     color: $light-grey;
 }
 .questionTemplate {
-  margin: 2% 2% 2% 2%;
+  margin: 2%;
 }
 
 .optionChip {
-  background-color: #15A811;
+  background-color: $green;
   color:$white;
   height: max-content;
 }
 .nextSectionButton {
-  background-color: #15A811;
+  background-color: $green;
   color:$white;
   margin:20px 0px;
   float: right;

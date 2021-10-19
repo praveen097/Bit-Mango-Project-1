@@ -13,14 +13,8 @@ export class OverviewComponent implements OnInit {
   sectionRoute: string | null = '';
   sectionIndex: number = 0;
   answers: Question[] = [];
-  details: boolean = false;
-  basket: boolean = false;
   isLastSection: boolean = false;
   sectionName: string = '';
-  minPrice: number = 0;
-  maxPrice: number = 0;
-  minDays: number = 0;
-  maxDays: number = 0;
   buttonText: string = 'Next Section';
   sectionExist: boolean = true;
 

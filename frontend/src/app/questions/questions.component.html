@@ -1,7 +1,6 @@
 <div *ngIf="sectionIndex != -1">
   <mat-tab-group
     mat-align-tabs="center"
-    animationDuration="0ms"
     #tabRef
     (selectedTabChange)="skipSectionHandler(tabRef.selectedIndex)"
     [selectedIndex]="sectionIndex"
@@ -52,14 +51,14 @@
     <mat-progress-bar
       mode="determinate"
       value="{{
-        (currentQuestion / newSections[sectionIndex].questions.length) * 100
+        (currentQuestionNumberForDisplay / newSections[sectionIndex].questions.length) * 100
       }}"
     ></mat-progress-bar>
 
     <div class="mainContainer">
       <div class="customContainer">
         <mat-card class="QuestionText">
-          {{ currentQuestion }} . {{ presentQuestion.questionText }}
+          {{ currentQuestionNumberForDisplay }} . {{ presentQuestion.questionText }}
         </mat-card>
 
         <div
@@ -95,7 +94,7 @@
         </ng-template>
         <mat-card class="navButtonsContainer">
           <button
-            *ngIf="currentQuestion > 1"
+            *ngIf="currentQuestionNumberForDisplay > 1"
             mat-fab
             class="navButtonPrevious"
             (click)="previousQuestion()"

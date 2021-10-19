@@ -2,6 +2,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
   Option,
@@ -15,21 +16,21 @@ import {
 export class CostEstimationService {
   maxPrice: number = 0;
   minPrice: number = 0;
-  overAllAnswers: Question[] = [];
+  answers: Question[] = [];
   currentSectionIndex: number = 0;
   currentQuestion: string = '';
   currentQuestionIndex: number = 0;
   sectionsData: Sections[] = [];
-  answers: Question[] = [];
-  allSections: Sections[] = [];
   allQuestions: Question[] = [];
 
   hostUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   async setSectionValues() {
-    this.sectionsData = <Sections[]>await this.getSections();
+    this.sectionsData = <Sections[]>await this.getSections().catch(async (err) => {
+          this.snackBar.open(err, '', { duration: 3000 });
+        });
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
     ).questions[this.currentQuestionIndex].id;
@@ -79,8 +80,11 @@ export class CostEstimationService {
   goToSectionByIndex(id: number) {
     this.currentSectionIndex = id;
     this.currentQuestionIndex = 0;
+    this.currentQuestion = this.getSectionByIndex(
+      this.currentSectionIndex
+    ).questions[this.currentQuestionIndex].id;
   }
-  getCurrentQuestion() {
+  getFirstQuestionofCurrentSection() {
     return this.sectionsData[this.currentSectionIndex].questions[0];
   }
 
@@ -88,23 +92,19 @@ export class CostEstimationService {
     for (var i = 0; i < this.answers.length; i++) {
       if (this.answers[i].id == id) {
         this.answers[i].options = options;
-        for (var j = 0; j < this.answers[i].options.length; j++) {
-          this.maxPrice += this.answers[i].options[j].maxPrice;
-          this.minPrice += this.answers[i].options[j].minPrice;
-        }
       }
     }
 
-    let answerIndex = this.overAllAnswers.findIndex(
+    let answerIndex = this.answers.findIndex(
       (answer) => answer.id == id
     );
     if (answerIndex == -1) {
       let questionTemplate = this.getQuestionById(id);
       const question = JSON.parse(JSON.stringify(questionTemplate));
       question.options = options;
-      this.overAllAnswers.push(JSON.parse(JSON.stringify(question)));
+      this.answers.push(JSON.parse(JSON.stringify(question)));
     } else {
-      this.overAllAnswers[answerIndex].options = options;
+      this.answers[answerIndex].options = options;
     }
   }
   isLastQuestionOfCurrentSection(id: number) {
@@ -181,22 +181,27 @@ export class CostEstimationService {
     const qids = section.questions.map((question) => {
       return question.id;
     });
-    const answers = this.overAllAnswers.filter(
+    const answers = this.answers.filter(
       (answer) => qids.indexOf(answer.id) != -1
     );
     return answers;
   }
   submitAnswers(email: string, companyName: string) {
     let finalAnswers: SubmitQuestions[] = [];
-    finalAnswers = this.overAllAnswers.map((answer) => ({
-      multiple: answer.multiple,
-      questionText: answer.questionText,
-      options: answer.options.map((option) => ({
-        optionText: option.optionText,
-        minPrice: option.minPrice,
-        maxPrice: option.maxPrice,
-      })),
-    }));
+    this.answers.forEach((answer)=>{
+      if(answer.options.length!=0){
+        finalAnswers.push({
+          multiple:answer.multiple,
+          questionText: answer.questionText,
+          options: answer.options.map((option) => ({
+            optionText: option.optionText,
+            minPrice: option.minPrice,
+            maxPrice: option.maxPrice,
+          })),
+
+        });
+      }
+    })
 
     const data = {
       email: email,
@@ -206,23 +211,4 @@ export class CostEstimationService {
     return this.http.post(this.hostUrl + '/submissions', data).toPromise();
   }
 
-  postAnswers(email: string, companyName: string): any {
-    console.log(this.overAllAnswers);
-    let answers: any = [];
-    this.overAllAnswers.forEach((answer) => {
-      answers.push({
-        questionText: answer.questionText,
-        multiple: answer.multiple,
-        options: answer.options,
-      });
-    });
-    console.log(answers);
-    const data = {
-      email: email,
-      answeredQuestions: answers,
-      companyName: companyName,
-    };
-    console.log(data);
-    return this.http.post('http://localhost:1337/submissions', data);
-  }
 }

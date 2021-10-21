@@ -3,22 +3,26 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5 for frontend, [STRAPI](https://strapi.io/) for backend
 
 ## Goal of the application
+
 The main goal of this application is to take users through multiple sections and provide estimation to build a project
 
 ## Working of the application
-<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Landing-Page.png"/><br></div>
-In this application, user lands into `HOME PAGE` where they will
-get some basic information about the application, they will get navigated to `QUESTIONS PAGE` when they click on `LET'S START` button.
+<img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Landing-Page.png"/>
+
+In this application, user lands into  `HOME PAGE` where they will get some basic information about the application, they will get navigated to `QUESTIONS PAGE` when they click on `LET'S START` button.
 Now in questions page, users
-will get to see all the sections in `MAT TAB` where they can click on any sections to jump and answer them, 
+will get to see all the sections in `MAT TAB` where they can click on any sections to jump and answer them, else they can either choose to attempt the section by 
+clicking `CONTINUE` or can `SKIP` the section.
 <div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Questions-Page-Information.png"/><br><div>
-else they can either choose to attempt the section by 
-clicking `CONTINUE` or can `SKIP` the section. If clicked on continue, they will get question by question of that particular section. 
+ 
+ If clicked on `CONTINUE`, they will get question by question of that particular section. 
 <div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Questions-Page.png"/><br><div>
+ 
 If user completes answering 
 all the questions of that section, then they will get navigated to `OVERVIEW PAGE`, where they can see the questions and the answers attempted by them. Now user 
 can click on `NEXT SECTION` to move to next section. 
 <div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Overview-Page.png"/><br><div>
+ 
 If user attempts all the section which are needed to them, then they will get navigated to `RESULTS PAGE` where 
 user need to provide `EMAIL` and `COMPANY NAME` inorder to get `ESTIMATE` of their project, they will also get to see the `SUMMARY` of all the sections attempted by 
 them.

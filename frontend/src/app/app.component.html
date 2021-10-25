@@ -1,2 +1,4 @@
-<router-outlet></router-outlet>
-
+<router-outlet *ngIf="this._costEstimationService.sectionsData.length!=0"></router-outlet>
+<div *ngIf="this._costEstimationService.sectionsData.length==0" class="matSpinnerHolder">
+    <mat-spinner></mat-spinner>
+</div>

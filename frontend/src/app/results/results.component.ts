@@ -33,10 +33,7 @@ export class ResultsComponent implements OnInit {
       companyName: [null, [Validators.required]],
     });
     this.answers = this._costEstimationService.answers;
-    if (this.answers.length == 0) {
-      this.resultExist = false;
-    }
-    console.log(this.answers);
+    this.resultExist = this._costEstimationService.isResultExists();
     this.sectionsWithAnswersSaved = <Sections[]>(
       await this._costEstimationService.getSections()
     );
@@ -44,9 +41,10 @@ export class ResultsComponent implements OnInit {
       const answeredQuestions: Question[] = [];
       section.questions.forEach((question: Question) => {
         const currentQuestionsWithAnswer: Question[] = this.answers.filter(
-          (currentQuestionsWithAnswer) => currentQuestionsWithAnswer.id === question.id
+          (currentQuestionsWithAnswer) =>
+            currentQuestionsWithAnswer.id === question.id
         );
-          if(currentQuestionsWithAnswer[0].options.length){
+        if (currentQuestionsWithAnswer[0].options.length) {
           answeredQuestions.push(currentQuestionsWithAnswer[0]);
         }
       });
@@ -63,17 +61,17 @@ export class ResultsComponent implements OnInit {
     this.step = index;
   }
 
-  nextStep() {
+  nextStep(): void {
     this.step++;
   }
 
-  prevStep() {
+  prevStep(): void {
     this.step--;
   }
-  displayAnswers() {
+  displayAnswers(): void {
     this.showProgressBar = true;
     this._costEstimationService
-      .submitAnswers(this.email, this.companyName)
+      .submitAnswers(this.form.controls.email.value, this.form.controls.companyName.value)
       .then((data: any) => {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;

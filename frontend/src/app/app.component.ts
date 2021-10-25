@@ -6,7 +6,7 @@ import { CostEstimationService } from './services/cost-estimation.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
- constructor(private _costEstimationService: CostEstimationService){
+ constructor(public _costEstimationService: CostEstimationService){
 
  }
  ngOnInit(){

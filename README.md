@@ -31,9 +31,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 * Run `npm run develop` for a dev server in the backend directory. The app will automatically reload if you change any of the source files.
 * Navigate to `http://localhost:1331/`
-* login with given credentials for testing:
+* Login with given credentials for testing:
 ```
-email: testuser123@gmail.com
+email: testuser123@test.com
 password: Test321@
 ```
 

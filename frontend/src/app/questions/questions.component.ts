@@ -29,7 +29,8 @@ export class QuestionsComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-   ngOnInit() {
+   async ngOnInit() {
+    await this._costEstimationService.setSectionValues();
     this.newSections = this._costEstimationService.sectionsData
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(

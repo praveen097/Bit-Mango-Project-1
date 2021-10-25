@@ -71,7 +71,7 @@ export class ResultsComponent implements OnInit {
   displayAnswers(): void {
     this.showProgressBar = true;
     this._costEstimationService
-      .submitAnswers(this.email, this.companyName)
+      .submitAnswers(this.form.controls.email.value, this.form.controls.companyName.value)
       .then((data: any) => {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;

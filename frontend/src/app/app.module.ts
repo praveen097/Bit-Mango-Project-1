@@ -19,7 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [AppComponent, routingComponents],
@@ -41,7 +41,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSnackBarModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatFormFieldModule
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent],

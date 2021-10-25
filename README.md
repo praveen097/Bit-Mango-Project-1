@@ -6,28 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 The main goal of this application is to take users through multiple sections and provide estimation to build a project
 
-## Working of the application
-<img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Landing-Page.png"/>
-
-In this application, user lands into  `HOME PAGE` where they will get some basic information about the application, they will get navigated to `QUESTIONS PAGE` when they click on `LET'S START` button.
-Now in questions page, users
-will get to see all the sections in `MAT TAB` where they can click on any sections to jump and answer them, else they can either choose to attempt the section by 
-clicking `CONTINUE` or can `SKIP` the section.
-<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Questions-Page-Information.png"/><br><div>
- 
- If clicked on `CONTINUE`, they will get question by question of that particular section. 
-<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Questions-Page.png"/><br><div>
- 
-If user completes answering 
-all the questions of that section, then they will get navigated to `OVERVIEW PAGE`, where they can see the questions and the answers attempted by them. Now user 
-can click on `NEXT SECTION` to move to next section. 
-<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Overview-Page.png"/><br><div>
- 
-If user attempts all the section which are needed to them, then they will get navigated to `RESULTS PAGE` where 
-user need to provide `EMAIL` and `COMPANY NAME` inorder to get `ESTIMATE` of their project, they will also get to see the `SUMMARY` of all the sections attempted by 
-them.
-<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Results-Page.png"/><br><div>
-
 ## Cloning Repository 
 
 Run `git clone <git url of the repo>` on the local computer. This will clone the remote repository to your local system.
@@ -51,7 +29,37 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Backend Server
 
-Run `npm run develop` for a dev server in the backend directory. The app will automatically reload if you change any of the source files.
+* Run `npm run develop` for a dev server in the backend directory. The app will automatically reload if you change any of the source files.
+* Navigate to `http://localhost:1331/`
+* login with given credentials for testing:
+```
+email: testuser123@gmail.com
+password: Test321@
+```
+
+
+## Working of the application
+<img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Landing-Page.png"/>
+
+In this application, user lands into  `HOME PAGE` where they will get some basic information about the application, they will get navigated to `QUESTIONS PAGE` when they click on `LET'S START` button.
+Now in questions page, users
+will get to see all the sections in `MAT TAB` where they can click on any sections to jump and answer them, else they can either choose to attempt the section by 
+clicking `CONTINUE` or can `SKIP` the section.
+<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Questions-Page-Information.png"/><br><div>
+ 
+ If clicked on `CONTINUE`, they will get question by question of that particular section. 
+<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Questions-Page.png"/><br><div>
+ 
+If user completes answering 
+all the questions of that section, then they will get navigated to `OVERVIEW PAGE`, where they can see the questions and the answers attempted by them. Now user 
+can click on `NEXT SECTION` to move to next section. 
+<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Overview-Page.png"/><br><div>
+ 
+If user attempts all the section which are needed to them, then they will get navigated to `RESULTS PAGE` where 
+user need to provide `EMAIL` and `COMPANY NAME` inorder to get `ESTIMATE` of their project, they will also get to see the `SUMMARY` of all the sections attempted by 
+them.
+<div><br><img src="https://github.com/praveen097/Bit-Mango-Project-1/blob/main/frontend/src/assets/Results-Page.png"/><br><div>
+
  
  ## Setting up cloud database
  

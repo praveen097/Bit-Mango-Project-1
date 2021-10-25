@@ -30,8 +30,11 @@ export class QuestionsComponent implements OnInit {
   ) {}
 
    async ngOnInit() {
-    await this._costEstimationService.setSectionValues();
-    this.newSections = this._costEstimationService.sectionsData
+    this.newSections = <Sections[]>(
+      await this._costEstimationService.getSections().catch(async (err) => {
+        this.snackBar.open(err, '', { duration: 3000 });
+      })
+    );
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex

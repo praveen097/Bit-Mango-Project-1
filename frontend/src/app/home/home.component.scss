@@ -107,14 +107,15 @@
 }
 
 @media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
+  
   .content {
     font-size: 15px;
-    line-height: 5vh;
+    line-height: 3vh;
   }
 
   .heading {
-    font-size: 25px;
-    line-height: 5vh;
+    font-size: 20px;
+    line-height: 4vh;
     margin-bottom: 25px;
   }
   .mainContainer {
@@ -125,7 +126,7 @@
   }
   .navButton {
     padding:7px 20px;
-    font-size: 15px;
+    font-size: 12px;
   }
 
 

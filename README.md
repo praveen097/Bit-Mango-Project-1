@@ -52,14 +52,42 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Backend Server
 
 Run `npm run develop` for a dev server in the backend directory. The app will automatically reload if you change any of the source files.
-
-## Setting up database
+ 
+ ## Setting up cloud database
+ 
+ We are using [MongoDB Atlas](https://cloud.mongodb.com/) to set up cloud database.
+ * Sign in to ` https://cloud.mongodb.com/ `.
+ * Create a cluster.
+ * Click on `CONNECT`.
+ * Grab HOST address. 
+ * Open `backend/config/database.js` file.
+ * Change `host` address, enable `srv, ssl` to `TRUE`.
+ * Provide `database` name, `username, password`.
+ 
+ ## Why mongoDB Atlas ?
+ 
+ There are many advantages using cloud databases, 
+ * Single database can be used for all types of devices even though application is running locally.
+ * Works even if mongo is not installed locally.
+ * Applications require reliable connections to the databases that power them, With built-in redundancy and 24/7 uptime, cloud databases offer a reliable platform for application development.
+ * Ensures backup and recovery.
+ * MongoDB can be used with any of the leading cloud service providers. If your business does move to another cloud service, MongoDB can easily move with you.
+ 
+ ## Setting up local database ( optional )
 
 To fetch data from backend, you require a database. In this application, you will work with `MongoDB`.
 
   * Install MongoDB server by installing [MongoDB Compass](https://www.mongodb.com/try/download/compass). This will also comes with a GUI which gives a clear view of how data is stored.
 
   * Open this application and have the mongodb server running on port number 27017.
+  * To export all collections
+ ```
+ $mongodump -d database_name -o directory_to_store_dumps
+ ```
+ * To restore them
+ ```
+ $mongorestore -d database_name directory_backup_where_mongobd_to_be_restored
+ ```
   
 ## Setting up Admin Console
 

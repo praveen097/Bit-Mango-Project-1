@@ -27,10 +27,12 @@ export class CostEstimationService {
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  async setSectionValues() {
-    this.sectionsData = <Sections[]>await this.getSections().catch(async (err) => {
-          this.snackBar.open(err, '', { duration: 3000 });
-        });
+  async setSectionValues(): Promise<void> {
+    this.sectionsData = <Sections[]>await this.getSections().catch(
+      async (err) => {
+        this.snackBar.open(err, '', { duration: 3000 });
+      }
+    );
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
     ).questions[this.currentQuestionIndex].id;
@@ -64,40 +66,38 @@ export class CostEstimationService {
     });
   }
 
-  incrementCurrentSection() {
+  incrementCurrentSection(): void {
     this.currentSectionIndex += 1;
   }
 
-  getSectionNameByIndex(index: number) {
+  getSectionNameByIndex(index: number): string {
     return this.sectionsData[index].sectionName;
   }
-  getSectionByIndex(index: number) {
+  getSectionByIndex(index: number): Sections {
     return this.sectionsData[index];
   }
-  skipSection() {
+  skipSection(): void {
     this.currentSectionIndex += 1;
   }
-  goToSectionByIndex(id: number) {
+  goToSectionByIndex(id: number): void {
     this.currentSectionIndex = id;
     this.currentQuestionIndex = 0;
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
     ).questions[this.currentQuestionIndex].id;
   }
-  getFirstQuestionofCurrentSection() {
+  getFirstQuestionofCurrentSection(): Question {
     return this.sectionsData[this.currentSectionIndex].questions[0];
   }
 
-  setAnswerById(id: string, options: Option[]) {
+  setAnswerById(id: string, options: Option[]): void {
     for (var i = 0; i < this.answers.length; i++) {
       if (this.answers[i].id == id) {
         this.answers[i].options = options;
       }
     }
 
-    let answerIndex = this.answers.findIndex(
-      (answer) => answer.id == id
-    );
+    let answerIndex = this.answers.findIndex((answer) => answer.id == id);
     if (answerIndex == -1) {
       let questionTemplate = this.getQuestionById(id);
       const question = JSON.parse(JSON.stringify(questionTemplate));
@@ -107,7 +107,7 @@ export class CostEstimationService {
       this.answers[answerIndex].options = options;
     }
   }
-  isLastQuestionOfCurrentSection(id: number) {
+  isLastQuestionOfCurrentSection(id: number): boolean {
     // compare index of current question and current sections questions array length
     const sectionQuestions = this.getSectionByIndex(
       this.currentSectionIndex
@@ -158,12 +158,12 @@ export class CostEstimationService {
     return this.getQuestionById(this.currentQuestion);
   }
 
-  getAnswerByQuestionId(id: string) {
+  getAnswerByQuestionId(id: string): Option[] {
     const currentAnswers: Question[] = this.answers.filter((x) => x.id == id);
     return currentAnswers[0].options;
   }
 
-  isSectionAnswered(sectionIndex: number) {
+  isSectionAnswered(sectionIndex: number): boolean {
     for (let i = 0; i < this.sectionsData[sectionIndex].questions.length; i++) {
       if (
         this.getAnswerByQuestionId(
@@ -175,8 +175,16 @@ export class CostEstimationService {
     }
     return false;
   }
+  isResultExists(): boolean {
+    for (var i = 0; i < this.sectionsData.length; i++) {
+      if (this.isSectionAnswered(i)) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-  getAnswersOfCurrentSectionByIndex(index: number) {
+  getAnswersOfCurrentSectionByIndex(index: number): Question[] {
     const section = this.getSectionByIndex(index);
     const qids = section.questions.map((question) => {
       return question.id;
@@ -186,22 +194,21 @@ export class CostEstimationService {
     );
     return answers;
   }
-  submitAnswers(email: string, companyName: string) {
+  submitAnswers(email: string, companyName: string): Promise<Object> {
     let finalAnswers: SubmitQuestions[] = [];
-    this.answers.forEach((answer)=>{
-      if(answer.options.length!=0){
+    this.answers.forEach((answer) => {
+      if (answer.options.length != 0) {
         finalAnswers.push({
-          multiple:answer.multiple,
+          multiple: answer.multiple,
           questionText: answer.questionText,
           options: answer.options.map((option) => ({
             optionText: option.optionText,
             minPrice: option.minPrice,
             maxPrice: option.maxPrice,
           })),
-
         });
       }
-    })
+    });
 
     const data = {
       email: email,
@@ -210,5 +217,4 @@ export class CostEstimationService {
     };
     return this.http.post(this.hostUrl + '/submissions', data).toPromise();
   }
-
 }

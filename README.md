@@ -53,7 +53,7 @@ The frontend will make `RESTful` requests to the backend using the `URL` defined
  
     We are using [MongoDB Atlas](https://cloud.mongodb.com/) to set up cloud database.
 
-    #### Note: This application has already been configured with MongoDB Atlas cloud instance which is pre-loaded with sections and questions
+    #### Note: This application has already been configured with a pre-existing MongoDB Atlas cloud instance which is pre-loaded with sections and questions. In case you want to configure a new DB instance see below, otherwise skip to Adding New Sections and Questions
 
     * Sign in to ` https://cloud.mongodb.com/ `.
     * Create a cluster.

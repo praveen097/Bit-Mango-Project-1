@@ -23,14 +23,15 @@ This will automatically install all the utilized packages in the application.
  ```
  $ng serve
  ```
-* #### To run application 
-Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* #### To open the application 
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change content of the source files.
 
  ### Backend connection
 The frontend will make `RESTful` requests to the backend using the `URL` defined in the environment variable `baseUrl`
 
 
 ## Run the backend
+We have used [STRAPI](https://strapi.io/) for backend in this application. Strapi is an Open Source, self hosting, headless API with a fully customizable CMS, serving data and methods via Restful or GraphQL endpoints.
 * #### Install NPM Packages
  ```
  $cd backend
@@ -41,12 +42,12 @@ The frontend will make `RESTful` requests to the backend using the `URL` defined
  $npm run develop
  ```
 * #### Credentials for Admin Console
+  * The admin console can be accessed by navigating to http://localhost:1337/admin/auth/login
   * Login with given credentials for testing:
   ```
   email: testuser123@test.com
   password: Test321@
   ```
-   * The admin console can be accessed by navigating to http://localhost:1337/admin/auth/login
   
 * #### DB Configuration
   * ## Setting up cloud database

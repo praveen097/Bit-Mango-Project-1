@@ -29,7 +29,7 @@ export class QuestionsComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-   async ngOnInit() {
+   async ngOnInit():Promise<void> {
     this.newSections = <Sections[]>this._costEstimationService.sectionsData;
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
@@ -50,7 +50,7 @@ export class QuestionsComponent implements OnInit {
     ]);
   }
 
-  skipSectionHandler(id: number | null) {
+  skipSectionHandler(id: number | null):void {
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionStarted = false;
     this.sectionIndex = <number>id;
@@ -70,7 +70,7 @@ export class QuestionsComponent implements OnInit {
       this.presentQuestion.id
     );
   }
-  skipSection() {
+  skipSection():void {
     if (
       this.sectionIndex <
       this._costEstimationService.sectionsData.length - 1
@@ -81,14 +81,14 @@ export class QuestionsComponent implements OnInit {
     }
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
   }
-  continue() {
+  continue():void {
     this.sectionStarted = true;
     this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
     );
   }
-  multipleToggleSelection(option: Option) {
+  multipleToggleSelection(option: Option):void {
     const isExists = this.answer.findIndex(
       (x) => x.optionText == option.optionText
     );
@@ -101,7 +101,7 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  toggleSelection(chip: MatChip, option: Option) {
+  toggleSelection(chip: MatChip, option: Option):void {
     chip.toggleSelected();
     if (this.answer.length > 0) {
       this.answer[0].selected = false;
@@ -110,7 +110,7 @@ export class QuestionsComponent implements OnInit {
     this.answer[0] = option;
   }
 
-  previousQuestion() {
+  previousQuestion():void {
     this.currentQuestionNumberForDisplay--;
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
     this.answer = this._costEstimationService.getAnswerByQuestionId(

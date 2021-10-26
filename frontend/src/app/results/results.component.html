@@ -3,11 +3,10 @@
     <div *ngIf="showUserForm; else showAnswers" class="showUserForm">
       <mat-card>
         <mat-card-title id="greetingMessage"
-          >Congratulations, You have made it
+          >Congratulations, You have made it.
         </mat-card-title>
         <mat-card-content class="content"
-          >Please fill the below details to send the estimate to your
-          email</mat-card-content
+          >Please fill the details below to receive your estimate</mat-card-content
         >
         <form (submit)="displayAnswers()" [formGroup]="form">
           <div class="formInput">

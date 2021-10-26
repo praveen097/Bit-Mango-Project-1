@@ -1,16 +1,16 @@
-@import '../../styles.scss';
+@import "../../styles.scss";
 
-.mainContainer{
+.mainContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   height: 100vh;
 }
-.heading{
-    font-size:45px;
-    text-align: center;
-    margin: 50px 20px;
-    color: $light-grey;
+.heading {
+  font-size: 45px;
+  text-align: center;
+  margin: 50px 20px;
+  color: $light-grey;
 }
 .questionTemplate {
   margin: 2%;
@@ -18,13 +18,13 @@
 
 .optionChip {
   background-color: $green;
-  color:$white;
+  color: $white;
   height: max-content;
 }
 .nextSectionButton {
   background-color: $green;
-  color:$white;
-  margin:20px 0px;
+  color: $white;
+  margin: 2% 2% 4% 2%;
   float: right;
   width: fit-content;
   text-transform: uppercase;
@@ -39,7 +39,7 @@ section {
   font-size: 18px;
 }
 
-@media screen and (max-width:578px){
+@media screen and (max-width: 578px) {
   .questionText {
     font-size: 15px;
   }
@@ -47,7 +47,7 @@ section {
     font-size: 28px;
   }
 }
-@media screen and (min-width:578px) and (max-width:768px){
+@media screen and (min-width: 578px) and (max-width: 768px) {
   .questionText {
     font-size: 16px;
   }

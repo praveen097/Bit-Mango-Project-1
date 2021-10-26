@@ -14,6 +14,7 @@
 }
 .buttonSelect {
   text-align: left;
+  
 }
 .customContainer {
   display: flex;
@@ -36,6 +37,7 @@
   background-color: $yellow;
   outline: 0px;
   color: $white;
+  margin:0px 15px 6px 0px;
   text-transform: uppercase;
 }
 .skipButton:hover {
@@ -51,6 +53,7 @@
 .continueButton {
   background-color: $green;
   color: $white;
+  margin:0px 15px 6px 0px;
 }
 
 .skipSection {

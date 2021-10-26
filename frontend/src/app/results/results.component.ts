@@ -17,8 +17,6 @@ export class ResultsComponent implements OnInit {
   step: number = 0;
   answers: Question[] = [];
   showUserForm: boolean = true;
-  email: string = '';
-  companyName: string = '';
   form!: FormGroup;
   showProgressBar: boolean = false;
 
@@ -57,7 +55,7 @@ export class ResultsComponent implements OnInit {
     this.showResults = true;
   }
 
-  setStep(index: number) {
+  setStep(index: number): void {
     this.step = index;
   }
 
@@ -71,7 +69,10 @@ export class ResultsComponent implements OnInit {
   displayAnswers(): void {
     this.showProgressBar = true;
     this._costEstimationService
-      .submitAnswers(this.form.controls.email.value, this.form.controls.companyName.value)
+      .submitAnswers(
+        this.form.controls.email.value,
+        this.form.controls.companyName.value
+      )
       .then((data: any) => {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;

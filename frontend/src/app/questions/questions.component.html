@@ -22,7 +22,7 @@
           {{ newSections[sectionIndex].sectionDescription }}
         </mat-card-content>
 
-        <mat-card-actions class="buttonSelect">
+        <div class="buttonSelect">
           <button
             *ngIf="!sectionTouched"
             mat-stroked-button
@@ -42,7 +42,7 @@
           <button mat-raised-button class="continueButton" (click)="continue()">
             {{ continueButtonText }}
           </button>
-        </mat-card-actions>
+        </div>
       </mat-card>
     </div>
   </div>

@@ -8,7 +8,7 @@ The main goal of this application is to take users through multiple sections and
 
 ## Cloning Repository 
 
-Run `git clone <git url of the repo>` on the local computer. This will clone the remote repository to your local system.
+Run `git clone https://github.com/praveen097/Bit-Mango-Project-1.git` on the local computer. This will clone the remote repository to your local system.
 
 
 This will automatically install all the utilized packages in the application.

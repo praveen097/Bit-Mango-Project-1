@@ -27,7 +27,7 @@ export class ResultsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.form = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       companyName: [null, [Validators.required]],
     });
     this.answers = this._costEstimationService.answers;

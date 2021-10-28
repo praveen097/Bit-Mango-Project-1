@@ -15,7 +15,10 @@
 .questionTemplate {
   margin: 2%;
 }
-
+.questionText {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
 .optionChip {
   background-color: $green;
   color: $white;
@@ -34,10 +37,6 @@ section {
   margin: auto;
 }
 
-.questionText {
-  margin-bottom: 30px;
-  font-size: 18px;
-}
 
 @media screen and (max-width: 578px) {
   .questionText {

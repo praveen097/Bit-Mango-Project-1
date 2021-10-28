@@ -6,6 +6,66 @@
   align-items: center;
   height: 100vh;
 }
+.showUserForm {
+  width:80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: $yellow solid;
+  border-radius: 20px;
+  border-width: 2px;
+}
+.showUserForm > mat-card {
+  box-shadow: none;
+  margin-top:60px;
+  margin-bottom:0px ;
+  width:90%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+#greetingMessage {
+  font-size: 40px;
+  line-height: 7vh;
+  font-weight: 400;
+  color: $green;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.content {
+  font-size: 18px;
+  line-height: 6vh;
+  font-weight: 400;
+  width:80%;
+  margin:0px auto 40px auto;
+  justify-content: center;
+}
+.formInput {
+  display: flex;
+  flex-flow: row;
+  margin: auto;
+  justify-content: space-around;
+  width:80%;
+}
+.inputVal {
+  margin:20px;
+  width:100%;
+}
+.submitUserDetails {
+  background-color: $yellow;
+  color:$white;
+  padding:7px 20px;
+  font-size: 18px;
+  margin:20px;
+  outline: none;
+}
+.submitUserDetails:hover {
+  background-color: $green;
+}
 .heading {
   font-size: 45px;
   text-align: center;
@@ -13,7 +73,20 @@
   color: $light-grey;
   line-height: 7vh;
 }
-
+.priceEstimate {
+  width: 20%;
+  height: auto;
+  -moz-box-shadow:inset 0 0 10px $white;
+  -webkit-box-shadow:inset 0 0 10px $white;
+  box-shadow:inset 0 0 10px $white;
+  font-size:x-large;
+  border-radius: 20px;
+  background-color: $green;
+  margin: 40px auto 40px auto;
+  text-align: center;
+  color:$white;
+  font-weight: 500;
+}
 section {
   width:90%;
   margin:auto;
@@ -31,82 +104,23 @@ section {
   flex-flow: row wrap;
   justify-content: space-around;
 }
-.questionText {
-  margin-bottom: 20px;
-  font-size:17px;
-}
-
-.optionChip {
-  background-color: $green;
-  color:$white;
-  font-size: 15px;
-  height:max-content;
-}
-
 .questionTemplate {
   width: 47%;
   margin-bottom: 10px;
   border-bottom-style: solid;
   border-bottom-color:$yellow;
   border-bottom-width: 1px;
-
 }
-.showUserForm {
-  width:80%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  border: $yellow solid;
-  border-radius: 20px;
-  border-width: 2px;
+.questionText {
+  margin-bottom: 20px;
+  font-size:17px;
 }
-.priceEstimate {
-  width: 20%;
-  height: auto;
-  -moz-box-shadow:inset 0 0 10px $white;
-  -webkit-box-shadow:inset 0 0 10px $white;
-  box-shadow:inset 0 0 10px $white;
-  font-size:x-large;
-  border-radius: 20px;
+.optionChip {
   background-color: $green;
-  margin: 40px auto 40px auto;
-  text-align: center;
   color:$white;
-  font-weight: 500;
+  font-size: 15px;
+  height:max-content;
 }
-::ng-deep .errorMessage > .mat-card-content {
-  font-size: 20px;
-}
-
-@media screen and (min-width:568px) and (max-width:768px){
-  .questionTemplate {
-    width: 100%;
-    margin-top:10px ;
-    margin-bottom: 10px;
-  }
-  .questionList {
-    flex-flow: column;
-  }
-  .priceEstimate {
-    width: 40%;
-    font-size: large;
-
-  }
-  .questionText {
-    font-size: 17px;
-  }
-  .heading {
-    font-size: 30px;
-  }
-  .errorMessage {
-    font-size: 20px;
-    padding: 20px;
-  }
-}
-
 .errorMessage {
   width: 100%;
   text-align: center;
@@ -115,7 +129,6 @@ section {
   padding:40px;
   font-size: 30px;
 }
-
 #prevButton {
   background-color: $yellow;
   color: $white;
@@ -124,92 +137,31 @@ section {
   background-color: $green;
   color:$white;
 }
-
-.submitUserDetails {
-  background-color: $yellow;
-  color:$white;
-  padding:7px 20px;
-  font-size: 18px;
-  margin:20px;
-  outline: none;
-}
-
-.submitUserDetails:hover {
-  background-color: $green;
+mat-icon {
+  color:$green;
 }
 mat-card-footer {
   width: 100%;
 }
-
-.showUserForm > mat-card {
-  box-shadow: none;
-  margin-top:60px;
-  margin-bottom:0px ;
-  width:90%;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+.mat-form-field {
+  font-size: 18px;
+  width: 95%;
 }
-.formInput {
-  display: flex;
-  flex-flow: row;
-  margin: auto;
-  justify-content: space-around;
-  width:80%;
-}
-#greetingMessage {
-  font-size: 40px;
-  line-height: 7vh;
-  font-weight: 400;
-  color: $green;
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  margin-bottom: 50px;
+::ng-deep .errorMessage > .mat-card-content {
+  font-size: 20px;
 }
 ::ng-deep .mat-form-field-infix{
   width:275px !important;
 }
-
-.content {
-  font-size: 18px;
-  line-height: 6vh;
-  font-weight: 400;
-  width:80%;
-  margin:0px auto 40px auto;
-  justify-content: center;
-}
-.inputVal {
-  margin:20px;
-  width:100%;
-}
-
-.has-error {
-  color:$white;
-  padding:5px 30px;
-  font-size: 20px;
-  margin:20px;
-  border-radius: 20px;
-}
-
-mat-icon {
-  color:$green;
-}
-
 ::ng-deep .mat-input-element {
   caret-color: $green;
   font-size: 16px !important;
 }
-
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
   color:$green;
 }
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color:$green
-}
-.mat-form-field {
-  font-size: 18px;
-  width: 95%;
 }
 ::ng-deep .mat-input-element {
   caret-color: $green;
@@ -263,7 +215,31 @@ mat-icon {
 }
 
 }
+@media screen and (min-width:568px) and (max-width:768px){
+  .questionTemplate {
+    width: 100%;
+    margin-top:10px ;
+    margin-bottom: 10px;
+  }
+  .questionList {
+    flex-flow: column;
+  }
+  .priceEstimate {
+    width: 40%;
+    font-size: large;
 
+  }
+  .questionText {
+    font-size: 17px;
+  }
+  .heading {
+    font-size: 30px;
+  }
+  .errorMessage {
+    font-size: 20px;
+    padding: 20px;
+  }
+}
 @media screen and (min-width:368px) and (max-width:567px){
   .priceEstimate {
     width: 40%;

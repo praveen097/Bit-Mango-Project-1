@@ -81,7 +81,7 @@
           >
             <div class="questionText">{{ question.questionText }}</div>
             <mat-card-content>
-              <mat-chip-list class="optionList">
+              <mat-chip-list >
                 <mat-chip *ngFor="let option of question.options" class="optionChip">{{
                   option.optionText
                 }}</mat-chip>

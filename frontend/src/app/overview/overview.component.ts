@@ -29,10 +29,6 @@ export class OverviewComponent implements OnInit {
       this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
       this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
 
-      this.sectionName = this._costEstimationService.getSectionNameByIndex(
-        this.sectionIndex
-      );
-
       if (
         this.sectionIndex ==
         this._costEstimationService.sectionsData.length - 1
@@ -45,21 +41,21 @@ export class OverviewComponent implements OnInit {
         this.sectionIndex <=
         this._costEstimationService.sectionsData.length - 1
       ) {
+        this.sectionName = this._costEstimationService.getSectionNameByIndex(
+          this.sectionIndex
+        );
         this.answers =
           this._costEstimationService.getAnswersOfCurrentSectionByIndex(
             this.sectionIndex
           );
       } else {
         this.sectionExist = false;
+        console.log('reached');
       }
     }
   }
-
   toQuestions(): void {
     if (!this.isLastSection) this.route.navigate(['/questions']);
     else this.route.navigate(['/results']);
-  }
-  toresults(): void {
-    this.route.navigate(['/results']);
   }
 }

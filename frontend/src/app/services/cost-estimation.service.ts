@@ -28,9 +28,8 @@ export class CostEstimationService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   async setSectionValues(): Promise<void> {
-    this.sectionsData = <Sections[]>await this.getSections().catch(
-      async (err) => {
-        this.snackBar.open(err, '', { duration: 3000 });
+    this.sectionsData = <Sections[]>await this.getSections().catch(() => {
+        this.snackBar.open("Failed to connect, please try again later");
       }
     );
     this.currentQuestion = this.getSectionByIndex(
@@ -73,12 +72,15 @@ export class CostEstimationService {
   getSectionNameByIndex(index: number): string {
     return this.sectionsData[index].sectionName;
   }
+
   getSectionByIndex(index: number): Sections {
     return this.sectionsData[index];
   }
+
   skipSection(): void {
     this.currentSectionIndex += 1;
   }
+
   goToSectionByIndex(id: number): void {
     this.currentSectionIndex = id;
     this.currentQuestionIndex = 0;
@@ -86,6 +88,7 @@ export class CostEstimationService {
       this.currentSectionIndex
     ).questions[this.currentQuestionIndex].id;
   }
+
   getFirstQuestionofCurrentSection(): Question {
     return this.sectionsData[this.currentSectionIndex].questions[0];
   }
@@ -107,6 +110,7 @@ export class CostEstimationService {
       this.answers[answerIndex].options = options;
     }
   }
+
   isLastQuestionOfCurrentSection(id: number): boolean {
     // compare index of current question and current sections questions array length
     const sectionQuestions = this.getSectionByIndex(
@@ -175,6 +179,7 @@ export class CostEstimationService {
     }
     return false;
   }
+
   isResultExists(): boolean {
     for (var i = 0; i < this.sectionsData.length; i++) {
       if (this.isSectionAnswered(i)) {
@@ -194,6 +199,7 @@ export class CostEstimationService {
     );
     return answers;
   }
+
   submitAnswers(email: string, companyName: string): Promise<Object> {
     let finalAnswers: SubmitQuestions[] = [];
     this.answers.forEach((answer) => {

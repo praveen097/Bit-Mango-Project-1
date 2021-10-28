@@ -3,14 +3,14 @@
   <mat-card *ngFor="let question of answers" class="questionTemplate">
     <div class="questionText">{{ question.questionText }}</div>
     <mat-card-content>
-      <mat-chip-list class="option-list">
+      <mat-chip-list>
         <mat-chip *ngFor="let option of question.options" class="optionChip">{{
           option.optionText
         }}</mat-chip>
       </mat-chip-list>
     </mat-card-content>
   </mat-card>
-  <div class="buttonContainer">
+  <div >
     <button mat-raised-button class="nextSectionButton" (click)="toQuestions()">
       {{ buttonText }}
     </button>

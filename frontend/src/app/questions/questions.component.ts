@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatChip } from '@angular/material/chips';
 import { Sections } from '../models/sections';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-questions',
@@ -26,7 +26,6 @@ export class QuestionsComponent implements OnInit {
   constructor(
     private _costEstimationService: CostEstimationService,
     private route: Router,
-    private snackBar: MatSnackBar
   ) {}
 
    async ngOnInit():Promise<void> {
@@ -44,12 +43,6 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  toOverview(): void {
-    this.route.navigate([
-      '/overview/' + (this._costEstimationService.currentSectionIndex - 1),
-    ]);
-  }
-
   skipSectionHandler(id: number | null):void {
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionStarted = false;
@@ -64,12 +57,12 @@ export class QuestionsComponent implements OnInit {
     } else {
       this.continueButtonText = 'CONTINUE';
     }
-
     this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
     );
   }
+
   skipSection():void {
     if (
       this.sectionIndex <
@@ -81,6 +74,7 @@ export class QuestionsComponent implements OnInit {
     }
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
   }
+
   continue():void {
     this.sectionStarted = true;
     this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
@@ -88,6 +82,7 @@ export class QuestionsComponent implements OnInit {
       this.presentQuestion.id
     );
   }
+
   multipleToggleSelection(option: Option):void {
     const isExists = this.answer.findIndex(
       (x) => x.optionText == option.optionText
@@ -164,5 +159,11 @@ export class QuestionsComponent implements OnInit {
         );
       }
     }
+  }
+
+  toOverview(): void {
+    this.route.navigate([
+      '/overview/' + (this._costEstimationService.currentSectionIndex - 1),
+    ]);
   }
 }

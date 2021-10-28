@@ -1,16 +1,12 @@
 @import '../../styles.scss';
-.mainText{
-  font-size: 30px;
-  color: $green;
+.mainContainer{
+  width:95%;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh ;
 }
-
-.subText{
-  font-weight: 200;
-  color: $light-grey;
-  font-size: 18px;
-  text-align:justify;
-}
-
 .subContainer {
   width:80%;
   text-align: center;
@@ -23,35 +19,23 @@
   padding: 10px 20px;
   margin: 10px;
 }
-.heading {
-  font-size: 40px;
-  line-height: 5vh;
-  font-weight: 400;
-  color: $green;
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.content {
-  font-size: 18px;
-  line-height: 5vh;
-}
-
-.mainContainer{
-  width:95%;
-  margin:auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh ;
-}
 .subContainer mat-card {
   box-shadow: none;
   width:90%;
   margin:10px;
 }
-
+.heading {
+  font-size: 40px;
+  line-height: 5vh;
+  font-weight: 400;
+  color: $green;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.content {
+  font-size: 18px;
+  line-height: 5vh;
+}
 .navButton {
   background-color: $yellow;
   color:$white;
@@ -64,10 +48,6 @@
   background-color: $green;
 }
 
-.buttonContainer {
-  text-align: center;
-  margin: 30px auto;
-}
 @media screen and  (max-width:1024px) {
   .content {
     font-size: 18px;
@@ -106,13 +86,11 @@
   }
 }
 
-@media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
-  
+@media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){ 
   .content {
     font-size: 15px;
     line-height: 3vh;
   }
-
   .heading {
     font-size: 20px;
     line-height: 4vh;
@@ -128,8 +106,6 @@
     padding:7px 20px;
     font-size: 12px;
   }
-
-
 }
 
 

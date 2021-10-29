@@ -4,8 +4,6 @@ services:
     build: frontend
     ports:
       - "4200:80"
-    networks:
-      - strapi-app-network
 
   strapiexample:
     image: strapi/strapi
@@ -19,13 +17,5 @@ services:
       DATABASE_PORT: 27017
       DATABASE_USERNAME: pguttapalyam
       DATABASE_PASSWORD: Prav097
-    #    links:
-    #      - mongo:mongo
-    networks:
-      - strapi-app-network
     ports:
       - "1337:1337"
-
-networks:
-  strapi-app-network:
-    driver: bridge

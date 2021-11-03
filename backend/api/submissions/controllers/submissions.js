@@ -5,35 +5,40 @@
  * to customize this controller
  */
 var nodeMailer = require('nodemailer');
+var handleBars = require('handlebars');
+var fs = require('fs');
+var path = require('path')
 var transporter = nodeMailer.createTransport({
   service:'gmail',
   auth:{
-    user:'',
-    pass:""
+    user:'chethansaikaranam@gmail.com',
+    pass:'6303504743@cC'
   }
 });
 
 
 module.exports = {
     async create(submission){
+      var source = fs.readFileSync(path.join(__dirname, 'mail.hbs'), 'utf8');
+      var template = handleBars.compile(source)
         let minPrice = 0;
         let maxPrice = 0;
-        let mailBody = "Hi " + submission.request.body.companyName+"\n\n Greetings from Bit Mango\nHere are the Questions you answered\n\n";
         let answeredQuestions = submission.request.body.answeredQuestions;
         answeredQuestions.forEach(questions => {
-            mailBody+=questions.questionText+"\n";
             questions.options.forEach((option)=>{
                 minPrice += option.minPrice;
-                maxPrice += option.maxPrice
-                mailBody+= option.optionText+" ";
+                maxPrice += option.maxPrice;
             })
-            mailBody+="\n\n"
         });
-        mailBody+='\n\n The Lower Estimate of your project is:'+minPrice+"\n\n The Higher Estimate of your project is :"+maxPrice;
         var mailOptions = {
           to:submission.request.body.email,
           subject:"Cost Estimator - Answered Questions",
-          text:mailBody
+          attachments: [{
+            filename: 'logo.png',
+              path: __dirname +'/logo.png',
+             cid: 'imagename'
+      }],
+          html:template({companyName:submission.request.body.companyName,questions:answeredQuestions,lowerEstimate:minPrice,upperEstimate:maxPrice})
         }
 
         transporter.sendMail(mailOptions,(error,info)=>{
@@ -49,7 +54,7 @@ module.exports = {
             upperEstimate:maxPrice,
             answeredQuestions:answeredQuestions
         }
-        await strapi.services.submissions.create(dataSubmitted);
+        //await strapi.services.submissions.create(dataSubmitted);
         return ({lowerEstimate:minPrice,upperEstimate:maxPrice});
     }
 

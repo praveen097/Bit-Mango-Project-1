@@ -3,18 +3,18 @@
 <body>
   <div style="text-align: center;"><img src="cid:imagename"/></div>
   <br><h2 style="text-align: center;">Greetings from Lemon</h2><br><br>
-  {{!-- {{#each questions}}
-  <div id="questionTemplate">
-    <p>{{this.questionText}}</p>
-      {{#each this.options}}
-        <span style="background-color:yellow;margin:10px;border-radius:20px ">{{this.optionText}}</span>
-      {{/each}}
-  </div>
-  {{/each}} --}}
     <h2 style="text-align: center;">Here is your Estimate Of the Project</h2><br><br>
     <h2 style="background-color: #15A811;text-align:center">
       ${{lowerEstimate}} - ${{upperEstimate}}
     </h2><br>
+  {{#each questions}}
+  <div id="questionTemplate">
+    <h4>{{this.questionText}}</h4>>
+      {{#each this.options}}
+        <span style="background-color:#D8CE17; ">{{this.optionText}}</span>
+      {{/each}}
+  </div>
+  {{/each}}
     <footer style="text-align: center;">
       <h4 class="address with-spacer">Groeningenlei 16, 2550 Kontich</h4>
       <h4><a class="e-mail with-spacer" href="mailto:info@lemon.be">info@lemon.be</a></h4>

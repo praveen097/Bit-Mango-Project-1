@@ -9,7 +9,7 @@ var handleBars = require('handlebars');
 var fs = require('fs');
 var path = require('path')
 var transporter = nodeMailer.createTransport({
-  service:'',
+  service:'gmail',
   auth:{
     user:'',
     pass:''
@@ -41,7 +41,7 @@ module.exports = {
           html:template({companyName:submission.request.body.companyName,questions:answeredQuestions,lowerEstimate:minPrice,upperEstimate:maxPrice})
         }
 
-        transporter.sendMail(mailOptions,(error,info)=>{
+        await transporter.sendMail(mailOptions,(error,info)=>{
           if (error) console.log(error);
           else{
             console.log("Email Sent "+info.response);
@@ -54,7 +54,7 @@ module.exports = {
             upperEstimate:maxPrice,
             answeredQuestions:answeredQuestions
         }
-        //await strapi.services.submissions.create(dataSubmitted);
+        await strapi.services.submissions.create(dataSubmitted);
         return ({lowerEstimate:minPrice,upperEstimate:maxPrice});
     }
 

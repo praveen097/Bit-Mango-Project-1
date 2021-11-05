@@ -9,10 +9,10 @@ var handleBars = require('handlebars');
 var fs = require('fs');
 var path = require('path')
 var transporter = nodeMailer.createTransport({
-  service:'gmail',
+  service:'',
   auth:{
-    user:'chethansaikaranam@gmail.com',
-    pass:'6303504743@cC'
+    user:'',
+    pass:''
   }
 });
 

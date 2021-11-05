@@ -6,19 +6,22 @@
     <h2 style="text-align: center;">Here is your Estimate Of the Project</h2><br><br>
     <h2 style="background-color: #15A811;text-align:center">
       ${{lowerEstimate}} - ${{upperEstimate}}
-    </h2><br>
+    </h2><br><br>
+  <h2>Here are the questions you answered</h2>
   {{#each questions}}
   <div id="questionTemplate">
-    <h4>{{this.questionText}}</h4>>
+    <h4>{{this.questionText}}</h4>
       {{#each this.options}}
         <span style="background-color:#D8CE17; ">{{this.optionText}}</span>
       {{/each}}
   </div>
   {{/each}}
-    <footer style="text-align: center;">
+  <br>
+  <h3>For Further Queries:</h3>
+    <footer>
       <h4 class="address with-spacer">Groeningenlei 16, 2550 Kontich</h4>
       <h4><a class="e-mail with-spacer" href="mailto:info@lemon.be">info@lemon.be</a></h4>
-      <h4><a class="phone" href="tel:003233699082">+32 (0)3 369 90 82</a></h4>
+      <h4><a cl29082">+32 (0)3 369 90 82</a></h4>
     </footer>
 </body>
 </html>

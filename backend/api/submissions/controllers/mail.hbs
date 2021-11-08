@@ -1,27 +1,117 @@
 <html>
-<head><title></title></head>
+
+<head>
+  <style>
+    body {
+      background-color: #f6f9fc;
+    }
+
+    .companyLogo {
+      text-align: center;
+    }
+
+    .greetings {
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .estimatesHeader {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .estimates {
+      background-color: #15A811;
+      color: aliceblue;
+      text-align: center;
+      font-size: xx-large;
+      width: fit-content;
+      padding: 15px;
+      border-radius: 25px;
+      margin: 0px;
+
+    }
+
+    .infoHeader {
+      font-size: x-large;
+      font-weight: 400;
+    }
+
+    .questionTemplate {
+      font-size: larger;
+      font-weight: 600;
+    }
+
+    @supports(order) .optionTemplateHolder {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+
+    @supports(order) .optionTemplate {
+
+      order: 1;
+    }
+
+    .contactInfo {
+      font-size: large;
+      font-weight: 400;
+    }
+
+    .companyName {
+      font-size: large;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
 <body>
-  <div style="text-align: center;"><img src="cid:imagename"/></div>
-  <br><h2 style="text-align: center;">Greetings from Lemon</h2><br><br>
-    <h2 style="text-align: center;">Here is your Estimate Of the Project</h2><br><br>
-    <h2 style="background-color: #15A811;text-align:center">
-      ${{lowerEstimate}} - ${{upperEstimate}}
-    </h2><br><br>
-  <h2>Here are the questions you answered</h2>
+  <div class="companyLogo" style="text-align: center;"><img src="cid:imagename" /></div>
+  <br>
+  <p class="greetings" style="text-align: center;font-size: 28px;">Greetings from Lemon</p>
+  <p class="estimatesHeader" style="text-align: center;font-size: 18px;">Here is the Estimate of your Project</h2>
+  <p>
+    <center>
+      <div class="estimates" style="background-color: #15A811;color: aliceblue;text-align: center;
+      font-size: xx-large;width: fit-content;padding: 15px;border-radius: 25px;margin: 0px;">
+        ${{lowerEstimate}} - ${{upperEstimate}}
+      </div>
+    </center>
+    <br><br>
+
+  <h3 class="infoHeader">Here are the options you picked for your project:</h3>
+  <hr>
   {{#each questions}}
-  <div id="questionTemplate">
-    <h4>{{this.questionText}}</h4>
+  <div>
+    <p class="questionTemplate">{{this.questionText}}</p>
+    <div class="optionTemplateHolder">
       {{#each this.options}}
-        <span style="background-color:#D8CE17; ">{{this.optionText}}</span>
+      <span>
+      <span class="optionTemplate" style="
+      width: max-content;
+      font-size: medium;
+      font-weight: 400;
+      background-color: #15A811;
+      padding: 3px;
+      border-radius: 25px;
+      color: rgb(255, 255, 255);
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      ">{{this.optionText}}</span></span>
       {{/each}}
+    </div>
   </div>
   {{/each}}
   <br>
-  <h3>For Further Queries:</h3>
-    <footer>
-      <h4 class="address with-spacer">Groeningenlei 16, 2550 Kontich</h4>
-      <h4><a class="e-mail with-spacer" href="mailto:info@lemon.be">info@lemon.be</a></h4>
-      <h4><a cl29082">+32 (0)3 369 90 82</a></h4>
-    </footer>
+  <hr>
+  <footer>
+    <p class="companyName">Lemon Companies BVBA / Lemon Digital BVBA</p>
+    <h4 class="contactInfo">Groeningenlei 16, 2550 Kontich | <a href="mailto:info@lemon.be">info@lemon.be</a> | <a
+        href="tel:003233699082">+32 (0)3 369 90 82</a></h4>
+  </footer>
 </body>
+
 </html>

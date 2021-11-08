@@ -2,114 +2,83 @@
 
 <head>
   <style>
-    body {
-      background-color: #f6f9fc;
-    }
+  .companyLogo{
+  text-align: center;
+  }
+  .greetings{
+  text-align: center;
+  font-size: 28px;
+  }
+  .estimatesHeader{
+  text-align: center;
+  font-size: 18px;
+  }
+  .estimates{
+  background-color: #15A811;
+  color: aliceblue;
+  text-align: center;
+  font-size: xx-large;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 25px;
+  margin: 0px;
+  }
+  .questionTemplate{
+  font-size: larger;
+  }
+  .optionTemplate{
+  margin:2px;
+  font-size:medium;
+  font-weight: 600;
+  color: #15A811;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  }
+  .companyName{
+  font-weight: 600;
+  font-size:medium;
+  }
+  .contactInfo{
+  font-size: medium;
+  }
+  .divider{
+  border: 2px solid grey;
+  }
 
-    .companyLogo {
-      text-align: center;
-    }
-
-    .greetings {
-      text-align: center;
-      font-size: 28px;
-    }
-
-    .estimatesHeader {
-      text-align: center;
-      font-size: 18px;
-    }
-
-    .estimates {
-      background-color: #15A811;
-      color: aliceblue;
-      text-align: center;
-      font-size: xx-large;
-      width: fit-content;
-      padding: 15px;
-      border-radius: 25px;
-      margin: 0px;
-
-    }
-
-    .infoHeader {
-      font-size: x-large;
-      font-weight: 400;
-    }
-
-    .questionTemplate {
-      font-size: larger;
-      font-weight: 600;
-    }
-
-    @supports(order) .optionTemplateHolder {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-      align-content: flex-start;
-    }
-
-    @supports(order) .optionTemplate {
-
-      order: 1;
-    }
-
-    .contactInfo {
-      font-size: large;
-      font-weight: 400;
-    }
-
-    .companyName {
-      font-size: large;
-      font-weight: 600;
-    }
   </style>
 </head>
 
 <body>
-  <div class="companyLogo" style="text-align: center;"><img src="cid:imagename" /></div>
+  <div class="companyLogo"><img src="cid:imagename" /></div>
   <br>
-  <p class="greetings" style="text-align: center;font-size: 28px;">Greetings from Lemon</p>
-  <p class="estimatesHeader" style="text-align: center;font-size: 18px;">Here is the Estimate of your Project</h2>
+  <p class="greetings">Greetings from Lemon</p>
+  <p class="estimatesHeader">Here is the Estimate of your Project</h>
   <p>
     <center>
-      <div class="estimates" style="background-color: #15A811;color: aliceblue;text-align: center;
-      font-size: xx-large;width: fit-content;padding: 15px;border-radius: 25px;margin: 0px;">
+      <div class="estimates">
         ${{lowerEstimate}} - ${{upperEstimate}}
       </div>
     </center>
     <br><br>
 
-  <h3 class="infoHeader">Here are the options you picked for your project:</h3>
-  <hr>
+  <p style="font-size: 28px;">Here are the options you picked for your project:</p>
+  <div class="divider"></div>
   {{#each questions}}
   <div>
     <p class="questionTemplate">{{this.questionText}}</p>
-    <div class="optionTemplateHolder">
-      {{#each this.options}}
-      <span class="optionTemplate" style="
-      width: max-content;
-      font-size: medium;
-      font-weight: 400;
-      background-color: #15A811;
-      padding: 3px;
-      border-radius: 25px;
-      color: rgb(255, 255, 255);
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      ">{{this.optionText}}</span>
-      {{/each}}
-    </div>
+    {{#each this.options}}
+
+    <span class="optionTemplate">{{this.optionText}}{{#unless @last}},{{/unless}}</span>
+    {{/each}}
+    <hr>
   </div>
   {{/each}}
   <br>
-  <hr>
+  <div class="divider"></div>
   <footer>
     <p class="companyName">Lemon Companies BVBA / Lemon Digital BVBA</p>
-    <h4 class="contactInfo">Groeningenlei 16, 2550 Kontich | <a href="mailto:info@lemon.be">info@lemon.be</a> | <a
-        href="tel:003233699082">+32 (0)3 369 90 82</a></h4>
+    <p class="contactInfo">Groeningenlei 16, 2550 Kontich | <a href="mailto:info@lemon.be">info@lemon.be</a> | <a
+        href="tel:003233699082">+32 (0)3 369 90 82</a></p>
   </footer>
 </body>
 

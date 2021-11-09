@@ -2,10 +2,10 @@ import { Option, Question } from '../models/sections';
 import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { MatChip } from '@angular/material/chips';
 import { Sections } from '../models/sections';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ValidationDialogComponent } from '../validation-dialog/validation-dialog.component';
 
 @Component({
   selector: 'app-questions',
@@ -21,14 +21,16 @@ export class QuestionsComponent implements OnInit {
   sectionStarted: boolean = false;
   sectionTouched: boolean = false;
   continueButtonText: string = 'CONTINUE';
+  nextSectionButtonText: string = 'NEXT SECTION';
   newSections: Sections[] = [];
 
   constructor(
     private _costEstimationService: CostEstimationService,
     private route: Router,
+    public dialog: MatDialog
   ) {}
 
-   async ngOnInit():Promise<void> {
+  async ngOnInit(): Promise<void> {
     this.newSections = <Sections[]>this._costEstimationService.sectionsData;
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
@@ -36,34 +38,43 @@ export class QuestionsComponent implements OnInit {
     );
     if (this.sectionTouched) {
       this.continueButtonText = 'EDIT';
-      this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
+      this.presentQuestion =
+        this._costEstimationService.getFirstQuestionofCurrentSection();
       this.answer = this._costEstimationService.getAnswerByQuestionId(
         this.presentQuestion.id
       );
     }
   }
 
-  skipSectionHandler(id: number | null):void {
+  skipSectionHandler(id: number | null): void {
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionStarted = false;
     this.sectionIndex = <number>id;
-    this._costEstimationService.goToSectionByIndex(<number>id); //to be modifed
+    this._costEstimationService.goToSectionByIndex(<number>id);
     this.currentQuestionNumberForDisplay = 1;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       <number>id
     );
     if (this.sectionTouched) {
       this.continueButtonText = 'EDIT';
+      if (
+        this.sectionIndex ==
+        this._costEstimationService.sectionsData.length - 1
+      ) {
+        this.nextSectionButtonText = 'FINISH';
+      }
     } else {
+      this.nextSectionButtonText = 'NEXT SECTION';
       this.continueButtonText = 'CONTINUE';
     }
-    this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
+    this.presentQuestion =
+      this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
     );
   }
 
-  skipSection():void {
+  skipSection(): void {
     if (
       this.sectionIndex <
       this._costEstimationService.sectionsData.length - 1
@@ -75,15 +86,16 @@ export class QuestionsComponent implements OnInit {
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
   }
 
-  continue():void {
+  continue(): void {
     this.sectionStarted = true;
-    this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
+    this.presentQuestion =
+      this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
     );
   }
 
-  multipleToggleSelection(option: Option):void {
+  multipleToggleSelection(option: Option): void {
     const isExists = this.answer.findIndex(
       (x) => x.optionText == option.optionText
     );
@@ -96,7 +108,7 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  toggleSelection(chip: MatChip, option: Option):void {
+  toggleSelection(chip: MatChip, option: Option): void {
     chip.toggleSelected();
     if (this.answer.length > 0) {
       this.answer[0].selected = false;
@@ -105,23 +117,36 @@ export class QuestionsComponent implements OnInit {
     this.answer[0] = option;
   }
 
-  previousQuestion():void {
+  previousQuestion(): void {
     this.currentQuestionNumberForDisplay--;
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
       this.presentQuestion.id
     );
   }
+  openDailog() {
+    this.dialog.open(ValidationDialogComponent, {
+      height: '30%',
+      width: '30%',
+    })
+  }
 
   nextQuestion(): void {
     //   //check whether option is selected
 
     if (this.answer.length == 0) {
-      Swal.fire({
-        title: 'Please select an option',
-        confirmButtonColor: '#D8CE17',
-        icon: 'error',
-      });
+      // Swal.fire({
+      //   title: 'Please select an option',
+      //   confirmButtonColor: '#D8CE17',
+      //   icon: 'error',
+      //   focusConfirm:false,
+      //   focusCancel:true,
+      //   buttonsStyling:true,
+      //   customClass:{
+      //     confirmButton: 'confirmButton'
+      //   }
+      // });
+      this.openDailog();
     } else {
       this.currentQuestionNumberForDisplay++; // used to show question number
       //     //set current question's answer before moving to next question

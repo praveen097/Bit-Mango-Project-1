@@ -20,9 +20,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ValidationDialogComponent } from './validation-dialog/validation-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, routingComponents],
+  declarations: [AppComponent, routingComponents, ValidationDialogComponent],
+  entryComponents: [ValidationDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +45,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent],

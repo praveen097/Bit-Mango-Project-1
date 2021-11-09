@@ -135,17 +135,6 @@ export class QuestionsComponent implements OnInit {
     //   //check whether option is selected
 
     if (this.answer.length == 0) {
-      // Swal.fire({
-      //   title: 'Please select an option',
-      //   confirmButtonColor: '#D8CE17',
-      //   icon: 'error',
-      //   focusConfirm:false,
-      //   focusCancel:true,
-      //   buttonsStyling:true,
-      //   customClass:{
-      //     confirmButton: 'confirmButton'
-      //   }
-      // });
       this.openDailog();
     } else {
       this.currentQuestionNumberForDisplay++; // used to show question number

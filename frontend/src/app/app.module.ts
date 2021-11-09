@@ -25,7 +25,6 @@ import { ValidationDialogComponent } from './validation-dialog/validation-dialog
 
 @NgModule({
   declarations: [AppComponent, routingComponents, ValidationDialogComponent],
-  entryComponents: [ValidationDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

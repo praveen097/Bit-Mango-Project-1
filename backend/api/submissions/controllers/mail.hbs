@@ -2,49 +2,118 @@
 
 <head>
   <style>
-  .companyLogo{
-  text-align: center;
-  }
-  .greetings{
-  text-align: center;
-  font-size: 28px;
-  }
-  .estimatesHeader{
-  text-align: center;
-  font-size: 18px;
-  }
-  .estimates{
-  background-color: #15A811;
-  color: aliceblue;
-  text-align: center;
-  font-size: xx-large;
-  width: fit-content;
-  padding: 15px;
-  border-radius: 25px;
-  margin: 0px;
-  }
-  .questionTemplate{
-  font-size:medium;
-  }
-  .optionTemplate{
-  margin:2px;
-  font-size:medium;
-  font-weight: 300;
-  color: grey;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  }
-  .companyName{
-  font-weight: 600;
-  font-size:medium;
-  }
-  .contactInfo{
-  font-size: medium;
-  }
-  .divider{
-  border: 2px solid grey;
-  }
+    .companyLogo {
+      text-align: center;
+    }
 
+    .greetings {
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .estimatesHeader {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .estimates {
+      background-color: #15A811;
+      color: aliceblue;
+      text-align: center;
+      font-size: xx-large;
+      width: fit-content;
+      padding: 15px;
+      border-radius: 25px;
+      margin: 0px;
+    }
+
+    .questionTemplate {
+      font-size: medium;
+    }
+
+    .optionTemplate {
+      margin: 2px;
+      font-size: medium;
+      font-weight: 300;
+      color: grey;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    .companyName {
+      font-weight: 600;
+      font-size: medium;
+      float: left;
+    }
+
+    .contactInfo {
+      font-size: medium;
+      float: left;
+    }
+
+    .divider {
+      border: 2px solid grey;
+    }
+
+    .logoIcon {
+      float: left;
+      width: 20px;
+      height: 25px;
+      margin: 0px 3px 0px 0px;
+    }
+
+    .road21 {
+      float: right;
+      font-size: medium;
+      color: grey;
+    }
+
+    .road21Image {
+      width: 30px;
+      height: 12px;
+    }
+
+    .contacts {
+      text-decoration: none;
+      color: #15A811;
+    }
+
+    .socialProfilesHolder {
+      float: right;
+    }
+
+    .socialProfiles {
+      height: 30px;
+      width: 30px;
+      margin: 0px 5px;
+    }
+
+
+    @media only screen and (max-width: 414px),
+    (max-width: 600px) {
+      .companyName {
+        font-size: small;
+        text-align: center;
+      }
+
+      .logoIcon {
+        float: left;
+      }
+
+      .road21 {
+        float: none;
+        text-align: center;
+      }
+
+      .contactInfo {
+        text-align: center;
+      }
+
+      .socialProfilesHolder {
+        float: none;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
@@ -70,16 +139,28 @@
 
     <span class="optionTemplate">{{this.optionText}}{{#unless @last}},{{/unless}}</span>
     {{/each}}
-    {{#unless @last}}<hr>{{/unless}}
+    {{#unless @last}}
+    <hr>{{/unless}}
   </div>
   {{/each}}
   <br>
-  <div class="divider"></div>
+  <div class="divider"></div><br>
   <footer>
-    <p class="companyName">Lemon Companies BVBA / Lemon Digital BVBA</p>
-    <p class="contactInfo">Groeningenlei 16, 2550 Kontich | <a href="mailto:info@lemon.be">info@lemon.be</a> | <a
-        href="tel:003233699082">+32 (0)3 369 90 82</a></p>
-  </footer>
+    <img class="logoIcon" src="cid:logoIcon" />
+    <div class="companyName">Lemon Companies BVBA / Lemon Digital BVBA</div>
+    <div class="road21">&nbsp; part of the <img class="road21Image" src="cid:road21" /> family</div><br>
+    <br>
+    <div class="contactInfo">Groeningenlei 16, 2550 Kontich | <a class="contacts" href="mailto:info@lemon.be"><span
+          class="contacts">info@lemon.be</a></span> | <a class="contacts" href="tel:003233699082"><span
+          class="contacts">+32 (0)3 369 90
+          82</span></a></div>
+    <div class="socialProfilesHolder">
+      <a href="https://www.facebook.com/LemonCompanies"><img class="socialProfiles" src="cid:facebook" /></a>
+      <a href="https://www.linkedin.com/company/lemon-companies/"><img class="socialProfiles" src="cid:linkedin" /></a>
+      <a href="https://www.instagram.com/lemoncompanies/"><img class="socialProfiles" src="cid:instagram" /></a>
+      <a href="https://twitter.com/lemoncompanies"><img class="socialProfiles" src="cid:twitter" /></a>
+    </div>
+  </footer><br>
 </body>
 
 </html>

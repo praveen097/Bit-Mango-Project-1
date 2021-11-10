@@ -90,7 +90,7 @@ module.exports = {
       upperEstimate: maxPrice,
       answeredQuestions: answeredQuestions,
     };
-    // await strapi.services.submissions.create(dataSubmitted);
+    await strapi.services.submissions.create(dataSubmitted);
     return { lowerEstimate: minPrice, upperEstimate: maxPrice };
   },
 };

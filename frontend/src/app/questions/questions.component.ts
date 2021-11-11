@@ -125,10 +125,7 @@ export class QuestionsComponent implements OnInit {
     );
   }
   openDailog() {
-    this.dialog.open(ValidationDialogComponent, {
-      height: '30%',
-      width: '30%',
-    })
+    this.dialog.open(ValidationDialogComponent)
   }
 
   nextQuestion(): void {

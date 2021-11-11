@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 $light-grey: #6c7069;
-$green: #15A811;
-$yellow:#D8CE17 ;
-$white:#ffffff;
-$black:#0a0a0a;
+$green: #15a811;
+$yellow: #d8ce17;
+$white: #ffffff;
+$black: #0a0a0a;
 
 html,
 body {
@@ -12,13 +12,15 @@ body {
 }
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 100;
 }
 
 .mat-raised-button {
-  outline:none;
+  outline: none;
 }
 .mat-dialog-container {
   border-radius: 20px !important;
+  height: 300px !important;
+  width: 350px !important;
 }

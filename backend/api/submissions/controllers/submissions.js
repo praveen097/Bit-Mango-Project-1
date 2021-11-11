@@ -18,7 +18,10 @@ var transporter = nodeMailer.createTransport({
 
 module.exports = {
   async create(submission) {
-    var source = fs.readFileSync(path.join(__dirname, "mail.hbs"), "utf8");
+    var source = fs.readFileSync(
+      path.join(__dirname, "../../../assets/mail.hbs"),
+      "utf8"
+    );
     var template = handleBars.compile(source);
     let minPrice = 0;
     let maxPrice = 0;
@@ -35,39 +38,39 @@ module.exports = {
       attachments: [
         {
           filename: "logo.png",
-          path: __dirname + "/logo.png",
-          cid: "imagename",
+          path: __dirname + "/assets/logo.png",
+          cid: "lemonLogo",
         },
         {
           filename: "facebook.png",
-          path: __dirname + "/facebook.png",
-          cid: "facebook"
+          path: __dirname + "/assets/facebook.png",
+          cid: "facebook",
         },
         {
           filename: "instagram.png",
-          path: __dirname + "/instagram.png",
-          cid: "instagram"
+          path: __dirname + "/assets/instagram.png",
+          cid: "instagram",
         },
         {
           filename: "linkedin.png",
-          path: __dirname + "/linkedin.png",
-          cid: "linkedin"
+          path: __dirname + "/assets/linkedin.png",
+          cid: "linkedin",
         },
         {
           filename: "twitter.png",
-          path: __dirname + "/twitter.png",
-          cid: "twitter"
+          path: __dirname + "/assets/twitter.png",
+          cid: "twitter",
         },
         {
           filename: "logo-icon.png",
-          path: __dirname + "/logo-icon.png",
-          cid: "logoIcon"
+          path: __dirname + "/assets/logo-icon.png",
+          cid: "logoIcon",
         },
         {
           filename: "road21.png",
-          path: __dirname + "/road21.png",
-          cid: "road21"
-        }
+          path: __dirname + "/assets/road21.png",
+          cid: "road21",
+        },
       ],
       html: template({
         companyName: submission.request.body.companyName,

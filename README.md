@@ -118,7 +118,21 @@ We have used [STRAPI](https://strapi.io/) for backend in this application. Strap
         * minPrice (number)
         * maxPrice (number)
         * selected (boolean)
-      
+  
+* #### Email Template
+  * Create email template
+    ```
+    $npm install nodemailer
+    $npm install handlebars
+    ```
+    *  We have used [Nodemailer](https://nodemailer.com/about/) for sending mails to the users who submit their answers. It is a Node.js module that allows you to send emails from your server with ease. 
+    *  We have used [Handlebars](https://handlebarsjs.com/) for creating an email template. Handlebars is a template and an input object to generate HTML or other text formats. Templates look like regular text with embedded Handlebars expressions. Here in application everything users gets to see in email has been created using handlebars at `/backend/assets/mail.hbs`.
+    *  We would also need to create a custom end point`/controller` at `/backend/api/submissions/controllers/submissions.js` to compile handlebar files. 
+    
+  * Configure email sender
+    * In order to configure sender email we need to create a SMTP transporter which consists of service and auth(user, pass) in custom end point. Email will be sent from the same email provided as user in auth of transporter.
+    * Email and password for this application can be changed at `/backend/api/submissions/controllers/submissions.js`
+    *  If a google account is being used for this, User you would need to enable [less secure apps](https://accounts.google.com/security) and disable [captcha](https://accounts.google.com/b/O/displayunlockcaptcha) for hassle free services.
 
 
 

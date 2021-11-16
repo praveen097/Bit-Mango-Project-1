@@ -17,7 +17,6 @@
         <mat-card-title class="sectionNameText">
           {{ newSections[sectionIndex].sectionName }}
         </mat-card-title>
-        <br />
         <mat-card-content class="sectionDescriptionText">
           {{ newSections[sectionIndex].sectionDescription }}
         </mat-card-content>
@@ -30,6 +29,7 @@
             (click)="skipSection()"
           >
             Skip {{ newSections[sectionIndex].sectionName }}
+            <mat-icon class="skipIcon">skip_next</mat-icon>
           </button>
           <button
             *ngIf="sectionTouched"
@@ -38,9 +38,11 @@
             (click)="skipSection()"
           >
             {{nextSectionButtonText}}
+            <mat-icon class="nextIcon">navigate_next</mat-icon>
           </button>
           <button mat-raised-button class="continueButton" (click)="continue()">
             {{ continueButtonText }}
+            <mat-icon class="editIcon">edit</mat-icon>
           </button>
         </div>
       </mat-card>

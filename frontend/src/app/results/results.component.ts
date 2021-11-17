@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Question, Sections } from '../models/sections';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-results',
@@ -22,12 +23,19 @@ export class ResultsComponent implements OnInit {
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.form = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      email: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
+      ],
       companyName: [null, [Validators.required]],
     });
     this.answers = this._costEstimationService.answers;
@@ -77,6 +85,13 @@ export class ResultsComponent implements OnInit {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;
         this.showUserForm = false;
+        this.snackBar.open(
+          'Email successfully sent to ' + this.form.controls.email.value,
+          'OK',
+          {
+            duration: 5000,
+          }
+        );
       });
   }
 }

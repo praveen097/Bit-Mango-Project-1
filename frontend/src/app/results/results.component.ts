@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Question, Sections } from '../models/sections';
+import { Question, Sections, SubmitEstimates } from '../models/sections';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -81,7 +81,7 @@ export class ResultsComponent implements OnInit {
         this.form.controls.email.value,
         this.form.controls.companyName.value
       )
-      .then((data: any) => {
+      .then((data: SubmitEstimates) => {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;
         this.showUserForm = false;

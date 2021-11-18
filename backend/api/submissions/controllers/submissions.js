@@ -80,12 +80,7 @@ module.exports = {
       }),
     };
 
-    await transporter.sendMail(mailOptions, (error, info) => {
-      if (error) console.log(error);
-      else {
-        console.log("Email Sent " + info.response);
-      }
-    });
+    await transporter.sendMail(mailOptions);
     let dataSubmitted = {
       email: submission.request.body.email,
       companyName: submission.request.body.companyName,

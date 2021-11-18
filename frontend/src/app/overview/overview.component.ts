@@ -50,7 +50,7 @@ export class OverviewComponent implements OnInit {
           );
       } else {
         this.sectionExist = false;
-        console.log('reached');
+
       }
     }
   }

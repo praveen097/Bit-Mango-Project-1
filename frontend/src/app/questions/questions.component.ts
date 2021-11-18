@@ -111,12 +111,19 @@ export class QuestionsComponent implements OnInit {
   toggleSelection(chip: MatChip, option: Option): void {
     chip.toggleSelected();
     if (this.answer.length > 0) {
-      this.answer[0].selected = false;
+      if (this.answer[0].optionText == option.optionText) {
+        this.answer[0].selected = false;
+        this.answer.pop();
+      } else {
+        this.answer[0].selected = false;
+        option.selected = true;
+        this.answer[0] = option;
+      }
+    } else {
+      option.selected = true;
+      this.answer[0] = option;
     }
-    option.selected = true;
-    this.answer[0] = option;
   }
-
   previousQuestion(): void {
     this.currentQuestionNumberForDisplay--;
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();

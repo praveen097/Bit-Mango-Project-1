@@ -6,10 +6,10 @@ import { CostEstimationService } from './services/cost-estimation.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
- constructor(public _costEstimationService: CostEstimationService){
+ constructor(public costEstimationService: CostEstimationService){
 
  }
  ngOnInit(){
- this._costEstimationService.setSectionValues();
+ this.costEstimationService.setSectionValues();
  }
 }

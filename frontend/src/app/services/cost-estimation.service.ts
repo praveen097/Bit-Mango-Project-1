@@ -26,11 +26,11 @@ export class CostEstimationService {
 
   hostUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
+  constructor(private _http: HttpClient, private _snackBar: MatSnackBar) {}
 
   async setSectionValues(): Promise<void> {
     this.sectionsData = <Sections[]>await this.getSections().catch(() => {
-      this.snackBar.open('Failed to connect, please try again later');
+      this._snackBar.open('Failed to connect, please try again later');
     });
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
@@ -54,7 +54,7 @@ export class CostEstimationService {
 
   getSections() {
     return new Promise((resolve, reject) => {
-      this.http.get(this.hostUrl + '/sections').subscribe(
+      this._http.get(this.hostUrl + '/sections').subscribe(
         (data) => {
           resolve(data);
         },
@@ -221,7 +221,7 @@ export class CostEstimationService {
       answeredQuestions: finalAnswers,
       companyName: companyName,
     };
-    return this.http
+    return this._http
       .post<SubmitEstimates>(this.hostUrl + '/submissions', data)
       .toPromise();
   }

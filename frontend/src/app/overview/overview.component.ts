@@ -20,13 +20,13 @@ export class OverviewComponent implements OnInit {
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private route: Router,
-    private activatedRoute: ActivatedRoute
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    if (this.activatedRoute.snapshot.paramMap.get('index')) {
-      this.sectionRoute = this.activatedRoute.snapshot.paramMap.get('index');
+    if (this._activatedRoute.snapshot.paramMap.get('index')) {
+      this.sectionRoute = this._activatedRoute.snapshot.paramMap.get('index');
       this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
 
       if (
@@ -55,7 +55,7 @@ export class OverviewComponent implements OnInit {
     }
   }
   toQuestions(): void {
-    if (!this.isLastSection) this.route.navigate(['/questions']);
-    else this.route.navigate(['/results']);
+    if (!this.isLastSection) this._route.navigate(['/questions']);
+    else this._route.navigate(['/results']);
   }
 }

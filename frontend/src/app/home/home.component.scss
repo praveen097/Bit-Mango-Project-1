@@ -13,9 +13,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: $yellow solid;
+  border: 2px solid $yellow;
   border-radius: 20px;
-  border-width: 2px;
   padding: 10px 20px;
   margin: 10px;
 }
@@ -65,13 +64,13 @@
 @media screen and  (max-width:768px) {
   .headingContainer{
     height:100%;
-    padding: 0px;
   }
   .subContainer{
     width: 90%;
   }
   .content {
-    margin:20px 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 20px;
     line-height: 3vh;
   }
@@ -100,7 +99,8 @@
     height: max-content;
   }
   .subContainer {
-    margin:20px 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   .navButton {
     padding:7px 20px;

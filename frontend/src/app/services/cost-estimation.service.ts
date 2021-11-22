@@ -8,6 +8,7 @@ import {
   Option,
   Question,
   Sections,
+  SubmitEstimates,
   SubmitQuestions,
 } from '../models/sections';
 @Injectable({
@@ -25,13 +26,12 @@ export class CostEstimationService {
 
   hostUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
+  constructor(private _http: HttpClient, private _snackBar: MatSnackBar) {}
 
   async setSectionValues(): Promise<void> {
     this.sectionsData = <Sections[]>await this.getSections().catch(() => {
-        this.snackBar.open("Failed to connect, please try again later");
-      }
-    );
+      this._snackBar.open('Failed to connect, please try again later');
+    });
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex
     ).questions[this.currentQuestionIndex].id;
@@ -54,7 +54,7 @@ export class CostEstimationService {
 
   getSections() {
     return new Promise((resolve, reject) => {
-      this.http.get(this.hostUrl + '/sections').subscribe(
+      this._http.get(this.hostUrl + '/sections').subscribe(
         (data) => {
           resolve(data);
         },
@@ -200,7 +200,7 @@ export class CostEstimationService {
     return answers;
   }
 
-  submitAnswers(email: string, companyName: string): Promise<Object> {
+  submitAnswers(email: string, companyName: string): Promise<SubmitEstimates> {
     let finalAnswers: SubmitQuestions[] = [];
     this.answers.forEach((answer) => {
       if (answer.options.length != 0) {
@@ -221,6 +221,8 @@ export class CostEstimationService {
       answeredQuestions: finalAnswers,
       companyName: companyName,
     };
-    return this.http.post(this.hostUrl + '/submissions', data).toPromise();
+    return this._http
+      .post<SubmitEstimates>(this.hostUrl + '/submissions', data)
+      .toPromise();
   }
 }

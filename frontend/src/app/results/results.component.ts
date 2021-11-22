@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../services/cost-estimation.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Question, Sections } from '../models/sections';
+import { Question, Sections, SubmitEstimates } from '../models/sections';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -23,12 +23,12 @@ export class ResultsComponent implements OnInit {
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.form = this.formBuilder.group({
+    this.form = this._formBuilder.group({
       email: [
         null,
         [
@@ -81,11 +81,11 @@ export class ResultsComponent implements OnInit {
         this.form.controls.email.value,
         this.form.controls.companyName.value
       )
-      .then((data: any) => {
+      .then((data: SubmitEstimates) => {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;
         this.showUserForm = false;
-        this.snackBar.open(
+        this._snackBar.open(
           'Email successfully sent to ' + this.form.controls.email.value,
           'OK',
           {

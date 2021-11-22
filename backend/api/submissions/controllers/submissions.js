@@ -4,25 +4,25 @@
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
  */
-var nodeMailer = require("nodemailer");
-var handleBars = require("handlebars");
-var fs = require("fs");
-var path = require("path");
-var transporter = nodeMailer.createTransport({
+const nodeMailer = require("nodemailer");
+const handleBars = require("handlebars");
+const fs = require("fs");
+const path = require("path");
+const transporter = nodeMailer.createTransport({
   service: "gmail",
   auth: {
-    user: "testpraveen097@gmail.com",
-    pass: "Pravtest321@",
+    user: process.env.EMAIL_ADDRESS,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
 module.exports = {
   async create(submission) {
-    var source = fs.readFileSync(
+    let source = fs.readFileSync(
       path.join(__dirname, "../../../assets/mail.hbs"),
       "utf8"
     );
-    var template = handleBars.compile(source);
+    let template = handleBars.compile(source);
     let minPrice = 0;
     let maxPrice = 0;
     let answeredQuestions = submission.request.body.answeredQuestions;
@@ -32,7 +32,7 @@ module.exports = {
         maxPrice += option.maxPrice;
       });
     });
-    var mailOptions = {
+    let mailOptions = {
       to: submission.request.body.email,
       subject: "Cost Estimator - Answered Questions",
       attachments: [
@@ -80,12 +80,7 @@ module.exports = {
       }),
     };
 
-    await transporter.sendMail(mailOptions, (error, info) => {
-      if (error) console.log(error);
-      else {
-        console.log("Email Sent " + info.response);
-      }
-    });
+    await transporter.sendMail(mailOptions);
     let dataSubmitted = {
       email: submission.request.body.email,
       companyName: submission.request.body.companyName,

@@ -26,8 +26,8 @@ export class QuestionsComponent implements OnInit {
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private route: Router,
-    public dialog: MatDialog
+    private _route: Router,
+    private _dialog: MatDialog
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -81,7 +81,7 @@ export class QuestionsComponent implements OnInit {
     ) {
       this._costEstimationService.skipSection();
     } else {
-      this.route.navigate(['/results']);
+      this._route.navigate(['/results']);
     }
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
   }
@@ -132,7 +132,7 @@ export class QuestionsComponent implements OnInit {
     );
   }
   openDailog() {
-    this.dialog.open(ValidationDialogComponent)
+    this._dialog.open(ValidationDialogComponent)
   }
 
   nextQuestion(): void {
@@ -180,7 +180,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   toOverview(): void {
-    this.route.navigate([
+    this._route.navigate([
       '/overview/' + (this._costEstimationService.currentSectionIndex - 1),
     ]);
   }

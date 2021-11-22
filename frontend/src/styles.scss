@@ -24,3 +24,6 @@ body {
   height: 300px !important;
   width: 350px !important;
 }
+.mat-simple-snackbar-action > button {
+  color: $yellow;
+}

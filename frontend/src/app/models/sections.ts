@@ -42,3 +42,7 @@ export interface SubmitQuestions {
   options: SubmitOptions[];
 }
 
+export interface SubmitEstimates {
+  lowerEstimate:number;
+  upperEstimate:number;
+}

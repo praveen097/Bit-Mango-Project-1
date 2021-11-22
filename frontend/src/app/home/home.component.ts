@@ -6,13 +6,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private route: Router,
+  constructor(private _route: Router,
     ) {}
 
   ngOnInit(): void {
 
   }
   onSubmit(): void {
-    this.route.navigate(['/questions']);
+    this._route.navigate(['/questions']);
   }
 }

@@ -1,0 +1,112 @@
+@import '../../../../styles.scss';
+.mainContainer{
+  width:95%;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh ;
+}
+.subContainer {
+  width:80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $yellow;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 10px;
+}
+.subContainer mat-card {
+  box-shadow: none;
+  width:90%;
+  margin:10px;
+}
+.heading {
+  font-size: 40px;
+  line-height: 5vh;
+  font-weight: 400;
+  color: $green;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.content {
+  font-size: 18px;
+  line-height: 5vh;
+}
+.navButton {
+  background-color: $yellow;
+  color:$white;
+  padding:7px 20px;
+  font-size: 18px;
+  margin:20px;
+  outline: none;
+}
+.navButton:hover {
+  background-color: $green;
+}
+
+@media screen and  (max-width:1024px) {
+  .content {
+    font-size: 18px;
+    line-height: 5vh;
+  }
+  .heading {
+    font-size: 35px;
+    line-height: 6vh;
+  }
+  .navButton {
+    padding:5px 20px;
+    font-size: 16px;
+  }
+}
+@media screen and  (max-width:768px) {
+  .headingContainer{
+    height:100%;
+  }
+  .subContainer{
+    width: 90%;
+  }
+  .content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 3vh;
+  }
+  .heading {
+    font-size: 28px;
+    line-height: 4vh;
+    margin-bottom: 25px;
+  }
+  .navButton {
+    padding:5px 20px;
+    font-size: 15px;
+  }
+}
+
+@media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
+  .content {
+    font-size: 15px;
+    line-height: 3vh;
+  }
+  .heading {
+    font-size: 20px;
+    line-height: 4vh;
+    margin-bottom: 25px;
+  }
+  .mainContainer {
+    height: max-content;
+  }
+  .subContainer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .navButton {
+    padding:7px 20px;
+    font-size: 12px;
+  }
+}
+
+
+

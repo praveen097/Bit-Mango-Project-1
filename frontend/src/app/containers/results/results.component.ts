@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CostEstimationService } from '../../../services/cost-estimation/cost-estimation.service';
+import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Question, Sections, SubmitEstimates } from '../../../models/sections';
+import { Question, Sections, SubmitEstimates } from '../../models/sections';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

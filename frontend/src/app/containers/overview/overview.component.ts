@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CostEstimationService } from '../../../services/cost-estimation/cost-estimation.service';
+import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
 import { ActivatedRoute } from '@angular/router';
-import { Question } from '../../../models/sections';
+import { Question } from '../../models/sections';
 
 @Component({
   selector: 'app-overview',
@@ -50,7 +50,6 @@ export class OverviewComponent implements OnInit {
           );
       } else {
         this.sectionExist = false;
-
       }
     }
   }

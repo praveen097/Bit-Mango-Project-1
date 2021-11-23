@@ -1,11 +1,11 @@
-import { Option, Question } from '../../../models/sections';
+import { Option, Question } from '../../models/sections';
 import { Component, OnInit } from '@angular/core';
-import { CostEstimationService } from '../../../services/cost-estimation/cost-estimation.service';
+import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
 import { Router } from '@angular/router';
 import { MatChip } from '@angular/material/chips';
-import { Sections } from '../../../models/sections';
+import { Sections } from '../../models/sections';
 import { MatDialog } from '@angular/material/dialog';
-import { ValidationDialogComponent } from '../../shared/validation-dialog/validation-dialog.component';
+import { ValidationDialogComponent } from '../../components/shared/validation-dialog/validation-dialog.component';
 
 @Component({
   selector: 'app-questions',
@@ -132,7 +132,7 @@ export class QuestionsComponent implements OnInit {
     );
   }
   openDailog() {
-    this._dialog.open(ValidationDialogComponent)
+    this._dialog.open(ValidationDialogComponent);
   }
 
   nextQuestion(): void {

@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
   buttonProperties = {
     className: 'navButton',
     buttonText: "Let's Start",
+    iconName: '',
   };
   constructor(private _route: Router) {}
 

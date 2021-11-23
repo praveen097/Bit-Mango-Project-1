@@ -17,11 +17,8 @@ export class OverviewComponent implements OnInit {
   sectionName: string = '';
   buttonText: string = 'Next Section';
   sectionExist: boolean = true;
-
-  buttonProperties = {
-    className: 'nextSectionButton',
-    buttonText: 'Next Section',
-  };
+  overviewButtonText: string = 'NEXT SECTION';
+  overviewProperties: any;
 
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -39,7 +36,7 @@ export class OverviewComponent implements OnInit {
         this._costEstimationService.sectionsData.length - 1
       ) {
         this.isLastSection = true;
-        this.buttonProperties.buttonText = 'Finish';
+        this.overviewButtonText = 'Finish';
       }
 
       if (
@@ -56,6 +53,15 @@ export class OverviewComponent implements OnInit {
       } else {
         this.sectionExist = false;
       }
+      this.overviewProperties = {
+        sectionExist: this.sectionExist,
+        sectionName: this.sectionName,
+        answers: this.answers,
+        buttonProperties: {
+          className: 'nextSectionButton',
+          buttonText: this.overviewButtonText,
+        },
+      };
     }
   }
   toQuestions(): void {

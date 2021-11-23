@@ -1,0 +1,15 @@
+@import "../../../../styles.scss";
+
+
+.questionTemplate {
+  margin: 2%;
+}
+.questionText {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+.optionChip {
+  background-color: $green;
+  color: $white;
+  height: max-content;
+}

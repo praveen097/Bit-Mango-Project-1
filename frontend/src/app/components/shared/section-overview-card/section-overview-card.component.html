@@ -1,1 +1,19 @@
-<p>section-overview-card works!</p>
+<section
+  *ngIf="overviewProperties.sectionExist; else elseBlock"
+  class="mainContainer"
+>
+  <h1 class="heading">Overview of {{ overviewProperties.sectionName }}</h1>
+  <app-answered-questions-view
+    *ngFor="let question of overviewProperties.answers"
+    [questionWithAnswers]="question"
+  ></app-answered-questions-view>
+  <div>
+    <app-buttons
+      [buttonProperties]="overviewProperties.buttonProperties"
+      (buttonClicked)="nextSectionButtonClick()"
+    ></app-buttons>
+  </div>
+</section>
+<ng-template #elseBlock>
+  <h1 class="heading">No overview exists.</h1>
+</ng-template>

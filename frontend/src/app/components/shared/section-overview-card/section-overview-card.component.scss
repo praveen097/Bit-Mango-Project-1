@@ -1,0 +1,47 @@
+@import "../../../../styles.scss";
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
+.heading {
+  font-size: 45px;
+  text-align: center;
+  margin: 50px 20px;
+  color: $light-grey;
+}
+.questionTemplate {
+  margin: 2%;
+}
+.questionText {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+.optionChip {
+  background-color: $green;
+  color: $white;
+  height: max-content;
+}
+section {
+  width: 90%;
+  margin: auto;
+}
+
+
+@media screen and (max-width: 578px) {
+  .questionText {
+    font-size: 15px;
+  }
+  .heading {
+    font-size: 28px;
+  }
+}
+@media screen and (min-width: 578px) and (max-width: 768px) {
+  .questionText {
+    font-size: 16px;
+  }
+  .heading {
+    font-size: 35px;
+  }
+}

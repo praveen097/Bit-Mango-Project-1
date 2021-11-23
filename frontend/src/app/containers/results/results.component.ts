@@ -21,23 +21,21 @@ export class ResultsComponent implements OnInit {
   form!: FormGroup;
   showProgressBar: boolean = false;
 
-  emailFormButtonProperties = {
-    className: 'submitUserDetails',
-    type: 'submit',
-    buttonText: 'SUBMIT',
-  };
-
   previousSectionButtonProperties = {
     buttonText: 'Previous Section',
     className: 'prevButton',
-    disabled: true,
+    disabled: false,
+    iconName: '',
   };
 
   nextSectionButtonProperties = {
     buttonText: 'Next Section',
     className: 'nextButton',
     disabled: false,
+    iconName: '',
   };
+  emailFormProperties: any;
+
   constructor(
     private _costEstimationService: CostEstimationService,
     private _formBuilder: FormBuilder,
@@ -45,16 +43,6 @@ export class ResultsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.form = this._formBuilder.group({
-      email: [
-        null,
-        [
-          Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-        ],
-      ],
-      companyName: [null, [Validators.required]],
-    });
     this.answers = this._costEstimationService.answers;
     this.resultExist = this._costEstimationService.isResultExists();
     this.sectionsWithAnswersSaved = <Sections[]>(
@@ -74,47 +62,25 @@ export class ResultsComponent implements OnInit {
 
       section.questions = answeredQuestions;
     });
+    console.log(this.sectionsWithAnswersSaved);
   }
 
-  toResults(): void {
-    this.showResults = true;
-  }
-
-  setStep(index: number): void {
-    this.step = index;
-  }
-
-  nextStep(): void {
-    this.step++;
-    if (this.step > 0) this.previousSectionButtonProperties.disabled = false;
-    if (this.step == this.sectionsWithAnswersSaved.length - 1)
-      this.nextSectionButtonProperties.disabled = true;
-  }
-
-  prevStep(): void {
-    this.step--;
-    if (this.step == 0) this.previousSectionButtonProperties.disabled = true;
-    if (this.step != this.sectionsWithAnswersSaved.length - 1)
-      this.nextSectionButtonProperties.disabled = false;
-  }
-  displayAnswers(): void {
+  displayAnswers(formValues: any): void {
     this.showProgressBar = true;
-    this._costEstimationService
-      .submitAnswers(
-        this.form.controls.email.value,
-        this.form.controls.companyName.value
-      )
-      .then((data: SubmitEstimates) => {
-        this.minPrice = data.lowerEstimate;
-        this.maxPrice = data.upperEstimate;
-        this.showUserForm = false;
-        this._snackBar.open(
-          'Email successfully sent to ' + this.form.controls.email.value,
-          'OK',
-          {
-            duration: 5000,
-          }
-        );
-      });
+    this.showUserForm = false;
+    // this._costEstimationService
+    //   .submitAnswers(formValues.email, formValues.companyName)
+    //   .then((data: SubmitEstimates) => {
+    //     this.minPrice = data.lowerEstimate;
+    //     this.maxPrice = data.upperEstimate;
+    //     this.showUserForm = false;
+    //     this._snackBar.open(
+    //       'Email successfully sent to ' + formValues.email,
+    //       'OK',
+    //       {
+    //         duration: 5000,
+    //       }
+    //     );
+    //   });
   }
 }

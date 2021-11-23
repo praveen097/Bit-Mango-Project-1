@@ -1,25 +1,4 @@
-<section *ngIf="sectionExist; else elseBlock" class="mainContainer">
-  <h1 class="heading">Overview of {{ sectionName }}</h1>
-  <mat-card *ngFor="let question of answers" class="questionTemplate">
-    <div class="questionText">{{ question.questionText }}</div>
-    <mat-card-content>
-      <mat-chip-list>
-        <mat-chip *ngFor="let option of question.options" class="optionChip">{{
-          option.optionText
-        }}</mat-chip>
-      </mat-chip-list>
-    </mat-card-content>
-  </mat-card>
-  <div>
-    <!-- <button mat-raised-button class="nextSectionButton" (click)="toQuestions()">
-      {{ buttonText }}
-    </button> -->
-    <app-buttons
-      [buttonProperties]="buttonProperties"
-      (buttonClicked)="toQuestions()"
-    ></app-buttons>
-  </div>
-</section>
-<ng-template #elseBlock>
-  <h1 class="heading">No overview exists.</h1>
-</ng-template>
+<app-section-overview-card
+  [overviewProperties]="overviewProperties"
+  (moveToNextSection)="toQuestions()"
+></app-section-overview-card>

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-section-overview-card',
   templateUrl: './section-overview-card.component.html',
-  styleUrls: ['./section-overview-card.component.scss']
+  styleUrls: ['./section-overview-card.component.scss'],
 })
 export class SectionOverviewCardComponent implements OnInit {
+  @Output() moveToNextSection: EventEmitter<null> = new EventEmitter<null>();
+  @Input() overviewProperties: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  nextSectionButtonClick() {
+    this.moveToNextSection.emit();
   }
-
 }

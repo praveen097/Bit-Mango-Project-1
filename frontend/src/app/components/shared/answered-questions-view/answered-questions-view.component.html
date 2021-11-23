@@ -1,1 +1,12 @@
-<p>answered-questions-view works!</p>
+<mat-card class="questionTemplate">
+  <div class="questionText">{{ questionWithAnswers.questionText }}</div>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip
+        *ngFor="let option of questionWithAnswers.options"
+        class="optionChip"
+        >{{ option.optionText }}</mat-chip
+      >
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>

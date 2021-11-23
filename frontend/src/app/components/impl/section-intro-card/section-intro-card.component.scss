@@ -1,0 +1,24 @@
+@import "../../../../styles.scss";
+
+
+.skipCard {
+  width: 70%;
+  text-align: justify;
+}
+.skipCard mat-card-content {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  line-height: 4vh;
+}
+.sectionNameText {
+  color: $green;
+  font-size: xx-large;
+  text-align: left;
+  line-height: 4vh;
+  font-weight: 400;
+}
+.sectionDescriptionText {
+  font-size: large;
+  color: $light-grey;
+}

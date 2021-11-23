@@ -21,6 +21,23 @@ export class ResultsComponent implements OnInit {
   form!: FormGroup;
   showProgressBar: boolean = false;
 
+  emailFormButtonProperties = {
+    className: 'submitUserDetails',
+    type: 'submit',
+    buttonText: 'SUBMIT',
+  };
+
+  previousSectionButtonProperties = {
+    buttonText: 'Previous Section',
+    className: 'prevButton',
+    disabled: true,
+  };
+
+  nextSectionButtonProperties = {
+    buttonText: 'Next Section',
+    className: 'nextButton',
+    disabled: false,
+  };
   constructor(
     private _costEstimationService: CostEstimationService,
     private _formBuilder: FormBuilder,
@@ -69,10 +86,16 @@ export class ResultsComponent implements OnInit {
 
   nextStep(): void {
     this.step++;
+    if (this.step > 0) this.previousSectionButtonProperties.disabled = false;
+    if (this.step == this.sectionsWithAnswersSaved.length - 1)
+      this.nextSectionButtonProperties.disabled = true;
   }
 
   prevStep(): void {
     this.step--;
+    if (this.step == 0) this.previousSectionButtonProperties.disabled = true;
+    if (this.step != this.sectionsWithAnswersSaved.length - 1)
+      this.nextSectionButtonProperties.disabled = false;
   }
   displayAnswers(): void {
     this.showProgressBar = true;

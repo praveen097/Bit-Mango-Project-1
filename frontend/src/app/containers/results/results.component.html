@@ -6,7 +6,8 @@
           >Congratulations, You have made it.
         </mat-card-title>
         <mat-card-content class="content"
-          >Please fill the details below to receive your estimate</mat-card-content
+          >Please fill the details below to receive your
+          estimate</mat-card-content
         >
         <form (submit)="displayAnswers()" [formGroup]="form">
           <div class="formInput">
@@ -38,14 +39,9 @@
             </p>
           </div>
           <mat-card-actions>
-            <button
-              mat-raised-button
-              type="submit"
-              [disabled]="!form.valid"
-              class="submitUserDetails"
-            >
-              SUBMIT
-            </button>
+            <app-buttons
+              [buttonProperties]="emailFormButtonProperties"
+            ></app-buttons>
           </mat-card-actions>
         </form>
         <mat-card-footer *ngIf="showProgressBar">
@@ -60,7 +56,10 @@
       >
       <mat-expansion-panel
         class="sectionCard"
-        *ngFor="let currentSectionAnswers of sectionsWithAnswersSaved; index as i"
+        *ngFor="
+          let currentSectionAnswers of sectionsWithAnswersSaved;
+          index as i
+        "
         [expanded]="step === i"
         (opened)="setStep(i)"
         hideToggle
@@ -81,10 +80,12 @@
           >
             <div class="questionText">{{ question.questionText }}</div>
             <mat-card-content>
-              <mat-chip-list >
-                <mat-chip *ngFor="let option of question.options" class="optionChip">{{
-                  option.optionText
-                }}</mat-chip>
+              <mat-chip-list>
+                <mat-chip
+                  *ngFor="let option of question.options"
+                  class="optionChip"
+                  >{{ option.optionText }}</mat-chip
+                >
               </mat-chip-list>
             </mat-card-content>
           </mat-card>
@@ -100,22 +101,14 @@
           </mat-panel-description>
         </ng-template>
         <mat-action-row>
-          <button
-            mat-raised-button
-            *ngIf="step != 0"
-            (click)="prevStep()"
-            id="prevButton"
-          >
-            Previous Section
-          </button>
-          <button
-            mat-raised-button
-            *ngIf="step != sectionsWithAnswersSaved.length - 1"
-            (click)="nextStep()"
-            id="nextButton"
-          >
-            Next Section
-          </button>
+          <app-buttons
+            [buttonProperties]="previousSectionButtonProperties"
+            (buttonClicked)="prevStep()"
+          ></app-buttons>
+          <app-buttons
+            [buttonProperties]="nextSectionButtonProperties"
+            (buttonClicked)="nextStep()"
+          ></app-buttons>
         </mat-action-row>
       </mat-expansion-panel>
     </ng-template>

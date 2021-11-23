@@ -1,1 +1,8 @@
-<p>buttons works!</p>
+<button
+  mat-raised-button
+  [ngClass]="buttonProperties.className"
+  (click)="clickButton()"
+  [disabled]="buttonProperties.disabled"
+>
+  {{ buttonProperties.buttonText }}
+</button>

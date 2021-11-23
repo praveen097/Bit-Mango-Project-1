@@ -35,17 +35,7 @@
   font-size: 18px;
   line-height: 5vh;
 }
-.navButton {
-  background-color: $yellow;
-  color:$white;
-  padding:7px 20px;
-  font-size: 18px;
-  margin:20px;
-  outline: none;
-}
-.navButton:hover {
-  background-color: $green;
-}
+
 
 @media screen and  (max-width:1024px) {
   .content {

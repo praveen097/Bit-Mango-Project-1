@@ -23,7 +23,8 @@ export class QuestionsComponent implements OnInit {
   continueButtonText: string = 'CONTINUE';
   nextSectionButtonText: string = 'NEXT SECTION';
   newSections: Sections[] = [];
-
+  tabProperties: any;
+  skipIntroCardProperties: any;
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,
@@ -36,6 +37,16 @@ export class QuestionsComponent implements OnInit {
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex
     );
+    this.tabProperties = {
+      selectedIndex: this.sectionIndex,
+      newSections: this.newSections,
+    };
+
+    this.skipIntroCardProperties = {
+      newSections: this.newSections,
+      sectionTouched: this.sectionTouched,
+      sectionIndex: this.sectionIndex,
+    };
     if (this.sectionTouched) {
       this.continueButtonText = 'EDIT';
       this.presentQuestion =
@@ -67,6 +78,11 @@ export class QuestionsComponent implements OnInit {
       this.nextSectionButtonText = 'NEXT SECTION';
       this.continueButtonText = 'CONTINUE';
     }
+    this.skipIntroCardProperties = {
+      newSections: this.newSections,
+      sectionTouched: this.sectionTouched,
+      sectionIndex: this.sectionIndex,
+    };
     this.presentQuestion =
       this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(

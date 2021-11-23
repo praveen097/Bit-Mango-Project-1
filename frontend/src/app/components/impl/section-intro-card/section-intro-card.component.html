@@ -1,1 +1,39 @@
-<p>section-intro-card works!</p>
+<mat-card class="skipCard">
+  <mat-card-title class="sectionNameText">
+    {{
+      skipIntroCardProperties.newSections[skipIntroCardProperties.sectionIndex]
+        .sectionName
+    }}
+  </mat-card-title>
+  <mat-card-content class="sectionDescriptionText">
+    {{
+      skipIntroCardProperties.newSections[skipIntroCardProperties.sectionIndex]
+        .sectionDescription
+    }}
+  </mat-card-content>
+
+  <!-- <div class="buttonSelect">
+    <button
+      *ngIf="!skipIntroCardProperties.sectionTouched"
+      mat-stroked-button
+      class="skipButton"
+      (click)="skipSection()"
+    >
+      Skip {{ skipIntroCardProperties.newSections[skipIntroCardProperties.sectionIndex].sectionName }}
+      <mat-icon class="skipIcon">skip_next</mat-icon>
+    </button>
+    <button
+      *ngIf="skipIntroCardProperties.sectionTouched"
+      mat-stroked-button
+      class="skipButton"
+      (click)="skipSection()"
+    >
+      {{ nextSectionButtonText }}
+      <mat-icon class="nextIcon">navigate_next</mat-icon>
+    </button>
+    <button mat-raised-button class="continueButton" (click)="continue()">
+      {{ continueButtonText }}
+      <mat-icon class="editIcon">edit</mat-icon>
+    </button>
+  </div> -->
+</mat-card>

@@ -55,17 +55,6 @@
   margin:20px;
   width:100%;
 }
-.submitUserDetails {
-  background-color: $yellow;
-  color:$white;
-  padding:7px 20px;
-  font-size: 18px;
-  margin:20px;
-  outline: none;
-}
-.submitUserDetails:hover {
-  background-color: $green;
-}
 .heading {
   font-size: 45px;
   text-align: center;
@@ -127,14 +116,14 @@ section {
   padding:40px;
   font-size: 30px;
 }
-#prevButton {
-  background-color: $yellow;
-  color: $white;
-}
-#nextButton {
-  background-color: $green;
-  color:$white;
-}
+// #prevButton {
+//   background-color: $yellow;
+//   color: $white;
+// }
+// #nextButton {
+//   background-color: $green;
+//   color:$white;
+// }
 mat-icon {
   color:$green;
 }

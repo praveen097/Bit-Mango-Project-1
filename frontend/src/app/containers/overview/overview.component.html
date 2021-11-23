@@ -10,10 +10,14 @@
       </mat-chip-list>
     </mat-card-content>
   </mat-card>
-  <div >
-    <button mat-raised-button class="nextSectionButton" (click)="toQuestions()">
+  <div>
+    <!-- <button mat-raised-button class="nextSectionButton" (click)="toQuestions()">
       {{ buttonText }}
-    </button>
+    </button> -->
+    <app-buttons
+      [buttonProperties]="buttonProperties"
+      (buttonClicked)="toQuestions()"
+    ></app-buttons>
   </div>
 </section>
 <ng-template #elseBlock>

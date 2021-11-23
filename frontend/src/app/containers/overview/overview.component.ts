@@ -18,6 +18,11 @@ export class OverviewComponent implements OnInit {
   buttonText: string = 'Next Section';
   sectionExist: boolean = true;
 
+  buttonProperties = {
+    className: 'nextSectionButton',
+    buttonText: 'Next Section',
+  };
+
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,
@@ -34,7 +39,7 @@ export class OverviewComponent implements OnInit {
         this._costEstimationService.sectionsData.length - 1
       ) {
         this.isLastSection = true;
-        this.buttonText = 'Finish';
+        this.buttonProperties.buttonText = 'Finish';
       }
 
       if (
@@ -54,7 +59,10 @@ export class OverviewComponent implements OnInit {
     }
   }
   toQuestions(): void {
-    if (!this.isLastSection) this._route.navigate(['/questions']);
-    else this._route.navigate(['/results']);
+    if (!this.isLastSection) {
+      this._route.navigate(['/questions']);
+    } else {
+      this._route.navigate(['/results']);
+    }
   }
 }

@@ -1,5 +1,5 @@
-<div *ngIf="sectionIndex != -1 ">
-  <mat-tab-group
+<div *ngIf="sectionIndex != -1">
+  <!-- <mat-tab-group
     mat-align-tabs="center"
     #tabRef
     (selectedTabChange)="skipSectionHandler(tabRef.selectedIndex)"
@@ -9,11 +9,14 @@
       *ngFor="let allSections of newSections"
       label="{{ allSections.sectionName }}"
     ></mat-tab>
-  </mat-tab-group>
-
+  </mat-tab-group> -->
+  <app-tabs
+    [tabProperties]="tabProperties"
+    (tabClicked)="skipSectionHandler($event)"
+  ></app-tabs>
   <div *ngIf="!sectionStarted" class="mainSkipContainer">
     <div class="skipContainer">
-      <mat-card class="skipCard">
+      <!-- <mat-card class="skipCard">
         <mat-card-title class="sectionNameText">
           {{ newSections[sectionIndex].sectionName }}
         </mat-card-title>
@@ -37,7 +40,7 @@
             class="skipButton"
             (click)="skipSection()"
           >
-            {{nextSectionButtonText}}
+            {{ nextSectionButtonText }}
             <mat-icon class="nextIcon">navigate_next</mat-icon>
           </button>
           <button mat-raised-button class="continueButton" (click)="continue()">
@@ -45,7 +48,8 @@
             <mat-icon class="editIcon">edit</mat-icon>
           </button>
         </div>
-      </mat-card>
+      </mat-card> -->
+      <app-section-intro-card [skipIntroCardProperties]="skipIntroCardProperties"></app-section-intro-card>
     </div>
   </div>
 
@@ -53,14 +57,17 @@
     <mat-progress-bar
       mode="determinate"
       value="{{
-        (currentQuestionNumberForDisplay / newSections[sectionIndex].questions.length) * 100
+        (currentQuestionNumberForDisplay /
+          newSections[sectionIndex].questions.length) *
+          100
       }}"
     ></mat-progress-bar>
 
     <div class="mainContainer">
       <div class="customContainer">
         <mat-card class="questionText">
-          {{ currentQuestionNumberForDisplay }} . {{ presentQuestion.questionText }}
+          {{ currentQuestionNumberForDisplay }} .
+          {{ presentQuestion.questionText }}
         </mat-card>
 
         <div

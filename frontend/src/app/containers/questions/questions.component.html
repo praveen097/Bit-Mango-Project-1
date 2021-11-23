@@ -15,8 +15,8 @@
     (tabClicked)="skipSectionHandler($event)"
   ></app-tabs>
   <div *ngIf="!sectionStarted" class="mainSkipContainer">
-    <div class="skipContainer">
-      <!-- <mat-card class="skipCard">
+    <!-- <div class="skipContainer"> -->
+    <!-- <mat-card class="skipCard">
         <mat-card-title class="sectionNameText">
           {{ newSections[sectionIndex].sectionName }}
         </mat-card-title>
@@ -49,8 +49,12 @@
           </button>
         </div>
       </mat-card> -->
-      <app-section-intro-card [skipIntroCardProperties]="skipIntroCardProperties"></app-section-intro-card>
-    </div>
+    <app-section-intro-card
+      [skipIntroCardProperties]="skipIntroCardProperties"
+      class="skipContainer"
+      (continueButtonEvent)="continue()"
+      (skipSectionButtonEvent)="skipSection()"
+    ></app-section-intro-card>
   </div>
 
   <div *ngIf="sectionStarted">

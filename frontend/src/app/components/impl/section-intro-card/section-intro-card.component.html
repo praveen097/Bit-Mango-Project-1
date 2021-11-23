@@ -1,19 +1,13 @@
 <mat-card class="skipCard">
   <mat-card-title class="sectionNameText">
-    {{
-      skipIntroCardProperties.newSections[skipIntroCardProperties.sectionIndex]
-        .sectionName
-    }}
+    {{ skipIntroCardProperties.sectionName }}
   </mat-card-title>
   <mat-card-content class="sectionDescriptionText">
-    {{
-      skipIntroCardProperties.newSections[skipIntroCardProperties.sectionIndex]
-        .sectionDescription
-    }}
+    {{ skipIntroCardProperties.sectionDescription }}
   </mat-card-content>
 
-  <!-- <div class="buttonSelect">
-    <button
+  <div class="buttonSelect">
+    <!-- <button
       *ngIf="!skipIntroCardProperties.sectionTouched"
       mat-stroked-button
       class="skipButton"
@@ -21,8 +15,17 @@
     >
       Skip {{ skipIntroCardProperties.newSections[skipIntroCardProperties.sectionIndex].sectionName }}
       <mat-icon class="skipIcon">skip_next</mat-icon>
-    </button>
-    <button
+    </button> -->
+    <app-buttons
+      [buttonProperties]="skipIntroCardProperties.previousButtonProperties"
+      (buttonClicked)="skipSectionButtonClick()"
+    ></app-buttons>
+    <app-buttons
+      [buttonProperties]="skipIntroCardProperties.continueButtonProperties"
+      (buttonClicked)="continueButtonClick()"
+    ></app-buttons>
+    <!-- <app-buttons></app-buttons>  -->
+    <!-- <button
       *ngIf="skipIntroCardProperties.sectionTouched"
       mat-stroked-button
       class="skipButton"
@@ -34,6 +37,6 @@
     <button mat-raised-button class="continueButton" (click)="continue()">
       {{ continueButtonText }}
       <mat-icon class="editIcon">edit</mat-icon>
-    </button>
-  </div> -->
+    </button> -->
+  </div>
 </mat-card>

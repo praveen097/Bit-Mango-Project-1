@@ -53,10 +53,12 @@ export class QuestionsComponent implements OnInit {
       sectionIndex: this.sectionIndex,
       previousButtonProperties: {
         buttonText: this.nextSectionButtonText,
+        showIcon: true,
         iconName: this.nextSectionButtonIcon,
       },
       continueButtonProperties: {
         buttonText: this.continueButtonText,
+        showIcon: true,
         iconName: 'edit',
       },
     };
@@ -104,10 +106,12 @@ export class QuestionsComponent implements OnInit {
       previousButtonProperties: {
         buttonText: this.nextSectionButtonText,
         iconName: this.nextSectionButtonIcon,
+        showIcon: true,
       },
       continueButtonProperties: {
         buttonText: this.continueButtonText,
         iconName: 'edit',
+        showIcon: true,
       },
     };
 
@@ -164,10 +168,12 @@ export class QuestionsComponent implements OnInit {
       previousButtonProperties: {
         buttonText: this.nextSectionButtonText,
         iconName: this.nextSectionButtonIcon,
+        showIcon: true,
       },
       continueButtonProperties: {
         buttonText: this.continueButtonText,
         iconName: 'edit',
+        showIcon: true,
       },
     };
   }

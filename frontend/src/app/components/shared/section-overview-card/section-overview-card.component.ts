@@ -6,14 +6,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./section-overview-card.component.scss'],
 })
 export class SectionOverviewCardComponent implements OnInit {
-  @Output() moveToNextSection: EventEmitter<null> = new EventEmitter<null>();
-  @Input() overviewProperties: any;
+  @Input() questions: any;
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  nextSectionButtonClick() {
-    this.moveToNextSection.emit();
-  }
 }

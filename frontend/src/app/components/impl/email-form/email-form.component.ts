@@ -36,7 +36,7 @@ export class EmailFormComponent implements OnInit {
       type: 'submit',
       buttonText: 'SUBMIT',
       disabled: true,
-      iconName: '',
+      showIcon: false,
     };
   }
 

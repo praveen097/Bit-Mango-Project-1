@@ -12,11 +12,8 @@
     class="questionList"
     *ngIf="currentSectionAnswers.questions.length != 0; else answersNotFound"
   >
-    <app-answered-questions-view
-      class="questionTemplate"
-      *ngFor="let question of currentSectionAnswers.questions"
-      [questionWithAnswers]="question"
-    ></app-answered-questions-view>
+    <app-section-overview-card [questions]="currentSectionAnswers.questions">
+    </app-section-overview-card>
   </mat-panel-description>
   <ng-template #answersNotFound>
     <mat-panel-description>

@@ -1,4 +1,13 @@
-<app-section-overview-card
-  [overviewProperties]="overviewProperties"
-  (moveToNextSection)="toQuestions()"
-></app-section-overview-card>
+<section *ngIf="sectionExist; else elseBlock" class="mainContainer">
+  <h1 class="heading">Overview of {{ sectionName }}</h1>
+  <app-section-overview-card [questions]="answers"></app-section-overview-card>
+  <div>
+    <app-buttons
+      [buttonProperties]="overviewButtonProperties"
+      (buttonClicked)="toQuestions()"
+    ></app-buttons>
+  </div>
+</section>
+<ng-template #elseBlock>
+  <h1 class="heading">No overview exists.</h1>
+</ng-template>

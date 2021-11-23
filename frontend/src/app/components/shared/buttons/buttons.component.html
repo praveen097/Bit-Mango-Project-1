@@ -5,7 +5,7 @@
   [disabled]="buttonProperties.disabled"
 >
   {{ buttonProperties.buttonText }}
-  <mat-icon *ngIf="buttonProperties.iconName.length > 0">{{
+  <mat-icon *ngIf="buttonProperties.showIcon">{{
     buttonProperties.iconName
   }}</mat-icon>
 </button>

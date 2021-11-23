@@ -12,14 +12,14 @@ export class FinalOverviewAccordionComponent implements OnInit {
     buttonText: 'Previous Section',
     className: 'prevButton',
     disabled: false,
-    iconName: '',
+    showIcon: false,
   };
 
   nextSectionButtonProperties = {
     buttonText: 'Next Section',
     className: 'nextButton',
     disabled: false,
-    iconName: '',
+    showIcon: false,
   };
 
   constructor() {}

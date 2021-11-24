@@ -41,3 +41,44 @@
   background-color: $green;
   color:$white;
 }
+
+@media screen and  (max-width:1024px) {
+
+  .navButton {
+    padding:5px 20px;
+    font-size: 16px;
+  }
+}
+@media screen and  (max-width:768px) {
+
+  .navButton {
+    padding:5px 20px;
+    font-size: 15px;
+  }
+}
+
+@media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
+
+  .navButton {
+    padding:7px 20px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width:568px) and (max-width:768px){
+
+.submitUserDetails {
+  padding:7px 12px;
+  font-size: 15px;
+}
+
+}
+
+@media screen and (min-width:368px) and (max-width:567px){
+
+  .submitUserDetails {
+    padding:5px 10px;
+    font-size: 15px;
+  }
+}
+

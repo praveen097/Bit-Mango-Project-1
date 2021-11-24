@@ -1,47 +1,33 @@
 @import "../../../../styles.scss";
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  height: 100vh;
-}
-.heading {
-  font-size: 45px;
-  text-align: center;
-  margin: 50px 20px;
-  color: $light-grey;
-}
+
+
 .questionTemplate {
-  margin: 2%;
-}
-.questionText {
-  margin-bottom: 30px;
-  font-size: 18px;
-}
-.optionChip {
-  background-color: $green;
-  color: $white;
-  height: max-content;
-}
-section {
-  width: 90%;
-  margin: auto;
+  width: 47%;
+  margin-bottom: 10px;
 }
 
 
-@media screen and (max-width: 578px) {
-  .questionText {
-    font-size: 15px;
+@media screen and (min-width:568px) and (max-width:768px){
+  .questionTemplate {
+    width: 100%;
+    margin-top:10px ;
+    margin-bottom: 10px;
   }
-  .heading {
-    font-size: 28px;
-  }
+
 }
-@media screen and (min-width: 578px) and (max-width: 768px) {
-  .questionText {
-    font-size: 16px;
+@media screen and (min-width:368px) and (max-width:567px){
+
+  .questionTemplate {
+    width: 100%;
+    margin-top:10px ;
+    margin-bottom: 10px;
   }
-  .heading {
-    font-size: 35px;
+
+}
+@media screen and (min-width:168px) and (max-width:367px){
+  .questionTemplate {
+    width: 100%;
+    margin-top:10px ;
+    margin-bottom: 10px;
   }
 }

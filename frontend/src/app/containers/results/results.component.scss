@@ -17,44 +17,7 @@
   border:2px solid $yellow;
   border-radius: 20px;
 }
-// .showUserForm > mat-card {
-//   box-shadow: none;
-//   margin-top:60px;
-//   width:90%;
-//   display: flex;
-//   flex-flow: column;
-//   justify-content: center;
-//   align-items: center;
-// }
-// #greetingMessage {
-//   font-size: 40px;
-//   line-height: 7vh;
-//   font-weight: 400;
-//   color: $green;
-//   text-align: center;
-//   margin-bottom: 50px;
-// }
-// .content {
-//   font-size: 18px;
-//   line-height: 6vh;
-//   font-weight: 400;
-//   width:80%;
-//   margin-right: auto;
-//   margin-bottom: 40px;
-//   margin-left: auto;
-//   justify-content: center;
-// }
-// .formInput {
-//   display: flex;
-//   flex-flow: row;
-//   margin: auto;
-//   justify-content: space-around;
-//   width:80%;
-// }
-// .inputVal {
-//   margin:20px;
-//   width:100%;
-// }
+
 .heading {
   font-size: 45px;
   text-align: center;
@@ -81,99 +44,10 @@ section {
   margin:auto;
   padding:10px;
 }
-.sectionCard {
-  margin:20px auto;
-}
-.sectionName {
-  font-weight: 500;
-  font-size: 18px;
-}
-.questionList {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
-.questionTemplate {
-  width: 47%;
-  margin-bottom: 10px;
-  border-bottom: 1px solid $yellow;
-}
-.questionText {
-  margin-bottom: 20px;
-  font-size:17px;
-}
-.optionChip {
-  background-color: $green;
-  color:$white;
-  font-size: 15px;
-  height:max-content;
-}
-.errorMessage {
-  width: 100%;
-  text-align: center;
-  background-color: $light-grey;
-  color:$white;
-  padding:40px;
-  font-size: 30px;
-}
-// #prevButton {
-//   background-color: $yellow;
-//   color: $white;
-// }
-// #nextButton {
-//   background-color: $green;
-//   color:$white;
-// }
-// mat-icon {
-//   color:$green;
-// }
-// mat-card-footer {
-//   width: 100%;
-// }
-// .mat-form-field {
-//   font-size: 18px;
-//   width: 95%;
-// }
-// ::ng-deep .errorMessage > .mat-card-content {
-//   font-size: 20px;
-// }
-// ::ng-deep .mat-form-field-infix{
-//   width:275px !important;
-// }
-// ::ng-deep .mat-input-element {
-//   caret-color: $green;
-//   font-size: 16px !important;
-// }
-// ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-//   color:$green;
-// }
-// ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
-//   background-color:$green
-// }
-// ::ng-deep .mat-input-element {
-//   caret-color: $green;
-//   font-size: 16px !important;
-//   font-weight: 300px;
-// }
 
 @media screen and (min-width:769px) and (max-width:978px){
   .priceEstimate {
     width: 30%;
-  }
-  #greetingMessage {
-    font-size :xx-large;
-  }
-  .content {
-    font-size: 17px;
-  }
-  .formInput {
-    flex-flow: column;
-  }
-  .inputVal {
-    margin:20px auto;
-  }
-  .showUserForm > mat-card {
-    margin: auto;
   }
 }
 @media screen and (min-width:568px) and (max-width:768px){
@@ -181,143 +55,38 @@ section {
    font-size: x-large;
  }
 
- .formInput {
-   flex-flow: column;
- }
- .inputVal {
-   margin:20px auto;
- }
- .content {
-   font-size: 15px;
- }
- .inputVal {
-  width: 100%;
-}
-.submitUserDetails {
-  padding:7px 12px;
-  font-size: 15px;
-}
-.showUserForm > mat-card {
-  margin: auto;
-}
 
 }
 @media screen and (min-width:568px) and (max-width:768px){
-  .questionTemplate {
-    width: 100%;
-    margin-top:10px ;
-    margin-bottom: 10px;
-  }
-  .questionList {
-    flex-flow: column;
-  }
+
   .priceEstimate {
     width: 40%;
     font-size: large;
 
   }
-  .questionText {
-    font-size: 17px;
-  }
+
   .heading {
     font-size: 30px;
   }
-  .errorMessage {
-    font-size: 20px;
-    padding: 20px;
-  }
+
 }
 @media screen and (min-width:368px) and (max-width:567px){
   .priceEstimate {
     width: 40%;
     font-size: medium;
   }
-  .questionList {
-    flex-flow: column;
-  }
-  .questionTemplate {
-    width: 100%;
-    margin-top:10px ;
-    margin-bottom: 10px;
-  }
-  .questionText{
-    font-size: 15px;
-  }
+
   .heading {
     font-size: 25px;
   }
-  ::ng-deep .mat-card-content {
-    font-size:14px;
-  }
-  ::ng-deep .errorMessage > .mat-card-content {
-    font-size: 15px;
-  }
-  #greetingMessage {
-    font-size: x-large;
-  }
-  .formInput {
-    flex-flow: column;
-  }
-  .showUserForm {
-    width:100%;
-  }
 
-  .showUserForm > mat-card {
-    margin: auto;
-  }
 
-  .inputVal {
-    margin:20px auto;
-  }
 
-  .content {
-    font-size: 15px;
-  }
-  .mat-form-field {
-    font-size: 17px;
-    width: 100%;
-  }
-  .submitUserDetails {
-    padding:5px 10px;
-    font-size: 15px;
-  }
 }
 @media screen and (min-width:168px) and (max-width:367px){
   .priceEstimate {
     width: 70%;
     font-size: medium;
   }
-  .questionList {
-    flex-flow: column;
-  }
-  .questionTemplate {
-    width: 100%;
-    margin-top:10px ;
-    margin-bottom: 10px;
-  }
-  .questionText{
-    font-size: 10px;
-  }
-  #greetingMessage{
-    font-size: large;
-  }
-  .formInput {
-    flex-flow: column;
-  }
-  .content {
-    font-size: 13px;
-  }
-  .inputVal {
-    margin:20px auto;
-  }
-  .mat-form-field {
-    font-size: 15px;
-    width: 100%;
-  }
-  .showUserForm {
-    width:100%;
-  }
-  .showUserForm > mat-card {
-    margin: auto;
-  }
+
 }

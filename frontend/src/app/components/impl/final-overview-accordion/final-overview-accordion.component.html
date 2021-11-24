@@ -9,10 +9,12 @@
     currentSectionAnswers.sectionName
   }}</mat-expansion-panel-header>
   <mat-panel-description
-    class="questionList"
     *ngIf="currentSectionAnswers.questions.length != 0; else answersNotFound"
   >
-    <app-section-overview-card [questions]="currentSectionAnswers.questions">
+    <app-section-overview-card
+      [questions]="currentSectionAnswers.questions"
+      class="questionList"
+    >
     </app-section-overview-card>
   </mat-panel-description>
   <ng-template #answersNotFound>

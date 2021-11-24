@@ -1,15 +1,42 @@
 @import "../../../../styles.scss";
 
 
-.questionTemplate {
-  margin: 2%;
-}
+
+
 .questionText {
-  margin-bottom: 30px;
-  font-size: 18px;
+  margin-bottom: 20px;
+  font-size:17px;
 }
 .optionChip {
   background-color: $green;
-  color: $white;
-  height: max-content;
+  color:$white;
+  font-size: 15px;
+  height:max-content;
+}
+
+.mat-card {
+  border-bottom: 1px $yellow solid;
+}
+
+
+
+@media screen and (min-width:568px) and (max-width:768px){
+
+  .questionText {
+    font-size: 17px;
+  }
+}
+@media screen and (min-width:368px) and (max-width:567px){
+  .questionText{
+    font-size: 15px;
+  }
+
+}
+@media screen and (min-width:168px) and (max-width:367px){
+
+  .questionText{
+    font-size: 10px;
+  }
+
+
 }

@@ -21,21 +21,6 @@ export class ResultsComponent implements OnInit {
   form!: FormGroup;
   showProgressBar: boolean = false;
 
-  previousSectionButtonProperties = {
-    buttonText: 'Previous Section',
-    className: 'prevButton',
-    disabled: false,
-    iconName: '',
-  };
-
-  nextSectionButtonProperties = {
-    buttonText: 'Next Section',
-    className: 'nextButton',
-    disabled: false,
-    iconName: '',
-  };
-  emailFormProperties: any;
-
   constructor(
     private _costEstimationService: CostEstimationService,
     private _formBuilder: FormBuilder,
@@ -67,20 +52,19 @@ export class ResultsComponent implements OnInit {
 
   displayAnswers(formValues: any): void {
     this.showProgressBar = true;
-    this.showUserForm = false;
-    // this._costEstimationService
-    //   .submitAnswers(formValues.email, formValues.companyName)
-    //   .then((data: SubmitEstimates) => {
-    //     this.minPrice = data.lowerEstimate;
-    //     this.maxPrice = data.upperEstimate;
-    //     this.showUserForm = false;
-    //     this._snackBar.open(
-    //       'Email successfully sent to ' + formValues.email,
-    //       'OK',
-    //       {
-    //         duration: 5000,
-    //       }
-    //     );
-    //   });
+    this._costEstimationService
+      .submitAnswers(formValues.email, formValues.companyName)
+      .then((data: SubmitEstimates) => {
+        this.minPrice = data.lowerEstimate;
+        this.maxPrice = data.upperEstimate;
+        this.showUserForm = false;
+        this._snackBar.open(
+          'Email successfully sent to ' + formValues.email,
+          'OK',
+          {
+            duration: 5000,
+          }
+        );
+      });
   }
 }

@@ -1,1 +1,7 @@
-<p>navigation-buttons works!</p>
+<button
+  mat-fab
+  [ngClass]="buttonProperties.className"
+  (click)="navigationButtonClick()"
+>
+  <mat-icon class="nav-icons">{{ buttonProperties.iconName }}</mat-icon>
+</button>

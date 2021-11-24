@@ -12,12 +12,10 @@ export class EmailFormComponent implements OnInit {
   @Input() formProperties: any;
 
   form!: FormGroup;
+
   emailFormButtonProperties: any;
   showProgressBar: boolean = false;
-  progressBarProperties = {
-    mode: 'indeterminate',
-    value: null,
-  };
+  progressBarMode = 'indeterminate';
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {

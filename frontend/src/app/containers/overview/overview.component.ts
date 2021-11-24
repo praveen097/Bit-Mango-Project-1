@@ -22,6 +22,8 @@ export class OverviewComponent implements OnInit {
     buttonText: 'Next Section',
     showIcon: '',
   };
+
+  className = 'overviewAnswerContainer';
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,

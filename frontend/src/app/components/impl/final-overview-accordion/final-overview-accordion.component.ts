@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FinalOverviewAccordionComponent implements OnInit {
   @Input() questionsList: any;
+
+  className = 'resultAnswerContainer';
   step = 0;
   previousSectionButtonProperties = {
     buttonText: 'Previous Section',

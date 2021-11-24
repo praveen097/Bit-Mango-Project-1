@@ -94,6 +94,7 @@ export class CostEstimationService {
   }
 
   setAnswerById(id: string, options: Option[]): void {
+    console.log(options);
     for (var i = 0; i < this.answers.length; i++) {
       if (this.answers[i].id == id) {
         this.answers[i].options = options;
@@ -109,6 +110,7 @@ export class CostEstimationService {
     } else {
       this.answers[answerIndex].options = options;
     }
+    console.log(this.answers);
   }
 
   isLastQuestionOfCurrentSection(id: number): boolean {

@@ -55,11 +55,15 @@ export class QuestionsComponent implements OnInit {
         buttonText: this.nextSectionButtonText,
         showIcon: true,
         iconName: this.nextSectionButtonIcon,
+        className: 'skipButton',
+        iconClassName: 'nextIcon',
       },
       continueButtonProperties: {
         buttonText: this.continueButtonText,
         showIcon: true,
         iconName: 'edit',
+        className: 'continueButton',
+        iconClassName: 'editIcon',
       },
     };
     if (this.sectionTouched) {
@@ -107,11 +111,15 @@ export class QuestionsComponent implements OnInit {
         buttonText: this.nextSectionButtonText,
         iconName: this.nextSectionButtonIcon,
         showIcon: true,
+        className: 'skipButton',
+        iconClassName: 'nextIcon',
       },
       continueButtonProperties: {
         buttonText: this.continueButtonText,
         iconName: 'edit',
         showIcon: true,
+        className: 'continueButton',
+        iconClassName: 'editIcon',
       },
     };
 
@@ -169,11 +177,15 @@ export class QuestionsComponent implements OnInit {
         buttonText: this.nextSectionButtonText,
         iconName: this.nextSectionButtonIcon,
         showIcon: true,
+        className: 'skipButton',
+        iconClassName: 'nextIcon',
       },
       continueButtonProperties: {
         buttonText: this.continueButtonText,
         iconName: 'edit',
         showIcon: true,
+        className: 'continueButton',
+        iconClassName: 'editIcon',
       },
     };
   }
@@ -227,17 +239,16 @@ export class QuestionsComponent implements OnInit {
     this._dialog.open(ValidationDialogComponent);
   }
 
-  nextQuestion(): void {
+  nextQuestion(parameters: any): void {
     //   //check whether option is selected
-
-    if (this.answer.length == 0) {
+    if (parameters.options.length == 0) {
       this.openDailog();
     } else {
       this.currentQuestionNumberForDisplay++; // used to show question number
       //     //set current question's answer before moving to next question
       this._costEstimationService.setAnswerById(
-        this.presentQuestion._id,
-        this.answer
+        parameters.id,
+        parameters.options
       );
       //     //check if current question is last question of current section
       if (

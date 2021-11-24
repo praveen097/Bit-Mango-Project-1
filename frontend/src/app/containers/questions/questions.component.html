@@ -58,18 +58,18 @@
   </div>
 
   <div *ngIf="sectionStarted">
-    <mat-progress-bar
+    <!-- <mat-progress-bar
       mode="determinate"
       value="{{
         (currentQuestionNumberForDisplay /
           newSections[sectionIndex].questions.length) *
           100
       }}"
-    ></mat-progress-bar>
+    ></mat-progress-bar> -->
 
-    <div class="mainContainer">
-      <div class="customContainer">
-        <mat-card class="questionText">
+    <!-- <div class="mainContainer">
+      <div class="customContainer"> -->
+    <!-- <mat-card class="questionText">
           {{ currentQuestionNumberForDisplay }} .
           {{ presentQuestion.questionText }}
         </mat-card>
@@ -104,8 +104,16 @@
               </mat-chip>
             </mat-chip-list>
           </div>
-        </ng-template>
-        <mat-card class="navButtonsContainer">
+        </ng-template> -->
+    <app-question-and-options
+      [presentQuestion]="presentQuestion"
+      [answer]="answer"
+      [questionsLength]="newSections[sectionIndex].questions.length"
+      [currentQuestionNumberForDisplay]="currentQuestionNumberForDisplay"
+      (getNextQuestionEvent)="nextQuestion($event)"
+      (getPreviousQuestionEvent)="previousQuestion()"
+    ></app-question-and-options>
+    <!-- <mat-card class="navButtonsContainer">
           <button
             *ngIf="currentQuestionNumberForDisplay > 1"
             mat-fab
@@ -117,8 +125,8 @@
           <button mat-fab class="navButtonNext" (click)="nextQuestion()">
             <mat-icon class="nav-icons">navigate_next</mat-icon>
           </button>
-        </mat-card>
-      </div>
-    </div>
+        </mat-card> -->
+    <!-- </div>
+    </div> -->
   </div>
 </div>

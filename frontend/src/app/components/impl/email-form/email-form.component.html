@@ -41,8 +41,6 @@
     </mat-card-actions>
   </form>
   <mat-card-footer *ngIf="showProgressBar">
-    <app-progress-bar
-      [progressBarProperties]="progressBarProperties"
-    ></app-progress-bar>
+    <app-progress-bar [mode]="progressBarMode"></app-progress-bar>
   </mat-card-footer>
 </mat-card>

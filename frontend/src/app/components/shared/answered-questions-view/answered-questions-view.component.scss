@@ -14,8 +14,17 @@
   height:max-content;
 }
 
-.mat-card {
+.resultAnswerContainer {
+  width:100%;
   border-bottom: 1px $yellow solid;
+  margin-bottom: 10px;
+  height:100%;
+}
+
+.overviewAnswerContainer {
+  width:100%;
+  border-bottom: 1px $yellow solid;
+  margin-bottom: 20px;
 }
 
 

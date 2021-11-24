@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SectionOverviewCardComponent implements OnInit {
   @Input() questions: any;
+  @Input() className: any;
 
   constructor() {}
 

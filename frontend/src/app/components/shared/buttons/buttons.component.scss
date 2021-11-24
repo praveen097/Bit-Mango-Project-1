@@ -15,7 +15,7 @@
 .nextSectionButton {
   background-color: $green;
   color: $white;
-  margin: 2% 2% 4% 2%;
+  margin: 2% 0% 4% 0%;
   float: right;
   width: fit-content;
   text-transform: uppercase;
@@ -40,6 +40,36 @@
 .nextButton {
   background-color: $green;
   color:$white;
+}
+
+
+.editIcon{
+  font-size: 25px;
+  margin-top: -3px;
+}
+.skipIcon,.nextIcon {
+  font-size: 27px;
+  margin-top: -3px;
+}
+.skipButton {
+  background-color: $yellow;
+  outline:none;
+  color: $white;
+  margin-right: 15px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  padding: 2px 6px 2px 10px;
+}
+.skipButton:hover {
+  background-color: $yellow;
+  opacity: 0.8;
+}
+.continueButton {
+  background-color: $green;
+  color: $white;
+  margin-right: 15px;
+  margin-bottom: 6px;
+  padding: 2px 6px 2px 10px;
 }
 
 @media screen and  (max-width:1024px) {
@@ -81,4 +111,5 @@
     font-size: 15px;
   }
 }
+
 

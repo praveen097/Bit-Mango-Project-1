@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AnsweredQuestionsViewComponent implements OnInit {
   @Input() questionWithAnswers: any;
+  @Input() className: any;
 
   constructor() {}
 

@@ -1,18 +1,18 @@
 <mat-card class="skipCard">
   <mat-card-title class="sectionNameText">
-    {{ skipIntroCardProperties.sectionName }}
+    {{ sectionName }}
   </mat-card-title>
   <mat-card-content class="sectionDescriptionText">
-    {{ skipIntroCardProperties.sectionDescription }}
+    {{ sectionDescription }}
   </mat-card-content>
 
   <div class="buttonSelect">
     <app-buttons
-      [buttonProperties]="skipIntroCardProperties.previousButtonProperties"
+      [buttonProperties]="skipButtonProperties"
       (buttonClicked)="skipSectionButtonClick()"
     ></app-buttons>
     <app-buttons
-      [buttonProperties]="skipIntroCardProperties.continueButtonProperties"
+      [buttonProperties]="continueButtonProperties"
       (buttonClicked)="continueButtonClick()"
     ></app-buttons>
   </div>

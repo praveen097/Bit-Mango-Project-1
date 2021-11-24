@@ -51,7 +51,10 @@
         </div>
       </mat-card> -->
     <app-section-intro-card
-      [skipIntroCardProperties]="skipIntroCardProperties"
+      [sectionDescription]="sectionDescription"
+      [sectionName]="sectionName"
+      [sectionTouched]="sectionTouched"
+      [isLastSection]="isLastSection"
       class="skipContainer"
       (continueButtonEvent)="continue()"
       (skipSectionButtonEvent)="skipSection()"

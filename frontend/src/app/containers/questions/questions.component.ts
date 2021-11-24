@@ -20,11 +20,10 @@ export class QuestionsComponent implements OnInit {
   sectionIndex: number = -1;
   sectionStarted: boolean = false;
   sectionTouched: boolean = false;
-  continueButtonText: string = 'CONTINUE';
-  nextSectionButtonText: string = '';
-  nextSectionButtonIcon: string = 'skip_next';
+  isLastSection: boolean = false;
   newSections: Sections[] = [];
-  skipIntroCardProperties: any;
+  sectionDescription!: string;
+  sectionName!: string;
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,
@@ -34,35 +33,17 @@ export class QuestionsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.newSections = <Sections[]>this._costEstimationService.sectionsData;
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
+    this.sectionName = this.newSections[this.sectionIndex].sectionName;
+    this.sectionDescription =
+      this.newSections[this.sectionIndex].sectionDescription;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex
     );
-    this.nextSectionButtonText =
-      'Skip ' + this.newSections[this.sectionIndex].sectionName;
-
-    this.skipIntroCardProperties = {
-      sectionName: this.newSections[this.sectionIndex].sectionName,
-      sectionDescription:
-        this.newSections[this.sectionIndex].sectionDescription,
-      sectionTouched: this.sectionTouched,
-      sectionIndex: this.sectionIndex,
-      previousButtonProperties: {
-        buttonText: this.nextSectionButtonText,
-        showIcon: true,
-        iconName: this.nextSectionButtonIcon,
-        className: 'skipButton',
-        iconClassName: 'nextIcon',
-      },
-      continueButtonProperties: {
-        buttonText: this.continueButtonText,
-        showIcon: true,
-        iconName: 'edit',
-        className: 'continueButton',
-        iconClassName: 'editIcon',
-      },
-    };
+    if (this.sectionIndex == this.newSections.length - 1) {
+      this.isLastSection = true;
+    }
+    console.log(this.isLastSection);
     if (this.sectionTouched) {
-      this.continueButtonText = 'EDIT';
       this.presentQuestion =
         this._costEstimationService.getFirstQuestionofCurrentSection();
       this.answer = this._costEstimationService.getAnswerByQuestionId(
@@ -80,44 +61,15 @@ export class QuestionsComponent implements OnInit {
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       <number>id
     );
-    if (this.sectionTouched) {
-      this.continueButtonText = 'EDIT';
-      this.nextSectionButtonText = 'NEXT SECTION';
-      this.nextSectionButtonIcon = 'navigate_next';
-      if (
-        this.sectionIndex ==
-        this._costEstimationService.sectionsData.length - 1
-      ) {
-        this.nextSectionButtonText = 'FINISH';
-      }
+    if (this.sectionIndex == this.newSections.length - 1) {
+      this.isLastSection = true;
     } else {
-      this.nextSectionButtonText =
-        'Skip ' + this.newSections[this.sectionIndex].sectionName;
-      this.continueButtonText = 'CONTINUE';
-      this.nextSectionButtonIcon = 'skip_next';
+      this.isLastSection = false;
     }
-    this.skipIntroCardProperties = {
-      sectionName: this.newSections[this.sectionIndex].sectionName,
-      sectionDescription:
-        this.newSections[this.sectionIndex].sectionDescription,
-      sectionTouched: this.sectionTouched,
-      sectionIndex: this.sectionIndex,
-      previousButtonProperties: {
-        buttonText: this.nextSectionButtonText,
-        iconName: this.nextSectionButtonIcon,
-        showIcon: true,
-        className: 'skipButton',
-        iconClassName: 'nextIcon',
-      },
-      continueButtonProperties: {
-        buttonText: this.continueButtonText,
-        iconName: 'edit',
-        showIcon: true,
-        className: 'continueButton',
-        iconClassName: 'editIcon',
-      },
-    };
-
+    console.log(this.isLastSection);
+    this.sectionName = this.newSections[this.sectionIndex].sectionName;
+    this.sectionDescription =
+      this.newSections[this.sectionIndex].sectionDescription;
     this.presentQuestion =
       this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
@@ -134,50 +86,19 @@ export class QuestionsComponent implements OnInit {
     } else {
       this._route.navigate(['/results']);
     }
+    if (this.sectionIndex == this.newSections.length - 1) {
+      this.isLastSection = true;
+    } else {
+      this.isLastSection = false;
+    }
+    console.log(this.isLastSection);
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex
     );
-
-    if (this.sectionTouched) {
-      this.continueButtonText = 'EDIT';
-      if (
-        this.sectionIndex ==
-        this._costEstimationService.sectionsData.length - 1
-      ) {
-        this.nextSectionButtonText = 'FINISH';
-        this.nextSectionButtonIcon = 'navigate_next';
-      } else {
-        this.nextSectionButtonText = 'NEXT SECTION';
-        this.nextSectionButtonIcon = 'navigate_next';
-      }
-    } else {
-      this.continueButtonText = 'CONTINUE';
-      this.nextSectionButtonText =
-        'Skip ' + this.newSections[this.sectionIndex].sectionName;
-      this.nextSectionButtonIcon = 'skip_next';
-    }
-    this.skipIntroCardProperties = {
-      sectionName: this.newSections[this.sectionIndex].sectionName,
-      sectionDescription:
-        this.newSections[this.sectionIndex].sectionDescription,
-      sectionTouched: this.sectionTouched,
-      sectionIndex: this.sectionIndex,
-      previousButtonProperties: {
-        buttonText: this.nextSectionButtonText,
-        iconName: this.nextSectionButtonIcon,
-        showIcon: true,
-        className: 'skipButton',
-        iconClassName: 'nextIcon',
-      },
-      continueButtonProperties: {
-        buttonText: this.continueButtonText,
-        iconName: 'edit',
-        showIcon: true,
-        className: 'continueButton',
-        iconClassName: 'editIcon',
-      },
-    };
+    this.sectionName = this.newSections[this.sectionIndex].sectionName;
+    this.sectionDescription =
+      this.newSections[this.sectionIndex].sectionDescription;
   }
 
   continue(): void {

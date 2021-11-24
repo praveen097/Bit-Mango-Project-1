@@ -2,10 +2,10 @@
   mat-align-tabs="center"
   #tabRef
   (selectedTabChange)="tabSelectChange(tabRef.selectedIndex)"
-  [selectedIndex]="tabProperties.selectedIndex"
+  [selectedIndex]="selectedIndex"
 >
   <mat-tab
-    *ngFor="let allSections of tabProperties.newSections"
+    *ngFor="let allSections of newSections"
     label="{{ allSections.sectionName }}"
   ></mat-tab>
 </mat-tab-group>

@@ -24,7 +24,6 @@ export class QuestionsComponent implements OnInit {
   nextSectionButtonText: string = '';
   nextSectionButtonIcon: string = 'skip_next';
   newSections: Sections[] = [];
-  tabProperties: any;
   skipIntroCardProperties: any;
   constructor(
     private _costEstimationService: CostEstimationService,
@@ -40,10 +39,6 @@ export class QuestionsComponent implements OnInit {
     );
     this.nextSectionButtonText =
       'Skip ' + this.newSections[this.sectionIndex].sectionName;
-    this.tabProperties = {
-      selectedIndex: this.sectionIndex,
-      newSections: this.newSections,
-    };
 
     this.skipIntroCardProperties = {
       sectionName: this.newSections[this.sectionIndex].sectionName,
@@ -144,11 +139,6 @@ export class QuestionsComponent implements OnInit {
       this.sectionIndex
     );
 
-    this.tabProperties = {
-      selectedIndex: this.sectionIndex,
-      newSections: this.newSections,
-    };
-
     if (this.sectionTouched) {
       this.continueButtonText = 'EDIT';
       if (
@@ -199,35 +189,6 @@ export class QuestionsComponent implements OnInit {
     );
   }
 
-  multipleToggleSelection(option: Option): void {
-    const isExists = this.answer.findIndex(
-      (x) => x.optionText == option.optionText
-    );
-    if (isExists > -1) {
-      this.answer[isExists].selected = false;
-      this.answer != this.answer.splice(isExists, 1);
-    } else {
-      option.selected = true;
-      this.answer.push(option);
-    }
-  }
-
-  toggleSelection(chip: MatChip, option: Option): void {
-    chip.toggleSelected();
-    if (this.answer.length > 0) {
-      if (this.answer[0].optionText == option.optionText) {
-        this.answer[0].selected = false;
-        this.answer.pop();
-      } else {
-        this.answer[0].selected = false;
-        option.selected = true;
-        this.answer[0] = option;
-      }
-    } else {
-      option.selected = true;
-      this.answer[0] = option;
-    }
-  }
   previousQuestion(): void {
     this.currentQuestionNumberForDisplay--;
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();

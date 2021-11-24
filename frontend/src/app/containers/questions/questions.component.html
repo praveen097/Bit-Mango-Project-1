@@ -11,7 +11,8 @@
     ></mat-tab>
   </mat-tab-group> -->
   <app-tabs
-    [tabProperties]="tabProperties"
+    [selectedIndex]="sectionIndex"
+    [newSections]="newSections"
     (tabClicked)="skipSectionHandler($event)"
   ></app-tabs>
   <div *ngIf="!sectionStarted" class="mainSkipContainer">

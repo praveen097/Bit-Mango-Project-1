@@ -11,9 +11,9 @@ import { ButtonProperties, UserDetails } from 'src/app/models/sections';
 export class EmailFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<UserDetails> = new EventEmitter<UserDetails>();
 
-  form!: FormGroup;
+  form: FormGroup | undefined;
 
-  @Output() emailFormButtonProperties!: ButtonProperties;
+  @Output() emailFormButtonProperties: ButtonProperties | undefined;
   showProgressBar: boolean = false;
   @Output() progressBarMode: ProgressBarMode = 'indeterminate';
   constructor(private _formBuilder: FormBuilder) {}
@@ -40,18 +40,22 @@ export class EmailFormComponent implements OnInit {
   }
 
   checkForm() {
+    if(this.form && this.emailFormButtonProperties){
     if (this.form.valid) {
       this.emailFormButtonProperties.disabled = false;
     } else {
       this.emailFormButtonProperties.disabled = true;
     }
   }
+  }
 
   formOnSubmit() {
     this.showProgressBar = true;
+    if(this.form){
     this.formSubmit.emit({
       email: this.form.controls.email.value,
       companyName: this.form.controls.companyName.value,
     });
+  }
   }
 }

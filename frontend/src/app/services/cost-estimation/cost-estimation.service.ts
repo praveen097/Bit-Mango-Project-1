@@ -2,7 +2,6 @@ import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
   Option,
@@ -11,6 +10,7 @@ import {
   SubmitEstimates,
   SubmitQuestions,
 } from '../../models/sections';
+import { SnackbarService } from '../snackbar/snackbar.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,11 +26,16 @@ export class CostEstimationService {
 
   hostUrl: string = environment.baseUrl;
 
-  constructor(private _http: HttpClient, private _snackBar: MatSnackBar) {}
+  constructor(
+    private _http: HttpClient,
+    private _snackBarService: SnackbarService
+  ) {}
 
   async setSectionValues(): Promise<void> {
     this.sectionsData = <Sections[]>await this.getSections().catch(() => {
-      this._snackBar.open('Failed to connect, please try again later');
+      this._snackBarService.showSnackBar(
+        'Failed to connect, please try again later'
+      );
     });
     this.currentQuestion = this.getSectionByIndex(
       this.currentSectionIndex

@@ -10,8 +10,8 @@ export class TabsComponent implements OnInit {
   @Output() tabClicked: EventEmitter<number | null> = new EventEmitter<
     number | null
   >();
-  @Input() selectedIndex!: number;
-  @Input() newSections!: Sections[];
+  @Input() selectedIndex: number | undefined;
+  @Input() newSections: Sections[] | undefined;
 
   constructor() {}
 

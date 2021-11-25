@@ -7,8 +7,8 @@ import { Question } from 'src/app/models/sections';
   styleUrls: ['./answered-questions-view.component.scss'],
 })
 export class AnsweredQuestionsViewComponent implements OnInit {
-  @Input() questionWithAnswers!: Question;
-  @Input() className!: string;
+  @Input() questionWithAnswers: Question | undefined;
+  @Input() className: string | undefined;
 
   constructor() {}
 

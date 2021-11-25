@@ -7,7 +7,7 @@ import { ButtonProperties } from 'src/app/models/sections';
   styleUrls: ['./navigation-buttons.component.scss'],
 })
 export class NavigationButtonsComponent implements OnInit {
-  @Input() buttonProperties!: ButtonProperties;
+  @Input() buttonProperties: ButtonProperties | undefined;
 
   @Output() navButtonEvent: EventEmitter<null> = new EventEmitter<null>();
 

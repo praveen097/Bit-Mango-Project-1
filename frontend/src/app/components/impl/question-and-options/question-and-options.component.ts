@@ -10,9 +10,9 @@ import { MatChip } from '@angular/material/chips';
 })
 export class QuestionAndOptionsComponent implements OnInit {
   @Input() answer: Option[] = [];
-  @Input() presentQuestion!: Question;
-  @Input() currentQuestionNumberForDisplay!: number;
-  @Input() questionsLength!: number;
+  @Input() presentQuestion: Question | undefined;
+  @Input() currentQuestionNumberForDisplay: number | undefined;
+  @Input() questionsLength: number | undefined;
 
   @Output() getNextQuestionEvent: EventEmitter<{
     options: Option[];
@@ -22,8 +22,6 @@ export class QuestionAndOptionsComponent implements OnInit {
     new EventEmitter<null>();
 
   @Output() progressBarMode: ProgressBarMode = 'determinate';
-  @Output() progressBarValue: number =
-    (this.currentQuestionNumberForDisplay / this.questionsLength) * 100;
   @Output() previousButtonProperties: ButtonProperties = {
     className: 'navButtonPrevious',
     iconName: 'navigate_before',
@@ -76,20 +74,17 @@ export class QuestionAndOptionsComponent implements OnInit {
     }
   }
 
-  ngOnChanges():void {
-    this.progressBarValue =
-      (this.currentQuestionNumberForDisplay / this.questionsLength) * 100;
+  getNextQuestion(): void {
+    if (this.presentQuestion) {
+      this.getNextQuestionEvent.emit({
+        options: this.answer,
+        id: this.presentQuestion.id,
+      });
+      this.answer = [];
+    }
   }
 
-  getNextQuestion():void {
-    this.getNextQuestionEvent.emit({
-      options: this.answer,
-      id: this.presentQuestion.id,
-    });
-    this.answer = [];
-  }
-
-  getPreviousQuestion():void {
+  getPreviousQuestion(): void {
     this.getPreviousQuestionEvent.emit();
   }
 }

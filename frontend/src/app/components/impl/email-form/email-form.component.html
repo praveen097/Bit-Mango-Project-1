@@ -5,7 +5,7 @@
   <mat-card-content class="content"
     >Please fill the details below to receive your estimate</mat-card-content
   >
-  <form (submit)="formOnSubmit()" [formGroup]="form">
+  <form *ngIf="form" (submit)="formOnSubmit()" [formGroup]="form">
     <div class="formInput">
       <p class="inputVal">
         <mat-form-field>
@@ -37,7 +37,7 @@
       </p>
     </div>
     <mat-card-actions>
-      <app-buttons [buttonProperties]="emailFormButtonProperties"></app-buttons>
+      <app-buttons *ngIf="emailFormButtonProperties" [buttonProperties]="emailFormButtonProperties"></app-buttons>
     </mat-card-actions>
   </form>
   <mat-card-footer *ngIf="showProgressBar">

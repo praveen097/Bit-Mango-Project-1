@@ -7,8 +7,8 @@ import { Question } from 'src/app/models/sections';
   styleUrls: ['./section-overview-card.component.scss'],
 })
 export class SectionOverviewCardComponent implements OnInit {
-  @Input() questions!: Question[];
-  @Input() className!: string;
+  @Input() questions: Question[] | undefined;
+  @Input() className: string | undefined;
 
   constructor() {}
 

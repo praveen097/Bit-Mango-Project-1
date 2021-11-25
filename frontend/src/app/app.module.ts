@@ -27,7 +27,6 @@ import { SectionIntroCardComponent } from './components/impl/section-intro-card/
 import { QuestionAndOptionsComponent } from './components/impl/question-and-options/question-and-options.component';
 import { EmailFormComponent } from './components/impl/email-form/email-form.component';
 import { FinalOverviewAccordionComponent } from './components/impl/final-overview-accordion/final-overview-accordion.component';
-import { SnackbarComponent } from './components/shared/snackbar/snackbar.component';
 import { ButtonsComponent } from './components/shared/buttons/buttons.component';
 import { ProgressBarComponent } from './components/shared/progress-bar/progress-bar.component';
 import { NavigationButtonsComponent } from './components/shared/navigation-buttons/navigation-buttons.component';
@@ -35,7 +34,21 @@ import { SectionOverviewCardComponent } from './components/shared/section-overvi
 import { AnsweredQuestionsViewComponent } from './components/shared/answered-questions-view/answered-questions-view.component';
 
 @NgModule({
-  declarations: [AppComponent, routingComponents, ValidationDialogComponent, TabsComponent, SectionIntroCardComponent, QuestionAndOptionsComponent, EmailFormComponent, FinalOverviewAccordionComponent, SnackbarComponent, ButtonsComponent, ProgressBarComponent, NavigationButtonsComponent, SectionOverviewCardComponent, AnsweredQuestionsViewComponent],
+  declarations: [
+    AppComponent,
+    routingComponents,
+    ValidationDialogComponent,
+    TabsComponent,
+    SectionIntroCardComponent,
+    QuestionAndOptionsComponent,
+    EmailFormComponent,
+    FinalOverviewAccordionComponent,
+    ButtonsComponent,
+    ProgressBarComponent,
+    NavigationButtonsComponent,
+    SectionOverviewCardComponent,
+    AnsweredQuestionsViewComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,7 +69,7 @@ import { AnsweredQuestionsViewComponent } from './components/shared/answered-que
     MatInputModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [CostEstimationService],
   bootstrap: [AppComponent],

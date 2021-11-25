@@ -6,7 +6,7 @@ import {
   SubmitEstimates,
   UserDetails,
 } from '../../models/sections';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-results',
@@ -24,7 +24,7 @@ export class ResultsComponent implements OnInit {
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private _snackBar: MatSnackBar
+    private _snackBarService:SnackbarService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -56,13 +56,7 @@ export class ResultsComponent implements OnInit {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;
         this.showUserForm = false;
-        this._snackBar.open(
-          'Email successfully sent to ' + formValues.email,
-          'OK',
-          {
-            duration: 5000,
-          }
-        );
+        this._snackBarService.showSnackBar('Email Successfully sent to '+formValues.email)
       });
   }
 }

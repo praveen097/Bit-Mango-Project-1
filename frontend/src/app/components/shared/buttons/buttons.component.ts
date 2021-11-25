@@ -8,7 +8,7 @@ import { ButtonProperties } from 'src/app/models/sections';
 })
 export class ButtonsComponent implements OnInit {
   @Output() buttonClicked: EventEmitter<null> = new EventEmitter<null>();
-  @Input() buttonProperties!: ButtonProperties;
+  @Input() buttonProperties: ButtonProperties | undefined;
   constructor() {}
 
   ngOnInit(): void {

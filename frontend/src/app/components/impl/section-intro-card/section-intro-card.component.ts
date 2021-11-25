@@ -10,18 +10,18 @@ export class SectionIntroCardComponent implements OnInit {
   @Output() skipSectionButtonEvent: EventEmitter<null> =
     new EventEmitter<null>();
   @Output() continueButtonEvent: EventEmitter<null> = new EventEmitter<null>();
-  @Input() sectionDescription!: string;
-  @Input() sectionName!: string;
-  @Input() sectionTouched!: boolean;
-  @Input() isLastSection!: boolean;
+  @Input() sectionDescription: string | undefined;
+  @Input() sectionName: string | undefined;
+  @Input() sectionTouched: boolean | undefined;
+  @Input() isLastSection: boolean | undefined;
 
   continueSectionButtonText: string = 'CONTINUE';
   continueSectionButtonIcon: string = 'edit';
   skipSectionButtonText: string = '';
   skipSectionButtonIcon: string = 'skip_next';
 
-  skipButtonProperties!: ButtonProperties;
-  continueButtonProperties!: ButtonProperties;
+  skipButtonProperties: ButtonProperties | undefined;
+  continueButtonProperties: ButtonProperties | undefined;
 
   constructor() {}
 

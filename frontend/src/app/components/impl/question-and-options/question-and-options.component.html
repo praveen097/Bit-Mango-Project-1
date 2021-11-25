@@ -1,9 +1,13 @@
 <app-progress-bar
+  *ngIf="questionsLength && currentQuestionNumberForDisplay"
   [mode]="progressBarMode"
-  [value]="progressBarValue"
+  [value]="(this.currentQuestionNumberForDisplay / this.questionsLength) * 100"
 ></app-progress-bar>
 <div class="mainContainer">
-  <div class="customContainer">
+  <div
+    class="customContainer"
+    *ngIf="presentQuestion && currentQuestionNumberForDisplay"
+  >
     <mat-card class="questionText">
       {{ currentQuestionNumberForDisplay }} .
       {{ presentQuestion.questionText }}

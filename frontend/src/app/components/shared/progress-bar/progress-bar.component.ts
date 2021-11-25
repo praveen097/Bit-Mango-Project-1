@@ -8,8 +8,8 @@ import { ProgressBarMode } from '@angular/material/progress-bar';
   styleUrls: ['./progress-bar.component.scss'],
 })
 export class ProgressBarComponent implements OnInit {
-  @Input() mode!: ProgressBarMode;
-  @Input() value!: number;
+  @Input() mode: ProgressBarMode | undefined;
+  @Input() value: number | undefined;
 
   constructor() {}
 

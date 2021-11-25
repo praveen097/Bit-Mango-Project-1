@@ -1,56 +1,11 @@
 <div *ngIf="sectionIndex != -1">
-  <!-- <mat-tab-group
-    mat-align-tabs="center"
-    #tabRef
-    (selectedTabChange)="skipSectionHandler(tabRef.selectedIndex)"
-    [selectedIndex]="sectionIndex"
-  >
-    <mat-tab
-      *ngFor="let allSections of newSections"
-      label="{{ allSections.sectionName }}"
-    ></mat-tab>
-  </mat-tab-group> -->
   <app-tabs
     [selectedIndex]="sectionIndex"
     [newSections]="newSections"
     (tabClicked)="skipSectionHandler($event)"
   ></app-tabs>
   <div *ngIf="!sectionStarted" class="mainSkipContainer">
-    <!-- <div class="skipContainer"> -->
-    <!-- <mat-card class="skipCard">
-        <mat-card-title class="sectionNameText">
-          {{ newSections[sectionIndex].sectionName }}
-        </mat-card-title>
-        <mat-card-content class="sectionDescriptionText">
-          {{ newSections[sectionIndex].sectionDescription }}
-        </mat-card-content>
-
-        <div class="buttonSelect">
-          <button
-            *ngIf="!sectionTouched"
-            mat-stroked-button
-            class="skipButton"
-            (click)="skipSection()"
-          >
-            Skip {{ newSections[sectionIndex].sectionName }}
-            <mat-icon class="skipIcon">skip_next</mat-icon>
-          </button>
-          <button
-            *ngIf="sectionTouched"
-            mat-stroked-button
-            class="skipButton"
-            (click)="skipSection()"
-          >
-            {{ nextSectionButtonText }}
-            <mat-icon class="nextIcon">navigate_next</mat-icon>
-          </button>
-          <button mat-raised-button class="continueButton" (click)="continue()">
-            {{ continueButtonText }}
-            <mat-icon class="editIcon">edit</mat-icon>
-          </button>
-        </div>
-      </mat-card> -->
-    <app-section-intro-card
+    <app-section-intro-card *ngIf="sectionDescription && sectionName"
       [sectionDescription]="sectionDescription"
       [sectionName]="sectionName"
       [sectionTouched]="sectionTouched"
@@ -62,54 +17,7 @@
   </div>
 
   <div *ngIf="sectionStarted">
-    <!-- <mat-progress-bar
-      mode="determinate"
-      value="{{
-        (currentQuestionNumberForDisplay /
-          newSections[sectionIndex].questions.length) *
-          100
-      }}"
-    ></mat-progress-bar> -->
-
-    <!-- <div class="mainContainer">
-      <div class="customContainer"> -->
-    <!-- <mat-card class="questionText">
-          {{ currentQuestionNumberForDisplay }} .
-          {{ presentQuestion.questionText }}
-        </mat-card>
-
-        <div
-          *ngIf="presentQuestion.multiple; else elseBlock"
-          class="multipleOptionContainer"
-        >
-          <mat-chip-list selectable multiple class="multipleOptions">
-            <mat-chip
-              *ngFor="let option of presentQuestion.options"
-              value="{{ option }}"
-              [selected]="option.selected"
-              (click)="multipleToggleSelection(option)"
-            >
-              {{ option.optionText }}
-            </mat-chip>
-          </mat-chip-list>
-        </div>
-
-        <ng-template #elseBlock>
-          <div class="singleOptionContainer">
-            <mat-chip-list class="singleOptionList mat-chip-list-stacked">
-              <mat-chip
-                #c="matChip"
-                *ngFor="let option of presentQuestion.options"
-                value="{{ option }}"
-                [selected]="option.selected"
-                (click)="toggleSelection(c, option)"
-              >
-                {{ option.optionText }}
-              </mat-chip>
-            </mat-chip-list>
-          </div>
-        </ng-template> -->
-    <app-question-and-options
+    <app-question-and-options *ngIf="presentQuestion"
       [presentQuestion]="presentQuestion"
       [answer]="answer"
       [questionsLength]="newSections[sectionIndex].questions.length"
@@ -117,20 +25,5 @@
       (getNextQuestionEvent)="nextQuestion($event)"
       (getPreviousQuestionEvent)="previousQuestion()"
     ></app-question-and-options>
-    <!-- <mat-card class="navButtonsContainer">
-          <button
-            *ngIf="currentQuestionNumberForDisplay > 1"
-            mat-fab
-            class="navButtonPrevious"
-            (click)="previousQuestion()"
-          >
-            <mat-icon class="nav-icons">navigate_before</mat-icon>
-          </button>
-          <button mat-fab class="navButtonNext" (click)="nextQuestion()">
-            <mat-icon class="nav-icons">navigate_next</mat-icon>
-          </button>
-        </mat-card> -->
-    <!-- </div>
-    </div> -->
   </div>
 </div>

@@ -15,7 +15,7 @@ export class NavigationButtonsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  navigationButtonClick() {
+  navigationButtonClick():void {
     this.navButtonEvent.emit();
   }
 }

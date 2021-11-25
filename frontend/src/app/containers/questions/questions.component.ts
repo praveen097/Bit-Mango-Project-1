@@ -2,7 +2,6 @@ import { Option, Question } from '../../models/sections';
 import { Component, OnInit, Output } from '@angular/core';
 import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
 import { Router } from '@angular/router';
-import { MatChip } from '@angular/material/chips';
 import { Sections } from '../../models/sections';
 import { MatDialog } from '@angular/material/dialog';
 import { ValidationDialogComponent } from '../../components/shared/validation-dialog/validation-dialog.component';
@@ -13,7 +12,7 @@ import { ValidationDialogComponent } from '../../components/shared/validation-di
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  @Output() presentQuestion!: Question;
+  @Output() presentQuestion: Question | undefined;
   @Output() answer: Option[] = [];
   @Output() currentQuestionNumberForDisplay: number = 1;
   currentQuestionIndex: number = 0;
@@ -22,8 +21,8 @@ export class QuestionsComponent implements OnInit {
   @Output() sectionTouched: boolean = false;
   @Output() isLastSection: boolean = false;
   @Output() newSections: Sections[] = [];
-  @Output() sectionDescription!: string;
-  @Output() sectionName!: string;
+  @Output() sectionDescription: string | undefined;
+  @Output() sectionName: string | undefined;
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,
@@ -42,7 +41,6 @@ export class QuestionsComponent implements OnInit {
     if (this.sectionIndex == this.newSections.length - 1) {
       this.isLastSection = true;
     }
-    console.log(this.isLastSection);
     if (this.sectionTouched) {
       this.presentQuestion =
         this._costEstimationService.getFirstQuestionofCurrentSection();
@@ -115,11 +113,11 @@ export class QuestionsComponent implements OnInit {
       this.presentQuestion.id
     );
   }
-  openDailog() {
+  openDailog():void {
     this._dialog.open(ValidationDialogComponent);
   }
 
-  nextQuestion(parameters: any): void {
+  nextQuestion(parameters: { options: Option[]; id: string }): void {
     //   //check whether option is selected
     if (parameters.options.length == 0) {
       this.openDailog();

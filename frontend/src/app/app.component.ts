@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Sections } from './models/sections';
-import { CostEstimationService } from './services/cost-estimation/cost-estimation.service';
+import { CostEstimationService } from './../app/services/cost-estimation/cost-estimation.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

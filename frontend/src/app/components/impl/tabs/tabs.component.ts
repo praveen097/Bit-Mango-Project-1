@@ -16,10 +16,9 @@ export class TabsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('Buttons Called');
   }
 
-  tabSelectChange(tabNumber: number | null) {
+  tabSelectChange(tabNumber: number | null):void {
     this.tabClicked.emit(tabNumber);
   }
 }

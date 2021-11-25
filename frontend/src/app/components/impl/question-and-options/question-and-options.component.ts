@@ -14,8 +14,10 @@ export class QuestionAndOptionsComponent implements OnInit {
   @Input() currentQuestionNumberForDisplay!: number;
   @Input() questionsLength!: number;
 
-  @Output() getNextQuestionEvent: EventEmitter<Object> =
-    new EventEmitter<Object>();
+  @Output() getNextQuestionEvent: EventEmitter<{
+    options: Option[];
+    id: string;
+  }> = new EventEmitter<{ options: Option[]; id: string }>();
   @Output() getPreviousQuestionEvent: EventEmitter<null> =
     new EventEmitter<null>();
 
@@ -74,12 +76,12 @@ export class QuestionAndOptionsComponent implements OnInit {
     }
   }
 
-  ngOnChanges() {
+  ngOnChanges():void {
     this.progressBarValue =
       (this.currentQuestionNumberForDisplay / this.questionsLength) * 100;
   }
 
-  getNextQuestion() {
+  getNextQuestion():void {
     this.getNextQuestionEvent.emit({
       options: this.answer,
       id: this.presentQuestion.id,
@@ -87,7 +89,7 @@ export class QuestionAndOptionsComponent implements OnInit {
     this.answer = [];
   }
 
-  getPreviousQuestion() {
+  getPreviousQuestion():void {
     this.getPreviousQuestionEvent.emit();
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProgressBarMode } from '@angular/material/progress-bar';
-import { ButtonProperties } from 'src/app/models/sections';
+import { ButtonProperties, UserDetails } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-email-form',
@@ -9,7 +9,7 @@ import { ButtonProperties } from 'src/app/models/sections';
   styleUrls: ['./email-form.component.scss'],
 })
 export class EmailFormComponent implements OnInit {
-  @Output() formSubmit: EventEmitter<Object> = new EventEmitter<Object>();
+  @Output() formSubmit: EventEmitter<UserDetails> = new EventEmitter<UserDetails>();
 
   form!: FormGroup;
 

@@ -2,10 +2,10 @@
 
 .navButton {
   background-color: $yellow;
-  color:$white;
-  padding:7px 20px;
+  color: $white;
+  padding: 7px 20px;
   font-size: 18px;
-  margin:20px;
+  margin: 20px;
   outline: none;
 }
 .navButton:hover {
@@ -23,10 +23,10 @@
 
 .submitUserDetails {
   background-color: $yellow;
-  color:$white;
-  padding:7px 20px;
+  color: $white;
+  padding: 7px 20px;
   font-size: 18px;
-  margin:20px;
+  margin: 20px;
   outline: none;
 }
 .submitUserDetails:hover {
@@ -39,21 +39,21 @@
 }
 .nextButton {
   background-color: $green;
-  color:$white;
+  color: $white;
 }
 
-
-.editIcon{
+.editIcon {
   font-size: 25px;
   margin-top: -3px;
 }
-.skipIcon,.nextIcon {
+.skipIcon,
+.nextIcon {
   font-size: 27px;
   margin-top: -3px;
 }
 .skipButton {
   background-color: $yellow;
-  outline:none;
+  outline: none;
   color: $white;
   margin-right: 15px;
   margin-bottom: 6px;
@@ -72,44 +72,36 @@
   padding: 2px 6px 2px 10px;
 }
 
-@media screen and  (max-width:1024px) {
-
+@media screen and (max-width: 1024px) {
   .navButton {
-    padding:5px 20px;
+    padding: 5px 20px;
     font-size: 16px;
   }
 }
-@media screen and  (max-width:768px) {
-
+@media screen and (max-width: 768px) {
   .navButton {
-    padding:5px 20px;
+    padding: 5px 20px;
     font-size: 15px;
   }
 }
 
-@media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
-
+@media all and (max-width: 320px), (max-width: 414px), (max-width: 620px) {
   .navButton {
-    padding:7px 20px;
+    padding: 7px 20px;
     font-size: 12px;
   }
 }
 
-@media screen and (min-width:568px) and (max-width:768px){
-
-.submitUserDetails {
-  padding:7px 12px;
-  font-size: 15px;
-}
-
-}
-
-@media screen and (min-width:368px) and (max-width:567px){
-
+@media screen and (min-width: 568px) and (max-width: 768px) {
   .submitUserDetails {
-    padding:5px 10px;
+    padding: 7px 12px;
     font-size: 15px;
   }
 }
 
-
+@media screen and (min-width: 368px) and (max-width: 567px) {
+  .submitUserDetails {
+    padding: 5px 10px;
+    font-size: 15px;
+  }
+}

@@ -37,7 +37,7 @@
     <app-buttons
       [buttonProperties]="nextSectionButtonProperties"
       (buttonClicked)="nextStep()"
-      *ngIf="step != questionsList.length - 1"
+      *ngIf="questionsList && step != questionsList.length - 1"
     ></app-buttons>
   </mat-action-row>
 </mat-expansion-panel>

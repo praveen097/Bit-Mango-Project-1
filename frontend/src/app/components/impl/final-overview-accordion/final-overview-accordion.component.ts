@@ -7,7 +7,7 @@ import { ButtonProperties, Sections } from 'src/app/models/sections';
   styleUrls: ['./final-overview-accordion.component.scss'],
 })
 export class FinalOverviewAccordionComponent implements OnInit {
-  @Input() questionsList!: Sections[];
+  @Input() questionsList: Sections[]| undefined;
 
   @Output() className: string = 'resultAnswerContainer';
   step: number = 0;
@@ -38,24 +38,9 @@ export class FinalOverviewAccordionComponent implements OnInit {
 
   nextStep(): void {
     this.step++;
-    // if (this.step > 0) {
-    //   this.previousSectionButtonProperties.disabled = false;
-    // } else {
-    //   this.previousSectionButtonProperties.disabled = true;
-    // }
-
-    // if (this.step == this.questionsList.length - 1) {
-    //   this.nextSectionButtonProperties.disabled = true;
-    // }
   }
 
   prevStep(): void {
     this.step--;
-    // if (this.step == 0) {
-    //   this.previousSectionButtonProperties.disabled = true;
-    // } else {
-    //   this.previousSectionButtonProperties.disabled = false;
-    // }
-    // this.nextSectionButtonProperties.disabled = false;
   }
 }

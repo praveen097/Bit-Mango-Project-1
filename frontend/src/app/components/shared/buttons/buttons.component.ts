@@ -12,10 +12,9 @@ export class ButtonsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('Buttons Called');
   }
 
-  clickButton() {
+  clickButton():void {
     this.buttonClicked.emit();
   }
 }

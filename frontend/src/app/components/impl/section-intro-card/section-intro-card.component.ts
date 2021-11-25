@@ -26,15 +26,14 @@ export class SectionIntroCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.sectionDescription, this.sectionName);
     this.lookForChanges();
   }
 
-  ngOnChanges() {
+  ngOnChanges():void {
     this.lookForChanges();
   }
 
-  lookForChanges() {
+  lookForChanges():void {
     if (this.sectionTouched) {
       if (this.isLastSection) {
         this.skipSectionButtonText = 'FINISH';
@@ -68,11 +67,11 @@ export class SectionIntroCardComponent implements OnInit {
     };
   }
 
-  skipSectionButtonClick() {
+  skipSectionButtonClick():void {
     this.skipSectionButtonEvent.emit();
   }
 
-  continueButtonClick() {
+  continueButtonClick():void {
     this.continueButtonEvent.emit();
   }
 }

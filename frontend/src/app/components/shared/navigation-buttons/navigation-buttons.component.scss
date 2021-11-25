@@ -1,6 +1,5 @@
 @import "../../../../styles.scss";
 
-
 .navButtonsContainer {
   width: 100%;
   box-shadow: none;
@@ -21,4 +20,11 @@
   float: right;
   width: 70px;
   height: 70px;
+}
+::ng-deep .material-icons {
+  font-size: 40px;
+}
+::ng-deep .mat-icon {
+  width: max-content !important;
+  height: max-content !important;
 }

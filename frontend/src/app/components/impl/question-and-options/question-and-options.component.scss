@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height:85vh;
+  height: 85vh;
 }
 
 .skipContainer {
@@ -17,17 +17,18 @@
 .buttonSelect {
   text-align: left;
 }
-.editIcon{
+.editIcon {
   font-size: 20px;
   margin-top: -3px;
 }
-.skipIcon, .nextIcon{
+.skipIcon,
+.nextIcon {
   font-size: 27px;
   margin-top: -3px;
 }
 .skipButton {
   background-color: $yellow;
-  outline:none;
+  outline: none;
   color: $white;
   margin-right: 15px;
   margin-bottom: 6px;
@@ -137,7 +138,7 @@ label {
 }
 
 ::ng-deep .mat-tab-label {
-  font-size:x-large;
+  font-size: x-large;
   font-weight: 400;
   color: $light-grey;
   height: 10vh !important;
@@ -215,11 +216,10 @@ label {
   .multipleOptionContainer {
     width: 100%;
   }
-  .mainSkipContainer{
+  .mainSkipContainer {
     height: 100%;
   }
   ::ng-deep .material-icons {
     font-size: 30px;
   }
-
 }

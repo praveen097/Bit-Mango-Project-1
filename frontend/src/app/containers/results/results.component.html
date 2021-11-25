@@ -1,0 +1,24 @@
+<div *ngIf="!showResults" class="mainContainer">
+  <section *ngIf="resultExist; else elseBlock">
+    <app-email-form
+      (formSubmit)="displayAnswers($event)"
+      *ngIf="showUserForm; else showAnswers"
+      class="showUserForm"
+    ></app-email-form>
+
+    <ng-template #showAnswers>
+      <h1 class="heading">Estimate of your project</h1>
+      <mat-card class="priceEstimate"
+        >{{ minPrice | currency }} - {{ maxPrice | currency }}</mat-card
+      >
+      <app-final-overview-accordion
+        [questionsList]="sectionsWithAnswersSaved"
+      ></app-final-overview-accordion>
+    </ng-template>
+  </section>
+  <ng-template #elseBlock>
+    <mat-card>
+      <h1 class="heading">You skipped all sections</h1>
+    </mat-card>
+  </ng-template>
+</div>

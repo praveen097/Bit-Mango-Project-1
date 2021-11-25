@@ -1,0 +1,29 @@
+@import "../../../../styles.scss";
+
+.dialog {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.center {
+  text-align: center;
+}
+.error {
+  width: 4rem;
+  height: 4rem;
+  font-size: 4rem;
+}
+.dialogTitle {
+  font-size: x-large;
+}
+.dialogButton {
+  outline: none;
+  background-color: $yellow;
+  color: $white;
+}
+.dialogButtonHolder {
+  text-align: center;
+}

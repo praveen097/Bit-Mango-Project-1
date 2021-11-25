@@ -1,0 +1,107 @@
+@import "../../../../styles.scss";
+
+.navButton {
+  background-color: $yellow;
+  color: $white;
+  padding: 7px 20px;
+  font-size: 18px;
+  margin: 20px;
+  outline: none;
+}
+.navButton:hover {
+  background-color: $green;
+}
+
+.nextSectionButton {
+  background-color: $green;
+  color: $white;
+  margin: 2% 0% 4% 0%;
+  float: right;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.submitUserDetails {
+  background-color: $yellow;
+  color: $white;
+  padding: 7px 20px;
+  font-size: 18px;
+  margin: 20px;
+  outline: none;
+}
+.submitUserDetails:hover {
+  background-color: $green;
+}
+
+.prevButton {
+  background-color: $yellow;
+  color: $white;
+}
+.nextButton {
+  background-color: $green;
+  color: $white;
+}
+
+.editIcon {
+  font-size: 25px;
+  margin-top: -3px;
+}
+.skipIcon,
+.nextIcon {
+  font-size: 27px;
+  margin-top: -3px;
+}
+.skipButton {
+  background-color: $yellow;
+  outline: none;
+  color: $white;
+  margin-right: 15px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  padding: 2px 6px 2px 10px;
+}
+.skipButton:hover {
+  background-color: $yellow;
+  opacity: 0.8;
+}
+.continueButton {
+  background-color: $green;
+  color: $white;
+  margin-right: 15px;
+  margin-bottom: 6px;
+  padding: 2px 6px 2px 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .navButton {
+    padding: 5px 20px;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .navButton {
+    padding: 5px 20px;
+    font-size: 15px;
+  }
+}
+
+@media all and (max-width: 320px), (max-width: 414px), (max-width: 620px) {
+  .navButton {
+    padding: 7px 20px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 568px) and (max-width: 768px) {
+  .submitUserDetails {
+    padding: 7px 12px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 368px) and (max-width: 567px) {
+  .submitUserDetails {
+    padding: 5px 10px;
+    font-size: 15px;
+  }
+}

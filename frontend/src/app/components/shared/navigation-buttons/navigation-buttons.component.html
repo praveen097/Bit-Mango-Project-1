@@ -3,5 +3,7 @@
   [ngClass]="buttonProperties.className"
   (click)="navigationButtonClick()"
 >
-  <mat-icon class="nav-icons">{{ buttonProperties.iconName }}</mat-icon>
+  <mat-icon [ngClass]="buttonProperties.iconClassName">{{
+    buttonProperties.iconName
+  }}</mat-icon>
 </button>

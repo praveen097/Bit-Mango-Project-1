@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
 import { ActivatedRoute } from '@angular/router';
@@ -12,18 +12,20 @@ import { Question } from '../../models/sections';
 export class OverviewComponent implements OnInit {
   sectionRoute: string | null = '';
   sectionIndex: number = 0;
-  answers: Question[] = [];
+  @Output() answers: Question[] = [];
   isLastSection: boolean = false;
   sectionName: string = '';
-  buttonText: string = 'Next Section';
   sectionExist: boolean = true;
-  overviewButtonProperties = {
+  @Output() overviewButtonProperties = {
     className: 'nextSectionButton',
     buttonText: 'Next Section',
-    showIcon: '',
+    iconName: '',
+    iconClassName: '',
+    showIcon: false,
+    disabled: false,
   };
+  @Output() className = 'overviewAnswerContainer';
 
-  className = 'overviewAnswerContainer';
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,

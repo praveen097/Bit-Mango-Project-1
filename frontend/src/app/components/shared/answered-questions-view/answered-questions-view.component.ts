@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Question } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-answered-questions-view',
@@ -6,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./answered-questions-view.component.scss'],
 })
 export class AnsweredQuestionsViewComponent implements OnInit {
-  @Input() questionWithAnswers: any;
-  @Input() className: any;
+  @Input() questionWithAnswers!: Question;
+  @Input() className!: string;
 
   constructor() {}
 

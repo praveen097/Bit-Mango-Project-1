@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProgressBarMode } from '@angular/material/progress-bar';
+import { ButtonProperties } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-email-form',
@@ -9,13 +11,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class EmailFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<Object> = new EventEmitter<Object>();
 
-  @Input() formProperties: any;
-
   form!: FormGroup;
 
-  emailFormButtonProperties: any;
+  @Output() emailFormButtonProperties!: ButtonProperties;
   showProgressBar: boolean = false;
-  progressBarMode = 'indeterminate';
+  @Output() progressBarMode: ProgressBarMode = 'indeterminate';
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -31,15 +31,15 @@ export class EmailFormComponent implements OnInit {
     });
     this.emailFormButtonProperties = {
       className: 'submitUserDetails',
-      type: 'submit',
       buttonText: 'SUBMIT',
       disabled: true,
       showIcon: false,
+      iconClassName: '',
+      iconName: '',
     };
   }
 
   checkForm() {
-    console.log('checkimg');
     if (this.form.valid) {
       this.emailFormButtonProperties.disabled = false;
     } else {

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { ButtonProperties } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-section-intro-card',
@@ -19,8 +20,8 @@ export class SectionIntroCardComponent implements OnInit {
   skipSectionButtonText: string = '';
   skipSectionButtonIcon: string = 'skip_next';
 
-  skipButtonProperties: any;
-  continueButtonProperties: any;
+  skipButtonProperties!: ButtonProperties;
+  continueButtonProperties!: ButtonProperties;
 
   constructor() {}
 
@@ -55,6 +56,7 @@ export class SectionIntroCardComponent implements OnInit {
       iconName: this.skipSectionButtonIcon,
       className: 'skipButton',
       iconClassName: 'nextIcon',
+      disabled: false,
     };
     this.continueButtonProperties = {
       buttonText: this.continueSectionButtonText,
@@ -62,6 +64,7 @@ export class SectionIntroCardComponent implements OnInit {
       iconName: this.continueSectionButtonIcon,
       className: 'continueButton',
       iconClassName: 'editIcon',
+      disabled: false,
     };
   }
 

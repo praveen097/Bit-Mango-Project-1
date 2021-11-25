@@ -1,5 +1,5 @@
 import { Option, Question } from '../../models/sections';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
 import { Router } from '@angular/router';
 import { MatChip } from '@angular/material/chips';
@@ -13,17 +13,17 @@ import { ValidationDialogComponent } from '../../components/shared/validation-di
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  presentQuestion!: Question;
-  answer: Option[] = [];
-  currentQuestionNumberForDisplay: number = 1;
+  @Output() presentQuestion!: Question;
+  @Output() answer: Option[] = [];
+  @Output() currentQuestionNumberForDisplay: number = 1;
   currentQuestionIndex: number = 0;
-  sectionIndex: number = -1;
+  @Output() sectionIndex: number = -1;
   sectionStarted: boolean = false;
-  sectionTouched: boolean = false;
-  isLastSection: boolean = false;
-  newSections: Sections[] = [];
-  sectionDescription!: string;
-  sectionName!: string;
+  @Output() sectionTouched: boolean = false;
+  @Output() isLastSection: boolean = false;
+  @Output() newSections: Sections[] = [];
+  @Output() sectionDescription!: string;
+  @Output() sectionName!: string;
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,
@@ -66,7 +66,6 @@ export class QuestionsComponent implements OnInit {
     } else {
       this.isLastSection = false;
     }
-    console.log(this.isLastSection);
     this.sectionName = this.newSections[this.sectionIndex].sectionName;
     this.sectionDescription =
       this.newSections[this.sectionIndex].sectionDescription;
@@ -91,7 +90,6 @@ export class QuestionsComponent implements OnInit {
     } else {
       this.isLastSection = false;
     }
-    console.log(this.isLastSection);
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex

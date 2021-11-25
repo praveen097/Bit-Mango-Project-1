@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { ButtonProperties } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-navigation-buttons',
@@ -6,8 +7,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
   styleUrls: ['./navigation-buttons.component.scss'],
 })
 export class NavigationButtonsComponent implements OnInit {
-
-  @Input() buttonProperties: any;
+  @Input() buttonProperties!: ButtonProperties;
 
   @Output() navButtonEvent: EventEmitter<null> = new EventEmitter<null>();
 

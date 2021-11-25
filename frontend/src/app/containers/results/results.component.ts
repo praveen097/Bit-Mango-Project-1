@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Question, Sections, SubmitEstimates } from '../../models/sections';
+import {
+  Question,
+  Sections,
+  SubmitEstimates,
+  UserDetails,
+} from '../../models/sections';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -15,15 +19,11 @@ export class ResultsComponent implements OnInit {
   showResults: boolean = false;
   resultExist: boolean = true;
   sectionsWithAnswersSaved: Sections[] = [];
-  step: number = 0;
   answers: Question[] = [];
   showUserForm: boolean = true;
-  form!: FormGroup;
-  showProgressBar: boolean = false;
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private _formBuilder: FormBuilder,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -47,11 +47,9 @@ export class ResultsComponent implements OnInit {
 
       section.questions = answeredQuestions;
     });
-    console.log(this.sectionsWithAnswersSaved);
   }
 
-  displayAnswers(formValues: any): void {
-    this.showProgressBar = true;
+  displayAnswers(formValues: UserDetails): void {
     this._costEstimationService
       .submitAnswers(formValues.email, formValues.companyName)
       .then((data: SubmitEstimates) => {

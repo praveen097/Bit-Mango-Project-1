@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ButtonProperties } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-buttons',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
   @Output() buttonClicked: EventEmitter<null> = new EventEmitter<null>();
-  @Input() buttonProperties: any;
+  @Input() buttonProperties!: ButtonProperties;
   constructor() {}
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-
-import { Option, Question } from 'src/app/models/sections';
+import { ProgressBarMode } from '@angular/material/progress-bar';
+import { ButtonProperties, Option, Question } from 'src/app/models/sections';
 import { MatChip } from '@angular/material/chips';
 
 @Component({
@@ -19,15 +19,25 @@ export class QuestionAndOptionsComponent implements OnInit {
   @Output() getPreviousQuestionEvent: EventEmitter<null> =
     new EventEmitter<null>();
 
-  progressBarMode = 'determinate';
-  previousButtonProperties = {
+  @Output() progressBarMode: ProgressBarMode = 'determinate';
+  @Output() progressBarValue: number =
+    (this.currentQuestionNumberForDisplay / this.questionsLength) * 100;
+  @Output() previousButtonProperties: ButtonProperties = {
     className: 'navButtonPrevious',
     iconName: 'navigate_before',
+    buttonText: '',
+    disabled: false,
+    showIcon: true,
+    iconClassName: 'nav-icons',
   };
 
-  nextButtonProperties = {
+  @Output() nextButtonProperties: ButtonProperties = {
     className: 'navButtonNext',
     iconName: 'navigate_next',
+    buttonText: '',
+    disabled: false,
+    showIcon: true,
+    iconClassName: 'nav-icons',
   };
 
   constructor() {}
@@ -64,8 +74,12 @@ export class QuestionAndOptionsComponent implements OnInit {
     }
   }
 
+  ngOnChanges() {
+    this.progressBarValue =
+      (this.currentQuestionNumberForDisplay / this.questionsLength) * 100;
+  }
+
   getNextQuestion() {
-    console.log('In Question-option-comp ', this.answer);
     this.getNextQuestionEvent.emit({
       options: this.answer,
       id: this.presentQuestion.id,

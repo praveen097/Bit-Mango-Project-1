@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Sections } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-tabs',
@@ -9,8 +10,8 @@ export class TabsComponent implements OnInit {
   @Output() tabClicked: EventEmitter<number | null> = new EventEmitter<
     number | null
   >();
-  @Input() selectedIndex: any;
-  @Input() newSections: any;
+  @Input() selectedIndex!: number;
+  @Input() newSections!: Sections[];
 
   constructor() {}
 

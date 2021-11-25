@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { ButtonProperties, Sections } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-final-overview-accordion',
@@ -6,22 +7,26 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./final-overview-accordion.component.scss'],
 })
 export class FinalOverviewAccordionComponent implements OnInit {
-  @Input() questionsList: any;
+  @Input() questionsList!: Sections[];
 
-  className = 'resultAnswerContainer';
-  step = 0;
-  previousSectionButtonProperties = {
+  @Output() className: string = 'resultAnswerContainer';
+  step: number = 0;
+  @Output() previousSectionButtonProperties: ButtonProperties = {
     buttonText: 'Previous Section',
     className: 'prevButton',
     disabled: false,
     showIcon: false,
+    iconClassName: '',
+    iconName: '',
   };
 
-  nextSectionButtonProperties = {
+  @Output() nextSectionButtonProperties: ButtonProperties = {
     buttonText: 'Next Section',
     className: 'nextButton',
     disabled: false,
     showIcon: false,
+    iconClassName: '',
+    iconName: '',
   };
 
   constructor() {}

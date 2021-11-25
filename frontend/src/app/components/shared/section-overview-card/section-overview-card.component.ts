@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Question } from 'src/app/models/sections';
 
 @Component({
   selector: 'app-section-overview-card',
@@ -6,8 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./section-overview-card.component.scss'],
 })
 export class SectionOverviewCardComponent implements OnInit {
-  @Input() questions: any;
-  @Input() className: any;
+  @Input() questions!: Question[];
+  @Input() className!: string;
 
   constructor() {}
 

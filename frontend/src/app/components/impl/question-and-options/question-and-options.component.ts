@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { ProgressBarMode } from '@angular/material/progress-bar';
 import { ButtonProperties, Option, Question } from 'src/app/models/sections';
 import { MatChip } from '@angular/material/chips';
@@ -8,7 +8,7 @@ import { MatChip } from '@angular/material/chips';
   templateUrl: './question-and-options.component.html',
   styleUrls: ['./question-and-options.component.scss'],
 })
-export class QuestionAndOptionsComponent implements OnInit {
+export class QuestionAndOptionsComponent {
   @Input() answer: Option[] = [];
   @Input() presentQuestion: Question | undefined;
   @Input() currentQuestionNumberForDisplay: number | undefined;
@@ -39,10 +39,6 @@ export class QuestionAndOptionsComponent implements OnInit {
     showIcon: true,
     iconClassName: 'nav-icons',
   };
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   multipleToggleSelection(option: Option): void {
     const isExists = this.answer.findIndex(

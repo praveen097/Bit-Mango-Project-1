@@ -8,9 +8,8 @@ describe('FinalOverviewAccordionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FinalOverviewAccordionComponent ]
-    })
-    .compileComponents();
+      declarations: [FinalOverviewAccordionComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

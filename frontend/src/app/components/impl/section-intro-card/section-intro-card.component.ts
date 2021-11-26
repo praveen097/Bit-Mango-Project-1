@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  OnChanges,
+} from '@angular/core';
 import { ButtonProperties } from 'src/app/models/sections';
 
 @Component({
@@ -6,7 +13,7 @@ import { ButtonProperties } from 'src/app/models/sections';
   templateUrl: './section-intro-card.component.html',
   styleUrls: ['./section-intro-card.component.scss'],
 })
-export class SectionIntroCardComponent implements OnInit {
+export class SectionIntroCardComponent implements OnInit, OnChanges {
   @Output() skipSectionButtonEvent: EventEmitter<null> =
     new EventEmitter<null>();
   @Output() continueButtonEvent: EventEmitter<null> = new EventEmitter<null>();
@@ -23,17 +30,15 @@ export class SectionIntroCardComponent implements OnInit {
   skipButtonProperties: ButtonProperties | undefined;
   continueButtonProperties: ButtonProperties | undefined;
 
-  constructor() {}
-
   ngOnInit(): void {
     this.lookForChanges();
   }
 
-  ngOnChanges():void {
+  ngOnChanges(): void {
     this.lookForChanges();
   }
 
-  lookForChanges():void {
+  lookForChanges(): void {
     if (this.sectionTouched) {
       if (this.isLastSection) {
         this.skipSectionButtonText = 'FINISH';
@@ -67,11 +72,11 @@ export class SectionIntroCardComponent implements OnInit {
     };
   }
 
-  skipSectionButtonClick():void {
+  skipSectionButtonClick(): void {
     this.skipSectionButtonEvent.emit();
   }
 
-  continueButtonClick():void {
+  continueButtonClick(): void {
     this.continueButtonEvent.emit();
   }
 }

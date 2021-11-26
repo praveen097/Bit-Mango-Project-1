@@ -24,7 +24,7 @@ export class ResultsComponent implements OnInit {
 
   constructor(
     private _costEstimationService: CostEstimationService,
-    private _snackBarService:SnackbarService
+    private _snackBarService: SnackbarService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -56,7 +56,9 @@ export class ResultsComponent implements OnInit {
         this.minPrice = data.lowerEstimate;
         this.maxPrice = data.upperEstimate;
         this.showUserForm = false;
-        this._snackBarService.showSnackBar('Email Successfully sent to '+formValues.email)
+        this._snackBarService.showSnackBar(
+          'Email successfully sent to ' + formValues.email
+        );
       });
   }
 }

@@ -9,7 +9,7 @@
     currentSectionAnswers.sectionName
   }}</mat-expansion-panel-header>
   <mat-panel-description
-    *ngIf="currentSectionAnswers.questions.length != 0; else answersNotFound"
+    *ngIf="currentSectionAnswers.questions.length !== 0; else answersNotFound"
   >
     <app-section-overview-card
       [questions]="currentSectionAnswers.questions"
@@ -32,12 +32,12 @@
     <app-buttons
       [buttonProperties]="previousSectionButtonProperties"
       (buttonClicked)="prevStep()"
-      *ngIf="step != 0"
+      *ngIf="step !== 0"
     ></app-buttons>
     <app-buttons
       [buttonProperties]="nextSectionButtonProperties"
       (buttonClicked)="nextStep()"
-      *ngIf="questionsList && step != questionsList.length - 1"
+      *ngIf="questionsList && step !== questionsList.length - 1"
     ></app-buttons>
   </mat-action-row>
 </mat-expansion-panel>

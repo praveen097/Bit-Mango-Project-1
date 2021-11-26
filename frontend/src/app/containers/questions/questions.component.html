@@ -1,11 +1,12 @@
-<div *ngIf="sectionIndex != -1">
+<div *ngIf="sectionIndex !== -1">
   <app-tabs
     [selectedIndex]="sectionIndex"
     [newSections]="newSections"
     (tabClicked)="skipSectionHandler($event)"
   ></app-tabs>
   <div *ngIf="!sectionStarted" class="mainSkipContainer">
-    <app-section-intro-card *ngIf="sectionDescription && sectionName"
+    <app-section-intro-card
+      *ngIf="sectionDescription && sectionName"
       [sectionDescription]="sectionDescription"
       [sectionName]="sectionName"
       [sectionTouched]="sectionTouched"
@@ -17,7 +18,8 @@
   </div>
 
   <div *ngIf="sectionStarted">
-    <app-question-and-options *ngIf="presentQuestion"
+    <app-question-and-options
+      *ngIf="presentQuestion"
       [presentQuestion]="presentQuestion"
       [answer]="answer"
       [questionsLength]="newSections[sectionIndex].questions.length"

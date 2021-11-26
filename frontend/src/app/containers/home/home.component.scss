@@ -1,14 +1,14 @@
-@import '../../../styles.scss';
-.mainContainer{
-  width:95%;
-  margin:auto;
+@import "../../../styles.scss";
+.mainContainer {
+  width: 95%;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh ;
+  height: 100vh;
 }
 .subContainer {
-  width:80%;
+  width: 80%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -20,8 +20,8 @@
 }
 .subContainer mat-card {
   box-shadow: none;
-  width:90%;
-  margin:10px;
+  width: 90%;
+  margin: 10px;
 }
 .heading {
   font-size: 40px;
@@ -36,8 +36,7 @@
   line-height: 5vh;
 }
 
-
-@media screen and  (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   .content {
     font-size: 18px;
     line-height: 5vh;
@@ -46,13 +45,12 @@
     font-size: 35px;
     line-height: 6vh;
   }
-
 }
-@media screen and  (max-width:768px) {
-  .headingContainer{
-    height:100%;
+@media screen and (max-width: 768px) {
+  .headingContainer {
+    height: 100%;
   }
-  .subContainer{
+  .subContainer {
     width: 90%;
   }
   .content {
@@ -66,10 +64,9 @@
     line-height: 4vh;
     margin-bottom: 25px;
   }
-
 }
 
-@media all and (max-width: 320px),(max-width: 414px),(max-width: 620px){
+@media all and (max-width: 320px), (max-width: 414px), (max-width: 620px) {
   .content {
     font-size: 15px;
     line-height: 3vh;
@@ -86,8 +83,4 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
-
 }
-
-
-

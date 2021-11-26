@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ButtonProperties } from 'src/app/models/sections';
 
 @Component({
@@ -6,15 +6,11 @@ import { ButtonProperties } from 'src/app/models/sections';
   templateUrl: './buttons.component.html',
   styleUrls: ['./buttons.component.scss'],
 })
-export class ButtonsComponent implements OnInit {
+export class ButtonsComponent {
   @Output() buttonClicked: EventEmitter<null> = new EventEmitter<null>();
   @Input() buttonProperties: ButtonProperties | undefined;
-  constructor() {}
 
-  ngOnInit(): void {
-  }
-
-  clickButton():void {
+  clickButton(): void {
     this.buttonClicked.emit();
   }
 }

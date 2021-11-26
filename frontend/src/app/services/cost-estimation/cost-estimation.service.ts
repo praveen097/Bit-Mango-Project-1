@@ -1,4 +1,3 @@
-import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -57,7 +56,7 @@ export class CostEstimationService {
     });
   }
 
-  getSections() {
+  getSections():Promise<object> {
     return new Promise((resolve, reject) => {
       this._http.get(this.hostUrl + '/sections').subscribe(
         (data) => {

@@ -8,9 +8,8 @@ describe('AnsweredQuestionsViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnsweredQuestionsViewComponent ]
-    })
-    .compileComponents();
+      declarations: [AnsweredQuestionsViewComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

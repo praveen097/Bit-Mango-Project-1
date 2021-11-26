@@ -18,21 +18,16 @@ section {
 }
 
 .answersContainer {
-  width:100%;
+  width: 100%;
   height: fit-content;
 }
 
-
-
-
 @media screen and (max-width: 578px) {
-
   .heading {
     font-size: 28px;
   }
 }
 @media screen and (min-width: 578px) and (max-width: 768px) {
-
   .heading {
     font-size: 35px;
   }

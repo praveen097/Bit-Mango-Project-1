@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Question } from 'src/app/models/sections';
 
 @Component({
@@ -6,11 +6,7 @@ import { Question } from 'src/app/models/sections';
   templateUrl: './section-overview-card.component.html',
   styleUrls: ['./section-overview-card.component.scss'],
 })
-export class SectionOverviewCardComponent implements OnInit {
+export class SectionOverviewCardComponent {
   @Input() questions: Question[] | undefined;
   @Input() className: string | undefined;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-validation-dialog',
   templateUrl: './validation-dialog.component.html',
-  styleUrls: ['./validation-dialog.component.scss']
+  styleUrls: ['./validation-dialog.component.scss'],
 })
-export class ValidationDialogComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class ValidationDialogComponent {}

@@ -1,0 +1,19 @@
+<mat-card class="skipCard">
+  <mat-card-title class="sectionNameText">
+    {{ sectionName }}
+  </mat-card-title>
+  <mat-card-content class="sectionDescriptionText">
+    {{ sectionDescription }}
+  </mat-card-content>
+
+  <div class="buttonSelect">
+    <app-buttons *ngIf="skipButtonProperties"
+      [buttonProperties]="skipButtonProperties"
+      (buttonClicked)="skipSectionButtonClick()"
+    ></app-buttons>
+    <app-buttons *ngIf="continueButtonProperties"
+      [buttonProperties]="continueButtonProperties"
+      (buttonClicked)="continueButtonClick()"
+    ></app-buttons>
+  </div>
+</mat-card>

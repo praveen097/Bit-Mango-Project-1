@@ -1,0 +1,30 @@
+@import "../../../../styles.scss";
+
+.navButtonsContainer {
+  width: 100%;
+  box-shadow: none;
+  margin: 20px;
+}
+.navButtonPrevious {
+  background-color: $white;
+  color: $yellow;
+  outline: none;
+  float: left;
+  width: 70px;
+  height: 70px;
+}
+.navButtonNext {
+  background-color: $white;
+  color: $green;
+  outline: none;
+  float: right;
+  width: 70px;
+  height: 70px;
+}
+::ng-deep .material-icons {
+  font-size: 40px;
+}
+::ng-deep .mat-icon {
+  width: max-content !important;
+  height: max-content !important;
+}

@@ -1,0 +1,15 @@
+@import '../../../../styles.scss';
+
+::ng-deep .mat-tab-label {
+  font-size:x-large;
+  font-weight: 400;
+  color: $light-grey;
+  height: 10vh !important;
+}
+::ng-deep .mat-tab-label-active {
+  color: $black;
+}
+::ng-deep .mat-ink-bar {
+  background-color: $yellow !important;
+  height: 3px !important;
+}

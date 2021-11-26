@@ -1,0 +1,59 @@
+<app-progress-bar
+  *ngIf="questionsLength && currentQuestionNumberForDisplay"
+  [mode]="progressBarMode"
+  [value]="(this.currentQuestionNumberForDisplay / this.questionsLength) * 100"
+></app-progress-bar>
+<div class="mainContainer">
+  <div
+    class="customContainer"
+    *ngIf="presentQuestion && currentQuestionNumberForDisplay"
+  >
+    <mat-card class="questionText">
+      {{ currentQuestionNumberForDisplay }} .
+      {{ presentQuestion.questionText }}
+    </mat-card>
+
+    <div
+      *ngIf="presentQuestion.multiple; else elseBlock"
+      class="multipleOptionContainer"
+    >
+      <mat-chip-list selectable multiple class="multipleOptions">
+        <mat-chip
+          *ngFor="let option of presentQuestion.options"
+          value="{{ option }}"
+          [selected]="option.selected"
+          (click)="multipleToggleSelection(option)"
+        >
+          {{ option.optionText }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <ng-template #elseBlock>
+      <div class="singleOptionContainer">
+        <mat-chip-list class="singleOptionList mat-chip-list-stacked">
+          <mat-chip
+            #c="matChip"
+            *ngFor="let option of presentQuestion.options"
+            value="{{ option }}"
+            [selected]="option.selected"
+            (click)="toggleSelection(c, option)"
+          >
+            {{ option.optionText }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </ng-template>
+    <mat-card class="navButtonsContainer">
+      <app-navigation-buttons
+        *ngIf="currentQuestionNumberForDisplay > 1"
+        (navButtonEvent)="getPreviousQuestion()"
+        [buttonProperties]="previousButtonProperties"
+      ></app-navigation-buttons>
+      <app-navigation-buttons
+        (navButtonEvent)="getNextQuestion()"
+        [buttonProperties]="nextButtonProperties"
+      ></app-navigation-buttons>
+    </mat-card>
+  </div>
+</div>

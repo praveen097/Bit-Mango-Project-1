@@ -1,0 +1,13 @@
+<button *ngIf="buttonProperties"
+  mat-raised-button
+  [ngClass]="buttonProperties.className"
+  (click)="clickButton()"
+  [disabled]="buttonProperties.disabled"
+>
+  {{ buttonProperties.buttonText }}
+  <mat-icon
+    *ngIf="buttonProperties.showIcon"
+    [ngClass]="buttonProperties.iconClassName"
+    >{{ buttonProperties.iconName }}</mat-icon
+  >
+</button>

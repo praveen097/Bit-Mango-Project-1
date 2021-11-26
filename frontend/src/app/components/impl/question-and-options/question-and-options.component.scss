@@ -1,0 +1,225 @@
+@import "../../../../styles.scss";
+
+.mainSkipContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
+
+.skipContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px;
+}
+.buttonSelect {
+  text-align: left;
+}
+.editIcon {
+  font-size: 20px;
+  margin-top: -3px;
+}
+.skipIcon,
+.nextIcon {
+  font-size: 27px;
+  margin-top: -3px;
+}
+.skipButton {
+  background-color: $yellow;
+  outline: none;
+  color: $white;
+  margin-right: 15px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.skipButton:hover {
+  background-color: $yellow;
+  opacity: 0.8;
+}
+.continueButton {
+  background-color: $green;
+  color: $white;
+  margin-right: 15px;
+  margin-bottom: 6px;
+}
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+.customContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+.questionText {
+  color: $light-grey;
+  font-weight: 400;
+  width: 80%;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 30px;
+  height: auto;
+  background-color: transparent;
+  text-align: center;
+  box-shadow: none;
+  font-size: 30px;
+  line-height: 5vh;
+}
+.multipleOptionContainer {
+  width: 90%;
+  margin: auto;
+  align-items: center;
+}
+.multipleOptions {
+  width: 90%;
+  padding: 40px;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.multipleOptions mat-chip {
+  height: max-content;
+  margin-right: 5px;
+}
+.singleOptionContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.singleOptionList {
+  width: 100%;
+}
+.singleOptionList mat-chip {
+  width: 60%;
+  height: max-content;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 15px;
+  margin: 10px auto;
+  background-color: #d3d3d3;
+  display: inline-block;
+}
+.navButtonsContainer {
+  width: 100%;
+  box-shadow: none;
+  margin: 20px;
+}
+.navButtonPrevious {
+  background-color: $white;
+  color: $yellow;
+  outline: none;
+  float: left;
+  width: 70px;
+  height: 70px;
+}
+.navButtonNext {
+  background-color: $white;
+  color: $green;
+  outline: none;
+  float: right;
+  width: 70px;
+  height: 70px;
+}
+label {
+  cursor: pointer;
+}
+
+::ng-deep .mat-tab-label {
+  font-size: x-large;
+  font-weight: 400;
+  color: $light-grey;
+  height: 10vh !important;
+}
+::ng-deep .mat-tab-label-active {
+  color: $black;
+}
+::ng-deep .mat-ink-bar {
+  background-color: $yellow !important;
+  height: 3px !important;
+}
+.mat-progress-bar {
+  margin-top: 5px;
+}
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: $green;
+}
+::ng-deep .mat-progress-bar-buffer {
+  background: transparent;
+}
+.mat-standard-chip:focus::after {
+  opacity: 0;
+}
+::ng-deep .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: $green;
+  color: $white;
+}
+::ng-deep .material-icons {
+  font-size: 40px;
+}
+::ng-deep .mat-icon {
+  width: max-content !important;
+  height: max-content !important;
+}
+
+@media all and (max-width: 320px), (max-width: 414px), (max-width: 540px) {
+  .sectionName {
+    font-size: 20px;
+  }
+  .skipCard {
+    width: 100%;
+  }
+  .skipCard mat-card-content {
+    font-size: 18px;
+  }
+  .QuestionText {
+    font-size: 20px;
+    width: 100%;
+  }
+  .singleOptionList mat-chip {
+    font-size: 15px;
+  }
+  .customContainer {
+    width: 100%;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width: 168px) and (max-width: 768px) {
+  .navButtonNext {
+    width: 55px;
+    height: 55px;
+  }
+  .navButtonPrevious {
+    width: 55px;
+    height: 55px;
+  }
+  .singleOptionContainer {
+    width: 90%;
+  }
+  .singleOptionList mat-chip {
+    width: 70%;
+    padding: 10px;
+  }
+  .multipleOptionContainer {
+    width: 100%;
+  }
+  .mainSkipContainer {
+    height: 100%;
+  }
+  ::ng-deep .material-icons {
+    font-size: 30px;
+  }
+}

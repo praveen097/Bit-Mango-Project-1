@@ -113,7 +113,7 @@ export class QuestionsComponent implements OnInit {
       this.presentQuestion.id
     );
   }
-  openDailog():void {
+  openDailog(): void {
     this._dialog.open(ValidationDialogComponent);
   }
 

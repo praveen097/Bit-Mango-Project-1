@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { ButtonProperties, Sections } from 'src/app/models/sections';
 
 @Component({
@@ -6,8 +6,8 @@ import { ButtonProperties, Sections } from 'src/app/models/sections';
   templateUrl: './final-overview-accordion.component.html',
   styleUrls: ['./final-overview-accordion.component.scss'],
 })
-export class FinalOverviewAccordionComponent implements OnInit {
-  @Input() questionsList: Sections[]| undefined;
+export class FinalOverviewAccordionComponent {
+  @Input() questionsList: Sections[] | undefined;
 
   @Output() className: string = 'resultAnswerContainer';
   step: number = 0;
@@ -29,9 +29,6 @@ export class FinalOverviewAccordionComponent implements OnInit {
     iconName: '',
   };
 
-  constructor() {}
-
-  ngOnInit(): void {}
   setStep(index: number): void {
     this.step = index;
   }

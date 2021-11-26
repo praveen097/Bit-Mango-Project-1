@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Question } from 'src/app/models/sections';
 
 @Component({
@@ -6,11 +6,7 @@ import { Question } from 'src/app/models/sections';
   templateUrl: './answered-questions-view.component.html',
   styleUrls: ['./answered-questions-view.component.scss'],
 })
-export class AnsweredQuestionsViewComponent implements OnInit {
+export class AnsweredQuestionsViewComponent {
   @Input() questionWithAnswers: Question | undefined;
   @Input() className: string | undefined;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

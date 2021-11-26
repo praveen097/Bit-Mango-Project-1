@@ -1,10 +1,9 @@
-@import '../../../../styles.scss';
-
+@import "../../../../styles.scss";
 
 .formContainer {
   box-shadow: none;
-  margin-top:60px;
-  width:90%;
+  margin-top: 60px;
+  width: 90%;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -22,7 +21,7 @@
   font-size: 18px;
   line-height: 6vh;
   font-weight: 400;
-  width:80%;
+  width: 80%;
   margin-right: auto;
   margin-bottom: 40px;
   margin-left: auto;
@@ -33,14 +32,14 @@
   flex-flow: row;
   margin: auto;
   justify-content: space-around;
-  width:80%;
+  width: 80%;
 }
 .inputVal {
-  margin:20px;
-  width:100%;
+  margin: 20px;
+  width: 100%;
 }
 mat-icon {
-  color:$green;
+  color: $green;
 }
 mat-card-footer {
   width: 100%;
@@ -52,28 +51,27 @@ mat-card-footer {
 ::ng-deep .errorMessage > .mat-card-content {
   font-size: 20px;
 }
-::ng-deep .mat-form-field-infix{
-  width:275px !important;
+::ng-deep .mat-form-field-infix {
+  width: 275px !important;
 }
 ::ng-deep .mat-input-element {
   caret-color: $green;
   font-size: 16px !important;
 }
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-  color:$green;
+  color: $green;
 }
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color:$green
+  background-color: $green;
 }
 ::ng-deep .mat-input-element {
   caret-color: $green;
   font-size: 16px !important;
   font-weight: 300px;
 }
-@media screen and (min-width:769px) and (max-width:978px){
-
+@media screen and (min-width: 769px) and (max-width: 978px) {
   #greetingMessage {
-    font-size :xx-large;
+    font-size: xx-large;
   }
   .content {
     font-size: 17px;
@@ -82,42 +80,39 @@ mat-card-footer {
     flex-flow: column;
   }
   .inputVal {
-    margin:20px auto;
+    margin: 20px auto;
   }
   .formContainer {
     margin: auto;
   }
 }
-@media screen and (min-width:568px) and (max-width:768px){
- #greetingMessage {
-   font-size: x-large;
- }
+@media screen and (min-width: 568px) and (max-width: 768px) {
+  #greetingMessage {
+    font-size: x-large;
+  }
 
- .formInput {
-   flex-flow: column;
- }
- .inputVal {
-   margin:20px auto;
- }
- .content {
-   font-size: 15px;
- }
- .inputVal {
-  width: 100%;
+  .formInput {
+    flex-flow: column;
+  }
+  .inputVal {
+    margin: 20px auto;
+  }
+  .content {
+    font-size: 15px;
+  }
+  .inputVal {
+    width: 100%;
+  }
+  .submitUserDetails {
+    padding: 7px 12px;
+    font-size: 15px;
+  }
+  .formContainer {
+    margin: auto;
+  }
 }
-.submitUserDetails {
-  padding:7px 12px;
-  font-size: 15px;
-}
-.formContainer {
-  margin: auto;
-}
 
-}
-
-@media screen and (min-width:368px) and (max-width:567px){
-
-
+@media screen and (min-width: 368px) and (max-width: 567px) {
   #greetingMessage {
     font-size: x-large;
   }
@@ -130,7 +125,7 @@ mat-card-footer {
   }
 
   .inputVal {
-    margin:20px auto;
+    margin: 20px auto;
   }
 
   .content {
@@ -141,13 +136,12 @@ mat-card-footer {
     width: 100%;
   }
   .submitUserDetails {
-    padding:5px 10px;
+    padding: 5px 10px;
     font-size: 15px;
   }
 }
-@media screen and (min-width:168px) and (max-width:367px){
-
-  #greetingMessage{
+@media screen and (min-width: 168px) and (max-width: 367px) {
+  #greetingMessage {
     font-size: large;
   }
   .formInput {
@@ -157,7 +151,7 @@ mat-card-footer {
     font-size: 13px;
   }
   .inputVal {
-    margin:20px auto;
+    margin: 20px auto;
   }
   .mat-form-field {
     font-size: 15px;
@@ -167,4 +161,3 @@ mat-card-footer {
     margin: auto;
   }
 }
-

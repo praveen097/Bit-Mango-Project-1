@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Sections } from 'src/app/models/sections';
 
 @Component({
@@ -6,19 +6,14 @@ import { Sections } from 'src/app/models/sections';
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent {
   @Output() tabClicked: EventEmitter<number | null> = new EventEmitter<
     number | null
   >();
   @Input() selectedIndex: number | undefined;
   @Input() newSections: Sections[] | undefined;
 
-  constructor() {}
-
-  ngOnInit(): void {
-  }
-
-  tabSelectChange(tabNumber: number | null):void {
+  tabSelectChange(tabNumber: number | null): void {
     this.tabClicked.emit(tabNumber);
   }
 }

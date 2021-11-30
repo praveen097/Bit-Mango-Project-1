@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonProperties } from 'src/app/models/sections';
 @Component({
@@ -7,7 +7,7 @@ import { ButtonProperties } from 'src/app/models/sections';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  @Output() buttonProperties: ButtonProperties = {
+  buttonProperties: ButtonProperties = {
     className: 'navButton',
     buttonText: "Let's Start",
     iconName: '',

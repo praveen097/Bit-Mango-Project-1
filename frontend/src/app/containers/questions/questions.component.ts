@@ -1,5 +1,5 @@
 import { Option, Question } from '../../models/sections';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CostEstimationService } from '../../services/cost-estimation/cost-estimation.service';
 import { Router } from '@angular/router';
 import { Sections } from '../../models/sections';
@@ -12,17 +12,17 @@ import { ValidationDialogComponent } from '../../components/shared/validation-di
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  @Output() presentQuestion: Question | undefined;
-  @Output() answer: Option[] = [];
-  @Output() currentQuestionNumberForDisplay: number = 1;
+  presentQuestion: Question | undefined;
+  answer: Option[] = [];
+  currentQuestionNumberForDisplay: number = 1;
   currentQuestionIndex: number = 0;
-  @Output() sectionIndex: number = -1;
+  sectionIndex: number = -1;
   sectionStarted: boolean = false;
-  @Output() sectionTouched: boolean = false;
-  @Output() isLastSection: boolean = false;
-  @Output() newSections: Sections[] = [];
-  @Output() sectionDescription: string | undefined;
-  @Output() sectionName: string | undefined;
+  sectionTouched: boolean = false;
+  isLastSection: boolean = false;
+  sections: Sections[] = [];
+  sectionDescription: string | undefined;
+  sectionName: string | undefined;
   constructor(
     private _costEstimationService: CostEstimationService,
     private _route: Router,
@@ -30,15 +30,15 @@ export class QuestionsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.newSections = <Sections[]>this._costEstimationService.sectionsData;
+    this.sections = <Sections[]>this._costEstimationService.sectionsData;
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
-    this.sectionName = this.newSections[this.sectionIndex].sectionName;
+    this.sectionName = this.sections[this.sectionIndex].sectionName;
     this.sectionDescription =
-      this.newSections[this.sectionIndex].sectionDescription;
+      this.sections[this.sectionIndex].sectionDescription;
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex
     );
-    if (this.sectionIndex == this.newSections.length - 1) {
+    if (this.sectionIndex == this.sections.length - 1) {
       this.isLastSection = true;
     }
     if (this.sectionTouched) {
@@ -59,14 +59,14 @@ export class QuestionsComponent implements OnInit {
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       <number>id
     );
-    if (this.sectionIndex == this.newSections.length - 1) {
+    if (this.sectionIndex == this.sections.length - 1) {
       this.isLastSection = true;
     } else {
       this.isLastSection = false;
     }
-    this.sectionName = this.newSections[this.sectionIndex].sectionName;
+    this.sectionName = this.sections[this.sectionIndex].sectionName;
     this.sectionDescription =
-      this.newSections[this.sectionIndex].sectionDescription;
+      this.sections[this.sectionIndex].sectionDescription;
     this.presentQuestion =
       this._costEstimationService.getFirstQuestionofCurrentSection();
     this.answer = this._costEstimationService.getAnswerByQuestionId(
@@ -83,7 +83,7 @@ export class QuestionsComponent implements OnInit {
     } else {
       this._route.navigate(['/results']);
     }
-    if (this.sectionIndex == this.newSections.length - 1) {
+    if (this.sectionIndex == this.sections.length - 1) {
       this.isLastSection = true;
     } else {
       this.isLastSection = false;
@@ -92,9 +92,9 @@ export class QuestionsComponent implements OnInit {
     this.sectionTouched = this._costEstimationService.isSectionAnswered(
       this.sectionIndex
     );
-    this.sectionName = this.newSections[this.sectionIndex].sectionName;
+    this.sectionName = this.sections[this.sectionIndex].sectionName;
     this.sectionDescription =
-      this.newSections[this.sectionIndex].sectionDescription;
+      this.sections[this.sectionIndex].sectionDescription;
   }
 
   continue(): void {

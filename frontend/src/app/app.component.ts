@@ -7,7 +7,7 @@ import { CostEstimationService } from './../app/services/cost-estimation/cost-es
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, DoCheck {
-  newSections:Sections[] = [];
+  sections:Sections[] = [];
 
  constructor(private _costEstimationService: CostEstimationService){
 
@@ -16,6 +16,6 @@ export class AppComponent implements OnInit, DoCheck {
  this._costEstimationService.setSectionValues();
  }
  ngDoCheck(){
-  this.newSections = this._costEstimationService.sectionsData;
+  this.sections = this._costEstimationService.sectionsData;
  }
 }

@@ -11,7 +11,7 @@ export class TabsComponent {
     number | null
   >();
   @Input() selectedIndex: number | undefined;
-  @Input() newSections: Sections[] | undefined;
+  @Input() sections: Sections[] | undefined;
 
   tabSelectChange(tabNumber: number | null): void {
     this.tabClicked.emit(tabNumber);

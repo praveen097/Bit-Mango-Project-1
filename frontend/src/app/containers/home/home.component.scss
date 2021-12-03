@@ -1,4 +1,13 @@
-@import "../../../styles.scss";
+@import '../../../styles.scss';
+.matSpinnerHolder {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+::ng-deep .mat-spinner circle {
+  stroke: $green !important;
+}
 .mainContainer {
   width: 95%;
   margin: auto;

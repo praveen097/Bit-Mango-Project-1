@@ -30,23 +30,21 @@ export class QuestionsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.sections = <Sections[]>this._costEstimationService.sectionsData;
-    this.sectionIndex = this._costEstimationService.currentSectionIndex;
-    this.sectionName = this.sections[this.sectionIndex].sectionName;
-    this.sectionDescription =
-      this.sections[this.sectionIndex].sectionDescription;
-    this.sectionTouched = this._costEstimationService.isSectionAnswered(
-      this.sectionIndex
-    );
-    if (this.sectionIndex == this.sections.length - 1) {
-      this.isLastSection = true;
-    }
-    if (this.sectionTouched) {
-      this.presentQuestion =
-        this._costEstimationService.getFirstQuestionofCurrentSection();
-      this.answer = this._costEstimationService.getAnswerByQuestionId(
-        this.presentQuestion.id
-      );
+    this.sections = await (<Sections[]>this._costEstimationService.sectionsData);
+    if (!this.sections.length) {
+      this._route.navigate(['/home']);
+    } else {
+      this.sectionIndex = this._costEstimationService.currentSectionIndex;
+      this.sectionName = this.sections[this.sectionIndex].sectionName;
+      this.sectionDescription = this.sections[this.sectionIndex].sectionDescription;
+      this.sectionTouched = this._costEstimationService.isSectionAnswered(this.sectionIndex);
+      if (this.sectionIndex == this.sections.length - 1) {
+        this.isLastSection = true;
+      }
+      if (this.sectionTouched) {
+        this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
+        this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.id);
+      }
     }
   }
 
@@ -56,29 +54,20 @@ export class QuestionsComponent implements OnInit {
     this.sectionIndex = <number>id;
     this._costEstimationService.goToSectionByIndex(<number>id);
     this.currentQuestionNumberForDisplay = 1;
-    this.sectionTouched = this._costEstimationService.isSectionAnswered(
-      <number>id
-    );
+    this.sectionTouched = this._costEstimationService.isSectionAnswered(<number>id);
     if (this.sectionIndex == this.sections.length - 1) {
       this.isLastSection = true;
     } else {
       this.isLastSection = false;
     }
     this.sectionName = this.sections[this.sectionIndex].sectionName;
-    this.sectionDescription =
-      this.sections[this.sectionIndex].sectionDescription;
-    this.presentQuestion =
-      this._costEstimationService.getFirstQuestionofCurrentSection();
-    this.answer = this._costEstimationService.getAnswerByQuestionId(
-      this.presentQuestion.id
-    );
+    this.sectionDescription = this.sections[this.sectionIndex].sectionDescription;
+    this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
+    this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.id);
   }
 
   skipSection(): void {
-    if (
-      this.sectionIndex <
-      this._costEstimationService.sectionsData.length - 1
-    ) {
+    if (this.sectionIndex < this._costEstimationService.sectionsData.length - 1) {
       this._costEstimationService.skipSection();
     } else {
       this._route.navigate(['/results']);
@@ -89,29 +78,21 @@ export class QuestionsComponent implements OnInit {
       this.isLastSection = false;
     }
     this.sectionIndex = this._costEstimationService.currentSectionIndex;
-    this.sectionTouched = this._costEstimationService.isSectionAnswered(
-      this.sectionIndex
-    );
+    this.sectionTouched = this._costEstimationService.isSectionAnswered(this.sectionIndex);
     this.sectionName = this.sections[this.sectionIndex].sectionName;
-    this.sectionDescription =
-      this.sections[this.sectionIndex].sectionDescription;
+    this.sectionDescription = this.sections[this.sectionIndex].sectionDescription;
   }
 
   continue(): void {
     this.sectionStarted = true;
-    this.presentQuestion =
-      this._costEstimationService.getFirstQuestionofCurrentSection();
-    this.answer = this._costEstimationService.getAnswerByQuestionId(
-      this.presentQuestion.id
-    );
+    this.presentQuestion = this._costEstimationService.getFirstQuestionofCurrentSection();
+    this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.id);
   }
 
   previousQuestion(): void {
     this.currentQuestionNumberForDisplay--;
     this.presentQuestion = this._costEstimationService.getPreviousQuestion();
-    this.answer = this._costEstimationService.getAnswerByQuestionId(
-      this.presentQuestion.id
-    );
+    this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.id);
   }
   openDailog(): void {
     this._dialog.open(ValidationDialogComponent);
@@ -124,16 +105,9 @@ export class QuestionsComponent implements OnInit {
     } else {
       this.currentQuestionNumberForDisplay++; // used to show question number
       //     //set current question's answer before moving to next question
-      this._costEstimationService.setAnswerById(
-        parameters.id,
-        parameters.options
-      );
+      this._costEstimationService.setAnswerById(parameters.id, parameters.options);
       //     //check if current question is last question of current section
-      if (
-        this._costEstimationService.isLastQuestionOfCurrentSection(
-          this.currentQuestionIndex
-        )
-      ) {
+      if (this._costEstimationService.isLastQuestionOfCurrentSection(this.currentQuestionIndex)) {
         //check if last section
         if (
           this._costEstimationService.currentSectionIndex ==
@@ -153,16 +127,12 @@ export class QuestionsComponent implements OnInit {
       else {
         this.answer = [];
         this.presentQuestion = this._costEstimationService.getNextQuestion();
-        this.answer = this._costEstimationService.getAnswerByQuestionId(
-          this.presentQuestion.id
-        );
+        this.answer = this._costEstimationService.getAnswerByQuestionId(this.presentQuestion.id);
       }
     }
   }
 
   toOverview(): void {
-    this._route.navigate([
-      '/overview/' + (this._costEstimationService.currentSectionIndex - 1),
-    ]);
+    this._route.navigate(['/overview/' + (this._costEstimationService.currentSectionIndex - 1)]);
   }
 }

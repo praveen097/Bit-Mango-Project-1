@@ -1,20 +1,19 @@
-<div class="mainContainer">
+<div class="mainContainer" *ngIf="!displaySpinner">
   <div class="subContainer">
     <mat-card class="headingContainer">
       <mat-card-title class="heading"
         >Calculate the cost of your digital application</mat-card-title
       >
       <mat-card-content class="content"
-        >Do you have a clear view of what you want for your digital product? Do
-        you know which features you would like to implement? Or maybe you just
-        got a vague idea for digitalization? You know what, it doesn't matter,
-        because you can run our calculator as many times as you want!
+        >Do you have a clear view of what you want for your digital product? Do you know which
+        features you would like to implement? Or maybe you just got a vague idea for digitalization?
+        You know what, it doesn't matter, because you can run our calculator as many times as you
+        want!
       </mat-card-content>
       <mat-card-content class="content">
-        We will raise you to answer many queries associated with the digital
-        answer you're trying to find. Covering the four main fields of your
-        digital product. That's it, in mere a fast 4, 3, 2, 1 minutes, you will
-        get associate estimated value vary for your application.
+        We will raise you to answer many queries associated with the digital answer you're trying to
+        find. Covering the four main fields of your digital product. That's it, in mere a fast 4, 3,
+        2, 1 minutes, you will get associate estimated value vary for your application.
       </mat-card-content>
       <mat-card-actions class="navButtonContainer">
         <app-buttons
@@ -24,4 +23,7 @@
       </mat-card-actions>
     </mat-card>
   </div>
+</div>
+<div *ngIf="displaySpinner" class="matSpinnerHolder">
+  <mat-spinner></mat-spinner>
 </div>

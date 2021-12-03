@@ -1,6 +1,3 @@
-<div *ngIf="displaySpinner" class="matSpinnerHolder">
-  <mat-spinner></mat-spinner>
-</div>
 <div class="mainContainer" *ngIf="!displaySpinner">
   <div class="subContainer">
     <mat-card class="headingContainer">
@@ -26,4 +23,7 @@
       </mat-card-actions>
     </mat-card>
   </div>
+</div>
+<div *ngIf="displaySpinner" class="matSpinnerHolder">
+  <mat-spinner></mat-spinner>
 </div>

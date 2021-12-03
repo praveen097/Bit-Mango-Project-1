@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonProperties } from 'src/app/models/sections';
+import { CostEstimationService } from 'src/app/services/cost-estimation/cost-estimation.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,9 +16,12 @@ export class HomeComponent {
     showIcon: false,
     disabled: false,
   };
-  constructor(private _route: Router) {}
+  displaySpinner: boolean = false;
+  constructor(private _costEstimationService: CostEstimationService, private _route: Router) {}
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
+    this.displaySpinner = true;
+    await this._costEstimationService.setSectionValues();
     this._route.navigate(['/questions']);
   }
 }

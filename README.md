@@ -19,7 +19,7 @@ This will automatically install all the utilized packages in the application.
  $cd frontend
  $npm install
  ```
-* #### Run the server
+* #### Run the server 
  ```
  $ng serve
  ```
@@ -38,6 +38,7 @@ We have used [STRAPI](https://strapi.io/) for backend in this application. Strap
  $npm install
  ```
 * #### Run the server
+  Before runninng the server,  `.env.example` file at `/backend` needs to be renamed to `.env`
  ```
  $npm run develop
  ```
@@ -63,6 +64,8 @@ We have used [STRAPI](https://strapi.io/) for backend in this application. Strap
     * Open `backend/config/database.js` file.
     * Change `host` address, enable `srv, ssl` to `TRUE`.
     * Provide `database` name, `username, password`.
+
+    #### Note : For this application `HOST`,`SRV`,`SSL`,`PORT`,`DATABASE`,`USERNAME`,`PASSWORD` can be changed at `/backend/.env`
   * Why mongoDB Atlas ?
     * There are many advantages using cloud databases, 
     * Single database can be used for all types of devices even though application is running locally.
@@ -131,7 +134,7 @@ We have used [STRAPI](https://strapi.io/) for backend in this application. Strap
     
   * Configure email sender
     * In order to configure sender email we need to create a SMTP transporter which consists of service and auth(user, pass) in custom end point. Email will be sent from the same email provided as user in auth of transporter.
-    * Email and password for this application can be changed at `/backend/api/submissions/controllers/submissions.js`
+    * Email and password for this application can be changed at `/backend/.env`
     *  If a google account is being used for this, User you would need to enable [less secure apps](https://accounts.google.com/security) and disable [captcha](https://accounts.google.com/b/O/displayunlockcaptcha) for hassle free services.
 
 

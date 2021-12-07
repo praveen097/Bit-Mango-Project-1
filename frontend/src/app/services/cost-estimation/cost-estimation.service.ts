@@ -25,23 +25,18 @@ export class CostEstimationService {
 
   hostUrl: string = environment.baseUrl;
 
-  constructor(
-    private _http: HttpClient,
-    private _snackBarService: SnackbarService
-  ) {}
+  constructor(private _http: HttpClient, private _snackBarService: SnackbarService) {}
 
   async setSectionValues(): Promise<void> {
     this.sectionsData = <Sections[]>await this.getSections().catch(() => {
-      this._snackBarService.showSnackBar(
-        'Failed to connect, please try again later'
-      );
+      this._snackBarService.showSnackBar('Failed to connect, please try again later');
     });
-    this.currentQuestion = this.getSectionByIndex(
-      this.currentSectionIndex
-    ).questions[this.currentQuestionIndex].id;
+    this.currentQuestion = this.getSectionByIndex(this.currentSectionIndex).questions[
+      this.currentQuestionIndex
+    ].id;
 
-    for (var i = 0; i < this.sectionsData.length; i++) {
-      for (var j = 0; j < this.sectionsData[i].questions.length; j++)
+    for (let i = 0; i < this.sectionsData.length; i++) {
+      for (let j = 0; j < this.sectionsData[i].questions.length; j++)
         this.allQuestions.push(this.sectionsData[i].questions[j]);
     }
     this.answers = this.allQuestions.map((question: Question) => {
@@ -56,13 +51,13 @@ export class CostEstimationService {
     });
   }
 
-  getSections():Promise<object> {
+  getSections(): Promise<object> {
     return new Promise((resolve, reject) => {
       this._http.get(this.hostUrl + '/sections').subscribe(
-        (data) => {
+        data => {
           resolve(data);
         },
-        (err) => {
+        err => {
           reject(err);
         }
       );
@@ -88,9 +83,9 @@ export class CostEstimationService {
   goToSectionByIndex(id: number): void {
     this.currentSectionIndex = id;
     this.currentQuestionIndex = 0;
-    this.currentQuestion = this.getSectionByIndex(
-      this.currentSectionIndex
-    ).questions[this.currentQuestionIndex].id;
+    this.currentQuestion = this.getSectionByIndex(this.currentSectionIndex).questions[
+      this.currentQuestionIndex
+    ].id;
   }
 
   getFirstQuestionofCurrentSection(): Question {
@@ -98,13 +93,13 @@ export class CostEstimationService {
   }
 
   setAnswerById(id: string, options: Option[]): void {
-    for (var i = 0; i < this.answers.length; i++) {
+    for (let i = 0; i < this.answers.length; i++) {
       if (this.answers[i].id == id) {
         this.answers[i].options = options;
       }
     }
 
-    let answerIndex = this.answers.findIndex((answer) => answer.id == id);
+    let answerIndex = this.answers.findIndex(answer => answer.id == id);
     if (answerIndex == -1) {
       let questionTemplate = this.getQuestionById(id);
       const question = JSON.parse(JSON.stringify(questionTemplate));
@@ -117,9 +112,7 @@ export class CostEstimationService {
 
   isLastQuestionOfCurrentSection(id: number): boolean {
     // compare index of current question and current sections questions array length
-    const sectionQuestions = this.getSectionByIndex(
-      this.currentSectionIndex
-    ).questions;
+    const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questions;
     if (this.currentQuestionIndex == sectionQuestions.length - 1) {
       return true;
     } else {
@@ -134,50 +127,40 @@ export class CostEstimationService {
       this.currentSectionIndex += 1;
       this.currentQuestionIndex = 0;
       //set current question id to first index of next section
-      this.currentQuestion = this.getSectionByIndex(
-        this.currentSectionIndex
-      ).questions[this.currentQuestionIndex].id;
+      this.currentQuestion = this.getSectionByIndex(this.currentSectionIndex).questions[
+        this.currentQuestionIndex
+      ].id;
     } else {
       //     //check the next question id in the current section and set it to question id
       this.currentQuestionIndex++;
-      const sectionQuestions = this.getSectionByIndex(
-        this.currentSectionIndex
-      ).questions;
+      const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questions;
       this.currentQuestion = sectionQuestions[this.currentQuestionIndex].id;
     }
     return this.getQuestionById(this.currentQuestion);
   }
 
   getQuestionById(id: string): Question {
-    let currentQuestion = <Question>this.allQuestions.find(
-      (question: Question) => {
-        return question.id == id;
-      }
-    );
+    let currentQuestion = <Question>this.allQuestions.find((question: Question) => {
+      return question.id == id;
+    });
     return currentQuestion;
   }
 
   getPreviousQuestion(): Question {
-    const sectionQuestions = this.getSectionByIndex(
-      this.currentSectionIndex
-    ).questions;
+    const sectionQuestions = this.getSectionByIndex(this.currentSectionIndex).questions;
     this.currentQuestion = sectionQuestions[this.currentQuestionIndex - 1].id;
     this.currentQuestionIndex--;
     return this.getQuestionById(this.currentQuestion);
   }
 
   getAnswerByQuestionId(id: string): Option[] {
-    const currentAnswers: Question[] = this.answers.filter((x) => x.id == id);
+    const currentAnswers: Question[] = this.answers.filter(x => x.id == id);
     return currentAnswers[0].options;
   }
 
   isSectionAnswered(sectionIndex: number): boolean {
     for (let i = 0; i < this.sectionsData[sectionIndex].questions.length; i++) {
-      if (
-        this.getAnswerByQuestionId(
-          this.sectionsData[sectionIndex].questions[i].id
-        ).length != 0
-      ) {
+      if (this.getAnswerByQuestionId(this.sectionsData[sectionIndex].questions[i].id).length != 0) {
         return true;
       }
     }
@@ -185,7 +168,7 @@ export class CostEstimationService {
   }
 
   isResultExists(): boolean {
-    for (var i = 0; i < this.sectionsData.length; i++) {
+    for (let i = 0; i < this.sectionsData.length; i++) {
       if (this.isSectionAnswered(i)) {
         return true;
       }
@@ -195,23 +178,21 @@ export class CostEstimationService {
 
   getAnswersOfCurrentSectionByIndex(index: number): Question[] {
     const section = this.getSectionByIndex(index);
-    const qids = section.questions.map((question) => {
+    const qids = section.questions.map(question => {
       return question.id;
     });
-    const answers = this.answers.filter(
-      (answer) => qids.indexOf(answer.id) != -1
-    );
+    const answers = this.answers.filter(answer => qids.indexOf(answer.id) != -1);
     return answers;
   }
 
   submitAnswers(email: string, companyName: string): Promise<SubmitEstimates> {
     let finalAnswers: SubmitQuestions[] = [];
-    this.answers.forEach((answer) => {
+    this.answers.forEach(answer => {
       if (answer.options.length != 0) {
         finalAnswers.push({
           multiple: answer.multiple,
           questionText: answer.questionText,
-          options: answer.options.map((option) => ({
+          options: answer.options.map(option => ({
             optionText: option.optionText,
             minPrice: option.minPrice,
             maxPrice: option.maxPrice,
@@ -225,8 +206,6 @@ export class CostEstimationService {
       answeredQuestions: finalAnswers,
       companyName: companyName,
     };
-    return this._http
-      .post<SubmitEstimates>(this.hostUrl + '/submissions', data)
-      .toPromise();
+    return this._http.post<SubmitEstimates>(this.hostUrl + '/submissions', data).toPromise();
   }
 }

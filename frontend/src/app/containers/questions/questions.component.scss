@@ -1,5 +1,4 @@
 @import '../../../styles.scss';
-
 .mainSkipContainer {
   display: flex;
   align-items: center;
@@ -13,8 +12,4 @@
   flex-direction: row;
   justify-content: center;
   margin: 15px;
-}
-
-label {
-  cursor: pointer;
 }

@@ -33,29 +33,20 @@ export class OverviewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this._activatedRoute.snapshot.paramMap.get('index')) {
-      this.sectionRoute = this._activatedRoute.snapshot.paramMap.get('index');
+    this.sectionRoute = this._activatedRoute.snapshot.paramMap.get('index');
+    if (this.sectionRoute) {
       this.sectionIndex = this.sectionRoute ? parseInt(this.sectionRoute) : 0;
 
-      if (
-        this.sectionIndex ==
-        this._costEstimationService.sectionsData.length - 1
-      ) {
+      if (this.sectionIndex == this._costEstimationService.sectionsData.length - 1) {
         this.isLastSection = true;
         this.overviewButtonProperties.buttonText = 'Finish';
       }
 
-      if (
-        this.sectionIndex <=
-        this._costEstimationService.sectionsData.length - 1
-      ) {
-        this.sectionName = this._costEstimationService.getSectionNameByIndex(
+      if (this.sectionIndex <= this._costEstimationService.sectionsData.length - 1) {
+        this.sectionName = this._costEstimationService.getSectionNameByIndex(this.sectionIndex);
+        this.answers = this._costEstimationService.getAnswersOfCurrentSectionByIndex(
           this.sectionIndex
         );
-        this.answers =
-          this._costEstimationService.getAnswersOfCurrentSectionByIndex(
-            this.sectionIndex
-          );
       } else {
         this.sectionExist = false;
       }

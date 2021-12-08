@@ -22,6 +22,7 @@ export class HomeComponent {
   async onSubmit(): Promise<void> {
     this.displaySpinner = true;
     await this._costEstimationService.setSectionValues();
+    this.displaySpinner = false;
     this._route.navigate(['/questions']);
   }
 }

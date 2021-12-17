@@ -23,8 +23,6 @@ export class CostEstimationService {
   sectionsData: Sections[] = [];
   allQuestions: Question[] = [];
 
-  hostUrl: string = environment.baseUrl;
-
   constructor(private _http: HttpClient, private _snackBarService: SnackbarService) {}
 
   async setSectionValues(): Promise<void> {
@@ -53,7 +51,7 @@ export class CostEstimationService {
 
   getSections(): Promise<object> {
     return new Promise((resolve, reject) => {
-      this._http.get(this.hostUrl + '/sections').subscribe(
+      this._http.get(environment.baseUrl + '/sections').subscribe(
         data => {
           resolve(data);
         },
@@ -206,6 +204,6 @@ export class CostEstimationService {
       answeredQuestions: finalAnswers,
       companyName: companyName,
     };
-    return this._http.post<SubmitEstimates>(this.hostUrl + '/submissions', data).toPromise();
+    return this._http.post<SubmitEstimates>(environment.baseUrl + '/submissions', data).toPromise();
   }
 }

@@ -1,0 +1,15 @@
+@import '../../../styles.scss';
+.mainSkipContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
+
+.skipContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px;
+}

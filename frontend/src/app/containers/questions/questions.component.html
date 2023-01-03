@@ -1,0 +1,31 @@
+<div *ngIf="sections">
+  <app-tabs
+    [selectedIndex]="sectionIndex"
+    [sections]="sections"
+    (tabClicked)="skipSectionHandler($event)"
+  ></app-tabs>
+  <div *ngIf="!sectionStarted" class="mainSkipContainer">
+    <app-section-intro-card
+      *ngIf="sectionDescription && sectionName"
+      [sectionDescription]="sectionDescription"
+      [sectionName]="sectionName"
+      [sectionTouched]="sectionTouched"
+      [isLastSection]="isLastSection"
+      class="skipContainer"
+      (continueButtonEvent)="continue()"
+      (skipSectionButtonEvent)="skipSection()"
+    ></app-section-intro-card>
+  </div>
+
+  <div *ngIf="sectionStarted">
+    <app-question-and-options
+      *ngIf="presentQuestion"
+      [presentQuestion]="presentQuestion"
+      [answer]="answer"
+      [questionsLength]="sections[sectionIndex].questions.length"
+      [currentQuestionNumberForDisplay]="currentQuestionNumberForDisplay"
+      (getNextQuestionEvent)="nextQuestion($event)"
+      (getPreviousQuestionEvent)="previousQuestion()"
+    ></app-question-and-options>
+  </div>
+</div>

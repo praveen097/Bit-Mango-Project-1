@@ -17,7 +17,6 @@ export interface Question {
   id: string;
 }
 
-
 export interface Sections {
   _id: string;
   sectionName: string;
@@ -42,3 +41,21 @@ export interface SubmitQuestions {
   options: SubmitOptions[];
 }
 
+export interface SubmitEstimates {
+  lowerEstimate: number;
+  upperEstimate: number;
+}
+
+export interface ButtonProperties {
+  buttonText: string;
+  className: string;
+  disabled: boolean;
+  showIcon: boolean;
+  iconName: string;
+  iconClassName: string;
+}
+
+export interface UserDetails {
+  email: string;
+  companyName: string;
+}

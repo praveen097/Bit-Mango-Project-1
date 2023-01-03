@@ -1,0 +1,10 @@
+<button
+  *ngIf="buttonProperties"
+  mat-fab
+  [ngClass]="buttonProperties.className"
+  (click)="navigationButtonClick()"
+>
+  <mat-icon [ngClass]="buttonProperties.iconClassName">{{
+    buttonProperties.iconName
+  }}</mat-icon>
+</button>

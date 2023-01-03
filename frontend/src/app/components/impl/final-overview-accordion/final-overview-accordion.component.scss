@@ -1,0 +1,51 @@
+@import "../../../../styles.scss";
+
+.sectionCard {
+  margin: 20px auto;
+}
+.sectionName {
+  font-weight: 500;
+  font-size: 18px;
+}
+.questionList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.errorMessage {
+  width: 100%;
+  text-align: center;
+  background-color: $light-grey;
+  color: $white;
+  padding: 40px;
+  font-size: 30px;
+}
+
+@media screen and (min-width: 568px) and (max-width: 768px) {
+  .questionList {
+    flex-flow: column;
+  }
+  .errorMessage {
+    font-size: 20px;
+    padding: 20px;
+  }
+}
+@media screen and (min-width: 368px) and (max-width: 567px) {
+  .questionList {
+    flex-flow: column;
+  }
+
+  ::ng-deep .mat-card-content {
+    font-size: 14px;
+  }
+  ::ng-deep .errorMessage > .mat-card-content {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 168px) and (max-width: 367px) {
+  .questionList {
+    flex-flow: column;
+  }
+}

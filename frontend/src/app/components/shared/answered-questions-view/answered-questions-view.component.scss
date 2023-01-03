@@ -1,0 +1,41 @@
+@import "../../../../styles.scss";
+
+.questionText {
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+.optionChip {
+  background-color: $green;
+  color: $white;
+  font-size: 15px;
+  height: max-content;
+}
+
+.resultAnswerContainer {
+  width: 100%;
+  border-bottom: 1px $yellow solid;
+  margin-bottom: 10px;
+  height: 100%;
+}
+
+.overviewAnswerContainer {
+  width: 100%;
+  border-bottom: 1px $yellow solid;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 568px) and (max-width: 768px) {
+  .questionText {
+    font-size: 17px;
+  }
+}
+@media screen and (min-width: 368px) and (max-width: 567px) {
+  .questionText {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 168px) and (max-width: 367px) {
+  .questionText {
+    font-size: 10px;
+  }
+}

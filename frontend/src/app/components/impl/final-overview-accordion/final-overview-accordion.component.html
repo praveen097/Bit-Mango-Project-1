@@ -1,0 +1,43 @@
+<mat-expansion-panel
+  class="sectionCard"
+  *ngFor="let currentSectionAnswers of questionsList; index as i"
+  [expanded]="step === i"
+  (opened)="setStep(i)"
+  hideToggle
+>
+  <mat-expansion-panel-header class="sectionName">{{
+    currentSectionAnswers.sectionName
+  }}</mat-expansion-panel-header>
+  <mat-panel-description
+    *ngIf="currentSectionAnswers.questions.length !== 0; else answersNotFound"
+  >
+    <app-section-overview-card
+      [questions]="currentSectionAnswers.questions"
+      [className]="className"
+      class="questionList"
+    >
+    </app-section-overview-card>
+  </mat-panel-description>
+  <ng-template #answersNotFound>
+    <mat-panel-description>
+      <mat-card class="errorMessage">
+        <mat-card-content
+          >You haven't attempted questions from
+          {{ currentSectionAnswers.sectionName }}</mat-card-content
+        >
+      </mat-card>
+    </mat-panel-description>
+  </ng-template>
+  <mat-action-row>
+    <app-buttons
+      [buttonProperties]="previousSectionButtonProperties"
+      (buttonClicked)="prevStep()"
+      *ngIf="step !== 0"
+    ></app-buttons>
+    <app-buttons
+      [buttonProperties]="nextSectionButtonProperties"
+      (buttonClicked)="nextStep()"
+      *ngIf="questionsList && step !== questionsList.length - 1"
+    ></app-buttons>
+  </mat-action-row>
+</mat-expansion-panel>

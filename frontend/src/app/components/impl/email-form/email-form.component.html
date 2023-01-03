@@ -1,0 +1,49 @@
+<mat-card class="formContainer">
+  <mat-card-title id="greetingMessage"
+    >Congratulations, You have made it.
+  </mat-card-title>
+  <mat-card-content class="content"
+    >Please fill the details below to receive your estimate</mat-card-content
+  >
+  <form *ngIf="form" (submit)="formOnSubmit()" [formGroup]="form">
+    <div class="formInput">
+      <p class="inputVal">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Ex:kai@doe.com.."
+            required
+            formControlName="email"
+            (ngModelChange)="checkForm()"
+          />
+          <mat-icon matSuffix>alternate_email</mat-icon>
+          <!-- <mat-hint>Please enter your email</mat-hint> -->
+        </mat-form-field>
+      </p>
+      <p class="inputVal">
+        <mat-form-field>
+          <mat-label>Company Name</mat-label>
+          <input
+            matInput
+            placeholder="Company Name"
+            required
+            formControlName="companyName"
+            (ngModelChange)="checkForm()"
+          />
+          <mat-icon matSuffix>business</mat-icon>
+          <!-- <mat-hint>Please enter your company name</mat-hint> -->
+        </mat-form-field>
+      </p>
+    </div>
+    <mat-card-actions>
+      <app-buttons
+        *ngIf="emailFormButtonProperties"
+        [buttonProperties]="emailFormButtonProperties"
+      ></app-buttons>
+    </mat-card-actions>
+  </form>
+  <mat-card-footer *ngIf="showProgressBar">
+    <app-progress-bar [mode]="progressBarMode"></app-progress-bar>
+  </mat-card-footer>
+</mat-card>

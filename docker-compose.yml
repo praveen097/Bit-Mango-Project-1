@@ -1,0 +1,21 @@
+version: "3"
+services:
+  angular:
+    build: frontend
+    ports:
+      - "4200:80"
+
+  strapiexample:
+    image: strapi/strapi
+    build: backend
+    container_name: strapiexample
+    restart: unless-stopped
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: backend
+      DATABASE_HOST: costestimatorbackend.ejnro.mongodb.net
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: pguttapalyam
+      DATABASE_PASSWORD: Prav097
+    ports:
+      - "1337:1337"
